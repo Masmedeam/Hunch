@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="ui/public/logo.svg" alt="Hunch Logo" width="88" height="88" />
+<img src="ui/public/logo.png" alt="Hunch Fox Logo" width="88" height="88" style="border-radius:20px;" />
 
 # Hunch
 

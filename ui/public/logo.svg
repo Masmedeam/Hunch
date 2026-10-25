@@ -1,19 +1,14 @@
 <svg viewBox="0 0 120 120" width="96" height="96" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="120" height="120" rx="30" fill="#171716"/>
-  <!-- Hunch Owl Silhouette -->
-  <path d="M31.5 93C31.5 66.6 43.2 46.5 60 46.5C76.8 46.5 88.5 66.6 88.5 93H31.5Z" fill="#FAF9F6"/>
-  <!-- Tufted Ears -->
-  <path d="M40.5 52.5L33 34.5L50.4 45.6Z" fill="#FAF9F6" stroke="#FAF9F6" stroke-width="3.6" stroke-linejoin="round"/>
-  <path d="M79.5 52.5L87 34.5L69.6 45.6Z" fill="#FAF9F6" stroke="#FAF9F6" stroke-width="3.6" stroke-linejoin="round"/>
-  <!-- Eyes -->
-  <circle cx="49.5" cy="64.5" r="9.3" fill="#171716"/>
-  <circle cx="70.5" cy="64.5" r="9.3" fill="#171716"/>
-  <circle cx="52.2" cy="61.8" r="3.45" fill="#FFFFFF"/>
-  <circle cx="73.2" cy="61.8" r="3.45" fill="#FFFFFF"/>
-  <!-- Signature Monocle & Signal Spark -->
-  <circle cx="70.5" cy="64.5" r="14.1" stroke="#E1381C" stroke-width="4.8"/>
-  <path d="M84.6 67.5L90.6 75" stroke="#E1381C" stroke-width="4.5" stroke-linecap="round"/>
-  <!-- Beak / Smile -->
-  <path d="M55.8 75.6Q60 80.4 64.2 75.6" stroke="#E1381C" stroke-width="5.4" stroke-linecap="round" fill="none"/>
-  <circle cx="91.5" cy="28.5" r="6.6" fill="#E1381C"/>
+  <!-- 3 Colors Max: Cream #FAF9F6, Vermilion Fox #E1381C, Ink #141413 -->
+  <rect width="120" height="120" rx="28" fill="#FAF9F6"/>
+  <!-- Minimalist Geometric Fox Head -->
+  <path d="M26 24L50 44H70L94 24V66L102 72L60 96L18 72L26 66V24Z" fill="#E1381C"/>
+  <!-- Inner Ears -->
+  <path d="M32 34L46 46L32 60V34Z" fill="#141413"/>
+  <path d="M88 34L74 46L88 60V34Z" fill="#141413"/>
+  <!-- Cute Fox Eyes -->
+  <circle cx="46" cy="70" r="4.5" fill="#141413"/>
+  <circle cx="74" cy="70" r="4.5" fill="#141413"/>
+  <!-- Nose -->
+  <ellipse cx="60" cy="92" rx="6.5" ry="4.5" fill="#141413"/>
 </svg>
