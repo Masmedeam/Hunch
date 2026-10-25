@@ -1,0 +1,52 @@
+{
+  "regions": [
+    {"code": "US", "x_country": "UnitedStates", "language": "en"},
+    {"code": "GB", "x_country": "UnitedKingdom", "language": "en"},
+    {"code": "IN", "x_country": "India", "language": "en"},
+    {"code": "JP", "x_country": "Japan", "language": "ja"}
+  ],
+  "topics": [
+    {"name": "geopolitics", "en": "international politics", "ja": "国際政治"},
+    {"name": "economy", "en": "economy inflation", "ja": "経済 インフレ"},
+    {"name": "technology", "en": "artificial intelligence", "ja": "人工知能"},
+    {"name": "climate", "en": "climate extreme weather", "ja": "気候 異常気象"},
+    {"name": "culture", "en": "entertainment music", "ja": "エンタメ 音楽"}
+  ],
+  "verticals": {
+    "zillow": {
+      "enabled": false,
+      "include_mortgage_rates": true,
+      "locations": ["Austin, TX", "San Francisco, CA", "Miami, FL"],
+      "property_urls": [
+        "https://www.zillow.com/homedetails/29437674_zpid/"
+      ],
+      "open_house_zpids": ["2060140544"]
+    },
+    "airbnb": {
+      "enabled": false,
+      "locations": ["New York, NY", "Tokyo, Japan", "London, UK"],
+      "check_in_offset_days": 14,
+      "stay_nights": 3,
+      "adults": 2,
+      "currency": "USD"
+    },
+    "linkedin": {
+      "enabled": false,
+      "job_searches": [
+        {"title": "AI Engineer", "location": "San Francisco"},
+        {"title": "Software Engineer", "location": "New York"},
+        {"title": "Machine Learning Engineer", "location": "London"}
+      ],
+      "company_urls": [
+        "https://linkedin.com/company/openai",
+        "https://linkedin.com/company/anthropic",
+        "https://linkedin.com/company/shopify"
+      ],
+      "post_queries": [
+        "AI hiring freeze OR layoffs",
+        "tech job market hiring"
+      ],
+      "include_wellfound_trending": true
+    }
+  }
+}

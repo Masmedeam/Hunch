@@ -1,0 +1,11 @@
+.env
+.env.*
+.dev.vars
+.venv/
+__pycache__/
+.pytest_cache/
+data/
+*.egg-info/
+.wrangler/
+node_modules/
+.DS_Store

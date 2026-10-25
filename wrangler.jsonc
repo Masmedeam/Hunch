@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nextday-prediction",
+  "main": "ui/worker.js",
+  "compatibility_date": "2026-03-01",
+  "assets": {
+    "directory": "./ui/public",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "status": "data_creation_authorized",
+  "version": "0.1",
+  "data_budget_max_usd": "10.00",
+  "inference_budget": "Separate from the $10 scraping allowance. Model evaluation/judging not run during data creation.",
+  "evaluation_mode": "retrospective_reconstructed",
+  "proposed_cutoff_dates_utc": [
+    "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-17", "2026-10-18",
+    "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23"
+  ],
+  "cutoff_time_utc": "23:59:59",
+  "context_lookback_calendar_days": 7,
+  "target_horizon_hours": 24,
+  "questions_per_case_target": 5,
+  "case_count_target": 10,
+  "question_count_target": 50,
+  "forecast_modes": ["binary_event", "categorical_scenario", "numeric_change", "social_publication", "exploratory_narrative"],
+  "news_panels": [
+    "International diplomacy, sanctions and public policy",
+    "Business announcements, earnings and regulation",
+    "Economy, energy and transport",
+    "Technology, AI and product announcements",
+    "Climate, severe weather and public health",
+    "Culture, entertainment and public attention"
+  ],
+  "social_policy": {
+    "retain_as_core_context": true,
+    "historical_post_content": "Candidate evidence only; check publication times, edits and quoted/linked content for leakage.",
+    "historical_engagement": "Use only genuine as-of snapshots or documented timestamped metrics. Current views/comments on old posts are excluded from historical inputs.",
+    "historical_labels": "Publication/announcement targets only when source coverage can be verified; otherwise unresolved.",
+    "prospective_track": "Optional separately approved snapshots of the existing retained cohort; not enabled by this plan."
+  },
+  "numeric_anchor_tickers": ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "JPM", "XOM", "WMT", "NFLX"],
+  "financial_target_policy": "Only next-calendar-day targets containing a regular trading session. Do not silently substitute next trading day for a 24-hour horizon.",
+  "inspected_source_candidates": [
+    {"provider": "exa", "endpoint": "/search", "role": "Date-bounded context and separately collected next-day reporting", "display_usd": "0.007", "maximum_per_run_usd": "0.022", "warning": "Publication date filtering does not recover historical page versions."},
+    {"provider": "tikhub", "endpoint": "/api/v1/twitter/web/fetch_search_timeline", "role": "Absolute-date original post discovery", "display_usd": "0.0011", "warning": "No historical engagement snapshot; edits and linked/quoted content need review."},
+    {"provider": "financialdatasets", "endpoint": "/prices", "role": "Daily OHLCV numeric context and held-out next-day outcomes", "display_usd": "0.02", "warning": "Check adjustment/revision semantics; historical bars are not proof of point-in-time data availability."},
+    {"provider": "secapi", "endpoint": "/edgar-index/ingestion-log/{date}", "role": "Acceptance-timestamped corporate filing evidence and outcomes", "display_usd": "0.0005", "warning": "Filter a fixed company/form cohort; absence requires complete source coverage."},
+    {"provider": "nasdaq", "endpoint": "/get_earnings_calendar", "role": "Candidate historical schedule context", "display_usd": "0.011", "warning": "Historical date support does not establish point-in-time consensus forecasts; do not ingest revised consensus as if known at cutoff."}
+  ],
+  "data_budget_allocation_max_usd": {
+    "sample_and_temporal_integrity_audit": "1.00",
+    "historical_news_and_social_context": "3.50",
+    "quarantined_next_day_sources": "2.50",
+    "numeric_and_official_record_anchors": "0.50",
+    "retrieval_depth_failures_and_contingency": "2.50"
+  },
+  "selection_policy": "Freeze dates, panels, entity cohorts and question templates before accessing target outcomes. Propose context-dependent questions using only history; do not select cases based on exciting next-day outcomes.",
+  "integrity_grades": ["genuine_as_of_snapshot", "immutable_timestamped_record", "reconstructed_publication_filtered", "unsupported_or_leaky"],
+  "exclusion_policy": "Unsupported historical metrics and detectable answer leakage exclude a question from the primary leaderboard. Incomplete outcome coverage produces unresolved, not false.",
+  "contamination_policy": "Historical evaluation cannot prove absence of model-training contamination. Record exact model versions and known release/training metadata; keep retrospective results separate from prospective results.",
+  "data_separation": {
+    "forecaster_input": "public_inputs/<case_id>/history.json and frozen questions.json only",
+    "hidden_truth": "private_outcomes/<case_id>/resolution.json; never loaded into forecaster requests",
+    "judge_input": "Only after forecasts are frozen: anonymous forecast, relevant history, trusted resolution and fixed rubric"
+  },
+  "leaderboards": {
+    "primary": "Objective outcome scores by track: Brier for binary/categorical probabilities; MAE/interval coverage for numeric estimates; no unresolved questions scored as negative.",
+    "secondary": "Blinded model-judge assessment of specificity, evidence fidelity, temporal discipline, uncertainty and testability. Not a replacement for outcome scoring."
+  },
+  "judge_policy": {
+    "blind_model_identity": true,
+    "fixed_rubric_before_execution": true,
+    "prefer_separate_model_family": true,
+    "randomize_or_counterbalance_comparison_order": true,
+    "require_evidence_based_score_explanations": true,
+    "human_spot_check": true,
+    "do_not_reward_hindsight_confidence_or_unprovided_facts": true
+  },
+  "baselines": ["base-rate", "persistence/no-change", "no-news-context", "24-hour-context", "7-day-context"],
+  "reporting_policy": "Report track scores, coverage/unresolved rates, calibration, latency, tokens/cost and uncertainty grouped by date/event; adjacent seven-day contexts overlap. Fifty questions is a pipeline pilot, not a definitive model ranking."
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXTDAY — Forecasting &amp; Data Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <!-- MINIMAL TOP BAR -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-badge">24H</span>
+        <span class="brand-name">NextDay</span>
+      </div>
+
+      <!-- 3-STEP PIPELINE NAV -->
+      <nav class="steps-nav" aria-label="Pipeline Steps">
+        <button class="step-tab active" data-view="sources">
+          <span class="step-num">1</span>
+          <span>Sources</span>
+        </button>
+        <span class="step-divider"></span>
+        <button class="step-tab" data-view="predict">
+          <span class="step-num">2</span>
+          <span>Predictions</span>
+        </button>
+        <span class="step-divider"></span>
+        <button class="step-tab" data-view="benchmark">
+          <span class="step-num">3</span>
+          <span>Benchmark</span>
+        </button>
+      </nav>
+
+      <div class="header-status">
+        <span class="model-chip">
+          <span class="pulse-dot"></span>
+          gemini-4-argon
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ===================================================================
+         STEP 1: SOURCES (SELECT & CONFIGURE DATA SOURCES)
+         =================================================================== -->
+    <section class="view active" id="view-sources">
+      <div class="view-header">
+        <div>
+          <span class="kicker">STEP 01 · DATA INGESTION</span>
+          <h1>Select Sources for Tomorrow’s Forecast</h1>
+        </div>
+        <div class="region-pills" id="region-pills">
+          <!-- US · GB · IN · JP -->
+        </div>
+      </div>
+
+      <!-- 8 ICON SOURCE CARDS -->
+      <div class="sources-grid" id="sources-grid">
+        <!-- Rendered by app.js with SVG brand logos -->
+      </div>
+
+      <!-- INLINE CONFIG DRAWER (ONLY WHEN A SOURCE GEAR IS CLICKED) -->
+      <div class="source-config-sheet hidden" id="source-config-sheet"></div>
+
+      <!-- FLOATING SUMMARY & ACTION BAR -->
+      <div class="action-bar">
+        <div class="action-bar-left">
+          <div class="active-logos-stack" id="active-logos-stack"></div>
+          <div class="action-metrics">
+            <span class="metric-main" id="sim-jobs-label">0 API Calls</span>
+            <span class="metric-sub" id="sim-cost-label">Est. $0.00 · Max $0.00</span>
+          </div>
+        </div>
+        <div class="action-bar-right">
+          <div class="budget-control">
+            <span>Cap $</span>
+            <input type="number" id="budget-input" value="1.00" step="0.10" min="0.10" max="10.00" />
+          </div>
+          <button class="btn-secondary" id="btn-download-plan" type="button">Download Plan</button>
+          <button class="btn-primary" id="btn-show-cli" type="button">Run Command →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         STEP 2: PREDICTIONS (CLEAN VISUAL FORECAST CARDS)
+         =================================================================== -->
+    <section class="view" id="view-predict">
+      <div class="view-header">
+        <div>
+          <span class="kicker">STEP 02 · NEXT 24 HOURS (2026-10-26 UTC)</span>
+          <h1>Next-Day Forecasts</h1>
+        </div>
+        <div class="view-controls">
+          <div class="source-filter-bar" id="pred-source-filters">
+            <!-- Icon pills for All, News/Social, Stocks, Zillow, Airbnb, LinkedIn -->
+          </div>
+          <div class="layout-toggle">
+            <button class="icon-btn active" data-layout="cards" title="Card Grid">▦</button>
+            <button class="icon-btn" data-layout="compact" title="Compact Table">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="predictions-container"></div>
+    </section>
+
+    <!-- ===================================================================
+         STEP 3: BENCHMARK (10-DAY DATASET, EVIDENCE & JUDGE)
+         =================================================================== -->
+    <section class="view" id="view-benchmark">
+      <div class="view-header">
+        <div>
+          <span class="kicker">STEP 03 · 10-DAY RETROSPECTIVE DATASET ($1.78 SPENT · 32,490 RECORDS)</span>
+          <h1>Historical Benchmark &amp; Judge</h1>
+        </div>
+        <button class="seal-toggle-btn" id="btn-seal-toggle" type="button">
+          <span class="seal-dot"></span>
+          <span id="seal-label">Next 24h Sealed</span>
+        </button>
+      </div>
+
+      <!-- 10-DAY TIMELINE STRIP -->
+      <div class="days-strip" id="days-strip"></div>
+
+      <!-- 5 CLEAN QUESTION TRACK CARDS FOR SELECTED DAY -->
+      <div class="tracks-row" id="case-questions-row"></div>
+
+      <!-- CLEAN EVIDENCE STREAM WITH SOURCE LOGOS -->
+      <div class="feed-section">
+        <div class="feed-header">
+          <div class="feed-tabs" id="feed-kind-tabs">
+            <!-- All, News, Social, SEC 8-K, Stocks -->
+          </div>
+          <input type="search" id="feed-search" class="search-minimal" placeholder="Search evidence…" />
+        </div>
+        <div class="feed-list" id="feed-list"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SLIDE-OVER DETAIL SHEET (PROGRESSIVE DISCLOSURE) -->
+  <div class="sheet-backdrop hidden" id="detail-sheet">
+    <div class="sheet-panel">
+      <div class="sheet-header">
+        <div id="sheet-badge"></div>
+        <button class="sheet-close" id="btn-sheet-close" type="button">✕</button>
+      </div>
+      <div class="sheet-content" id="sheet-content"></div>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

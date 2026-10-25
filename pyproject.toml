@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nextday-data"
+version = "0.1.0"
+description = "Timestamped news and social trend collection through Glasser"
+requires-python = ">=3.11"
+dependencies = ["jsonschema>=4.23,<5", "python-dotenv>=1,<2"]
+
+[project.scripts]
+nextday = "nextday.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["nextday*"]

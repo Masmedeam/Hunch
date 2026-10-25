@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "required": ["overview", "limitations", "forecasts"],
+  "properties": {
+    "overview": {"type": "string"},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "forecasts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "claim", "forecast_type", "scope", "status", "probability", "estimate", "outcomes", "rationale", "evidence_ids", "assumptions", "disconfirmation_signals", "resolution"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "claim": {"type": "string"},
+          "forecast_type": {"type": "string", "description": "Open vocabulary: binary event, numerical change, attention trend, categorical scenario, narrative, etc."},
+          "scope": {"type": "string", "description": "Named actors, places, entities and measurement scope."},
+          "status": {"type": "string", "enum": ["forecast", "abstain"]},
+          "probability": {"type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Probability of the exact claim; null if not applicable or abstaining."},
+          "estimate": {
+            "anyOf": [
+              {"type": "null"},
+              {
+                "type": "object",
+                "required": ["value", "unit", "lower", "upper", "interval_probability"],
+                "properties": {
+                  "value": {"type": "number"},
+                  "unit": {"type": "string"},
+                  "lower": {"type": ["number", "null"]},
+                  "upper": {"type": ["number", "null"]},
+                  "interval_probability": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+                }
+              }
+            ]
+          },
+          "outcomes": {
+            "type": "array",
+            "description": "Optional mutually exclusive, exhaustive categorical outcomes. Empty otherwise.",
+            "items": {
+              "type": "object", "required": ["label", "probability"],
+              "properties": {"label": {"type": "string"}, "probability": {"type": "number", "minimum": 0, "maximum": 1}}
+            }
+          },
+          "rationale": {"type": "string", "description": "Concise evidence-based explanation, not hidden reasoning."},
+          "evidence_ids": {"type": "array", "items": {"type": "string"}},
+          "assumptions": {"type": "array", "items": {"type": "string"}},
+          "disconfirmation_signals": {"type": "array", "items": {"type": "string"}},
+          "resolution": {
+            "type": "object", "required": ["mode", "rule", "sources"],
+            "properties": {
+              "mode": {"type": "string", "enum": ["measurable", "exploratory", "unresolvable"]},
+              "rule": {"type": "string", "description": "Precise measurement/yes-no rule within the supplied target window; distinguish event occurrence from reporting."},
+              "sources": {"type": "array", "items": {"type": "string"}, "description": "Proposed future resolution sources, not claims of having retrieved those sources."}
+            }
+          }
+        }
+      }
+    }
+  }
+}
