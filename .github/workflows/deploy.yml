@@ -34,8 +34,21 @@ jobs:
           pip install -e .
           python -m unittest discover -s tests -v
 
-      - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          node-version: "22"
+
+      - name: Deploy to Cloudflare Workers
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WRANGLER_CONFIG_TOML: ${{ secrets.WRANGLER_CONFIG_TOML }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -n "$WRANGLER_CONFIG_TOML" ]; then
+            mkdir -p ~/.config/.wrangler/config ~/.wrangler/config
+            printf '%s\n' "$WRANGLER_CONFIG_TOML" > ~/.config/.wrangler/config/default.toml
+            printf '%s\n' "$WRANGLER_CONFIG_TOML" > ~/.wrangler/config/default.toml
+            unset CLOUDFLARE_API_TOKEN
+          fi
+          npx wrangler@latest deploy
