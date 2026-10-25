@@ -394,8 +394,34 @@ html, body {
 .mini-logo-bubble svg { width: 14px; height: 14px; }
 
 .action-metrics { display: flex; flex-direction: column; }
-.metric-main { font-weight: 600; font-size: 13px; }
-.metric-sub { font-family: var(--mono); font-size: 11px; color: #A3A098; }
+.metric-main { font-weight: 600; font-size: 13px; white-space: nowrap; }
+.metric-sub { font-family: var(--mono); font-size: 11px; color: #A3A098; white-space: nowrap; }
+
+.action-bar-prompt {
+  flex: 1;
+  min-width: 240px;
+}
+
+.prompt-input {
+  width: 100%;
+  background: #232321;
+  border: 1px solid #3A3935;
+  color: #FFF;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.prompt-input::placeholder {
+  color: #8E8B82;
+}
+
+.prompt-input:focus {
+  border-color: var(--accent);
+}
 
 .action-bar-right { display: flex; align-items: center; gap: 10px; }
 

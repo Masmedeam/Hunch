@@ -51,12 +51,15 @@
             <span class="metric-sub" id="sim-cost-label">Est. $0.00 · Max $0.00</span>
           </div>
         </div>
+        <div class="action-bar-prompt">
+          <input
+            type="text"
+            id="user-prompt-input"
+            class="prompt-input"
+            placeholder="Guide the prediction (e.g., Focus on CA gas prices, AI jobs in SF, or NVDA pre-market)…"
+          />
+        </div>
         <div class="action-bar-right">
-          <div class="budget-control">
-            <span>Cap $</span>
-            <input type="number" id="budget-input" value="1.00" step="0.10" min="0.10" max="10.00" />
-          </div>
-          <button class="btn-secondary" id="btn-download-plan" type="button">Download Plan</button>
           <button class="btn-primary" id="btn-run-prediction" type="button">Run Prediction →</button>
         </div>
       </div>

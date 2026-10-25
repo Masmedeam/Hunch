@@ -637,50 +637,52 @@ function renderSourcesView() {
   renderSourceConfigSheet();
   updateSimulation();
 
-  document.getElementById("budget-input").onchange = () => updateSimulation();
-  document.getElementById("btn-download-plan").onclick = () => {
-    if (!STATE.lastSim) return;
-    const blob = new Blob([JSON.stringify(STATE.lastSim, null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "nextday-plan.json";
-    a.click();
-    toast("Downloaded nextday-plan.json");
+  // LIVE RUN PREDICTION BUTTON + USER PROMPT
+  const runBtn = document.getElementById("btn-run-prediction");
+  const promptInp = document.getElementById("user-prompt-input");
+
+  const triggerRun = async () => {
+    const origText = runBtn.textContent;
+    const userPrompt = (promptInp?.value || "").trim();
+    runBtn.disabled = true;
+    runBtn.textContent = "Running Forecast…";
+    try {
+      const res = await fetch("/api/run-prediction", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          selected_sources: Array.from(STATE.selectedSources),
+          regions: Array.from(STATE.regions),
+          field_values: STATE.fieldValues,
+          prompt: userPrompt,
+          model: STATE.activeModel
+        })
+      });
+      const newRun = await res.json();
+      STATE.customRuns.unshift(newRun);
+      try {
+        localStorage.setItem("nextday_custom_runs", JSON.stringify(STATE.customRuns.slice(0, 10)));
+      } catch (_) {}
+      STATE.activeRunOrDate = newRun.run_id;
+      STATE.predFilter = "all";
+      if (promptInp) promptInp.value = "";
+      renderPredictionsView();
+      switchToView("predict");
+      toast(`Generated ${newRun.forecasts.length} forecasts (${newRun.label})`);
+    } catch (err) {
+      toast("Run failed: " + err.message);
+    } finally {
+      runBtn.disabled = false;
+      runBtn.textContent = origText;
+    }
   };
 
-  // LIVE RUN PREDICTION BUTTON
-  const runBtn = document.getElementById("btn-run-prediction");
-  if (runBtn) {
-    runBtn.onclick = async () => {
-      const origText = runBtn.textContent;
-      runBtn.disabled = true;
-      runBtn.textContent = "Running Forecast…";
-      try {
-        const res = await fetch("/api/run-prediction", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            selected_sources: Array.from(STATE.selectedSources),
-            regions: Array.from(STATE.regions),
-            field_values: STATE.fieldValues,
-            model: STATE.activeModel
-          })
-        });
-        const newRun = await res.json();
-        STATE.customRuns.unshift(newRun);
-        try {
-          localStorage.setItem("nextday_custom_runs", JSON.stringify(STATE.customRuns.slice(0, 10)));
-        } catch (_) {}
-        STATE.activeRunOrDate = newRun.run_id;
-        STATE.predFilter = "all";
-        renderPredictionsView();
-        switchToView("predict");
-        toast(`Generated ${newRun.forecasts.length} forecasts (${newRun.label})`);
-      } catch (err) {
-        toast("Run failed: " + err.message);
-      } finally {
-        runBtn.disabled = false;
-        runBtn.textContent = origText;
+  if (runBtn) runBtn.onclick = triggerRun;
+  if (promptInp) {
+    promptInp.onkeydown = e => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        triggerRun();
       }
     };
   }
@@ -827,7 +829,7 @@ function renderPredictionsView() {
   const customChips = STATE.customRuns.map(r => `
     <div class="run-chip live-chip ${STATE.activeRunOrDate === r.run_id ? "active" : ""}" data-run="${esc(r.run_id)}">
       <div class="rc-top">⚡ ${esc(r.label)}</div>
-      <div class="rc-sub">${r.forecasts.length} forecasts · Oct 26</div>
+      <div class="rc-sub">${r.prompt ? `“${esc(r.prompt.slice(0, 22))}${r.prompt.length > 22 ? "…" : ""}”` : `${r.forecasts.length} forecasts · Oct 26`}</div>
     </div>
   `).join("");
 
@@ -894,8 +896,13 @@ function renderPredictionsView() {
   });
 
   const summaryPill = document.getElementById("pred-day-summary");
+  const activeCustom = STATE.customRuns.find(r => r.run_id === STATE.activeRunOrDate);
   const histDay = HISTORICAL_DAYS.find(d => d.targetDate === STATE.activeRunOrDate);
-  if (histDay) {
+  if (activeCustom) {
+    summaryPill.textContent = activeCustom.prompt
+      ? `Guided by: “${activeCustom.prompt}” · Target: 2026-10-26`
+      : `${activeCustom.label} · ${activeCustom.selected_sources.length} sources · Target: 2026-10-26`;
+  } else if (histDay) {
     const m = histDay.models[STATE.activeModel] || histDay.models["gemini-4-argon"];
     summaryPill.textContent = `Target: ${histDay.targetDate} · Resolved · Brier ${m.brier.toFixed(3)} · Judge ${m.judge}/5`;
   } else {
