@@ -151,7 +151,7 @@ rpwm/argon.py           Gemini 4 Argon client (Interactions API, thinking high, 
 rpwm/core.py            exact discrete Bayes / free-energy helpers used by the live pipeline
 tools/                  treg.sh, glasser.sh (read keys from .env, never print them), argon_usage_report.py
 analysis/               write-ups: Hunch × Domino, real estate, categories, daily life
-docs/                   ARGON_USAGE.md (every Argon call), GEMINI_ARGON_SETUP.md, screenshots
+docs/                   ARGON_USAGE.md (how Domino uses Argon, for judges and investors; every call logged), GEMINI_ARGON_SETUP.md, screenshots
 scripts/get_bundle.sh   fetch Hunch's bundle for the analyses
 ```
 
