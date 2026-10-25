@@ -1,0 +1,97 @@
+{
+  "asof": "2026-10-26",
+  "index": 0.795,
+  "note": "Per-company P(8-K Mon 26 Oct) vs its own daily base rate (bars = lift from earnings timing)",
+  "places": [
+    {
+      "name": "AAPL",
+      "lat": 37.33,
+      "lon": -122.01,
+      "live": 12.3,
+      "usual": null,
+      "ratio": null,
+      "status": "earnings week"
+    },
+    {
+      "name": "MSFT",
+      "lat": 47.64,
+      "lon": -122.13,
+      "live": 12.3,
+      "usual": null,
+      "ratio": null,
+      "status": "earnings week"
+    },
+    {
+      "name": "NVDA",
+      "lat": 37.37,
+      "lon": -121.96,
+      "live": 3.0,
+      "usual": null,
+      "ratio": null,
+      "status": "quiet"
+    },
+    {
+      "name": "AMZN",
+      "lat": 47.62,
+      "lon": -122.34,
+      "live": 24.6,
+      "usual": null,
+      "ratio": null,
+      "status": "earnings week"
+    },
+    {
+      "name": "GOOGL",
+      "lat": 37.42,
+      "lon": -122.08,
+      "live": 23.1,
+      "usual": null,
+      "ratio": null,
+      "status": "earnings week"
+    },
+    {
+      "name": "META",
+      "lat": 37.48,
+      "lon": -122.15,
+      "live": 18.5,
+      "usual": null,
+      "ratio": null,
+      "status": "earnings week"
+    },
+    {
+      "name": "JPM",
+      "lat": 40.76,
+      "lon": -73.98,
+      "live": 4.2,
+      "usual": null,
+      "ratio": null,
+      "status": "quiet"
+    },
+    {
+      "name": "XOM",
+      "lat": 30.07,
+      "lon": -95.42,
+      "live": 21.5,
+      "usual": null,
+      "ratio": null,
+      "status": "earnings week"
+    },
+    {
+      "name": "WMT",
+      "lat": 36.37,
+      "lon": -94.21,
+      "live": 1.5,
+      "usual": null,
+      "ratio": null,
+      "status": "quiet"
+    },
+    {
+      "name": "NFLX",
+      "lat": 37.26,
+      "lon": -121.96,
+      "live": 21.5,
+      "usual": null,
+      "ratio": null,
+      "status": "earnings week"
+    }
+  ]
+}

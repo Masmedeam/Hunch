@@ -1,0 +1,37 @@
+{
+  "id": "daily-life",
+  "brand": "DOMINO \u00b7 YOUR WEEK",
+  "subtitle": "From Hormuz to your pump: measured week-ahead forecasts for gas, mortgages and flu",
+  "labels": {
+    "forecast_panel": "YOUR WEEK \u00b7 ODDS",
+    "week_ahead": "YOUR WEEK AHEAD",
+    "backtest_panel": "WEEK-AHEAD SKILL (rolling, out of sample)",
+    "crps_label": "GAS MAE $/gal \u00b7 lower is better",
+    "series_label": "Gas at the pump: actual vs Domino band (last 52 weeks)",
+    "domino_name": "TimesFM 3.0",
+    "baseline_name": "No change",
+    "leaderboard_cols": {
+      "n": "weeks",
+      "domino_vs_no_change_pct": "Domino %",
+      "timesfm_vs_no_change_pct": "TimesFM %",
+      "dm_p": "DM p",
+      "direction_hit": "direction"
+    }
+  },
+  "panels": {
+    "pizza": false,
+    "attention": false,
+    "week_ahead": true,
+    "leaderboard": true,
+    "replay": false,
+    "gauges": true
+  },
+  "fixtures": {
+    "graph": "profiles/daily-life/graph.json",
+    "forecast": "profiles/daily-life/forecast.json",
+    "backtest": "profiles/daily-life/backtest.json",
+    "replay": "profiles/daily-life/replay.json",
+    "pizza": "profiles/daily-life/pizza.json",
+    "events": "profiles/daily-life/events.json"
+  }
+}

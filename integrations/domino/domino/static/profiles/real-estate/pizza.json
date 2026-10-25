@@ -1,0 +1,97 @@
+{
+  "asof": "2026-09",
+  "index": 22.1,
+  "note": "Share of active listings with a price cut, Sep 2026 (Realtor.com). Momentum, not cuts, predicts next month's prices (measured).",
+  "places": [
+    {
+      "name": "Denver",
+      "lat": 39.74,
+      "lon": -104.99,
+      "live": 32.1,
+      "usual": null,
+      "ratio": null,
+      "status": "58 days on market"
+    },
+    {
+      "name": "Portland",
+      "lat": 45.52,
+      "lon": -122.68,
+      "live": 31.6,
+      "usual": null,
+      "ratio": null,
+      "status": "66 days on market"
+    },
+    {
+      "name": "Indianapolis",
+      "lat": 39.77,
+      "lon": -86.16,
+      "live": 30.5,
+      "usual": null,
+      "ratio": null,
+      "status": "53 days on market"
+    },
+    {
+      "name": "Phoenix",
+      "lat": 33.45,
+      "lon": -112.07,
+      "live": 29.0,
+      "usual": null,
+      "ratio": null,
+      "status": "62 days on market"
+    },
+    {
+      "name": "Columbus",
+      "lat": 39.96,
+      "lon": -83.0,
+      "live": 28.8,
+      "usual": null,
+      "ratio": null,
+      "status": "48 days on market"
+    },
+    {
+      "name": "Dallas",
+      "lat": 32.78,
+      "lon": -96.8,
+      "live": 27.5,
+      "usual": null,
+      "ratio": null,
+      "status": "62 days on market"
+    },
+    {
+      "name": "Tampa",
+      "lat": 27.95,
+      "lon": -82.46,
+      "live": 27.5,
+      "usual": null,
+      "ratio": null,
+      "status": "76 days on market"
+    },
+    {
+      "name": "Austin",
+      "lat": 30.27,
+      "lon": -97.74,
+      "live": 27.3,
+      "usual": null,
+      "ratio": null,
+      "status": "80 days on market"
+    },
+    {
+      "name": "Charlotte",
+      "lat": 35.23,
+      "lon": -80.84,
+      "live": 26.2,
+      "usual": null,
+      "ratio": null,
+      "status": "64 days on market"
+    },
+    {
+      "name": "San Antonio",
+      "lat": 29.42,
+      "lon": -98.49,
+      "live": 25.4,
+      "usual": null,
+      "ratio": null,
+      "status": "71 days on market"
+    }
+  ]
+}

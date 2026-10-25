@@ -1,0 +1,88 @@
+{
+  "asof": "2026-10-25T14:08:45-0700",
+  "target_date": "2026-11-02",
+  "items": [
+    {
+      "id": "life_gas",
+      "label": "Your gas price next week",
+      "unit": "$/gal",
+      "median": 4.23,
+      "p10": 4.153,
+      "p90": 4.307,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 4.284,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "TimesFM 3.0 (Google)",
+      "narration": "Backtest error -35% vs no-change"
+    },
+    {
+      "id": "life_mortgage",
+      "label": "30-year mortgage next week",
+      "unit": "%",
+      "median": 7.284,
+      "p10": 7.151,
+      "p90": 7.401,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 7.32,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "TimesFM 3.0 (Google)",
+      "narration": "Backtest error -26% vs no-change"
+    },
+    {
+      "id": "life_flu",
+      "label": "Flu activity next week",
+      "unit": "% ILI",
+      "median": 2.278,
+      "p10": 2.134,
+      "p90": 2.458,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 2.201,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "TimesFM 3.0 (Google)",
+      "narration": "Backtest error -37% vs no-change"
+    }
+  ],
+  "events": [
+    {
+      "id": "gas-dir",
+      "label": "Gas lower next week",
+      "prob": 0.814,
+      "source": "domino",
+      "narration": "TimesFM 3.0 quantiles",
+      "pair": null
+    },
+    {
+      "id": "mortgage-dir",
+      "label": "Mortgage lower next week",
+      "prob": 0.637,
+      "source": "domino",
+      "narration": "TimesFM 3.0 quantiles",
+      "pair": null
+    },
+    {
+      "id": "flu-dir",
+      "label": "Flu higher next week",
+      "prob": 0.76,
+      "source": "domino",
+      "narration": "TimesFM 3.0 quantiles",
+      "pair": null
+    }
+  ],
+  "headline_summary": "Futures lead the pump by a week; Treasuries lead mortgages by two.",
+  "hash": "865c6d0d13838d895d0fdb037ad4e8033651d298652338590f75fdae84351ec0"
+}

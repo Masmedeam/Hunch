@@ -1,0 +1,47 @@
+[
+  {
+    "id": "domino",
+    "title": "DOMINO (live)",
+    "blurb": "Live next-day world model: Hormuz \u2192 oil \u2192 your pump"
+  },
+  {
+    "id": "hunch",
+    "title": "HUNCH \u00d7 DOMINO",
+    "blurb": "Domino world model on the NEXTDAY benchmark (Masmedeam/Hunch) \u00b7 Gemini 4 Argon + Glasser + TimesFM"
+  },
+  {
+    "id": "hunch-world",
+    "title": "HUNCH \u00d7 DOMINO \u00b7 WORLD",
+    "blurb": "Q4 next-day world developments: every model's claims resolved on outcomes, not impressions"
+  },
+  {
+    "id": "hunch-social",
+    "title": "HUNCH \u00d7 DOMINO \u00b7 SOCIAL",
+    "blurb": "Social media next-day: posting cadence, view velocity, and what stale counters cannot tell you"
+  },
+  {
+    "id": "hunch-markets",
+    "title": "HUNCH \u00d7 DOMINO \u00b7 MARKETS",
+    "blurb": "Corporate events and equities: the earnings calendar is the first domino for 8-K filings"
+  },
+  {
+    "id": "hunch-life",
+    "title": "HUNCH \u00d7 DOMINO \u00b7 DAILY LIFE",
+    "blurb": "What Hunch's verticals mean for your week: pump, power, rent, mortgage, cars and jobs"
+  },
+  {
+    "id": "daily-life",
+    "title": "DOMINO \u00b7 YOUR WEEK",
+    "blurb": "From Hormuz to your pump: measured week-ahead forecasts for gas, mortgages and flu"
+  },
+  {
+    "id": "categories",
+    "title": "DOMINO \u00b7 8 WORLDS",
+    "blurb": "Where next-day prediction works: attention is predictable, returns are not, and one first domino is real"
+  },
+  {
+    "id": "real-estate",
+    "title": "DOMINO \u00b7 REAL ESTATE",
+    "blurb": "From the 10-year Treasury to your rent: what moves housing next, and what does not"
+  }
+]

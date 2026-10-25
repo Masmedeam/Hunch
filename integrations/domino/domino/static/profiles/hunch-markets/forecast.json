@@ -1,0 +1,91 @@
+{
+  "asof": "2026-10-25T18:37:12.120070Z",
+  "target_date": "2026-10-26",
+  "items": [
+    {
+      "id": "q2_mon",
+      "label": "Any cohort 8-K accepted Mon 26 Oct",
+      "unit": "probability",
+      "median": 0.795,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": 0.795,
+      "baseline": {
+        "median": 0.3,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "market",
+      "narration": "SEC submission histories x last-year earnings week (first domino). AMZN 0.25, GOOGL 0.23, XOM 0.21"
+    }
+  ],
+  "events": [
+    {
+      "id": "meta0-h",
+      "label": "META down > 1.5%",
+      "prob": 0.35,
+      "source": "hunch",
+      "narration": "Hunch's Argon pilot",
+      "pair": "meta0"
+    },
+    {
+      "id": "meta0-d",
+      "label": "META down > 1.5%",
+      "prob": 0.275,
+      "source": "domino",
+      "narration": "Domino: Student-t on EWMA volatility",
+      "pair": "meta0"
+    },
+    {
+      "id": "meta1-h",
+      "label": "META within \u00b11.5%",
+      "prob": 0.45,
+      "source": "hunch",
+      "narration": "Hunch's Argon pilot",
+      "pair": "meta1"
+    },
+    {
+      "id": "meta1-d",
+      "label": "META within \u00b11.5%",
+      "prob": 0.45,
+      "source": "domino",
+      "narration": "Domino: Student-t on EWMA volatility",
+      "pair": "meta1"
+    },
+    {
+      "id": "meta2-h",
+      "label": "META up > 1.5%",
+      "prob": 0.2,
+      "source": "hunch",
+      "narration": "Hunch's Argon pilot",
+      "pair": "meta2"
+    },
+    {
+      "id": "meta2-d",
+      "label": "META up > 1.5%",
+      "prob": 0.275,
+      "source": "domino",
+      "narration": "Domino: Student-t on EWMA volatility",
+      "pair": "meta2"
+    },
+    {
+      "id": "q2-d",
+      "label": "Any cohort 8-K accepted Mon 26 Oct",
+      "prob": 0.795,
+      "source": "domino",
+      "narration": "SEC histories \u00d7 last-year earnings week",
+      "pair": "q2"
+    },
+    {
+      "id": "q2-h",
+      "label": "Any cohort 8-K accepted Mon 26 Oct",
+      "prob": 0.3,
+      "source": "hunch",
+      "narration": "Hunch fixed baseline",
+      "pair": "q2"
+    }
+  ],
+  "headline_summary": "Earnings week: Domino puts Monday's cohort 8-K odds at 80%; Hunch's fixed baseline says 30%.",
+  "hash": "606d3f13a58dc8a655401df37977161f2fcc595e32c74fcc86e409d2b448f96c"
+}

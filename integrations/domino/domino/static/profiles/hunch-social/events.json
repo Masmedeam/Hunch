@@ -1,0 +1,109 @@
+[
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 x_trends",
+    "usd": 0.0011,
+    "seconds": 0,
+    "cached": true,
+    "t": 0.7
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 tiktok_trends",
+    "usd": 0.0011,
+    "seconds": 0,
+    "cached": true,
+    "t": 1.4
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 tiktok_hashtags",
+    "usd": 0.0011,
+    "seconds": 0,
+    "cached": true,
+    "t": 2.1
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 x_search",
+    "usd": 0.0011,
+    "seconds": 0,
+    "cached": true,
+    "t": 2.8
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 youtube_search",
+    "usd": 0.0011,
+    "seconds": 0,
+    "cached": true,
+    "t": 3.5
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 tiktok_search",
+    "usd": 0.0011,
+    "seconds": 0,
+    "cached": true,
+    "t": 4.2
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 news",
+    "usd": 0.0011,
+    "seconds": 0,
+    "cached": true,
+    "t": 4.9
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 news_text",
+    "usd": 0.0011,
+    "seconds": 0,
+    "cached": true,
+    "t": 5.6
+  },
+  {
+    "type": "data_call",
+    "target": "treg \u00b7 youtube.video.detail (K/DA)",
+    "usd": 0.0,
+    "seconds": 1.2,
+    "cached": true,
+    "t": 6.3
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon social audit + Q5 resolution",
+    "thinking_level": "high",
+    "seconds": 70,
+    "input_tokens": 20000,
+    "output_tokens": 2000,
+    "thought_tokens": 4000,
+    "cached": true,
+    "t": 7.0
+  },
+  {
+    "type": "log",
+    "level": "warn",
+    "text": "Freshness and timestamp precision are mixed, with completely stale trend curves and no collection window bounds.",
+    "t": 7.7
+  },
+  {
+    "type": "log",
+    "level": "warn",
+    "text": "Platform and source coverage is heavily skewed toward single-page search samples on TikTok and YouTube, with notable scrape failures in news",
+    "t": 8.4
+  },
+  {
+    "type": "log",
+    "level": "warn",
+    "text": "Geographic targeting is unverified and fragmented across four countries plus unfiltered buckets.",
+    "t": 9.1
+  },
+  {
+    "type": "log",
+    "level": "warn",
+    "text": "Engagement counters are mostly exact integers, but represent static lifetime totals with sparse repeat-observation panels and zero volume da",
+    "t": 9.8
+  }
+]

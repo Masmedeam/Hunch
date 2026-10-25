@@ -1,0 +1,75 @@
+{
+  "window": "2026-10-15..2026-10-24",
+  "n_days": 10,
+  "target": "Q4 world claims, resolved by Argon against held-out evidence",
+  "metrics": {
+    "crps": {
+      "domino": {
+        "mean": 0.12462727272727273
+      },
+      "ewma": {
+        "mean": 0.19772727272727272
+      }
+    }
+  },
+  "dm_test": {},
+  "reliability": [
+    {
+      "bin": "0.50-0.70",
+      "pred": 0.6235294117647059,
+      "obs": 0.9411764705882353,
+      "n": 17
+    },
+    {
+      "bin": "0.70-0.85",
+      "pred": 0.7373333333333334,
+      "obs": 0.9,
+      "n": 30
+    },
+    {
+      "bin": "0.85-1.00",
+      "pred": 0.8733333333333332,
+      "obs": 0.7333333333333333,
+      "n": 15
+    }
+  ],
+  "series": [],
+  "leaderboard": [
+    {
+      "model": "gemini-3.8-flash",
+      "claims": 20,
+      "resolved_pct": 55,
+      "yes_rate": 0.9090909090909091,
+      "mean_prob": 0.819,
+      "brier_resolved": 0.12462727272727273,
+      "specificity": 3.0
+    },
+    {
+      "model": "gemini-4-argon",
+      "claims": 30,
+      "resolved_pct": 80,
+      "yes_rate": 0.9166666666666666,
+      "mean_prob": 0.6983333333333334,
+      "brier_resolved": 0.1384375,
+      "specificity": 3.3
+    },
+    {
+      "model": "gemini-3.1-pro-preview",
+      "claims": 29,
+      "resolved_pct": 55,
+      "yes_rate": 0.875,
+      "mean_prob": 0.7551724137931033,
+      "brier_resolved": 0.15750000000000003,
+      "specificity": 3.4237288135593222
+    },
+    {
+      "model": "gemini-3.1-flash-lite",
+      "claims": 20,
+      "resolved_pct": 55,
+      "yes_rate": 0.7272727272727273,
+      "mean_prob": 0.7799999999999999,
+      "brier_resolved": 0.19772727272727272,
+      "specificity": 2.95
+    }
+  ]
+}
