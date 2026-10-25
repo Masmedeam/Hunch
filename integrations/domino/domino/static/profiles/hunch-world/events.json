@@ -1,0 +1,126 @@
+[
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 exa news (held-out reference)",
+    "usd": 0.007,
+    "seconds": 0,
+    "cached": true,
+    "t": 0.7
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon resolver \u00b7 day-2026-10-14",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 12000,
+    "output_tokens": 1500,
+    "thought_tokens": 3000,
+    "cached": true,
+    "t": 1.4
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon resolver \u00b7 day-2026-10-15",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 12000,
+    "output_tokens": 1500,
+    "thought_tokens": 3000,
+    "cached": true,
+    "t": 2.1
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon resolver \u00b7 day-2026-10-16",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 12000,
+    "output_tokens": 1500,
+    "thought_tokens": 3000,
+    "cached": true,
+    "t": 2.8
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon resolver \u00b7 day-2026-10-17",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 12000,
+    "output_tokens": 1500,
+    "thought_tokens": 3000,
+    "cached": true,
+    "t": 3.5
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon resolver \u00b7 day-2026-10-18",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 12000,
+    "output_tokens": 1500,
+    "thought_tokens": 3000,
+    "cached": true,
+    "t": 4.2
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon resolver \u00b7 day-2026-10-19",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 12000,
+    "output_tokens": 1500,
+    "thought_tokens": 3000,
+    "cached": true,
+    "t": 4.9
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon resolver \u00b7 day-2026-10-20",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 12000,
+    "output_tokens": 1500,
+    "thought_tokens": 3000,
+    "cached": true,
+    "t": 5.6
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon resolver \u00b7 day-2026-10-21",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 12000,
+    "output_tokens": 1500,
+    "thought_tokens": 3000,
+    "cached": true,
+    "t": 6.3
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon resolver \u00b7 day-2026-10-22",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 12000,
+    "output_tokens": 1500,
+    "thought_tokens": 3000,
+    "cached": true,
+    "t": 7.0
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon resolver \u00b7 day-2026-10-23",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 12000,
+    "output_tokens": 1500,
+    "thought_tokens": 3000,
+    "cached": true,
+    "t": 7.7
+  },
+  {
+    "type": "log",
+    "level": "info",
+    "text": "Unmentioned \u2260 false: unresolved claims are excluded from Brier (Hunch's own rule)",
+    "t": 8.4
+  }
+]

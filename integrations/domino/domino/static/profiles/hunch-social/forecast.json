@@ -1,0 +1,116 @@
+{
+  "asof": "2026-10-25T18:37:12.120070Z",
+  "target_date": "2026-10-26",
+  "items": [
+    {
+      "id": "q3_mon",
+      "label": "NASA X posts Mon 26 Oct",
+      "unit": "posts",
+      "median": 1.1,
+      "p10": 0,
+      "p90": 3,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 1.6,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "Poisson, weekday rate from the prior week"
+    },
+    {
+      "id": "kda_views",
+      "label": "K/DA FIRESTARTER views by Oct 27 (UTC midnight)",
+      "unit": "views",
+      "median": 29081634.440950923,
+      "p10": 28339466.96810728,
+      "p90": 30265701.703593,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 27050000,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": "Domino velocity model",
+      "narration": "Their snapshot 26,661,415 \u2192 ours 26,991,503 (97,001/h). Hunch estimate 27.05M [26.78M, 27.6M]."
+    },
+    {
+      "id": "trend_points_older_than_7_days",
+      "label": "TikTok trend points older than 7 days",
+      "unit": "count",
+      "median": 462,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "Hunch quality report"
+    },
+    {
+      "id": "growth_intervals",
+      "label": "Measured engagement growth intervals",
+      "unit": "count",
+      "median": 526,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "Hunch quality report"
+    },
+    {
+      "id": "observations",
+      "label": "Normalized social observations",
+      "unit": "count",
+      "median": 1838,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "Hunch quality report"
+    }
+  ],
+  "events": [
+    {
+      "id": "fc5-h",
+      "label": "K/DA video reaches 26.85M views by Oct 27",
+      "prob": 0.78,
+      "source": "hunch",
+      "narration": "Hunch's Argon pilot",
+      "pair": "fc-5"
+    },
+    {
+      "id": "fc5-d",
+      "label": "K/DA video reaches 26.85M views by Oct 27",
+      "prob": 0.99,
+      "source": "domino",
+      "narration": "Domino view-velocity model",
+      "pair": "fc-5"
+    }
+  ],
+  "headline_summary": "Cadence beats prose for posting counts; view velocity beats guesswork for YouTube.",
+  "hash": "7df09513daa83a52e6e40df55919148a92eae10b8d1e48c007d5ac4872665ebb"
+}

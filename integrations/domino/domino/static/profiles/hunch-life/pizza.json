@@ -1,0 +1,187 @@
+{
+  "asof": "10/25/26",
+  "index": 1.018,
+  "places": [
+    {
+      "name": "Alaska",
+      "lat": 64.2,
+      "lon": -149.5,
+      "live": 4.859,
+      "usual": 4.289,
+      "ratio": 1.133,
+      "status": "above national"
+    },
+    {
+      "name": "Alabama",
+      "lat": 32.8,
+      "lon": -86.8,
+      "live": 3.82,
+      "usual": 4.289,
+      "ratio": 0.891,
+      "status": "below national"
+    },
+    {
+      "name": "Arkansas",
+      "lat": 34.9,
+      "lon": -92.4,
+      "live": 3.846,
+      "usual": 4.289,
+      "ratio": 0.897,
+      "status": "below national"
+    },
+    {
+      "name": "Arizona",
+      "lat": 34.2,
+      "lon": -111.7,
+      "live": 4.516,
+      "usual": 4.289,
+      "ratio": 1.053,
+      "status": "above national"
+    },
+    {
+      "name": "California",
+      "lat": 37.2,
+      "lon": -119.5,
+      "live": 6.024,
+      "usual": 4.289,
+      "ratio": 1.404,
+      "status": "above national"
+    },
+    {
+      "name": "Colorado",
+      "lat": 39.0,
+      "lon": -105.5,
+      "live": 4.457,
+      "usual": 4.289,
+      "ratio": 1.039,
+      "status": "above national"
+    },
+    {
+      "name": "Connecticut",
+      "lat": 41.6,
+      "lon": -72.7,
+      "live": 4.302,
+      "usual": 4.289,
+      "ratio": 1.003,
+      "status": "above national"
+    },
+    {
+      "name": "District of Columbia",
+      "lat": 38.9,
+      "lon": -77.0,
+      "live": 4.357,
+      "usual": 4.289,
+      "ratio": 1.016,
+      "status": "above national"
+    },
+    {
+      "name": "Delaware",
+      "lat": 39.0,
+      "lon": -75.5,
+      "live": 3.912,
+      "usual": 4.289,
+      "ratio": 0.912,
+      "status": "below national"
+    },
+    {
+      "name": "Florida",
+      "lat": 28.6,
+      "lon": -82.4,
+      "live": 4.108,
+      "usual": 4.289,
+      "ratio": 0.958,
+      "status": "below national"
+    },
+    {
+      "name": "Georgia",
+      "lat": 32.7,
+      "lon": -83.4,
+      "live": 3.659,
+      "usual": 4.289,
+      "ratio": 0.853,
+      "status": "below national"
+    },
+    {
+      "name": "Hawaii",
+      "lat": 20.8,
+      "lon": -156.3,
+      "live": 5.659,
+      "usual": 4.289,
+      "ratio": 1.319,
+      "status": "above national"
+    },
+    {
+      "name": "Iowa",
+      "lat": 42.1,
+      "lon": -93.5,
+      "live": 4.194,
+      "usual": 4.289,
+      "ratio": 0.978,
+      "status": "below national"
+    },
+    {
+      "name": "Idaho",
+      "lat": 44.4,
+      "lon": -114.6,
+      "live": 4.689,
+      "usual": 4.289,
+      "ratio": 1.093,
+      "status": "above national"
+    },
+    {
+      "name": "Illinois",
+      "lat": 40.0,
+      "lon": -89.2,
+      "live": 4.894,
+      "usual": 4.289,
+      "ratio": 1.141,
+      "status": "above national"
+    },
+    {
+      "name": "Indiana",
+      "lat": 39.9,
+      "lon": -86.3,
+      "live": 3.997,
+      "usual": 4.289,
+      "ratio": 0.932,
+      "status": "below national"
+    },
+    {
+      "name": "Kansas",
+      "lat": 38.5,
+      "lon": -98.4,
+      "live": 3.943,
+      "usual": 4.289,
+      "ratio": 0.919,
+      "status": "below national"
+    },
+    {
+      "name": "Kentucky",
+      "lat": 37.5,
+      "lon": -85.3,
+      "live": 4.038,
+      "usual": 4.289,
+      "ratio": 0.942,
+      "status": "below national"
+    },
+    {
+      "name": "Louisiana",
+      "lat": 31.1,
+      "lon": -92.0,
+      "live": 3.791,
+      "usual": 4.289,
+      "ratio": 0.884,
+      "status": "below national"
+    },
+    {
+      "name": "Massachusetts",
+      "lat": 42.3,
+      "lon": -71.8,
+      "live": 4.227,
+      "usual": 4.289,
+      "ratio": 0.986,
+      "status": "below national"
+    }
+  ],
+  "note": "AAA via Glasser (Hunch vertical). National regular $4.289; bars = state \u00f7 national."
+}

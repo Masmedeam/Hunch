@@ -1,0 +1,38 @@
+{
+  "id": "hunch-world",
+  "brand": "HUNCH \u00d7 DOMINO \u00b7 WORLD",
+  "subtitle": "Q4 next-day world developments: every model's claims resolved on outcomes, not impressions",
+  "labels": {
+    "forecast_panel": "MON 26 OCT \u00b7 WORLD HEAD-TO-HEAD",
+    "attention_panel": "CLAIM TYPES \u00b7 YES-RATE",
+    "backtest_panel": "Q4 CLAIM SCORES (resolved)",
+    "crps_label": "Q4 CLAIM BRIER \u00b7 best vs worst model",
+    "replay_button": "Replay Oct 14\u201323",
+    "domino_name": "3.8 Flash",
+    "baseline_name": "Flash-Lite",
+    "leaderboard_cols": {
+      "claims": "claims",
+      "resolved_pct": "resolved %",
+      "yes_rate": "YES rate",
+      "mean_prob": "mean p",
+      "brier_resolved": "Brier",
+      "specificity": "specificity"
+    }
+  },
+  "panels": {
+    "pizza": false,
+    "attention": true,
+    "week_ahead": false,
+    "leaderboard": true,
+    "replay": true,
+    "gauges": true
+  },
+  "fixtures": {
+    "graph": "profiles/hunch-world/graph.json",
+    "forecast": "profiles/hunch-world/forecast.json",
+    "backtest": "profiles/hunch-world/backtest.json",
+    "replay": "profiles/hunch-world/replay.json",
+    "pizza": "profiles/hunch-world/pizza.json",
+    "events": "profiles/hunch-world/events.json"
+  }
+}

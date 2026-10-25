@@ -1,0 +1,184 @@
+{
+  "asof": "2026-10-25T18:37:12.120070Z",
+  "target_date": "2026-10-26",
+  "items": [
+    {
+      "id": "fc2b",
+      "label": "UK outages Oct 27: P(<25k / 25\u201382k / >82k)",
+      "unit": "probability",
+      "median": 0.728,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "market",
+      "model": null,
+      "narration": "Domino buckets 0.73 / 0.23 / 0.04 vs Hunch 0.72 / 0.23 / 0.05"
+    },
+    {
+      "id": "type_continuation",
+      "label": "Continuations that came true",
+      "unit": "probability",
+      "median": 0.8723404255319149,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "85 claims, 47 resolved; mean stated probability 0.74"
+    },
+    {
+      "id": "type_scheduled",
+      "label": "Scheduled events that came true",
+      "unit": "probability",
+      "median": 0.8571428571428571,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "22 claims, 14 resolved; mean stated probability 0.77"
+    },
+    {
+      "id": "type_cadence",
+      "label": "Cadence claims that came true",
+      "unit": "probability",
+      "median": 0.5555555555555556,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "89 claims, 18 resolved; mean stated probability 0.71"
+    },
+    {
+      "id": "type_new_event",
+      "label": "Claims calling a genuinely new event",
+      "unit": "count",
+      "median": 1,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "of 199 claims"
+    },
+    {
+      "id": "judge_brier",
+      "label": "Judge ~ outcome Brier (\u03c1)",
+      "unit": "ratio",
+      "median": -0.05,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "p = 0.72: Hunch's judge does not reward being right"
+    },
+    {
+      "id": "judge_spec",
+      "label": "Judge ~ claim specificity (\u03c1)",
+      "unit": "ratio",
+      "median": 0.5,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "p = 0.0002: it rewards sounding specific"
+    }
+  ],
+  "events": [
+    {
+      "id": "fc-1-h",
+      "label": "IMD upgrades Bay of Bengal system to Cyclonic Storm",
+      "prob": 0.85,
+      "source": "hunch",
+      "narration": "Hunch's Argon pilot",
+      "pair": "fc-1"
+    },
+    {
+      "id": "fc-1-d",
+      "label": "IMD upgrades Bay of Bengal system to Cyclonic Storm",
+      "prob": 0.859,
+      "source": "domino",
+      "narration": "Domino: live treg news + 5-sample Argon ensemble",
+      "pair": "fc-1"
+    },
+    {
+      "id": "fc-2-h",
+      "label": "UK homes without power < 25,000 by Oct 27",
+      "prob": 0.72,
+      "source": "hunch",
+      "narration": "Hunch's Argon pilot",
+      "pair": "fc-2"
+    },
+    {
+      "id": "fc-2-d",
+      "label": "UK homes without power < 25,000 by Oct 27",
+      "prob": 0.728,
+      "source": "domino",
+      "narration": "Domino: live treg news + 5-sample Argon ensemble",
+      "pair": "fc-2"
+    },
+    {
+      "id": "fc-4-h",
+      "label": "No US embassy departure order and no US strike inside Iran",
+      "prob": 0.78,
+      "source": "hunch",
+      "narration": "Hunch's Argon pilot",
+      "pair": "fc-4"
+    },
+    {
+      "id": "fc-4-d",
+      "label": "No US embassy departure order and no US strike inside Iran",
+      "prob": 0.886,
+      "source": "domino",
+      "narration": "Domino: live treg news + 5-sample Argon ensemble",
+      "pair": "fc-4"
+    }
+  ],
+  "headline_summary": "Outcome-resolved world claims; Domino and Hunch pre-registered head-to-head for Oct 26.",
+  "hash": "a7206e4df5f2cea802223132a0b6c45bd1073a4d72cdc6d0a0e65b8e2fb15e77"
+}

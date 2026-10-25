@@ -1,0 +1,126 @@
+{
+  "asof": "2026-10-25T18:37:12.120070Z",
+  "target_date": "2026-10-26",
+  "items": [
+    {
+      "id": "q2_mon",
+      "label": "Any cohort 8-K accepted Mon 26 Oct",
+      "unit": "probability",
+      "median": 0.795,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": 0.795,
+      "baseline": {
+        "median": 0.3,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "market",
+      "narration": "SEC submission histories x last-year earnings week (first domino). AMZN 0.25, GOOGL 0.23, XOM 0.21"
+    },
+    {
+      "id": "q3_mon",
+      "label": "NASA X posts Mon 26 Oct",
+      "unit": "posts",
+      "median": 1.6,
+      "p10": 0,
+      "p90": 3,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 1.6,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "narration": "Poisson by day type over the prior week."
+    },
+    {
+      "id": "life_gas",
+      "label": "Your gas price next week",
+      "unit": "$/gal",
+      "median": 4.23,
+      "p10": 4.153,
+      "p90": 4.307,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 4.284,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "TimesFM 3.0 (Google)",
+      "narration": "Hunch AAA vertical today: regular $4.289 (week ago $4.299). Backtest error -34% vs no-change."
+    },
+    {
+      "id": "life_mortgage",
+      "label": "30-year mortgage rate next week",
+      "unit": "%",
+      "median": 7.284,
+      "p10": 7.151,
+      "p90": 7.401,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 7.32,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "TimesFM 3.0 (Google)",
+      "narration": "Hunch Zillow vertical: 30-year quote 7.49% (lender quote; Freddie Mac survey 7.32%). Backtest error -14% vs no-change."
+    },
+    {
+      "id": "life_diesel",
+      "label": "Diesel at the pump (AAA today)",
+      "unit": "$/gal",
+      "median": 6.347,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 6.322,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "Hunch AAA vertical (observed)",
+      "narration": "Year ago $3.66: +74% year over year."
+    }
+  ],
+  "events": [
+    {
+      "id": "fc-1",
+      "label": "The India Meteorological Department (IMD) will officially classify the Deep Depression over the Bay of Bengal ",
+      "prob": 0.85,
+      "source": "argon",
+      "narration": "Hunch's own Argon pilot forecast for 26 Oct (not yet resolved)."
+    },
+    {
+      "id": "fc-2",
+      "label": "By 2026-10-27T00:00:00Z, the number of UK properties without power due to Storm Boelo will fall below 25,000, ",
+      "prob": 0.72,
+      "source": "argon",
+      "narration": "Hunch's own Argon pilot forecast for 26 Oct (not yet resolved)."
+    },
+    {
+      "id": "fc-4",
+      "label": "Between 2026-10-26T00:00:00Z and 2026-10-27T00:00:00Z, the US State Department will NOT order a mandatory depa",
+      "prob": 0.78,
+      "source": "argon",
+      "narration": "Hunch's own Argon pilot forecast for 26 Oct (not yet resolved)."
+    },
+    {
+      "id": "fc-5",
+      "label": "The cumulative view count for 'K/DA - FIRESTARTER ft. MIYEON and SOYEON of i-dle, Sophie Powers, Mimi Webb (Of",
+      "prob": 0.78,
+      "source": "argon",
+      "narration": "Hunch's own Argon pilot forecast for 26 Oct (not yet resolved)."
+    }
+  ],
+  "headline_summary": "Domino on Hunch: first-domino statistics + Gemini 4 Argon beat the NEXTDAY leaderboard on the objective tracks.",
+  "hash": "eb4151d74711f7d8af797bed880495af1952605a250d4bcf2b398b05176a173f"
+}

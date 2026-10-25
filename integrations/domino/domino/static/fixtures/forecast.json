@@ -1,0 +1,337 @@
+{
+ "asof": "2026-10-25T11:45:00-07:00",
+ "target_date": "2026-10-26",
+ "hash": "b1616518e2d936399992de73766c5cecfb23be2466e1c9c87061de054c10da58",
+ "items": [
+  {
+   "id": "brent",
+   "label": "Brent crude",
+   "unit": "% return",
+   "median": 0.4,
+   "p10": -2.1,
+   "p90": 3.0,
+   "p_up": 0.56,
+   "p_big_move": 0.22,
+   "baseline": {
+    "median": 0.0,
+    "p10": -1.6,
+    "p90": 1.6
+   },
+   "narration": "Pizza traffic and Hormuz attention both run hot, so I widen Brent's fan and lean it up; nothing confirms an operation yet.",
+   "last_close": 66.84
+  },
+  {
+   "id": "wti",
+   "label": "WTI crude",
+   "unit": "% return",
+   "median": 0.4,
+   "p10": -2.2,
+   "p90": 3.1,
+   "p_up": 0.55,
+   "p_big_move": 0.21,
+   "baseline": {
+    "median": 0.0,
+    "p10": -1.8,
+    "p90": 1.8
+   },
+   "narration": "WTI follows Brent; the Hormuz edge adds a little upside.",
+   "last_close": 62.91
+  },
+  {
+   "id": "natgas",
+   "label": "Natural gas",
+   "unit": "% return",
+   "median": 0.06,
+   "p10": -3.4,
+   "p90": 3.7,
+   "p_up": 0.51,
+   "p_big_move": 0.12,
+   "baseline": {
+    "median": 0.0,
+    "p10": -3.3,
+    "p90": 3.3
+   },
+   "narration": "Gas is mostly weather; Hormuz LNG adds a sliver.",
+   "last_close": 3.42
+  },
+  {
+   "id": "gasoline",
+   "label": "RBOB gasoline",
+   "unit": "% return",
+   "median": 0.3,
+   "p10": -1.9,
+   "p90": 2.6,
+   "p_up": 0.54,
+   "p_big_move": 0.16,
+   "baseline": {
+    "median": 0.0,
+    "p10": -1.7,
+    "p90": 1.7
+   },
+   "narration": "Gasoline gets crude's tilt, damped by the crack spread.",
+   "last_close": 1.98
+  },
+  {
+   "id": "airlines",
+   "label": "Airlines (JETS)",
+   "unit": "% return",
+   "median": -0.5,
+   "p10": -2.9,
+   "p90": 1.7,
+   "p_up": 0.41,
+   "p_big_move": 0.17,
+   "baseline": {
+    "median": 0.05,
+    "p10": -1.9,
+    "p90": 2.0
+   },
+   "narration": "Airlines carry the fuel-cost hit if crude jumps.",
+   "last_close": 24.61
+  },
+  {
+   "id": "energy",
+   "label": "Energy stocks (XLE)",
+   "unit": "% return",
+   "median": 0.3,
+   "p10": -1.5,
+   "p90": 2.1,
+   "p_up": 0.57,
+   "p_big_move": 0.12,
+   "baseline": {
+    "median": 0.03,
+    "p10": -1.4,
+    "p90": 1.5
+   },
+   "narration": "Energy equities lean up with crude.",
+   "last_close": 91.3
+  },
+  {
+   "id": "defense",
+   "label": "Defense (ITA)",
+   "unit": "% return",
+   "median": 0.3,
+   "p10": -1.1,
+   "p90": 1.8,
+   "p_up": 0.58,
+   "p_big_move": 0.14,
+   "baseline": {
+    "median": 0.04,
+    "p10": -1.1,
+    "p90": 1.2
+   },
+   "narration": "Defense names firm on escalation odds.",
+   "last_close": 198.4
+  },
+  {
+   "id": "sp500",
+   "label": "S&P 500",
+   "unit": "% return",
+   "median": 0.004,
+   "p10": -1.3,
+   "p90": 1.0,
+   "p_up": 0.5,
+   "p_big_move": 0.09,
+   "baseline": {
+    "median": 0.05,
+    "p10": -1.0,
+    "p90": 1.1
+   },
+   "narration": "The index barely moves unless the chain fires.",
+   "last_close": 6712.0
+  },
+  {
+   "id": "gold",
+   "label": "Gold",
+   "unit": "% return",
+   "median": 0.08,
+   "p10": -1.4,
+   "p90": 1.6,
+   "p_up": 0.53,
+   "p_big_move": 0.13,
+   "baseline": {
+    "median": 0.0,
+    "p10": -1.5,
+    "p90": 1.5
+   },
+   "narration": "A modest safe-haven bid.",
+   "last_close": 2731.0
+  },
+  {
+   "id": "attn_Strait_of_Hormuz",
+   "label": "Wikipedia views tomorrow: Strait of Hormuz",
+   "unit": "views",
+   "kind": "attention",
+   "median": 1418,
+   "p10": 1120,
+   "p90": 2029,
+   "p_up": 0.468,
+   "p_big_move": null,
+   "last_close": 1454.0,
+   "baseline": {
+    "median": 1454,
+    "p10": null,
+    "p90": null
+   },
+   "narration": "AR(1) on log views (beta 0.98); last observed 1,454 on 2026-10-24."
+  },
+  {
+   "id": "attn_Iran",
+   "label": "Wikipedia views tomorrow: Iran",
+   "unit": "views",
+   "kind": "attention",
+   "median": 6590,
+   "p10": 5854,
+   "p90": 7640,
+   "p_up": 0.519,
+   "p_big_move": null,
+   "last_close": 6548.0,
+   "baseline": {
+    "median": 6548,
+    "p10": null,
+    "p90": null
+   },
+   "narration": "AR(1) on log views (beta 0.96); last observed 6,548 on 2026-10-24."
+  },
+  {
+   "id": "attn_Israel",
+   "label": "Wikipedia views tomorrow: Israel",
+   "unit": "views",
+   "kind": "attention",
+   "median": 10197,
+   "p10": 9387,
+   "p90": 11358,
+   "p_up": 0.494,
+   "p_big_move": null,
+   "last_close": 10213.0,
+   "baseline": {
+    "median": 10213,
+    "p10": null,
+    "p90": null
+   },
+   "narration": "AR(1) on log views (beta 0.95); last observed 10,213 on 2026-10-24."
+  },
+  {
+   "id": "attn_Brent_Crude",
+   "label": "Wikipedia views tomorrow: Brent Crude",
+   "unit": "views",
+   "kind": "attention",
+   "median": 488,
+   "p10": 324,
+   "p90": 973,
+   "p_up": 0.449,
+   "p_big_move": null,
+   "last_close": 529.0,
+   "baseline": {
+    "median": 529,
+    "p10": null,
+    "p90": null
+   },
+   "narration": "AR(1) on log views (beta 0.91); last observed 529 on 2026-10-24."
+  },
+  {
+   "id": "attn_Houthis",
+   "label": "Wikipedia views tomorrow: Houthis",
+   "unit": "views",
+   "kind": "attention",
+   "median": 4725,
+   "p10": 3960,
+   "p90": 6353,
+   "p_up": 0.351,
+   "p_big_move": null,
+   "last_close": 5172.0,
+   "baseline": {
+    "median": 5172,
+    "p10": null,
+    "p90": null
+   },
+   "narration": "AR(1) on log views (beta 0.94); last observed 5,172 on 2026-10-24."
+  },
+  {
+   "id": "life_gas",
+   "label": "Your gas price next week",
+   "unit": "$/gal",
+   "kind": "daily_life",
+   "model": "TimesFM 3.0 (Google)",
+   "median": 4.27,
+   "p10": 4.224,
+   "p90": 4.316,
+   "p_up": null,
+   "p_big_move": null,
+   "last_close": 4.284,
+   "baseline": {
+    "median": 4.284,
+    "p10": null,
+    "p90": null
+   },
+   "narration": "Backtested over 564 weeks: error -34% vs no-change (DM p=3e-17); direction right 80%."
+  },
+  {
+   "id": "life_mortgage",
+   "label": "30-year mortgage rate next week",
+   "unit": "%",
+   "kind": "daily_life",
+   "model": "TimesFM 3.0 (Google)",
+   "median": 7.296,
+   "p10": 7.203,
+   "p90": 7.389,
+   "p_up": null,
+   "p_big_move": null,
+   "last_close": 7.32,
+   "baseline": {
+    "median": 7.32,
+    "p10": null,
+    "p90": null
+   },
+   "narration": "Backtested over 565 weeks: error -14% vs no-change (DM p=3e-06); direction right 66%."
+  },
+  {
+   "id": "life_flu",
+   "label": "Flu activity next week",
+   "unit": "% of visits (ILI)",
+   "kind": "daily_life",
+   "model": "TimesFM 3.0 (Google)",
+   "median": 2.359,
+   "p10": 2.154,
+   "p90": 2.564,
+   "p_up": null,
+   "p_big_move": null,
+   "last_close": 2.201,
+   "baseline": {
+    "median": 2.201,
+    "p10": null,
+    "p90": null
+   },
+   "narration": "Backtested over 146 weeks: error -28% vs no-change (DM p=4e-05); direction right 80%."
+  }
+ ],
+ "events": [
+  {
+   "id": "escalation24h",
+   "label": "US or Israeli strike on Iran within 24 h",
+   "prob": 0.18,
+   "source": "argon",
+   "narration": "Two cheap signals agree, but there is no official movement yet."
+  },
+  {
+   "id": "hormuz24h",
+   "label": "New attack on shipping near Hormuz within 24 h",
+   "prob": 0.09,
+   "source": "argon",
+   "narration": "Tanker transits normal; war-risk premia up 12% week on week."
+  },
+  {
+   "id": "brent_big",
+   "label": "|Brent next-session return| > 2.5%",
+   "prob": 0.22,
+   "source": "argon",
+   "narration": "Anchored on the backtested base rate."
+  },
+  {
+   "id": "brent_big_stats",
+   "label": "|Brent next-session return| > 2.5% (statistical model)",
+   "prob": 0.19,
+   "source": "stats",
+   "narration": "HMM tension + Student-t mixture, backtested."
+  }
+ ]
+}

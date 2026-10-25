@@ -1,0 +1,163 @@
+{
+  "window": "2026-10-15..2026-10-24",
+  "n_days": 10,
+  "target": "Q1 ticker direction + Q2 cohort 8-K",
+  "metrics": {
+    "crps": {
+      "domino": {
+        "mean": 0.1922610505882353
+      },
+      "ewma": {
+        "mean": 0.22647058823529412
+      }
+    }
+  },
+  "dm_test": {
+    "vs": "baseline (sign-flip permutation)",
+    "stat": null,
+    "p": 0.178
+  },
+  "reliability": [],
+  "series": [
+    {
+      "date": "2026-10-15",
+      "actual": 0.0,
+      "median": 0.2451,
+      "p10": 0.0,
+      "p90": 1.0,
+      "surprise": null,
+      "tension": 0.2451
+    },
+    {
+      "date": "2026-10-16",
+      "actual": 0.0,
+      "median": 0.37,
+      "p10": 0.0,
+      "p90": 1.0,
+      "surprise": null,
+      "tension": 0.37
+    },
+    {
+      "date": "2026-10-17",
+      "actual": 0.0,
+      "median": 0.01,
+      "p10": 0.0,
+      "p90": 1.0,
+      "surprise": null,
+      "tension": 0.01
+    },
+    {
+      "date": "2026-10-18",
+      "actual": 0.0,
+      "median": 0.01,
+      "p10": 0.0,
+      "p90": 1.0,
+      "surprise": null,
+      "tension": 0.01
+    },
+    {
+      "date": "2026-10-19",
+      "actual": 0.0,
+      "median": 0.495,
+      "p10": 0.0,
+      "p90": 1.0,
+      "surprise": null,
+      "tension": 0.495
+    },
+    {
+      "date": "2026-10-20",
+      "actual": 1.0,
+      "median": 0.506,
+      "p10": 0.0,
+      "p90": 1.0,
+      "surprise": null,
+      "tension": 0.506
+    },
+    {
+      "date": "2026-10-21",
+      "actual": 1.0,
+      "median": 0.4308,
+      "p10": 0.0,
+      "p90": 1.0,
+      "surprise": null,
+      "tension": 0.4308
+    },
+    {
+      "date": "2026-10-22",
+      "actual": 0.0,
+      "median": 0.4241,
+      "p10": 0.0,
+      "p90": 1.0,
+      "surprise": null,
+      "tension": 0.4241
+    },
+    {
+      "date": "2026-10-23",
+      "actual": 1.0,
+      "median": 0.4191,
+      "p10": 0.0,
+      "p90": 1.0,
+      "surprise": null,
+      "tension": 0.4191
+    },
+    {
+      "date": "2026-10-24",
+      "actual": 0.0,
+      "median": 0.01,
+      "p10": 0.0,
+      "p90": 1.0,
+      "surprise": null,
+      "tension": 0.01
+    }
+  ],
+  "leaderboard": [
+    {
+      "model": "domino-argon",
+      "brier_q1": 0.24868694142857142,
+      "brier_q2": 0.152762927,
+      "brier_all": 0.1922610505882353
+    },
+    {
+      "model": "domino-stats",
+      "brier_q1": 0.248703705217565,
+      "brier_q2": 0.1551720905342891,
+      "brier_all": 0.19368510834504976
+    },
+    {
+      "model": "gemini-3.1-pro-preview",
+      "brier_q1": 0.2549,
+      "brier_q2": 0.17250000000000001,
+      "brier_all": 0.20642941176470592
+    },
+    {
+      "model": "gemini-4-argon",
+      "brier_q1": 0.24875714285714284,
+      "brier_q2": 0.17698999999999998,
+      "brier_all": 0.20654117647058823
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "brier_q1": 0.2545571428571428,
+      "brier_q2": 0.19825,
+      "brier_all": 0.22143529411764704
+    },
+    {
+      "model": "baseline",
+      "brier_q1": 0.25,
+      "brier_q2": 0.20999999999999996,
+      "brier_all": 0.22647058823529412
+    },
+    {
+      "model": "gemini-3.1-flash-lite",
+      "brier_q1": 0.23785714285714285,
+      "brier_q2": 0.22849999999999998,
+      "brier_all": 0.2323529411764706
+    },
+    {
+      "model": "domino-timesfm (Q1)",
+      "brier_q1": 0.23929387519924755,
+      "brier_q2": null,
+      "brier_all": 0.23929387519924755
+    }
+  ]
+}

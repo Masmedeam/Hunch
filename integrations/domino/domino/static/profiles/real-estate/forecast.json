@@ -1,0 +1,220 @@
+{
+  "asof": "2026-10-25 14:23:18 PDT",
+  "target_date": "2026-10-29",
+  "items": [
+    {
+      "id": "pmms_oct29",
+      "label": "Freddie 30-yr, Thu 29 Oct",
+      "unit": "%",
+      "median": 7.28,
+      "p10": 7.15,
+      "p90": 7.4,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 7.32,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "market",
+      "model": "TimesFM 3.0 + 10-year Treasury covariate",
+      "narration": "Argon ensemble: 7.27% [7.15, 7.39]"
+    },
+    {
+      "id": "cpi_rent_next",
+      "label": "CPI rent m/m, 2026-10",
+      "unit": "%",
+      "median": 0.225,
+      "p10": 0.105,
+      "p90": 0.346,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 0.246,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "market",
+      "model": "AR + market rents a year earlier",
+      "narration": null
+    },
+    {
+      "id": "wk_mortgage",
+      "label": "Mortgage next week",
+      "unit": "%",
+      "median": 7.28,
+      "p10": 7.15,
+      "p90": 7.4,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 7.32,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "TimesFM 3.0 (Google)",
+      "narration": "Backtest error -26% vs no-change"
+    },
+    {
+      "id": "wk_rent",
+      "label": "Rent inflation, 2027-09",
+      "unit": "%",
+      "median": 2.91,
+      "p10": 2.19,
+      "p90": 3.46,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 3.0,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "market-rent lead",
+      "narration": "Backtest error -27% vs persistence"
+    },
+    {
+      "id": "wk_home",
+      "label": "US home value, 2026-10",
+      "unit": "$",
+      "median": 366514,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 366157,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "AR momentum (Zillow ZHVI)",
+      "narration": "+1.2% over the last year"
+    },
+    {
+      "id": "dom_med",
+      "label": "Median days on market (36 metros)",
+      "unit": "days",
+      "median": 54,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "Realtor.com, Sep 2026"
+    },
+    {
+      "id": "cuts_med",
+      "label": "Listings with a price cut (median metro)",
+      "unit": "%",
+      "median": 22.1,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "Realtor.com, Sep 2026"
+    },
+    {
+      "id": "austin_dom",
+      "label": "Austin 78701 days on market",
+      "unit": "days",
+      "median": 117.75,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "RentCast via Glasser, 25 Oct"
+    },
+    {
+      "id": "austin_listings",
+      "label": "Austin 78701 sale listings",
+      "unit": "count",
+      "median": 306,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "RentCast via Glasser, 25 Oct"
+    }
+  ],
+  "events": [
+    {
+      "id": "pmms-d",
+      "label": "Freddie 30-yr below 7.32% on Thu 29 Oct",
+      "prob": 0.617,
+      "source": "domino",
+      "narration": "Domino stats: TimesFM 3.0 quantiles",
+      "pair": "pmms"
+    },
+    {
+      "id": "pmms-a",
+      "label": "Freddie 30-yr below 7.32% on Thu 29 Oct",
+      "prob": 0.65,
+      "source": "argon",
+      "narration": "5-sample Argon ensemble with live news",
+      "pair": "pmms"
+    },
+    {
+      "id": "zhvi-d",
+      "label": "US home values fall in 2026-10",
+      "prob": 0.126,
+      "source": "domino",
+      "narration": "Domino stats: pooled AR momentum",
+      "pair": "zhvi"
+    },
+    {
+      "id": "zhvi-a",
+      "label": "US home values fall in 2026-10",
+      "prob": 0.212,
+      "source": "argon",
+      "narration": "5-sample Argon ensemble with live news",
+      "pair": "zhvi"
+    },
+    {
+      "id": "cpi-d",
+      "label": "CPI rent 2026-10 m/m below 0.30%",
+      "prob": 0.786,
+      "source": "domino",
+      "narration": "Domino stats: AR + market rents a year earlier",
+      "pair": "cpi"
+    },
+    {
+      "id": "cpi-a",
+      "label": "CPI rent 2026-10 m/m below 0.30%",
+      "prob": 0.801,
+      "source": "argon",
+      "narration": "5-sample Argon ensemble with live news",
+      "pair": "cpi"
+    }
+  ],
+  "headline_summary": "When the 10-year Treasury yield jumps, the first domino falls within two weeks: weekly Treasury moves Granger-cause Freddie Mac survey rates at lag two (p=2.88e-34), where our domino model beats naive forecasts by 13.54%. Retail quotes hit 7.49% (7.668% APR), pricing out marginal buyers and weighing on rate-sensitive m",
+  "hash": "a6dd76d12627fc3d678905125c5850139383730874d1c91aa8b1af86667761dd"
+}

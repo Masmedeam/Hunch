@@ -1,0 +1,171 @@
+{
+  "window": "2026-10-15..2026-10-24",
+  "n_days": 10,
+  "target": "NASA X posts per day (Q3) + Q5 social claims",
+  "metrics": {
+    "crps": {
+      "domino": {
+        "mean": 0.9850000000000001
+      },
+      "ewma": {
+        "mean": 1.3199999999999998
+      }
+    }
+  },
+  "dm_test": {
+    "vs": "baseline",
+    "stat": null,
+    "p": null
+  },
+  "reliability": [],
+  "series": [
+    {
+      "date": "2026-10-15",
+      "actual": 4,
+      "median": 2.8,
+      "p10": 1,
+      "p90": 5,
+      "surprise": 1.859576161623313,
+      "tension": 0.2450807851294996
+    },
+    {
+      "date": "2026-10-16",
+      "actual": 2,
+      "median": 2.6,
+      "p10": 1,
+      "p90": 5,
+      "surprise": 1.3821242905050726,
+      "tension": 0.38733792934104283
+    },
+    {
+      "date": "2026-10-17",
+      "actual": 0,
+      "median": 0.5,
+      "p10": 0,
+      "p90": 1,
+      "surprise": 0.5,
+      "tension": 0.01
+    },
+    {
+      "date": "2026-10-18",
+      "actual": 0,
+      "median": 0.5,
+      "p10": 0,
+      "p90": 1,
+      "surprise": 0.5,
+      "tension": 0.01
+    },
+    {
+      "date": "2026-10-19",
+      "actual": 0,
+      "median": 2.2,
+      "p10": 0,
+      "p90": 4,
+      "surprise": 2.2,
+      "tension": 0.5058211295375434
+    },
+    {
+      "date": "2026-10-20",
+      "actual": 3,
+      "median": 2.2,
+      "p10": 0,
+      "p90": 4,
+      "surprise": 1.6263873881352442,
+      "tension": 0.5058211295375434
+    },
+    {
+      "date": "2026-10-21",
+      "actual": 1,
+      "median": 2.4,
+      "p10": 1,
+      "p90": 4,
+      "surprise": 1.5245312626461,
+      "tension": 0.4308165527927478
+    },
+    {
+      "date": "2026-10-22",
+      "actual": 1,
+      "median": 2.0,
+      "p10": 0,
+      "p90": 4,
+      "surprise": 1.3068528194400546,
+      "tension": 0.4241044838398321
+    },
+    {
+      "date": "2026-10-23",
+      "actual": 3,
+      "median": 1.4,
+      "p10": 0,
+      "p90": 3,
+      "surprise": 2.182342759364416,
+      "tension": 0.419118375474809
+    },
+    {
+      "date": "2026-10-24",
+      "actual": 0,
+      "median": 0.05,
+      "p10": 0,
+      "p90": 0,
+      "surprise": 0.05,
+      "tension": 0.01
+    }
+  ],
+  "leaderboard": [
+    {
+      "model": "domino-stats",
+      "mae_q3": 0.9850000000000001,
+      "q5_claims": null,
+      "q5_resolved": null,
+      "q5_brier": null
+    },
+    {
+      "model": "domino-argon",
+      "mae_q3": 1.065,
+      "q5_claims": null,
+      "q5_resolved": null,
+      "q5_brier": null
+    },
+    {
+      "model": "gemini-3.1-flash-lite",
+      "mae_q3": 1.2,
+      "q5_claims": 20,
+      "q5_resolved": 5,
+      "q5_brier": 0.34450000000000003
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "mae_q3": 1.2900000000000003,
+      "q5_claims": 20,
+      "q5_resolved": 6,
+      "q5_brier": 0.21128333333333338
+    },
+    {
+      "model": "gemini-4-argon",
+      "mae_q3": 1.3,
+      "q5_claims": 30,
+      "q5_resolved": 5,
+      "q5_brier": 0.169
+    },
+    {
+      "model": "gemini-3.1-pro-preview",
+      "mae_q3": 1.3,
+      "q5_claims": 30,
+      "q5_resolved": 2,
+      "q5_brier": 0.0725
+    },
+    {
+      "model": "baseline",
+      "mae_q3": 1.3199999999999998,
+      "q5_claims": null,
+      "q5_resolved": null,
+      "q5_brier": null
+    },
+    {
+      "model": "domino-timesfm (Q1)",
+      "mae_q3": null,
+      "q5_claims": null,
+      "q5_resolved": null,
+      "q5_brier": null
+    }
+  ]
+}
