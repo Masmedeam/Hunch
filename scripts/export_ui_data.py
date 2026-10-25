@@ -173,6 +173,87 @@ def export_ui_bundle(out_dir="ui/public/data"):
     argon_evidence = load_json("data/predictions/argon-pilot/evidence.json", [])
     prospective_quality = load_json("data/exports/latest/quality_report.json", {})
 
+    # Export cached Glasser vertical snapshots from verticals-cache-01
+    vertical_cache = {}
+    vc_manifest = load_json("data/batches/verticals-cache-01/manifest.json", {})
+    for job in vc_manifest.get("jobs", []):
+        raw_file = job.get("raw_file")
+        if not raw_file or not Path(raw_file).exists():
+            continue
+        raw_doc = load_json(raw_file, {})
+        spec = job.get("spec", {})
+        src = spec.get("source", "unknown")
+        out = raw_doc.get("run", {}).get("output", {})
+        if src == "aaa_gas_national":
+            vertical_cache["aaa_gas_national"] = out.get("data", {})
+        elif src == "aaa_gas_states":
+            states = out.get("data", {}).get("states", [])
+            vertical_cache["aaa_gas_states"] = states[:20]
+        elif src == "aaa_ev_charging":
+            ev = out.get("data", {}).get("ev_data", [])
+            vertical_cache["aaa_ev_charging"] = ev[:15]
+        elif src == "zillow_mortgage":
+            vertical_cache["zillow_mortgage"] = out.get("data", {})
+        elif src == "rentcast_market":
+            sale = out.get("saleData", {})
+            rent = out.get("rentalData", {})
+            vertical_cache["rentcast_market"] = {
+                "zipCode": out.get("zipCode"),
+                "saleSummary": {k: sale.get(k) for k in ("averagePrice", "medianPrice", "minPrice", "maxPrice", "averagePricePerSquareFoot", "averageDaysOnMarket", "totalListings", "newListings") if k in sale},
+                "rentalSummary": {k: rent.get(k) for k in ("averageRent", "medianRent", "minRent", "maxRent", "averageRentPerSquareFoot", "averageDaysOnMarket", "totalListings", "newListings") if k in rent},
+            }
+        elif src == "insider_ratios":
+            bs = out.get("data", {}).get("buySells", {})
+            vertical_cache["insider_ratios"] = {
+                "filings": out.get("data", {}).get("filings", [])[:8],
+                "recent_buy_counts": (bs.get("0") or [])[-10:],
+                "recent_sell_counts": (bs.get("1") or [])[-10:],
+            }
+        elif src == "premarket_movers":
+            pm = out.get("data", {})
+            vertical_cache["premarket_movers"] = {
+                "gainers": (pm.get("gainers", {}) if isinstance(pm.get("gainers"), dict) else {}).get("data", [])[:6],
+                "losers": (pm.get("losers", {}) if isinstance(pm.get("losers"), dict) else {}).get("data", [])[:6],
+            }
+        elif src == "wellfound_jobs":
+            jobs_list = out.get("data", {}).get("data", [])
+            vertical_cache["wellfound_jobs"] = [
+                {
+                    "title": j.get("title"),
+                    "remote": j.get("remote"),
+                    "startup": (j.get("startup") or {}).get("name"),
+                    "compensation": j.get("compensation"),
+                    "locations": j.get("locationNames"),
+                }
+                for j in jobs_list[:10]
+            ]
+        elif src == "keepa_deals":
+            deals = (out.get("deals") or {}).get("dr", [])
+            vertical_cache["keepa_deals"] = [
+                {
+                    "asin": d.get("asin"),
+                    "title": d.get("title"),
+                    "current_cents": (d.get("current") or [None])[0],
+                    "delta_percent": (d.get("deltaPercent") or [[None]])[0][0] if isinstance(d.get("deltaPercent"), list) and d.get("deltaPercent") else None,
+                }
+                for d in deals[:10]
+            ]
+        elif src == "carfax_used":
+            listings = out.get("data", {}).get("listings", [])
+            vertical_cache["carfax_used"] = [
+                {
+                    "year": l.get("year"),
+                    "make": l.get("make"),
+                    "model": l.get("model"),
+                    "trim": l.get("trim"),
+                    "listPrice": l.get("listPrice"),
+                    "carfaxValue": l.get("carfaxValue"),
+                    "mileage": l.get("mileage"),
+                    "badge": l.get("badge"),
+                }
+                for l in listings[:5]
+            ]
+
     # Compute empirical baseline stats across the 10 cases
     q1_weekday_up = [
         res["value"]
@@ -228,6 +309,7 @@ def export_ui_bundle(out_dir="ui/public/data"):
         "prospective": {
             "quality_report": prospective_quality,
             "batches_summary": prospective_batches,
+            "vertical_cache": vertical_cache,
             "argon_pilot": {
                 "forecast": argon_forecast,
                 "audit": argon_audit,

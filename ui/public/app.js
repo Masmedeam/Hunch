@@ -364,18 +364,18 @@ const VERTICAL_FORECASTS = [
     sourceId: "zillow",
     sourceLabel: "Zillow",
     forecast_type: "numerical change",
-    title: "US 30Y Mortgage Rate & Austin Listing Spread",
-    claim: "Zillow’s national 30-year fixed mortgage rate stays within [6.15%, 6.35%] tomorrow while tracked Austin ZPIDs hold within ±0.5% of Zestimate.",
-    probability: 0.76,
-    model_comparison: { "gemini-4-argon": 0.76, "claude-4.6-opus": 0.72, "gpt-5.4": 0.74 },
-    estimate: { value: 6.24, lower: 6.15, upper: 6.35, unit: "% APR", interval_probability: 0.8 },
+    title: "Zillow 30Y Mortgage Rate (7.49%) & Austin 78701 Rent/Sale Spread",
+    claim: "Zillow’s national 30-year fixed mortgage rate holds within [7.40%, 7.60%] (7.668% APR baseline) tomorrow while Austin (78701) active inventory stays near 309 listings ($675K median).",
+    probability: 0.78,
+    model_comparison: { "gemini-4-argon": 0.78, "claude-4.6-opus": 0.73, "gpt-5.4": 0.75 },
+    estimate: { value: 7.49, lower: 7.40, upper: 7.60, unit: "% 30Y Fixed Rate", interval_probability: 0.8 },
     outcomes: [
-      { label: "Below 6.15% APR", probability: 0.11 },
-      { label: "6.15% to 6.35% APR", probability: 0.76 },
-      { label: "Above 6.35% APR", probability: 0.13 }
+      { label: "Drops below 7.40%", probability: 0.11 },
+      { label: "Holds in [7.40%, 7.60%] band", probability: 0.78 },
+      { label: "Breaks above 7.60%", probability: 0.11 }
     ],
-    rationale: "Combines zillow:/get_mortgage_rates daily quotes with brightdata:/datasets/v3/zillow-properties listing snapshots.",
-    resolution: { mode: "measurable", rule: "Compare zillow:/get_mortgage_rates at T0+24h against baseline." }
+    rationale: "Grounded in cached Glasser snapshots from zillow:/get_mortgage_rates (30Y Fixed 7.49%, 7.668% APR; 30Y FHA 7.75%) and rentcast:/markets for Austin 78701 (median sale $675,000 across 309 listings, 41 new).",
+    resolution: { mode: "measurable", rule: "Compare zillow:/get_mortgage_rates and rentcast:/markets at T0+24h." }
   },
   {
     id: "fc-airbnb",
@@ -418,17 +418,17 @@ const VERTICAL_FORECASTS = [
     sourceId: "gas",
     sourceLabel: "AAA Gas & EV",
     forecast_type: "numerical change",
-    title: "US National Regular Gas & EV Fast-Charge Trajectory (24h)",
-    claim: "AAA national average regular unleaded gas price moves within [-$0.02, +$0.03]/gal tomorrow ($3.19/gal est) while L3 DC fast-charging holds at $0.36/kWh.",
-    probability: 0.83,
-    model_comparison: { "gemini-4-argon": 0.83, "claude-4.6-opus": 0.80, "gpt-5.4": 0.77 },
-    estimate: { value: 3.19, lower: 3.16, upper: 3.23, unit: "$ / gal regular", interval_probability: 0.8 },
+    title: "AAA US National Regular ($4.289/gal) & EV Fast-Charge Trajectory",
+    claim: "AAA national average regular unleaded gas price moves within [$4.26, $4.31]/gal tomorrow (from $4.2892/gal baseline; Diesel $6.3474/gal) while state EV charging holds near $0.41–$0.46/kWh.",
+    probability: 0.84,
+    model_comparison: { "gemini-4-argon": 0.84, "claude-4.6-opus": 0.80, "gpt-5.4": 0.77 },
+    estimate: { value: 4.285, lower: 4.26, upper: 4.31, unit: "$ / gal regular", interval_probability: 0.8 },
     outcomes: [
-      { label: "Drops > $0.02 / gal", probability: 0.10 },
-      { label: "Holds within [-$0.02, +$0.03] / gal", probability: 0.83 },
-      { label: "Spikes > +$0.03 / gal", probability: 0.07 }
+      { label: "Drops below $4.26 / gal", probability: 0.09 },
+      { label: "Holds within [$4.26, $4.31] / gal", probability: 0.84 },
+      { label: "Spikes above $4.31 / gal", probability: 0.07 }
     ],
-    rationale: "Sampled via aaa-gas-prices:/get_national_average ($0.022), /get_state_gas_prices ($0.011), and /get_ev_charging_prices ($0.011).",
+    rationale: "Cached from aaa-gas-prices:/get_national_average on 10/25/26 (Regular $4.2892 vs $4.2988 week ago; Premium $5.1972; Diesel $6.3474) and /get_ev_charging_prices.",
     resolution: { mode: "measurable", rule: "Compare AAA national & state regular gas averages at T0+24h." }
   },
   {
@@ -645,7 +645,12 @@ function renderSourcesView() {
     const origText = runBtn.textContent;
     const userPrompt = (promptInp?.value || "").trim();
     runBtn.disabled = true;
-    runBtn.textContent = "Running Forecast…";
+    let sec = 0;
+    runBtn.textContent = "Calling gemini-4-argon (0s)…";
+    const timer = setInterval(() => {
+      sec += 1;
+      runBtn.textContent = `Calling gemini-4-argon (${sec}s)…`;
+    }, 1000);
     try {
       const res = await fetch("/api/run-prediction", {
         method: "POST",
@@ -659,6 +664,9 @@ function renderSourcesView() {
         })
       });
       const newRun = await res.json();
+      if (!res.ok || newRun.error) {
+        throw new Error(newRun.error || `HTTP ${res.status}`);
+      }
       STATE.customRuns.unshift(newRun);
       try {
         localStorage.setItem("nextday_custom_runs", JSON.stringify(STATE.customRuns.slice(0, 10)));
@@ -668,10 +676,12 @@ function renderSourcesView() {
       if (promptInp) promptInp.value = "";
       renderPredictionsView();
       switchToView("predict");
-      toast(`Generated ${newRun.forecasts.length} forecasts (${newRun.label})`);
+      const dur = newRun.latency_ms ? `${(newRun.latency_ms / 1000).toFixed(1)}s` : "";
+      toast(`Live gemini-4-argon generated ${newRun.forecasts.length} forecasts in ${dur}`);
     } catch (err) {
       toast("Run failed: " + err.message);
     } finally {
+      clearInterval(timer);
       runBtn.disabled = false;
       runBtn.textContent = origText;
     }
@@ -899,9 +909,11 @@ function renderPredictionsView() {
   const activeCustom = STATE.customRuns.find(r => r.run_id === STATE.activeRunOrDate);
   const histDay = HISTORICAL_DAYS.find(d => d.targetDate === STATE.activeRunOrDate);
   if (activeCustom) {
+    const secs = activeCustom.latency_ms ? `${(activeCustom.latency_ms / 1000).toFixed(1)}s` : "live";
+    const toks = activeCustom.usage?.totalTokenCount ? ` · ${activeCustom.usage.totalTokenCount.toLocaleString()} tok` : "";
     summaryPill.textContent = activeCustom.prompt
-      ? `Guided by: “${activeCustom.prompt}” · Target: 2026-10-26`
-      : `${activeCustom.label} · ${activeCustom.selected_sources.length} sources · Target: 2026-10-26`;
+      ? `Live gemini-4-argon (${secs}${toks}) · Guided by: “${activeCustom.prompt}”`
+      : `Live gemini-4-argon (${secs}${toks}) · ${activeCustom.selected_sources.length} sources · Target: 2026-10-26`;
   } else if (histDay) {
     const m = histDay.models[STATE.activeModel] || histDay.models["gemini-4-argon"];
     summaryPill.textContent = `Target: ${histDay.targetDate} · Resolved · Brier ${m.brier.toFixed(3)} · Judge ${m.judge}/5`;
