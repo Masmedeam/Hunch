@@ -3596,6 +3596,38 @@ function renderHotspots3DView() {
   let dragging = false;
   let lastX = 0, lastY = 0;
 
+  // Walkable office renders (World Labs Marble) shown in the 3D stage; the city model stays one click away
+  const OFFICE_RENDERS = {
+    kazakhstan: "/offices/astana-office.html",
+    slc: "/offices/slc-office.html",
+    dallas: "/offices/dallas-office.html"
+  };
+  const stageBox = document.getElementById("app-canvas-box");
+  const renderFrame = document.getElementById("app-office-render");
+  const renderFull = document.getElementById("app-render-full");
+  const dragHint = document.getElementById("app-3d-drag-hint");
+
+  function syncRender() {
+    const page = OFFICE_RENDERS[curCity];
+    const renderMode = stageBox?.dataset.mode === "render";
+    if (renderFull) renderFull.href = page;
+    if (dragHint) dragHint.textContent = renderMode ? "Drag to Look Around the Office" : "Drag to Rotate 3D Office & Neighborhood";
+    // the render is several MB, so it only loads once the Hotspots view is actually open
+    const src = `${page}?embed=1`;
+    if (renderFrame && renderMode && STATE.view === "hotspots" && renderFrame.getAttribute("src") !== src) {
+      renderFrame.setAttribute("src", src);
+    }
+  }
+
+  document.querySelectorAll(".app-render-toggle button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (stageBox) stageBox.dataset.mode = btn.dataset.rmode;
+      document.querySelectorAll(".app-render-toggle button").forEach(el => el.classList.toggle("active", el === btn));
+      syncRender();
+      drawScene();
+    });
+  });
+
   function syncLabels() {
     const cfg = HOTSPOT_3D_CONFIG[curCity];
     document.getElementById("app-3d-title").textContent = cfg.title;
@@ -3728,6 +3760,7 @@ function renderHotspots3DView() {
       curCity = card.dataset.hcity;
       document.querySelectorAll("#app-hotspot-list .app-hs-card").forEach(el => el.classList.toggle("active", el === card));
       syncLabels();
+      syncRender();
       drawScene();
     });
   });
@@ -3773,10 +3806,12 @@ function renderHotspots3DView() {
     if (!dragging && STATE.view === "hotspots") {
       yaw += 0.006;
       drawScene();
+      syncRender();
     }
   }, 45);
 
   syncLabels();
+  syncRender();
   drawScene();
 }
 
