@@ -47,6 +47,34 @@
         "tech job market hiring"
       ],
       "include_wellfound_trending": true
+    },
+    "gas": {
+      "enabled": false,
+      "include_national_average": true,
+      "include_all_states": true,
+      "include_ev_charging": true,
+      "states": ["CA", "TX", "NY", "FL"]
+    },
+    "signals": {
+      "enabled": false,
+      "include_premarket_movers": true,
+      "include_insider_ratios": true,
+      "short_interest_tickers": [
+        {"ticker": "NVDA", "exchange": "NASDAQ"},
+        {"ticker": "TSLA", "exchange": "NASDAQ"}
+      ]
+    },
+    "keepa": {
+      "enabled": false,
+      "domain_id": 1,
+      "date_range": 1
+    },
+    "carfax": {
+      "enabled": false,
+      "searches": [
+        {"zip": "94103", "make": "Toyota", "model": "Camry", "rows": 5},
+        {"zip": "78701", "make": "Tesla", "model": "Model 3", "rows": 5}
+      ]
     }
   }
 }

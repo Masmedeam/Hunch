@@ -74,6 +74,31 @@ def build_plan(coverage="config/coverage.json", now=None, news_only=False, verti
                 add("linkedin_posts", "scrapecreators", "/v1/linkedin/search/posts", {"query": q, "date_posted": "last-week"}, "global", "en", "job_market", "week_post_filter_current_engagement")
             if lc.get("include_wellfound_trending"):
                 add("wellfound_jobs", "wellfound", "/get_trending_jobs", {}, "global", "en", "job_market", "current_trending_jobs_snapshot")
+        if "gas" in active_verticals and "gas" in vconf:
+            gc = vconf["gas"]
+            if gc.get("include_national_average", True):
+                add("aaa_gas_national", "aaa-gas-prices", "/get_national_average", {}, "US", "en", "energy", "current_fuel_price_snapshot")
+            if gc.get("include_all_states", True):
+                add("aaa_gas_states", "aaa-gas-prices", "/get_state_gas_prices", {}, "US", "en", "energy", "current_fuel_price_snapshot")
+            if gc.get("include_ev_charging", True):
+                add("aaa_ev_charging", "aaa-gas-prices", "/get_ev_charging_prices", {}, "US", "en", "energy", "current_ev_price_snapshot")
+            for st in gc.get("states") or []:
+                add("aaa_gas_state_change", "aaa-gas-prices", "/get_price_change_by_state", {"state_code": st}, st, "en", "energy", "state_fuel_delta_snapshot")
+        if "signals" in active_verticals and "signals" in vconf:
+            sc = vconf["signals"]
+            if sc.get("include_premarket_movers", True):
+                add("premarket_movers", "stockanalysis", "/get_market_movers_premarket", {}, "US", "en", "markets", "premarket_session_snapshot")
+            if sc.get("include_insider_ratios", True):
+                add("insider_ratios", "secform4", "/get_insider_buy_sell_ratios", {}, "US", "en", "markets", "form4_insider_ratio_snapshot")
+            for item in sc.get("short_interest_tickers") or []:
+                add("short_interest", "marketbeat", "/get_short_interest", {"ticker": item["ticker"], "exchange": item.get("exchange", "NASDAQ")}, "US", "en", "markets", "short_interest_snapshot")
+        if "keepa" in active_verticals and "keepa" in vconf:
+            kc = vconf["keepa"]
+            add("keepa_deals", "keepa", "/deal", {"selection": {"domainId": int(kc.get("domain_id", 1)), "dateRange": int(kc.get("date_range", 1)), "priceTypes": [0]}}, "US", "en", "ecommerce", "daily_price_drops_snapshot")
+        if "carfax" in active_verticals and "carfax" in vconf:
+            cc = vconf["carfax"]
+            for s in cc.get("searches") or []:
+                add("carfax_used", "carfax", "/search_used_car_listings", {"zip": s["zip"], "make": s["make"], "model": s["model"], "rows": int(s.get("rows", 5))}, "US", "en", "automotive", "used_vehicle_inventory_snapshot")
     return {"schema_version": 1, "created_at": iso(now), "window_start": iso(start), "window_end": iso(now), "coverage": config, "jobs": jobs}
 
 

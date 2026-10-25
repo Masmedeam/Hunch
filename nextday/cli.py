@@ -16,7 +16,7 @@ def main():
     p.add_argument("--coverage", default="config/coverage.json")
     p.add_argument("--output", default="data/plan.json")
     p.add_argument("--news-only", action="store_true", help="Date-bounded Exa article text by topic/region")
-    p.add_argument("--verticals", nargs="*", choices=["zillow", "airbnb", "linkedin"], help="Include Zillow, Airbnb or LinkedIn job-market verticals")
+    p.add_argument("--verticals", nargs="*", choices=["zillow", "airbnb", "linkedin", "gas", "signals", "keepa", "carfax"], help="Include Zillow, Airbnb, LinkedIn, AAA Gas, Market Signals, Keepa or Carfax verticals")
     p = sub.add_parser("collect", help="Inspect/validate; paid calls ONLY with --execute")
     p.add_argument("--plan", default="data/plan.json")
     p.add_argument("--batch", required=True)
