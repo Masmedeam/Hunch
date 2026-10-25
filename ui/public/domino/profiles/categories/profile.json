@@ -1,0 +1,35 @@
+{
+  "id": "categories",
+  "brand": "DOMINO \u00b7 8 WORLDS",
+  "subtitle": "Where next-day prediction works: attention is predictable, returns are not, and one first domino is real",
+  "labels": {
+    "forecast_panel": "ARGON'S RANKING (score / 10)",
+    "backtest_panel": "NEXT-DAY ATTENTION vs PERSISTENCE (8 categories)",
+    "crps_label": "ATTENTION MAE, log views \u00b7 mean of 8",
+    "domino_name": "Domino AR",
+    "baseline_name": "Persistence",
+    "leaderboard_cols": {
+      "attention_mae_diff": "MAE diff",
+      "attention_p": "DM p",
+      "first_domino": "first domino",
+      "attn_leads_mkts": "attn\u2192mkt",
+      "mkts_lead_attn": "mkt\u2192attn"
+    }
+  },
+  "panels": {
+    "pizza": false,
+    "attention": false,
+    "week_ahead": false,
+    "leaderboard": true,
+    "replay": false,
+    "gauges": true
+  },
+  "fixtures": {
+    "graph": "profiles/categories/graph.json",
+    "forecast": "profiles/categories/forecast.json",
+    "backtest": "profiles/categories/backtest.json",
+    "replay": "profiles/categories/replay.json",
+    "pizza": "profiles/categories/pizza.json",
+    "events": "profiles/categories/events.json"
+  }
+}

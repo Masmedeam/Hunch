@@ -24,6 +24,7 @@
       <nav class="steps-nav" aria-label="Navigation">
         <button class="step-tab active" data-view="sources">Sources</button>
         <button class="step-tab" data-view="hotspots">Hotspots &amp; 3D Offices</button>
+        <button class="step-tab" data-view="domino">Domino World Model</button>
         <button class="step-tab" data-view="predict">Predictions</button>
         <button class="step-tab" data-view="benchmark">Benchmark</button>
       </nav>
@@ -209,6 +210,46 @@
             </button>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 1.8: DOMINO WORLD MODEL (3D GLOBE, CAUSAL CHAINS & REAL ESTATE)
+         =================================================================== -->
+    <section class="view" id="view-domino">
+      <div class="view-header" style="margin-bottom:14px;">
+        <div>
+          <h1>Domino × Hunch — 3D Causal World Model</h1>
+          <p style="color:var(--ink-secondary);font-size:13.5px;margin-top:4px;">
+            First-domino causal chains, outcome-rescored Gemini 4 Argon benchmarks (Brier <strong>0.192</strong>), and 12-month real estate investment screens across US, Gulf &amp; Kazakhstan.
+          </p>
+        </div>
+        <a href="/domino/?profile=hunch" id="domino-fullscreen-link" target="_blank" rel="noopener" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
+          Full Screen ↗
+        </a>
+      </div>
+
+      <div class="sub-toolbar" style="margin-bottom:14px;">
+        <div class="source-filter-bar" id="domino-profile-tabs">
+          <button class="filter-chip active" data-domino-url="/domino/?profile=hunch" type="button">Hunch × Domino</button>
+          <button class="filter-chip" data-domino-url="/realestate" type="button">Real Estate 12m Screen</button>
+          <button class="filter-chip" data-domino-url="/realestate/mock?v=2" type="button">Globe + Causal Graph</button>
+          <button class="filter-chip" data-domino-url="/realestate/mock?v=3" type="button">Causal Flow</button>
+          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-world" type="button">World Claims (Q4)</button>
+          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-markets" type="button">Markets &amp; 8-K (Q1/Q2)</button>
+          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-social" type="button">Social &amp; YouTube (Q3/Q5)</button>
+          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-life" type="button">Hunch Verticals</button>
+          <button class="filter-chip" data-domino-url="/domino/?mock=1" type="button">Hormuz → Oil → Pump</button>
+        </div>
+      </div>
+
+      <div style="background:#0A0F16;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.08);">
+        <iframe
+          id="domino-iframe"
+          src="/domino/?profile=hunch"
+          title="Domino 3D World Model Dashboard"
+          style="width:100%;height:74vh;min-height:620px;border:none;display:block;"
+        ></iframe>
       </div>
     </section>
 

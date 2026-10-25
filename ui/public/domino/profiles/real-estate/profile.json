@@ -1,0 +1,70 @@
+{
+  "id": "real-estate",
+  "brand": "DOMINO \u00b7 REAL ESTATE",
+  "subtitle": "From the 10-year Treasury to your rent: what moves housing next, and what does not",
+  "labels": {
+    "forecast_panel": "THIS WEEK \u00b7 HOUSING",
+    "attention_panel": "LISTINGS RIGHT NOW",
+    "week_ahead": "YOUR HOUSING AHEAD",
+    "pizza_panel": "PRICE CUTS BY METRO (REALTOR.COM, SEP)",
+    "pizza_unit": "% of listings",
+    "backtest_panel": "WHAT PREDICTS HOUSING (out of sample)",
+    "crps_label": "CPI RENT Y/Y, 12 MONTHS AHEAD \u00b7 MAE (pp)",
+    "domino_name": "Market-rent lead",
+    "baseline_name": "Persistence",
+    "series_label": "CPI rent y/y: actual vs forecast made 12 months earlier from market rents",
+    "market_prob": "P(fall)",
+    "gauges_caption": "Odds \u00b7 Domino stats vs 5-sample Argon ensemble",
+    "chain_title": "MEASURED CHAINS",
+    "chain_hint": "Level cards: measured links only, read left to right",
+    "short": {
+      "pmms_oct29": "Mortgage \u00b7 Thu",
+      "cpi_rent_next": "CPI rent \u00b7 Oct",
+      "zhvi_next": "Home values \u00b7 Oct"
+    },
+    "legend_note": "Rings: high P(fall). Near-solid arcs = measured lead (Granger / out of sample), dashed = mechanism without measured skill, fine dashes = anecdotal. Ivory arcs end at your rent.",
+    "leaderboard_cols": {
+      "vs_naive_pct": "error vs comparison %",
+      "compared_with": "compared with",
+      "dm_p": "DM p",
+      "verdict": "verdict"
+    }
+  },
+  "panels": {
+    "pizza": true,
+    "attention": true,
+    "week_ahead": true,
+    "leaderboard": true,
+    "replay": false,
+    "gauges": true
+  },
+  "fixtures": {
+    "graph": "profiles/real-estate/graph.json",
+    "forecast": "profiles/real-estate/forecast.json",
+    "backtest": "profiles/real-estate/backtest.json",
+    "replay": "profiles/real-estate/replay.json",
+    "pizza": "profiles/real-estate/pizza.json",
+    "events": "profiles/real-estate/events.json"
+  },
+  "view": {
+    "page": "realestate",
+    "level": true,
+    "chains": [
+      {
+        "title": "Rates \u00b7 measured weekly",
+        "ids": [
+          "tnx",
+          "pmms"
+        ]
+      },
+      {
+        "title": "Rents \u00b7 13-month lead",
+        "ids": [
+          "zori",
+          "cpi_rent",
+          "rent_2027"
+        ]
+      }
+    ]
+  }
+}

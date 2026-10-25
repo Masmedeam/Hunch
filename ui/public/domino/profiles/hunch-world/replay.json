@@ -1,0 +1,3424 @@
+{
+  "frames": [
+    {
+      "date": "2026-10-14",
+      "graph": {
+        "nodes": [
+          {
+            "id": "exa",
+            "label": "Exa news bodies (6 global panels)",
+            "kind": "news",
+            "lat": 40.71,
+            "lon": -74.0,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "jp",
+            "label": "Japan / Japanese supplement",
+            "kind": "news",
+            "lat": 35.68,
+            "lon": 139.69,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "in",
+            "label": "India / English supplement",
+            "kind": "news",
+            "lat": 28.61,
+            "lon": 77.21,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "br",
+            "label": "Brazil / Portuguese supplement",
+            "kind": "news",
+            "lat": -23.55,
+            "lon": -46.63,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "me",
+            "label": "Middle East / Arabic supplement",
+            "kind": "news",
+            "lat": 25.2,
+            "lon": 55.27,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "continuation",
+            "label": "Running stories (continuations)",
+            "kind": "latent",
+            "lat": 46.2,
+            "lon": 6.14,
+            "level": 1,
+            "prob": 0.8723404255319149,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "scheduled",
+            "label": "Scheduled events (calendars)",
+            "kind": "latent",
+            "lat": 50.85,
+            "lon": 4.35,
+            "level": 1,
+            "prob": 0.8571428571428571,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "new_event",
+            "label": "Genuinely new events",
+            "kind": "latent",
+            "lat": 51.5,
+            "lon": -0.13,
+            "level": 1,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "q4",
+            "label": "Q4 \u00b7 next-day world developments",
+            "kind": "market",
+            "lat": 40.75,
+            "lon": -73.97,
+            "level": 2,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "cyclone",
+            "label": "Bay of Bengal system (IMD)",
+            "kind": "market",
+            "lat": 15.0,
+            "lon": 88.0,
+            "level": 2,
+            "prob": 0.8590211310336797,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "ukpower",
+            "label": "UK Storm Boelo outages",
+            "kind": "market",
+            "lat": 53.48,
+            "lon": -2.24,
+            "level": 2,
+            "prob": 0.7283179382147578,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "embassy",
+            "label": "US embassies / strikes (Oct 26)",
+            "kind": "market",
+            "lat": 31.95,
+            "lon": 35.93,
+            "level": 2,
+            "prob": 0.8862555660214022,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          }
+        ],
+        "edges": [
+          {
+            "source": "exa",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "jp",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "br",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "continuation",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "most next-day claims are continuations",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "granger YES-rate 87% on resolved claims",
+            "active": 0.6
+          },
+          {
+            "source": "scheduled",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "calendars make the news",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "new_event",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "the hard part",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "embassy",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "regional escalation",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "cyclone",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "IMD bulletins",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "exa",
+            "target": "ukpower",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "utility updates",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          }
+        ]
+      },
+      "forecast": {
+        "target_date": "2026-10-15",
+        "items": [],
+        "events": [
+          {
+            "id": "day-2026-10-14|gemini-4-argon|q4|0",
+            "label": "4: Japanese House of Representatives Budget Committee Debates",
+            "prob": 0.75,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-14|gemini-4-argon|q4|1",
+            "label": "4: Middle East Conflict and Energy Market Volatility Reporting",
+            "prob": 0.8,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-14|gemini-4-argon|q4|2",
+            "label": "4: National Hurricane Center Advisories on Eastern Pacific Tropical Activity",
+            "prob": 0.6,
+            "source": "argon",
+            "narration": "UNRESOLVED",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-14|gemini-3.1-pro-preview|q4|0",
+            "label": "3.1: Updates on the Pope's Health",
+            "prob": 0.85,
+            "source": "argon",
+            "narration": "UNRESOLVED",
+            "pair": null
+          }
+        ]
+      },
+      "actual": {
+        "yes": 5,
+        "no": 0
+      },
+      "surprise": 0.288572942521657,
+      "narration": "On October 15, 2026, key world developments included a UN Security Council open debate on the Middle East, France and the UK pressing Russia with new EU sanctions and funding for Ukraine, and major global energy market developments\u2014specifically the IEA announcing a 20M+ barrel di"
+    },
+    {
+      "date": "2026-10-15",
+      "graph": {
+        "nodes": [
+          {
+            "id": "exa",
+            "label": "Exa news bodies (6 global panels)",
+            "kind": "news",
+            "lat": 40.71,
+            "lon": -74.0,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "jp",
+            "label": "Japan / Japanese supplement",
+            "kind": "news",
+            "lat": 35.68,
+            "lon": 139.69,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "in",
+            "label": "India / English supplement",
+            "kind": "news",
+            "lat": 28.61,
+            "lon": 77.21,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "br",
+            "label": "Brazil / Portuguese supplement",
+            "kind": "news",
+            "lat": -23.55,
+            "lon": -46.63,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "me",
+            "label": "Middle East / Arabic supplement",
+            "kind": "news",
+            "lat": 25.2,
+            "lon": 55.27,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "continuation",
+            "label": "Running stories (continuations)",
+            "kind": "latent",
+            "lat": 46.2,
+            "lon": 6.14,
+            "level": 1,
+            "prob": 0.8723404255319149,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "scheduled",
+            "label": "Scheduled events (calendars)",
+            "kind": "latent",
+            "lat": 50.85,
+            "lon": 4.35,
+            "level": 1,
+            "prob": 0.8571428571428571,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "new_event",
+            "label": "Genuinely new events",
+            "kind": "latent",
+            "lat": 51.5,
+            "lon": -0.13,
+            "level": 1,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "q4",
+            "label": "Q4 \u00b7 next-day world developments",
+            "kind": "market",
+            "lat": 40.75,
+            "lon": -73.97,
+            "level": 2,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "cyclone",
+            "label": "Bay of Bengal system (IMD)",
+            "kind": "market",
+            "lat": 15.0,
+            "lon": 88.0,
+            "level": 2,
+            "prob": 0.8590211310336797,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "ukpower",
+            "label": "UK Storm Boelo outages",
+            "kind": "market",
+            "lat": 53.48,
+            "lon": -2.24,
+            "level": 2,
+            "prob": 0.7283179382147578,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "embassy",
+            "label": "US embassies / strikes (Oct 26)",
+            "kind": "market",
+            "lat": 31.95,
+            "lon": 35.93,
+            "level": 2,
+            "prob": 0.8862555660214022,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          }
+        ],
+        "edges": [
+          {
+            "source": "exa",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "jp",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "br",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "continuation",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "most next-day claims are continuations",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "granger YES-rate 87% on resolved claims",
+            "active": 0.6
+          },
+          {
+            "source": "scheduled",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "calendars make the news",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "new_event",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "the hard part",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "embassy",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "regional escalation",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "cyclone",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "IMD bulletins",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "exa",
+            "target": "ukpower",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "utility updates",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          }
+        ]
+      },
+      "forecast": {
+        "target_date": "2026-10-16",
+        "items": [],
+        "events": [
+          {
+            "id": "day-2026-10-15|gemini-4-argon|q4|0",
+            "label": "4: Pre-Deadline Reporting on US Sanctions Against Russia and Iran",
+            "prob": 0.6,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-15|gemini-4-argon|q4|1",
+            "label": "4: Middle East Energy Supply Disruption and Fuel Inflation Coverage",
+            "prob": 0.7,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-15|gemini-4-argon|q4|2",
+            "label": "4: Japanese Parliamentary Fallout Over Agriculture Minister Yanaka",
+            "prob": 0.55,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-15|gemini-3.1-pro-preview|q4|0",
+            "label": "3.1: Hurricane Simon Advisories",
+            "prob": 0.85,
+            "source": "argon",
+            "narration": "UNRESOLVED",
+            "pair": null
+          }
+        ]
+      },
+      "actual": {
+        "yes": 8,
+        "no": 0
+      },
+      "surprise": 0.39108303073334627,
+      "narration": "On October 16, 2026, key world developments included the US issuing Executive Order 14436 to implement the Lindsey O. Graham Sanctioning Russia and Iran Act of 2026, a UN Security Council briefing on the intensifying war in Sudan where the US pressed for a humanitarian truce, and"
+    },
+    {
+      "date": "2026-10-16",
+      "graph": {
+        "nodes": [
+          {
+            "id": "exa",
+            "label": "Exa news bodies (6 global panels)",
+            "kind": "news",
+            "lat": 40.71,
+            "lon": -74.0,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "jp",
+            "label": "Japan / Japanese supplement",
+            "kind": "news",
+            "lat": 35.68,
+            "lon": 139.69,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "in",
+            "label": "India / English supplement",
+            "kind": "news",
+            "lat": 28.61,
+            "lon": 77.21,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "br",
+            "label": "Brazil / Portuguese supplement",
+            "kind": "news",
+            "lat": -23.55,
+            "lon": -46.63,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "me",
+            "label": "Middle East / Arabic supplement",
+            "kind": "news",
+            "lat": 25.2,
+            "lon": 55.27,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "continuation",
+            "label": "Running stories (continuations)",
+            "kind": "latent",
+            "lat": 46.2,
+            "lon": 6.14,
+            "level": 1,
+            "prob": 0.8723404255319149,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "scheduled",
+            "label": "Scheduled events (calendars)",
+            "kind": "latent",
+            "lat": 50.85,
+            "lon": 4.35,
+            "level": 1,
+            "prob": 0.8571428571428571,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "new_event",
+            "label": "Genuinely new events",
+            "kind": "latent",
+            "lat": 51.5,
+            "lon": -0.13,
+            "level": 1,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "q4",
+            "label": "Q4 \u00b7 next-day world developments",
+            "kind": "market",
+            "lat": 40.75,
+            "lon": -73.97,
+            "level": 2,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "cyclone",
+            "label": "Bay of Bengal system (IMD)",
+            "kind": "market",
+            "lat": 15.0,
+            "lon": 88.0,
+            "level": 2,
+            "prob": 0.8590211310336797,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "ukpower",
+            "label": "UK Storm Boelo outages",
+            "kind": "market",
+            "lat": 53.48,
+            "lon": -2.24,
+            "level": 2,
+            "prob": 0.7283179382147578,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "embassy",
+            "label": "US embassies / strikes (Oct 26)",
+            "kind": "market",
+            "lat": 31.95,
+            "lon": 35.93,
+            "level": 2,
+            "prob": 0.8862555660214022,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          }
+        ],
+        "edges": [
+          {
+            "source": "exa",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "jp",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "br",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "continuation",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "most next-day claims are continuations",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "granger YES-rate 87% on resolved claims",
+            "active": 0.6
+          },
+          {
+            "source": "scheduled",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "calendars make the news",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "new_event",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "the hard part",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "embassy",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "regional escalation",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "cyclone",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "IMD bulletins",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "exa",
+            "target": "ukpower",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "utility updates",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          }
+        ]
+      },
+      "forecast": {
+        "target_date": "2026-10-17",
+        "items": [],
+        "events": [
+          {
+            "id": "day-2026-10-16|gemini-4-argon|q4|0",
+            "label": "4: U.S. Sanctions Deadline on Russia and Iran",
+            "prob": 0.65,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-16|gemini-4-argon|q4|1",
+            "label": "4: Eastern Pacific Tropical Cyclone Trudy Advisories",
+            "prob": 0.75,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-16|gemini-4-argon|q4|2",
+            "label": "4: Organization of Islamic Cooperation (OIC) Baghdad Summit",
+            "prob": 0.7,
+            "source": "argon",
+            "narration": "UNRESOLVED",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-16|gemini-3.1-pro-preview|q4|0",
+            "label": "3.1: No Active NHC Advisories for Cyclone Trudy",
+            "prob": 0.95,
+            "source": "argon",
+            "narration": "NO",
+            "pair": null
+          }
+        ]
+      },
+      "actual": {
+        "yes": 6,
+        "no": 2
+      },
+      "surprise": 0.7348995865174635,
+      "narration": "On October 17, 2026, key world developments centered on U.S. President Donald Trump signing an executive order waiving several Russia sanctions under the Lindsey O. Graham Act just ahead of the October 18 deadline\u2014sparking backlash from Ukrainian President Zelenskyy and lawmakers"
+    },
+    {
+      "date": "2026-10-17",
+      "graph": {
+        "nodes": [
+          {
+            "id": "exa",
+            "label": "Exa news bodies (6 global panels)",
+            "kind": "news",
+            "lat": 40.71,
+            "lon": -74.0,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "jp",
+            "label": "Japan / Japanese supplement",
+            "kind": "news",
+            "lat": 35.68,
+            "lon": 139.69,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "in",
+            "label": "India / English supplement",
+            "kind": "news",
+            "lat": 28.61,
+            "lon": 77.21,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "br",
+            "label": "Brazil / Portuguese supplement",
+            "kind": "news",
+            "lat": -23.55,
+            "lon": -46.63,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "me",
+            "label": "Middle East / Arabic supplement",
+            "kind": "news",
+            "lat": 25.2,
+            "lon": 55.27,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "continuation",
+            "label": "Running stories (continuations)",
+            "kind": "latent",
+            "lat": 46.2,
+            "lon": 6.14,
+            "level": 1,
+            "prob": 0.8723404255319149,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "scheduled",
+            "label": "Scheduled events (calendars)",
+            "kind": "latent",
+            "lat": 50.85,
+            "lon": 4.35,
+            "level": 1,
+            "prob": 0.8571428571428571,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "new_event",
+            "label": "Genuinely new events",
+            "kind": "latent",
+            "lat": 51.5,
+            "lon": -0.13,
+            "level": 1,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "q4",
+            "label": "Q4 \u00b7 next-day world developments",
+            "kind": "market",
+            "lat": 40.75,
+            "lon": -73.97,
+            "level": 2,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "cyclone",
+            "label": "Bay of Bengal system (IMD)",
+            "kind": "market",
+            "lat": 15.0,
+            "lon": 88.0,
+            "level": 2,
+            "prob": 0.8590211310336797,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "ukpower",
+            "label": "UK Storm Boelo outages",
+            "kind": "market",
+            "lat": 53.48,
+            "lon": -2.24,
+            "level": 2,
+            "prob": 0.7283179382147578,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "embassy",
+            "label": "US embassies / strikes (Oct 26)",
+            "kind": "market",
+            "lat": 31.95,
+            "lon": 35.93,
+            "level": 2,
+            "prob": 0.8862555660214022,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          }
+        ],
+        "edges": [
+          {
+            "source": "exa",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "jp",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "br",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "continuation",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "most next-day claims are continuations",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "granger YES-rate 87% on resolved claims",
+            "active": 0.6
+          },
+          {
+            "source": "scheduled",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "calendars make the news",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "new_event",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "the hard part",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "embassy",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "regional escalation",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "cyclone",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "IMD bulletins",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "exa",
+            "target": "ukpower",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "utility updates",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          }
+        ]
+      },
+      "forecast": {
+        "target_date": "2026-10-18",
+        "items": [],
+        "events": [
+          {
+            "id": "day-2026-10-17|gemini-4-argon|q4|0",
+            "label": "4: Implementation of Sanctions Under the Lindsey O. Graham Sanctioning Russia and Iran Act",
+            "prob": 0.65,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-17|gemini-4-argon|q4|1",
+            "label": "4: Coverage of Brazil's Presidential Runoff Election and Results",
+            "prob": 0.6,
+            "source": "argon",
+            "narration": "NO",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-17|gemini-4-argon|q4|2",
+            "label": "4: National Hurricane Center Advisories on Tropical Cyclone Trudy",
+            "prob": 0.75,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-17|gemini-3.1-pro-preview|q4|0",
+            "label": "3.1: Russia Sanctions Act Deadline",
+            "prob": 0.7,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          }
+        ]
+      },
+      "actual": {
+        "yes": 7,
+        "no": 1
+      },
+      "surprise": 0.3920475160291997,
+      "narration": "On October 18, 2026, world news was dominated by the Trump administration's decision to issue a 60-day pause/waiver on Russian economic sanctions (defended by Secretary of State Marco Rubio and criticized by Congress and Ukrainian officials), alongside massive Ukrainian drone str"
+    },
+    {
+      "date": "2026-10-18",
+      "graph": {
+        "nodes": [
+          {
+            "id": "exa",
+            "label": "Exa news bodies (6 global panels)",
+            "kind": "news",
+            "lat": 40.71,
+            "lon": -74.0,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "jp",
+            "label": "Japan / Japanese supplement",
+            "kind": "news",
+            "lat": 35.68,
+            "lon": 139.69,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "in",
+            "label": "India / English supplement",
+            "kind": "news",
+            "lat": 28.61,
+            "lon": 77.21,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "br",
+            "label": "Brazil / Portuguese supplement",
+            "kind": "news",
+            "lat": -23.55,
+            "lon": -46.63,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "me",
+            "label": "Middle East / Arabic supplement",
+            "kind": "news",
+            "lat": 25.2,
+            "lon": 55.27,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "continuation",
+            "label": "Running stories (continuations)",
+            "kind": "latent",
+            "lat": 46.2,
+            "lon": 6.14,
+            "level": 1,
+            "prob": 0.8723404255319149,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "scheduled",
+            "label": "Scheduled events (calendars)",
+            "kind": "latent",
+            "lat": 50.85,
+            "lon": 4.35,
+            "level": 1,
+            "prob": 0.8571428571428571,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "new_event",
+            "label": "Genuinely new events",
+            "kind": "latent",
+            "lat": 51.5,
+            "lon": -0.13,
+            "level": 1,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "q4",
+            "label": "Q4 \u00b7 next-day world developments",
+            "kind": "market",
+            "lat": 40.75,
+            "lon": -73.97,
+            "level": 2,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "cyclone",
+            "label": "Bay of Bengal system (IMD)",
+            "kind": "market",
+            "lat": 15.0,
+            "lon": 88.0,
+            "level": 2,
+            "prob": 0.8590211310336797,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "ukpower",
+            "label": "UK Storm Boelo outages",
+            "kind": "market",
+            "lat": 53.48,
+            "lon": -2.24,
+            "level": 2,
+            "prob": 0.7283179382147578,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "embassy",
+            "label": "US embassies / strikes (Oct 26)",
+            "kind": "market",
+            "lat": 31.95,
+            "lon": 35.93,
+            "level": 2,
+            "prob": 0.8862555660214022,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          }
+        ],
+        "edges": [
+          {
+            "source": "exa",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "jp",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "br",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "continuation",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "most next-day claims are continuations",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "granger YES-rate 87% on resolved claims",
+            "active": 0.6
+          },
+          {
+            "source": "scheduled",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "calendars make the news",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "new_event",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "the hard part",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "embassy",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "regional escalation",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "cyclone",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "IMD bulletins",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "exa",
+            "target": "ukpower",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "utility updates",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          }
+        ]
+      },
+      "forecast": {
+        "target_date": "2026-10-19",
+        "items": [],
+        "events": [
+          {
+            "id": "day-2026-10-18|gemini-4-argon|q4|0",
+            "label": "4: Post-Tropical Cyclone Trudy Weakens to Remnant Low",
+            "prob": 0.9,
+            "source": "argon",
+            "narration": "UNRESOLVED",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-18|gemini-4-argon|q4|1",
+            "label": "4: Japanese Upper House Budget Committee Holds General Questioning",
+            "prob": 0.9,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-18|gemini-4-argon|q4|2",
+            "label": "4: Political Backlash and Reporting on Iran Sanctions Under Graham Act",
+            "prob": 0.75,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-18|gemini-3.1-pro-preview|q4|0",
+            "label": "3.1: Japanese Upper House Budget Committee Interpellation",
+            "prob": 0.9,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          }
+        ]
+      },
+      "actual": {
+        "yes": 6,
+        "no": 0
+      },
+      "surprise": 0.14527384409681018,
+      "narration": "On Monday, October 19, 2026, key developments included the Japanese House of Councillors Budget Committee holding intensive questioning of Prime Minister Sanae Takaichi regarding former Agriculture Minister Yana, Education Minister Seki, and the funding of food consumption tax cu"
+    },
+    {
+      "date": "2026-10-19",
+      "graph": {
+        "nodes": [
+          {
+            "id": "exa",
+            "label": "Exa news bodies (6 global panels)",
+            "kind": "news",
+            "lat": 40.71,
+            "lon": -74.0,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "jp",
+            "label": "Japan / Japanese supplement",
+            "kind": "news",
+            "lat": 35.68,
+            "lon": 139.69,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "in",
+            "label": "India / English supplement",
+            "kind": "news",
+            "lat": 28.61,
+            "lon": 77.21,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "br",
+            "label": "Brazil / Portuguese supplement",
+            "kind": "news",
+            "lat": -23.55,
+            "lon": -46.63,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "me",
+            "label": "Middle East / Arabic supplement",
+            "kind": "news",
+            "lat": 25.2,
+            "lon": 55.27,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "continuation",
+            "label": "Running stories (continuations)",
+            "kind": "latent",
+            "lat": 46.2,
+            "lon": 6.14,
+            "level": 1,
+            "prob": 0.8723404255319149,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "scheduled",
+            "label": "Scheduled events (calendars)",
+            "kind": "latent",
+            "lat": 50.85,
+            "lon": 4.35,
+            "level": 1,
+            "prob": 0.8571428571428571,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "new_event",
+            "label": "Genuinely new events",
+            "kind": "latent",
+            "lat": 51.5,
+            "lon": -0.13,
+            "level": 1,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "q4",
+            "label": "Q4 \u00b7 next-day world developments",
+            "kind": "market",
+            "lat": 40.75,
+            "lon": -73.97,
+            "level": 2,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "cyclone",
+            "label": "Bay of Bengal system (IMD)",
+            "kind": "market",
+            "lat": 15.0,
+            "lon": 88.0,
+            "level": 2,
+            "prob": 0.8590211310336797,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "ukpower",
+            "label": "UK Storm Boelo outages",
+            "kind": "market",
+            "lat": 53.48,
+            "lon": -2.24,
+            "level": 2,
+            "prob": 0.7283179382147578,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "embassy",
+            "label": "US embassies / strikes (Oct 26)",
+            "kind": "market",
+            "lat": 31.95,
+            "lon": 35.93,
+            "level": 2,
+            "prob": 0.8862555660214022,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          }
+        ],
+        "edges": [
+          {
+            "source": "exa",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "jp",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "br",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "continuation",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "most next-day claims are continuations",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "granger YES-rate 87% on resolved claims",
+            "active": 0.6
+          },
+          {
+            "source": "scheduled",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "calendars make the news",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "new_event",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "the hard part",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "embassy",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "regional escalation",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "cyclone",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "IMD bulletins",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "exa",
+            "target": "ukpower",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "utility updates",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          }
+        ]
+      },
+      "forecast": {
+        "target_date": "2026-10-20",
+        "items": [],
+        "events": [
+          {
+            "id": "day-2026-10-19|gemini-4-argon|q4|0",
+            "label": "4: U.S. and Ukrainian diplomatic fallout over Graham Act sanctions waiver",
+            "prob": 0.7,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-19|gemini-4-argon|q4|1",
+            "label": "4: Japanese parliamentary scrutiny of Prime Minister Takaichi's cabinet",
+            "prob": 0.75,
+            "source": "argon",
+            "narration": "UNRESOLVED",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-19|gemini-4-argon|q4|2",
+            "label": "4: U.S. third-quarter corporate earnings releases",
+            "prob": 0.85,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-19|gemini-3.1-pro-preview|q4|0",
+            "label": "3.1: Reactions to US Sanctions Waiver",
+            "prob": 0.7,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          }
+        ]
+      },
+      "actual": {
+        "yes": 3,
+        "no": 0
+      },
+      "surprise": 0.29195627245841327,
+      "narration": "Key world developments on October 20, 2026 centered on the diplomatic and economic fallout from the Trump administration's 60-day waiver of Graham Act sanctions on Russia, including an EU Commission statement, Ukrainian President Zelenskyy sending peace proposals via US envoy Wit"
+    },
+    {
+      "date": "2026-10-20",
+      "graph": {
+        "nodes": [
+          {
+            "id": "exa",
+            "label": "Exa news bodies (6 global panels)",
+            "kind": "news",
+            "lat": 40.71,
+            "lon": -74.0,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "jp",
+            "label": "Japan / Japanese supplement",
+            "kind": "news",
+            "lat": 35.68,
+            "lon": 139.69,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "in",
+            "label": "India / English supplement",
+            "kind": "news",
+            "lat": 28.61,
+            "lon": 77.21,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "br",
+            "label": "Brazil / Portuguese supplement",
+            "kind": "news",
+            "lat": -23.55,
+            "lon": -46.63,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "me",
+            "label": "Middle East / Arabic supplement",
+            "kind": "news",
+            "lat": 25.2,
+            "lon": 55.27,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "continuation",
+            "label": "Running stories (continuations)",
+            "kind": "latent",
+            "lat": 46.2,
+            "lon": 6.14,
+            "level": 1,
+            "prob": 0.8723404255319149,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "scheduled",
+            "label": "Scheduled events (calendars)",
+            "kind": "latent",
+            "lat": 50.85,
+            "lon": 4.35,
+            "level": 1,
+            "prob": 0.8571428571428571,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "new_event",
+            "label": "Genuinely new events",
+            "kind": "latent",
+            "lat": 51.5,
+            "lon": -0.13,
+            "level": 1,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "q4",
+            "label": "Q4 \u00b7 next-day world developments",
+            "kind": "market",
+            "lat": 40.75,
+            "lon": -73.97,
+            "level": 2,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "cyclone",
+            "label": "Bay of Bengal system (IMD)",
+            "kind": "market",
+            "lat": 15.0,
+            "lon": 88.0,
+            "level": 2,
+            "prob": 0.8590211310336797,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "ukpower",
+            "label": "UK Storm Boelo outages",
+            "kind": "market",
+            "lat": 53.48,
+            "lon": -2.24,
+            "level": 2,
+            "prob": 0.7283179382147578,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "embassy",
+            "label": "US embassies / strikes (Oct 26)",
+            "kind": "market",
+            "lat": 31.95,
+            "lon": 35.93,
+            "level": 2,
+            "prob": 0.8862555660214022,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          }
+        ],
+        "edges": [
+          {
+            "source": "exa",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "jp",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "br",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "continuation",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "most next-day claims are continuations",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "granger YES-rate 87% on resolved claims",
+            "active": 0.6
+          },
+          {
+            "source": "scheduled",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "calendars make the news",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "new_event",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "the hard part",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "embassy",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "regional escalation",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "cyclone",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "IMD bulletins",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "exa",
+            "target": "ukpower",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "utility updates",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          }
+        ]
+      },
+      "forecast": {
+        "target_date": "2026-10-21",
+        "items": [],
+        "events": [
+          {
+            "id": "day-2026-10-20|gemini-4-argon|q4|0",
+            "label": "4: Continued Diplomatic and Political Reaction to US 60-Day Pause on Russia Sanctions",
+            "prob": 0.65,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-20|gemini-4-argon|q4|1",
+            "label": "4: Middle East Conflict Impact on Oil Shipping Rates and Refining Margins",
+            "prob": 0.6,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-20|gemini-4-argon|q4|2",
+            "label": "4: Japanese Parliamentary Debate Over PM Takaichi's Cabinet and Budget Committee",
+            "prob": 0.6,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-20|gemini-3.1-pro-preview|q4|0",
+            "label": "3.1: Middle East conflict and economic impact",
+            "prob": 0.7,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          }
+        ]
+      },
+      "actual": {
+        "yes": 8,
+        "no": 0
+      },
+      "surprise": 0.36415457211492347,
+      "narration": "Key developments on October 21, 2026 included the EU condemning the US waiver of Russia sanctions and Ukrainian President Zelensky expressing support for trilateral talks; surging oil shipping costs (exceeding $20/barrel) and inflationary pressures from the Middle East conflict; "
+    },
+    {
+      "date": "2026-10-21",
+      "graph": {
+        "nodes": [
+          {
+            "id": "exa",
+            "label": "Exa news bodies (6 global panels)",
+            "kind": "news",
+            "lat": 40.71,
+            "lon": -74.0,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "jp",
+            "label": "Japan / Japanese supplement",
+            "kind": "news",
+            "lat": 35.68,
+            "lon": 139.69,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "in",
+            "label": "India / English supplement",
+            "kind": "news",
+            "lat": 28.61,
+            "lon": 77.21,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "br",
+            "label": "Brazil / Portuguese supplement",
+            "kind": "news",
+            "lat": -23.55,
+            "lon": -46.63,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "me",
+            "label": "Middle East / Arabic supplement",
+            "kind": "news",
+            "lat": 25.2,
+            "lon": 55.27,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "continuation",
+            "label": "Running stories (continuations)",
+            "kind": "latent",
+            "lat": 46.2,
+            "lon": 6.14,
+            "level": 1,
+            "prob": 0.8723404255319149,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "scheduled",
+            "label": "Scheduled events (calendars)",
+            "kind": "latent",
+            "lat": 50.85,
+            "lon": 4.35,
+            "level": 1,
+            "prob": 0.8571428571428571,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "new_event",
+            "label": "Genuinely new events",
+            "kind": "latent",
+            "lat": 51.5,
+            "lon": -0.13,
+            "level": 1,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "q4",
+            "label": "Q4 \u00b7 next-day world developments",
+            "kind": "market",
+            "lat": 40.75,
+            "lon": -73.97,
+            "level": 2,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "cyclone",
+            "label": "Bay of Bengal system (IMD)",
+            "kind": "market",
+            "lat": 15.0,
+            "lon": 88.0,
+            "level": 2,
+            "prob": 0.8590211310336797,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "ukpower",
+            "label": "UK Storm Boelo outages",
+            "kind": "market",
+            "lat": 53.48,
+            "lon": -2.24,
+            "level": 2,
+            "prob": 0.7283179382147578,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "embassy",
+            "label": "US embassies / strikes (Oct 26)",
+            "kind": "market",
+            "lat": 31.95,
+            "lon": 35.93,
+            "level": 2,
+            "prob": 0.8862555660214022,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          }
+        ],
+        "edges": [
+          {
+            "source": "exa",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "jp",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "br",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "continuation",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "most next-day claims are continuations",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "granger YES-rate 87% on resolved claims",
+            "active": 0.6
+          },
+          {
+            "source": "scheduled",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "calendars make the news",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "new_event",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "the hard part",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "embassy",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "regional escalation",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "cyclone",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "IMD bulletins",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "exa",
+            "target": "ukpower",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "utility updates",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          }
+        ]
+      },
+      "forecast": {
+        "target_date": "2026-10-22",
+        "items": [],
+        "events": [
+          {
+            "id": "day-2026-10-21|gemini-4-argon|q4|0",
+            "label": "4: Japan MEXT Panel Reviews Draft Digital Textbook Guidelines",
+            "prob": 0.85,
+            "source": "argon",
+            "narration": "UNRESOLVED",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-21|gemini-4-argon|q4|1",
+            "label": "4: Continued Diplomatic Fallout and Reporting on US 60-Day Russia Sanctions Waiver",
+            "prob": 0.65,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-21|gemini-4-argon|q4|2",
+            "label": "4: Reporting on Oil Shipping Costs and Global Diesel Market Pressures",
+            "prob": 0.6,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-21|gemini-3.1-pro-preview|q4|0",
+            "label": "3.1: Fallout from Russia Sanctions Waiver",
+            "prob": 0.7,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          }
+        ]
+      },
+      "actual": {
+        "yes": 5,
+        "no": 0
+      },
+      "surprise": 0.3618218215126336,
+      "narration": "On October 22, 2026, key world developments centered on energy market volatility, Middle East and Ukraine diplomacy, Q3 corporate earnings, and El Ni\u00f1o preparedness. Oil prices climbed (WTI briefly topping $100) amid Middle East shipping disruptions, prompting Macron and Qatar to"
+    },
+    {
+      "date": "2026-10-22",
+      "graph": {
+        "nodes": [
+          {
+            "id": "exa",
+            "label": "Exa news bodies (6 global panels)",
+            "kind": "news",
+            "lat": 40.71,
+            "lon": -74.0,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "jp",
+            "label": "Japan / Japanese supplement",
+            "kind": "news",
+            "lat": 35.68,
+            "lon": 139.69,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "in",
+            "label": "India / English supplement",
+            "kind": "news",
+            "lat": 28.61,
+            "lon": 77.21,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "br",
+            "label": "Brazil / Portuguese supplement",
+            "kind": "news",
+            "lat": -23.55,
+            "lon": -46.63,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "me",
+            "label": "Middle East / Arabic supplement",
+            "kind": "news",
+            "lat": 25.2,
+            "lon": 55.27,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "continuation",
+            "label": "Running stories (continuations)",
+            "kind": "latent",
+            "lat": 46.2,
+            "lon": 6.14,
+            "level": 1,
+            "prob": 0.8723404255319149,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "scheduled",
+            "label": "Scheduled events (calendars)",
+            "kind": "latent",
+            "lat": 50.85,
+            "lon": 4.35,
+            "level": 1,
+            "prob": 0.8571428571428571,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "new_event",
+            "label": "Genuinely new events",
+            "kind": "latent",
+            "lat": 51.5,
+            "lon": -0.13,
+            "level": 1,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "q4",
+            "label": "Q4 \u00b7 next-day world developments",
+            "kind": "market",
+            "lat": 40.75,
+            "lon": -73.97,
+            "level": 2,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "cyclone",
+            "label": "Bay of Bengal system (IMD)",
+            "kind": "market",
+            "lat": 15.0,
+            "lon": 88.0,
+            "level": 2,
+            "prob": 0.8590211310336797,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "ukpower",
+            "label": "UK Storm Boelo outages",
+            "kind": "market",
+            "lat": 53.48,
+            "lon": -2.24,
+            "level": 2,
+            "prob": 0.7283179382147578,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "embassy",
+            "label": "US embassies / strikes (Oct 26)",
+            "kind": "market",
+            "lat": 31.95,
+            "lon": 35.93,
+            "level": 2,
+            "prob": 0.8862555660214022,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          }
+        ],
+        "edges": [
+          {
+            "source": "exa",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "jp",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "br",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "continuation",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "most next-day claims are continuations",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "granger YES-rate 87% on resolved claims",
+            "active": 0.6
+          },
+          {
+            "source": "scheduled",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "calendars make the news",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "new_event",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "the hard part",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "embassy",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "regional escalation",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "cyclone",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "IMD bulletins",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "exa",
+            "target": "ukpower",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "utility updates",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          }
+        ]
+      },
+      "forecast": {
+        "target_date": "2026-10-23",
+        "items": [],
+        "events": [
+          {
+            "id": "day-2026-10-22|gemini-4-argon|q4|0",
+            "label": "4: Super Typhoon Rosal Response in the Philippines",
+            "prob": 0.75,
+            "source": "argon",
+            "narration": "NO",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-22|gemini-4-argon|q4|1",
+            "label": "4: Oil Shipping Costs and Diesel Inflation Coverage",
+            "prob": 0.65,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-22|gemini-4-argon|q4|2",
+            "label": "4: US-Russia Sanctions Waiver Follow-up",
+            "prob": 0.6,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-22|gemini-3.1-pro-preview|q4|0",
+            "label": "3.1: Super Typhoon Rosal Advances in the Philippines",
+            "prob": 0.85,
+            "source": "argon",
+            "narration": "NO",
+            "pair": null
+          }
+        ]
+      },
+      "actual": {
+        "yes": 4,
+        "no": 4
+      },
+      "surprise": 0.9963090864333184,
+      "narration": "On October 23, 2026, key world developments included extensive legal, diplomatic, and energy market follow-ups on President Trump's Graham Act sanctions waiver (including EU Commission statements and analysis of Russian/US crude flows to India alongside record freight rates), a l"
+    },
+    {
+      "date": "2026-10-23",
+      "graph": {
+        "nodes": [
+          {
+            "id": "exa",
+            "label": "Exa news bodies (6 global panels)",
+            "kind": "news",
+            "lat": 40.71,
+            "lon": -74.0,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "jp",
+            "label": "Japan / Japanese supplement",
+            "kind": "news",
+            "lat": 35.68,
+            "lon": 139.69,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "in",
+            "label": "India / English supplement",
+            "kind": "news",
+            "lat": 28.61,
+            "lon": 77.21,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "br",
+            "label": "Brazil / Portuguese supplement",
+            "kind": "news",
+            "lat": -23.55,
+            "lon": -46.63,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "me",
+            "label": "Middle East / Arabic supplement",
+            "kind": "news",
+            "lat": 25.2,
+            "lon": 55.27,
+            "level": 0,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "continuation",
+            "label": "Running stories (continuations)",
+            "kind": "latent",
+            "lat": 46.2,
+            "lon": 6.14,
+            "level": 1,
+            "prob": 0.8723404255319149,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "scheduled",
+            "label": "Scheduled events (calendars)",
+            "kind": "latent",
+            "lat": 50.85,
+            "lon": 4.35,
+            "level": 1,
+            "prob": 0.8571428571428571,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "new_event",
+            "label": "Genuinely new events",
+            "kind": "latent",
+            "lat": 51.5,
+            "lon": -0.13,
+            "level": 1,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "q4",
+            "label": "Q4 \u00b7 next-day world developments",
+            "kind": "market",
+            "lat": 40.75,
+            "lon": -73.97,
+            "level": 2,
+            "prob": null,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "cyclone",
+            "label": "Bay of Bengal system (IMD)",
+            "kind": "market",
+            "lat": 15.0,
+            "lon": 88.0,
+            "level": 2,
+            "prob": 0.8590211310336797,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "ukpower",
+            "label": "UK Storm Boelo outages",
+            "kind": "market",
+            "lat": 53.48,
+            "lon": -2.24,
+            "level": 2,
+            "prob": 0.7283179382147578,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          },
+          {
+            "id": "embassy",
+            "label": "US embassies / strikes (Oct 26)",
+            "kind": "market",
+            "lat": 31.95,
+            "lon": 35.93,
+            "level": 2,
+            "prob": 0.8862555660214022,
+            "value": null,
+            "unit": null,
+            "z": null,
+            "state": null,
+            "narration": null
+          }
+        ],
+        "edges": [
+          {
+            "source": "exa",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "jp",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "br",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "continuation",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "today's story continues tomorrow",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "continuation",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "most next-day claims are continuations",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "granger YES-rate 87% on resolved claims",
+            "active": 0.6
+          },
+          {
+            "source": "scheduled",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "calendars make the news",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "new_event",
+            "target": "q4",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "the hard part",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "me",
+            "target": "embassy",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "regional escalation",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "in",
+            "target": "cyclone",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "IMD bulletins",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          },
+          {
+            "source": "exa",
+            "target": "ukpower",
+            "sign": 1,
+            "lag_days": 1,
+            "mechanism": "utility updates",
+            "prior": 0.5,
+            "measured": null,
+            "evidence": "Argon prior",
+            "active": 0.6
+          }
+        ]
+      },
+      "forecast": {
+        "target_date": "2026-10-24",
+        "items": [],
+        "events": [
+          {
+            "id": "day-2026-10-23|gemini-4-argon|q4|0",
+            "label": "4: Nairobi Building Collapse Rescue Operations and Casualty Updates",
+            "prob": 0.8,
+            "source": "argon",
+            "narration": "UNRESOLVED",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-23|gemini-4-argon|q4|1",
+            "label": "4: Middle East Security Coverage Focused on Iranian Tensions and Saudi Air Defense",
+            "prob": 0.65,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-23|gemini-4-argon|q4|2",
+            "label": "4: Global Energy Market Commentary on Elevated Oil and Diesel Prices",
+            "prob": 0.6,
+            "source": "argon",
+            "narration": "YES",
+            "pair": null
+          },
+          {
+            "id": "day-2026-10-23|gemini-3.1-pro-preview|q4|0",
+            "label": "3.1: Nairobi Building Collapse Rescue Operations",
+            "prob": 0.9,
+            "source": "argon",
+            "narration": "UNRESOLVED",
+            "pair": null
+          }
+        ]
+      },
+      "actual": {
+        "yes": 2,
+        "no": 1
+      },
+      "surprise": 0.946242841581442,
+      "narration": "The news on October 24, 2026, was dominated by a temporary local ceasefire in Russian-occupied Oleshky/Kherson in Ukraine (reportedly brokered with involvement from Melania Trump) alongside the EU extending Russia sanctions. In macroeconomics and energy, Brent crude oil reached $"
+    }
+  ]
+}

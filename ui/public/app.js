@@ -2546,7 +2546,20 @@ async function init() {
   }
   if (params.get("view") === "hotspots") {
     switchToView("hotspots");
+  } else if (params.get("view") === "domino") {
+    switchToView("domino");
   }
+
+  document.querySelectorAll("#domino-profile-tabs [data-domino-url]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetUrl = btn.dataset.dominoUrl;
+      document.querySelectorAll("#domino-profile-tabs [data-domino-url]").forEach(b => b.classList.toggle("active", b === btn));
+      const frame = document.getElementById("domino-iframe");
+      const fullLink = document.getElementById("domino-fullscreen-link");
+      if (frame) frame.src = targetUrl;
+      if (fullLink) fullLink.href = targetUrl;
+    });
+  });
 
   document.querySelector(".brand")?.addEventListener("click", () => switchToView("sources"));
 

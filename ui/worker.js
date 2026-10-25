@@ -536,7 +536,41 @@ export default {
       }
     }
 
+    if (url.pathname === "/events") {
+      return new Response(": ok\n\n", {
+        status: 200,
+        headers: {
+          "Content-Type": "text/event-stream",
+          "Cache-Control": "no-cache"
+        }
+      });
+    }
+
+    if (url.pathname.startsWith("/api/")) {
+      return jsonResponse({ error: "offline_fixtures_mode" }, 404);
+    }
+
     if (env.ASSETS) {
+      if (url.pathname === "/" && (url.searchParams.has("profile") || url.searchParams.has("mock"))) {
+        return env.ASSETS.fetch(new URL("/domino/index.html" + url.search, request.url));
+      }
+      if (url.pathname === "/domino" || url.pathname === "/domino/") {
+        return env.ASSETS.fetch(new URL("/domino/index.html" + url.search, request.url));
+      }
+      if (url.pathname === "/realestate" || url.pathname === "/realestate/") {
+        return env.ASSETS.fetch(new URL("/domino/realestate.html" + url.search, request.url));
+      }
+      if (url.pathname === "/realestate/mock" || url.pathname === "/realestate/mock/") {
+        return env.ASSETS.fetch(new URL("/domino/realestate_mock.html" + url.search, request.url));
+      }
+      if (
+        url.pathname.startsWith("/vendor/") ||
+        url.pathname.startsWith("/profiles/") ||
+        url.pathname.startsWith("/fixtures/")
+      ) {
+        return env.ASSETS.fetch(new URL("/domino" + url.pathname + url.search, request.url));
+      }
+
       const res = await env.ASSETS.fetch(request);
       if (res.status !== 404) return res;
       return env.ASSETS.fetch(new URL("/index.html", request.url));

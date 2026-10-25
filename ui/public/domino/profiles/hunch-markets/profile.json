@@ -1,0 +1,37 @@
+{
+  "id": "hunch-markets",
+  "brand": "HUNCH \u00d7 DOMINO \u00b7 MARKETS",
+  "subtitle": "Corporate events and equities: the earnings calendar is the first domino for 8-K filings",
+  "labels": {
+    "forecast_panel": "MON 26 OCT \u00b7 MARKETS HEAD-TO-HEAD",
+    "pizza_panel": "COHORT 8-K ODDS MONDAY (SEC \u00d7 CALENDAR)",
+    "pizza_unit": "% chance",
+    "backtest_panel": "Q1 + Q2 SCORES (10 cases)",
+    "crps_label": "BRIER Q1+Q2 \u00b7 lower is better",
+    "series_label": "Q2 outcome (0/1) vs Domino-Argon probability",
+    "domino_name": "Domino-Argon",
+    "baseline_name": "Hunch baseline",
+    "replay_button": "Replay Oct 14\u201323",
+    "leaderboard_cols": {
+      "brier_all": "Brier all",
+      "brier_q1": "Brier Q1",
+      "brier_q2": "Brier Q2"
+    }
+  },
+  "panels": {
+    "pizza": true,
+    "attention": false,
+    "week_ahead": false,
+    "leaderboard": true,
+    "replay": true,
+    "gauges": true
+  },
+  "fixtures": {
+    "graph": "profiles/hunch-markets/graph.json",
+    "forecast": "profiles/hunch-markets/forecast.json",
+    "backtest": "profiles/hunch-markets/backtest.json",
+    "replay": "profiles/hunch-markets/replay.json",
+    "pizza": "profiles/hunch-markets/pizza.json",
+    "events": "profiles/hunch-markets/events.json"
+  }
+}

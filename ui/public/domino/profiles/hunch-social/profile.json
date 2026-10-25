@@ -1,0 +1,37 @@
+{
+  "id": "hunch-social",
+  "brand": "HUNCH \u00d7 DOMINO \u00b7 SOCIAL",
+  "subtitle": "Social media next-day: posting cadence, view velocity, and what stale counters cannot tell you",
+  "labels": {
+    "forecast_panel": "MON 26 OCT \u00b7 SOCIAL",
+    "attention_panel": "TOMORROW'S SOCIAL SIGNALS",
+    "backtest_panel": "Q3 + Q5 SCORES",
+    "crps_label": "MAE, NASA posts \u00b7 lower is better",
+    "series_label": "NASA X posts per day: actual vs Domino Poisson band",
+    "replay_button": "Replay Oct 14\u201323",
+    "domino_name": "Domino stats",
+    "baseline_name": "Hunch baseline",
+    "leaderboard_cols": {
+      "mae_q3": "Q3 MAE",
+      "q5_claims": "Q5 claims",
+      "q5_resolved": "Q5 resolved",
+      "q5_brier": "Q5 Brier"
+    }
+  },
+  "panels": {
+    "pizza": false,
+    "attention": true,
+    "week_ahead": false,
+    "leaderboard": true,
+    "replay": true,
+    "gauges": true
+  },
+  "fixtures": {
+    "graph": "profiles/hunch-social/graph.json",
+    "forecast": "profiles/hunch-social/forecast.json",
+    "backtest": "profiles/hunch-social/backtest.json",
+    "replay": "profiles/hunch-social/replay.json",
+    "pizza": "profiles/hunch-social/pizza.json",
+    "events": "profiles/hunch-social/events.json"
+  }
+}

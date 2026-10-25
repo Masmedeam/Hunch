@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domino · Real estate</title>
+<style>
+:root{
+  --plane:#0A0F16; --panel:#0E141D; --card:#131B26; --card-2:#182230; --hair:#1F2A38; --hair-2:#2B3849;
+  --ink:#EFE8D8; --ink-2:#A3AEBB; --ink-3:#6B7785;
+  --accent:#F0A43A; --up:#4CC38A; --down:#EF6461; --hold:#E9C46A;
+  --tile:#ECE4D1; --tile-ink:#141A22; --tile-edge:#BFB399;
+  --display:"DIN Condensed","DIN Alternate","Bahnschrift SemiBold Condensed","Bahnschrift","Roboto Condensed","Arial Narrow",system-ui,sans-serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Roboto Mono",monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--plane);color:var(--ink);font:14px/1.4 var(--sans)}
+a{color:var(--ink-2)}
+.top{display:flex;align-items:center;gap:16px;padding:10px 20px;background:var(--panel);border-bottom:1px solid var(--hair)}
+.mark{width:26px;height:38px;border-radius:5px;background:var(--tile);display:grid;grid-template-rows:1fr 2px 1fr;padding:5px 0}
+.mark i{display:block;width:6px;height:6px;border-radius:50%;background:var(--tile-ink);margin:auto} .mark b{background:var(--tile-edge);margin:0 5px}
+.wordmark{font:700 30px/1 var(--display);letter-spacing:.14em}
+.tagline{color:var(--ink-2);font-size:13px;margin-top:3px}
+.spacer{flex:1}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;border:1px solid var(--hair-2);color:var(--ink-2);font-size:12.5px;white-space:nowrap}
+.chip b{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:12px}
+select{background:var(--card);color:var(--ink);border:1px solid var(--hair-2);border-radius:8px;padding:7px 10px;font:500 13px var(--sans)}
+main{padding:10px 20px 8px;display:grid;gap:10px}
+.eyebrow{font:700 16px/1 var(--display);letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2)}
+.panel{background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:10px 14px;min-width:0}
+.ph{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.ph .hint{margin-left:auto;color:var(--ink-3);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kpi{background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:9px 14px;display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:center}
+.kpi .l{grid-column:1/3;color:var(--ink-2);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.kpi .v{font:700 40px/1 var(--display);color:var(--ink)}
+.kpi .v.small{font-size:32px}
+.kpi .s{color:var(--ink-2);font-size:12.5px;line-height:1.35}
+.kpi .s b{color:var(--ink)}
+/* main grid */
+.g2{display:grid;grid-template-columns:minmax(0,2.05fr) minmax(0,1fr);gap:10px}
+.g2b{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:10px}
+table{width:100%;border-collapse:collapse}
+th{font:600 11px/1.2 var(--sans);color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;text-align:right;padding:4px 8px;border-bottom:1px solid var(--hair-2);white-space:nowrap}
+th:nth-child(1),th:nth-child(2),th:last-child{text-align:left}
+td{padding:4px 8px;border-bottom:1px solid var(--hair);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+td:nth-child(1){color:var(--ink-3);text-align:left;width:22px}
+td.mk{text-align:left;font-weight:600}
+td.mk small{display:block;color:var(--ink-3);font-weight:400;font-size:11px;line-height:1.15}
+td.bf{text-align:left;color:var(--ink-2);font-size:12.5px;max-width:190px;overflow:hidden;text-overflow:ellipsis}
+tr:hover td{background:var(--card)}
+.bar{display:inline-grid;grid-template-columns:70px 46px;align-items:center;gap:6px}
+.bar i{display:block;height:8px;border-radius:4px;background:var(--hair-2);position:relative;overflow:hidden}
+.bar i u{position:absolute;top:0;bottom:0;background:var(--accent);border-radius:4px}
+.bar i u.neg{background:var(--down)}
+.rng{color:var(--ink-3);font-size:11.5px}
+.risk{display:inline-flex;gap:3px} .risk i{width:7px;height:7px;border-radius:50%;background:var(--hair-2)} .risk i.on{background:var(--accent)} .risk i.hi{background:var(--down)}
+.pill{display:inline-block;padding:3px 9px;border-radius:999px;font:700 11px/1.2 var(--sans);text-transform:uppercase;letter-spacing:.05em}
+.pill.buy,.pill.accumulate{background:rgba(76,195,138,.16);color:var(--up)} .pill.hold{background:rgba(233,196,106,.16);color:var(--hold)} .pill.avoid{background:rgba(239,100,97,.16);color:var(--down)}
+.src{color:var(--ink-3);font-size:11px}
+/* map */
+#map{width:100%;height:auto;display:block;background:var(--card);border-radius:10px}
+#map path{fill:#1A2432;stroke:#24324A;stroke-width:.35}
+#map .pt{stroke:#0A0F16;stroke-width:1}
+#map text{font:600 21px var(--sans);fill:var(--ink)} #map text.r{fill:var(--ink-2);font-weight:500} #map text.it{font:700 19px var(--display);letter-spacing:.12em;fill:var(--ink-3)}
+.zips{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.zips h4{margin:0 0 4px;font:700 13px/1 var(--display);letter-spacing:.1em;color:var(--ink-2);text-transform:uppercase}
+.zips table td{padding:3px 4px;font-size:12px} .zips table td:first-child{color:var(--ink);font-family:var(--mono);width:auto}
+/* chains */
+.cgroups{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:end}
+.cgroup{gap:6px}
+.cgroup{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+.cgroup .gt{font:700 13px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.crow{display:flex;align-items:center;justify-content:space-evenly;width:100%}
+.card{width:140px;height:96px;background:var(--tile);color:var(--tile-ink);border-radius:10px;display:grid;grid-template-rows:auto 2px 1fr;box-shadow:inset 0 -3px 0 var(--tile-edge),0 8px 16px rgba(0,0,0,.45)}
+.card .t{padding:9px 10px 6px;font:700 12.5px/1.2 var(--sans)}
+.card .mid{background:var(--tile-edge);margin:0 12px}
+.card .b{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.card .b strong{font:700 26px/1 var(--display)} .card .b small{font-size:11px;color:#4A5160;margin-top:2px}
+.card.life{box-shadow:inset 0 -3px 0 var(--tile-edge),0 0 0 2px var(--accent),0 8px 16px rgba(0,0,0,.45)}
+.arrow{color:var(--ink-3);font:600 22px/1 var(--sans)}
+.ev{color:var(--ink-3);font-size:12px;text-align:center}
+.ev b{color:var(--up);font-weight:600}
+.sep{width:1px;align-self:stretch;background:var(--hair-2)}
+/* scoreboard + collectors */
+.sc{display:grid;grid-template-columns:18px minmax(0,1fr) auto 18px minmax(0,1fr) auto;gap:5px 10px;align-items:baseline}
+.sc .ok{color:var(--up);font-weight:700} .sc .no{color:var(--down);font-weight:700}
+.sc .c{color:var(--ink)} .sc .c small{display:block;color:var(--ink-3);font-size:11.5px}
+.sc .e{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);text-align:right}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px}
+.col{font-size:12.5px;color:var(--ink-2);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.col b{color:var(--ink);font-weight:600}
+.col small{color:var(--ink-3);font-size:11.5px;margin-left:4px}
+footer{color:var(--ink-3);font-size:11.5px;padding:0 2px}
+.err{color:var(--down)}
+@media (max-width:1300px){.g2,.g2b{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.kpis{grid-template-columns:1fr}.cgroups{grid-template-columns:1fr}.sep{display:none}.card{width:104px}.zips,.cols{grid-template-columns:1fr}main{padding:12px 16px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="mark" aria-hidden="true"><i></i><b></b><i></i></div>
+  <div><div class="wordmark">DOMINO · REAL ESTATE</div><div class="tagline" id="sub">What moves housing next, and where the numbers say to invest</div></div>
+  <div class="spacer"></div>
+  <span class="chip" id="asof">loading…</span>
+  <span class="chip" id="hash" title="Pre-registered: forecasts are hashed before outcomes are known"></span>
+  <select id="nav" aria-label="Switch dashboard"><option>Real estate</option></select>
+</header>
+<main>
+  <section class="kpis" id="kpis"></section>
+  <section class="g2">
+    <div class="panel"><div class="ph"><div class="eyebrow">Where to invest · next 12 months, in USD</div><div class="hint" id="rankHint"></div></div>
+      <table id="rank"><thead><tr><th>#</th><th>Market</th><th>Gross yield</th><th>Net yield</th><th>Prices 12 m</th><th>Model 12 m</th><th>Argon 12 m</th><th>Risk</th><th>Argon verdict</th><th>Best for</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="panel"><div class="ph"><div class="eyebrow">Map · and the best ZIPs</div><div class="hint">dot size = model 12-month return</div></div>
+      <svg id="map" viewBox="0 0 1000 300" role="img" aria-label="Map of the ranked markets"></svg>
+      <div class="zips" id="zips"></div>
+    </div>
+  </section>
+  <section class="panel"><div class="ph"><div class="eyebrow">Measured chains</div><div class="hint">each card is the next domino · read left to right · only links with out-of-sample evidence</div></div>
+    <div class="cgroups" id="chains"></div>
+  </section>
+  <section class="g2b">
+    <div class="panel"><div class="ph"><div class="eyebrow">What predicts housing · out of sample</div></div><div class="sc" id="score"></div></div>
+    <div class="panel"><div class="ph"><div class="eyebrow">Data collectors</div><div class="hint" id="spend"></div></div><div class="cols" id="collectors"></div></div>
+  </section>
+  <footer id="foot"></footer>
+</main>
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const isNum = v => typeof v === 'number' && isFinite(v);
+const pct = (v, d = 1, sign = false) => (isNum(v) ? (sign && v > 0 ? '+' : '') + v.toFixed(d) + '%' : '—');
+async function getJSON(u) { const r = await fetch(u, { cache: 'no-store' }); if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }
+
+function kpis(d) {
+  $('#kpis').innerHTML = (d.kpis || []).map(k => `<div class="kpi"><div class="l">${esc(k.label)}</div><div class="v${String(k.value).length > 7 ? ' small' : ''}">${esc(k.value)}</div><div class="s">${k.sub_html || esc(k.sub || '')}</div></div>`).join('');
+}
+function rank(d) {
+  const rows = d.markets || [], mx = Math.max(1, ...rows.map(r => Math.abs(r.model_12m || 0)));
+  $('#rankHint').textContent = d.rank_hint || '';
+  $('#rank tbody').innerHTML = rows.map((r, i) => {
+    const w = Math.min(100, 100 * Math.abs(r.model_12m || 0) / mx), a = r.argon || {};
+    const dots = [0.2, 0.4, 0.6, 0.8, 1].map(t => `<i class="${isNum(r.risk) && r.risk >= t - 0.1 ? (r.risk > 0.6 ? 'hi' : 'on') : ''}"></i>`).join('');
+    const tip = [a.why, a.first_domino ? 'First domino: ' + a.first_domino : '', a.change ? 'Would change my mind: ' + a.change : '', r.source ? 'Yield source: ' + r.source : ''].filter(Boolean).join('\n');
+    return `<tr title="${esc(tip)}"><td>${i + 1}</td><td class="mk">${esc(r.market)}<small>${esc(r.note || '')}</small></td>
+      <td>${pct(r.gross, 1)}</td><td>${pct(r.net, 1)}</td><td>${pct(r.price_12m, 1, true)}</td>
+      <td><span class="bar"><i><u class="${(r.model_12m || 0) < 0 ? 'neg' : ''}" style="left:0;width:${w.toFixed(1)}%"></u></i><b>${pct(r.model_12m, 1, true)}</b></span></td>
+      <td>${pct(a.exp, 1, true)} <span class="rng">${isNum(a.p10) ? `${a.p10.toFixed(0)} to ${a.p90.toFixed(0)}` : ''}</span></td>
+      <td><span class="risk" title="risk ${isNum(r.risk) ? r.risk.toFixed(2) : '—'}">${dots}</span></td>
+      <td>${a.verdict ? `<span class="pill ${esc(a.verdict)}">${esc(a.verdict)}</span>${a.votes ? ` <span class="src">${esc(a.votes)}</span>` : ''}` : '—'}</td>
+      <td class="bf">${esc(a.best_for || '')}</td></tr>`;
+  }).join('');
+}
+async function map(d) {
+  // two insets, so Texas does not collapse into a few pixels: the US Gulf + Florida, and the UAE + Kazakhstan
+  const svg = $('#map'), H = 300, INS = [{ name: 'Texas & Florida', x0: 0, w: 490, L0: -106, L1: -78, P0: 37, P1: 22, ids: ['dallas', 'austin', 'houston', 'san_antonio', 'miami'] },
+    { name: 'UAE & Kazakhstan', x0: 510, w: 490, L0: 48, L1: 82, P0: 55, P1: 20, ids: ['dubai', 'abu_dhabi', 'almaty', 'astana'] }];
+  let geo = null; try { geo = await getJSON('vendor/ne_110m_countries.json'); } catch (e) { geo = null; }
+  const rows = d.markets || [], mx = Math.max(1, ...rows.map(r => Math.abs(r.model_12m || 0)));
+  const col = v => (v === 'buy' || v === 'accumulate' ? '#4CC38A' : v === 'avoid' ? '#EF6461' : v === 'hold' ? '#E9C46A' : '#A3AEBB');
+  let html = '';
+  INS.forEach((b, bi) => {
+    const X = lon => b.x0 + (lon - b.L0) / (b.L1 - b.L0) * b.w, Y = lat => (b.P0 - lat) / (b.P0 - b.P1) * H;
+    let paths = '';
+    if (geo) {
+      const ring = r => r.map(([lo, la], j) => `${j ? 'L' : 'M'}${X(lo).toFixed(1)},${Y(la).toFixed(1)}`).join('') + 'Z';
+      for (const f of geo.features || []) { const g = f.geometry || {}; const polys = g.type === 'Polygon' ? [g.coordinates] : g.type === 'MultiPolygon' ? g.coordinates : [];
+        for (const p of polys) { const bb = p[0]; if (!bb.some(([lo, la]) => lo > b.L0 - 15 && lo < b.L1 + 15 && la > b.P1 - 15 && la < b.P0 + 15)) continue; paths += `<path d="${p.map(ring).join('')}"/>`; } }
+    }
+    const pts = rows.filter(r => b.ids.includes(r.key)).map(r => { const x = X(r.lon), y = Y(r.lat), rad = 8 + 12 * Math.abs(r.model_12m || 0) / mx, o = r.label_offset || [10, 4];
+      return `<circle class="pt" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad.toFixed(1)}" fill="${col((r.argon || {}).verdict)}" fill-opacity=".9"><title>${esc(r.market)}: model ${pct(r.model_12m, 1, true)}, Argon ${esc((r.argon || {}).verdict || '')}</title></circle>
+        <text x="${(x + o[0]).toFixed(1)}" y="${(y + o[1]).toFixed(1)}" text-anchor="${o[0] < 0 ? 'end' : 'start'}">${esc(r.short || r.market)} <tspan class="r">${esc((r.argon || {}).verdict || '')}</tspan></text>`; }).join('');
+    html += `<clipPath id="c${bi}"><rect x="${b.x0}" y="0" width="${b.w}" height="${H}" rx="10"/></clipPath><g clip-path="url(#c${bi})"><rect x="${b.x0}" y="0" width="${b.w}" height="${H}" fill="#131B26"/>${paths}${pts}</g><text class="it" x="${b.x0 + 14}" y="28">${esc(b.name.toUpperCase())}</text>`;
+  });
+  svg.style.background = 'transparent';
+  svg.innerHTML = html;
+  const z = d.zips || {};
+  $('#zips').innerHTML = Object.entries(z).map(([k, list]) => `<div><h4>${esc(k)} · top ZIPs</h4><table>${(list || []).slice(0, 4).map(x => `<tr><td>${esc(x.zip)}</td><td style="text-align:left;color:var(--ink-2)">${esc(x.city)}</td><td>${pct(x.gross, 1)}</td><td>${pct(x.price_yoy, 1, true)}</td></tr>`).join('')}</table></div>`).join('');
+}
+function chains(d) {
+  const g = d.chains || [];
+  $('#chains').innerHTML = g.map((c, gi) => `${gi ? '<div class="sep"></div>' : ''}<div class="cgroup"><div class="gt">${esc(c.title)}</div><div class="crow">${(c.cards || []).map((k, i) => `${i ? '<span class="arrow" aria-hidden="true">→</span>' : ''}<div class="card${k.life ? ' life' : ''}" title="${esc(k.tip || '')}"><div class="t">${esc(k.label)}</div><div class="mid"></div><div class="b"><strong>${esc(k.value)}</strong><small>${esc(k.sub || '')}</small></div></div>`).join('')}</div><div class="ev">${c.evidence_html || esc(c.evidence || '')}</div></div>`).join('');
+}
+function score(d) {
+  $('#score').innerHTML = (d.scoreboard || []).map(s => `<span class="${s.ok ? 'ok' : 'no'}">${s.ok ? '✓' : '✗'}</span><span class="c">${esc(s.claim)}<small>${esc(s.detail || '')}</small></span><span class="e">${esc(s.effect || '')}</span>`).join('');
+}
+function collectors(d) {
+  $('#collectors').innerHTML = (d.collectors || []).map(c => `<div class="col" title="${esc(c.name + ': ' + (c.detail || '') + ' (' + (c.via || '') + ')')}"><b>${esc(c.name)}</b> ${esc(c.detail || '')}<small>${esc(c.via || '')}</small></div>`).join('');
+  $('#spend').textContent = d.spend_text || '';
+}
+async function nav() {
+  try {
+    const list = await getJSON('profiles/index.json');
+    const sel = $('#nav');
+    sel.innerHTML = list.map(p => `<option value="${esc(p.id)}"${p.id === 'real-estate' ? ' selected' : ''}>${esc(p.title)}</option>`).join('');
+    sel.addEventListener('change', () => { const id = sel.value; location.href = id === 'domino' ? '/' : '/?profile=' + encodeURIComponent(id) + '&classic=' + (id === 'real-estate' ? '1' : '0'); });
+  } catch (e) { /* the dashboard still renders without the switcher */ }
+}
+(async () => {
+  nav();
+  try {
+    const d = await getJSON('profiles/real-estate/dashboard.json');
+    $('#sub').textContent = d.subtitle || $('#sub').textContent;
+    $('#asof').innerHTML = `as of <b>${esc(d.asof || '')}</b>`;
+    $('#hash').innerHTML = d.hash ? `hash <b>${esc(String(d.hash).slice(0, 8))}…</b>` : '';
+    kpis(d); rank(d); chains(d); score(d); collectors(d); await map(d);
+    $('#foot').textContent = d.footer || '';
+    document.body.dataset.ready = '1';
+  } catch (e) {
+    $('#kpis').innerHTML = `<div class="kpi err">Could not load the dashboard data: ${esc(e.message)}</div>`;
+  }
+})();
+</script>
+</body>
+</html>

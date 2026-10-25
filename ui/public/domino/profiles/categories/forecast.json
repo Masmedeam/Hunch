@@ -1,0 +1,41 @@
+{
+  "asof": null,
+  "target_date": null,
+  "items": [],
+  "events": [
+    {
+      "id": "rank1",
+      "label": "#1 macro_stress",
+      "prob": 0.78,
+      "source": "argon",
+      "narration": "Wikipedia attention to 'Recession' (lag 1 day) acting as a macro fear amplifier that scales next-day S&P 500 (^GSPC) and",
+      "pair": null
+    },
+    {
+      "id": "rank2",
+      "label": "#2 china_taiwan_trade",
+      "prob": 0.65,
+      "source": "argon",
+      "narration": "Attention spikes on 'China\u2013United_States_trade_war' leading next-day volatility in China large-cap equities (FXI) and se",
+      "pair": null
+    },
+    {
+      "id": "rank3",
+      "label": "#3 weather_disasters",
+      "prob": 0.56,
+      "source": "argon",
+      "narration": "None found in daily Wikipedia data (first_domino = null); per our Physical Supply Chain & Logistics Chokepoints hypothes",
+      "pair": null
+    },
+    {
+      "id": "rank4",
+      "label": "#4 ai_tech",
+      "prob": 0.5,
+      "source": "argon",
+      "narration": "None in mainstream Wikipedia AI pages (first_domino = null); per our B2B Cloud & Cybersecurity Outage Cascades hypothesi",
+      "pair": null
+    }
+  ],
+  "headline_summary": "Recession attention \u2192 next-day S&P volatility is the one confirmed first domino (log score +0.018 [+0.004, +0.036]).",
+  "hash": "a1a684e9b06600302efa561763d110085ad66b6b366c8105037ab9b367a651fa"
+}

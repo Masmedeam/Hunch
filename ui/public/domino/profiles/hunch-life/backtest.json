@@ -1,0 +1,54 @@
+{
+  "window": "2016..2026 weekly",
+  "n_days": null,
+  "target": "Week-ahead skill on the series behind Hunch's verticals",
+  "metrics": {
+    "crps": {
+      "domino": {
+        "mean": 0.028138330126485086
+      },
+      "ewma": {
+        "mean": 0.04312411347517731
+      }
+    }
+  },
+  "dm_test": {
+    "vs": "no-change",
+    "stat": null,
+    "p": 1.8092966681928494e-14
+  },
+  "reliability": [],
+  "series": [],
+  "leaderboard": [
+    {
+      "model": "gas: Domino regression",
+      "error_vs_no_change_pct": -33.6,
+      "direction_hit": 0.8
+    },
+    {
+      "model": "gas: TimesFM 3.0",
+      "error_vs_no_change_pct": -34.8,
+      "direction_hit": 0.78
+    },
+    {
+      "model": "mortgage: Domino regression",
+      "error_vs_no_change_pct": -13.5,
+      "direction_hit": 0.66
+    },
+    {
+      "model": "mortgage: TimesFM 3.0",
+      "error_vs_no_change_pct": -26.1,
+      "direction_hit": 0.72
+    },
+    {
+      "model": "flu: Domino regression",
+      "error_vs_no_change_pct": -28.3,
+      "direction_hit": 0.8
+    },
+    {
+      "model": "flu: TimesFM 3.0",
+      "error_vs_no_change_pct": -36.7,
+      "direction_hit": 0.83
+    }
+  ]
+}
