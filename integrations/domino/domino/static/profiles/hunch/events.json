@@ -1,0 +1,825 @@
+[
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 audit",
+    "usd": "0.05936",
+    "seconds": 0.0,
+    "cached": true,
+    "t": 0.6
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 cik-verify",
+    "usd": "0.0005",
+    "seconds": 0.0,
+    "cached": true,
+    "t": 1.2
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 core",
+    "usd": "0.44736",
+    "seconds": 0.0,
+    "cached": true,
+    "t": 1.8
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 filing-documents",
+    "usd": "0.0045",
+    "seconds": 0.0,
+    "cached": true,
+    "t": 2.4
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 news",
+    "usd": "0.700",
+    "seconds": 0.0,
+    "cached": true,
+    "t": 3.0
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 pagination-01",
+    "usd": "0.06174",
+    "seconds": 0.0,
+    "cached": true,
+    "t": 3.6
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 pagination-02",
+    "usd": "0.03126",
+    "seconds": 0.0,
+    "cached": true,
+    "t": 4.2
+  },
+  {
+    "type": "data_call",
+    "target": "glasser \u00b7 regional",
+    "usd": "0.476",
+    "seconds": 0.0,
+    "cached": true,
+    "t": 4.8
+  },
+  {
+    "type": "argon_call",
+    "purpose": "NEXTDAY forecast \u00b7 gemini-4-argon",
+    "thinking_level": "high",
+    "seconds": 20.4,
+    "input_tokens": 16848,
+    "output_tokens": 0,
+    "thought_tokens": 0,
+    "cached": true,
+    "t": 5.6
+  },
+  {
+    "type": "argon_call",
+    "purpose": "NEXTDAY forecast \u00b7 gemini-3.1-pro-preview",
+    "thinking_level": "medium",
+    "seconds": 28.8,
+    "input_tokens": 18175,
+    "output_tokens": 0,
+    "thought_tokens": 0,
+    "cached": true,
+    "t": 6.4
+  },
+  {
+    "type": "argon_call",
+    "purpose": "NEXTDAY forecast \u00b7 gemini-3.8-flash",
+    "thinking_level": "medium",
+    "seconds": 10.5,
+    "input_tokens": 15749,
+    "output_tokens": 0,
+    "thought_tokens": 0,
+    "cached": true,
+    "t": 7.2
+  },
+  {
+    "type": "argon_call",
+    "purpose": "NEXTDAY forecast \u00b7 gemini-3.1-flash-lite",
+    "thinking_level": "medium",
+    "seconds": 5.0,
+    "input_tokens": 15638,
+    "output_tokens": 0,
+    "thought_tokens": 0,
+    "cached": true,
+    "t": 8.0
+  },
+  {
+    "type": "log",
+    "level": "info",
+    "text": "Domino: SEC first-domino prior for Q2, Poisson cadence for Q3, TimesFM for Q1",
+    "t": 9.0
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Domino-Argon \u00b7 day-2026-10-14",
+    "thinking_level": "high",
+    "seconds": 40.0,
+    "input_tokens": 4000,
+    "output_tokens": 600,
+    "thought_tokens": 2000,
+    "cached": true,
+    "t": 9.7
+  },
+  {
+    "type": "surprise",
+    "node": "q2",
+    "observed": false,
+    "expected": 0.25,
+    "surprise_nats": 0.28,
+    "t": 9.9
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Domino-Argon \u00b7 day-2026-10-15",
+    "thinking_level": "high",
+    "seconds": 40.0,
+    "input_tokens": 4000,
+    "output_tokens": 600,
+    "thought_tokens": 2000,
+    "cached": true,
+    "t": 10.4
+  },
+  {
+    "type": "surprise",
+    "node": "q2",
+    "observed": false,
+    "expected": 0.37,
+    "surprise_nats": 0.46,
+    "t": 10.6
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Domino-Argon \u00b7 day-2026-10-16",
+    "thinking_level": "high",
+    "seconds": 40.0,
+    "input_tokens": 4000,
+    "output_tokens": 600,
+    "thought_tokens": 2000,
+    "cached": true,
+    "t": 11.1
+  },
+  {
+    "type": "surprise",
+    "node": "q2",
+    "observed": false,
+    "expected": 0.01,
+    "surprise_nats": 0.01,
+    "t": 11.3
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Domino-Argon \u00b7 day-2026-10-17",
+    "thinking_level": "high",
+    "seconds": 40.0,
+    "input_tokens": 4000,
+    "output_tokens": 600,
+    "thought_tokens": 2000,
+    "cached": true,
+    "t": 11.8
+  },
+  {
+    "type": "surprise",
+    "node": "q2",
+    "observed": false,
+    "expected": 0.01,
+    "surprise_nats": 0.01,
+    "t": 12.0
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Domino-Argon \u00b7 day-2026-10-18",
+    "thinking_level": "high",
+    "seconds": 40.0,
+    "input_tokens": 4000,
+    "output_tokens": 600,
+    "thought_tokens": 2000,
+    "cached": true,
+    "t": 12.5
+  },
+  {
+    "type": "surprise",
+    "node": "q2",
+    "observed": false,
+    "expected": 0.49,
+    "surprise_nats": 0.68,
+    "t": 12.7
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Domino-Argon \u00b7 day-2026-10-19",
+    "thinking_level": "high",
+    "seconds": 40.0,
+    "input_tokens": 4000,
+    "output_tokens": 600,
+    "thought_tokens": 2000,
+    "cached": true,
+    "t": 13.2
+  },
+  {
+    "type": "surprise",
+    "node": "q2",
+    "observed": true,
+    "expected": 0.51,
+    "surprise_nats": 0.68,
+    "t": 13.4
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Domino-Argon \u00b7 day-2026-10-20",
+    "thinking_level": "high",
+    "seconds": 40.0,
+    "input_tokens": 4000,
+    "output_tokens": 600,
+    "thought_tokens": 2000,
+    "cached": true,
+    "t": 13.9
+  },
+  {
+    "type": "surprise",
+    "node": "q2",
+    "observed": true,
+    "expected": 0.43,
+    "surprise_nats": 0.84,
+    "t": 14.1
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Domino-Argon \u00b7 day-2026-10-21",
+    "thinking_level": "high",
+    "seconds": 40.0,
+    "input_tokens": 4000,
+    "output_tokens": 600,
+    "thought_tokens": 2000,
+    "cached": true,
+    "t": 14.6
+  },
+  {
+    "type": "surprise",
+    "node": "q2",
+    "observed": false,
+    "expected": 0.42,
+    "surprise_nats": 0.55,
+    "t": 14.8
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Domino-Argon \u00b7 day-2026-10-22",
+    "thinking_level": "high",
+    "seconds": 40.0,
+    "input_tokens": 4000,
+    "output_tokens": 600,
+    "thought_tokens": 2000,
+    "cached": true,
+    "t": 15.3
+  },
+  {
+    "type": "surprise",
+    "node": "q2",
+    "observed": true,
+    "expected": 0.42,
+    "surprise_nats": 0.87,
+    "t": 15.5
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Domino-Argon \u00b7 day-2026-10-23",
+    "thinking_level": "high",
+    "seconds": 40.0,
+    "input_tokens": 4000,
+    "output_tokens": 600,
+    "thought_tokens": 2000,
+    "cached": true,
+    "t": 16.0
+  },
+  {
+    "type": "surprise",
+    "node": "q2",
+    "observed": false,
+    "expected": 0.01,
+    "surprise_nats": 0.01,
+    "t": 16.2
+  },
+  {
+    "type": "graph_update",
+    "graph": {
+      "asof": "2026-10-25T18:37:12.120070Z",
+      "nodes": [
+        {
+          "id": "glasser",
+          "label": "Glasser evidence (357 Runs)",
+          "kind": "observed",
+          "lat": 37.7749,
+          "lon": -122.4194,
+          "level": 0,
+          "prob": 1.0,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "news",
+          "label": "News bodies (Exa / Serper)",
+          "kind": "news",
+          "lat": 40.7128,
+          "lon": -74.006,
+          "level": 0,
+          "prob": 0.8,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "social",
+          "label": "Social cohort (X / TikTok / YouTube)",
+          "kind": "attention",
+          "lat": 51.5072,
+          "lon": -0.1276,
+          "level": 0,
+          "prob": 0.7,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "sec",
+          "label": "SEC EDGAR acceptances",
+          "kind": "observed",
+          "lat": 38.8951,
+          "lon": -77.0364,
+          "level": 0,
+          "prob": 0.9,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "calendar",
+          "label": "Earnings calendar (last-year timing)",
+          "kind": "observed",
+          "lat": 40.7568,
+          "lon": -73.9864,
+          "level": 0,
+          "prob": 0.85,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "aaa",
+          "label": "AAA pump prices (50 states)",
+          "kind": "observed",
+          "lat": 39.8283,
+          "lon": -98.5795,
+          "level": 0,
+          "prob": 0.9,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "zillow",
+          "label": "Zillow mortgage quotes",
+          "kind": "observed",
+          "lat": 47.6062,
+          "lon": -122.3321,
+          "level": 0,
+          "prob": 0.8,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "nasa_cadence",
+          "label": "NASA posting cadence",
+          "kind": "latent",
+          "lat": 29.5593,
+          "lon": -95.09,
+          "level": 1,
+          "prob": 0.55,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "earnings",
+          "label": "Earnings-season 8-K pressure",
+          "kind": "latent",
+          "lat": 40.7069,
+          "lon": -74.0113,
+          "level": 1,
+          "prob": 0.4241044838398321,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "world",
+          "label": "World developments (Q4)",
+          "kind": "latent",
+          "lat": 46.2044,
+          "lon": 6.1432,
+          "level": 1,
+          "prob": 0.6,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "q1",
+          "label": "Q1 \u00b7 ticker closes up",
+          "kind": "market",
+          "lat": 40.7069,
+          "lon": -74.0113,
+          "level": 2,
+          "prob": null,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "q2",
+          "label": "Q2 \u00b7 cohort 8-K accepted",
+          "kind": "market",
+          "lat": 38.8951,
+          "lon": -77.0364,
+          "level": 2,
+          "prob": 0.01,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "q3",
+          "label": "Q3 \u00b7 NASA X posts",
+          "kind": "market",
+          "lat": 38.8833,
+          "lon": -77.0162,
+          "level": 2,
+          "prob": null,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "q5",
+          "label": "Q5 \u00b7 social developments",
+          "kind": "market",
+          "lat": 51.5072,
+          "lon": -0.1276,
+          "level": 2,
+          "prob": 0.7,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "pump",
+          "label": "Gas at the pump (next week)",
+          "kind": "daily_life",
+          "lat": 39.83,
+          "lon": -98.58,
+          "level": 3,
+          "prob": null,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        },
+        {
+          "id": "mortgage",
+          "label": "30-year mortgage (next week)",
+          "kind": "daily_life",
+          "lat": 47.6,
+          "lon": -122.3,
+          "level": 3,
+          "prob": null,
+          "value": null,
+          "unit": null,
+          "z": null,
+          "state": null,
+          "narration": null
+        }
+      ],
+      "edges": [
+        {
+          "source": "glasser",
+          "target": "news",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "multi-vertical ingestion",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "Argon prior",
+          "active": 0.9
+        },
+        {
+          "source": "glasser",
+          "target": "social",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "fixed account cohort",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "Argon prior",
+          "active": 0.9
+        },
+        {
+          "source": "glasser",
+          "target": "aaa",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "AAA vertical",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "Argon prior",
+          "active": 0.9
+        },
+        {
+          "source": "glasser",
+          "target": "zillow",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "Zillow vertical",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "Argon prior",
+          "active": 0.9
+        },
+        {
+          "source": "calendar",
+          "target": "earnings",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "last year's earnings week predicts this year's",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "Argon prior",
+          "active": 0.765
+        },
+        {
+          "source": "sec",
+          "target": "earnings",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "8-K hazard per company",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "Argon prior",
+          "active": 0.81
+        },
+        {
+          "source": "earnings",
+          "target": "q2",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "earnings 8-K (Item 2.02)",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "granger Brier Q2 0.153 vs baseline 0.210",
+          "active": 0.382
+        },
+        {
+          "source": "social",
+          "target": "nasa_cadence",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "weekday / weekend cadence",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "Argon prior",
+          "active": 0.63
+        },
+        {
+          "source": "nasa_cadence",
+          "target": "q3",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "Poisson by day type",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "granger MAE 0.99 vs baseline 1.32",
+          "active": 0.495
+        },
+        {
+          "source": "news",
+          "target": "world",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "held-out reference",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "Argon prior",
+          "active": 0.72
+        },
+        {
+          "source": "world",
+          "target": "q1",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "macro news \u2192 price",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "Argon prior",
+          "active": 0.54
+        },
+        {
+          "source": "social",
+          "target": "q5",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "cohort topics",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "Argon prior",
+          "active": 0.63
+        },
+        {
+          "source": "aaa",
+          "target": "pump",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "retail pass-through",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "granger granger p=2e-15; MAE -34%",
+          "active": 0.81
+        },
+        {
+          "source": "zillow",
+          "target": "mortgage",
+          "sign": 1,
+          "lag_days": 1,
+          "mechanism": "10-year Treasury pass-through",
+          "prior": 0.5,
+          "measured": null,
+          "evidence": "granger granger p=3e-34; MAE -14%",
+          "active": 0.72
+        }
+      ]
+    },
+    "t": 17.0
+  },
+  {
+    "type": "forecast_update",
+    "forecast": {
+      "asof": "2026-10-25T18:37:12.120070Z",
+      "target_date": "2026-10-26",
+      "items": [
+        {
+          "id": "q2_mon",
+          "label": "Any cohort 8-K accepted Mon 26 Oct",
+          "unit": "probability",
+          "median": 0.795,
+          "p10": null,
+          "p90": null,
+          "p_up": null,
+          "p_big_move": 0.795,
+          "baseline": {
+            "median": 0.3,
+            "p10": null,
+            "p90": null
+          },
+          "kind": "market",
+          "narration": "SEC submission histories x last-year earnings week (first domino). AMZN 0.25, GOOGL 0.23, XOM 0.21"
+        },
+        {
+          "id": "q3_mon",
+          "label": "NASA X posts Mon 26 Oct",
+          "unit": "posts",
+          "median": 1.6,
+          "p10": 0,
+          "p90": 3,
+          "p_up": null,
+          "p_big_move": null,
+          "baseline": {
+            "median": 1.6,
+            "p10": null,
+            "p90": null
+          },
+          "kind": "attention",
+          "narration": "Poisson by day type over the prior week."
+        },
+        {
+          "id": "life_gas",
+          "label": "Your gas price next week",
+          "unit": "$/gal",
+          "median": 4.23,
+          "p10": 4.153,
+          "p90": 4.307,
+          "p_up": null,
+          "p_big_move": null,
+          "baseline": {
+            "median": 4.284,
+            "p10": null,
+            "p90": null
+          },
+          "kind": "daily_life",
+          "model": "TimesFM 3.0 (Google)",
+          "narration": "Hunch AAA vertical today: regular $4.289 (week ago $4.299). Backtest error -34% vs no-change."
+        },
+        {
+          "id": "life_mortgage",
+          "label": "30-year mortgage rate next week",
+          "unit": "%",
+          "median": 7.284,
+          "p10": 7.151,
+          "p90": 7.401,
+          "p_up": null,
+          "p_big_move": null,
+          "baseline": {
+            "median": 7.32,
+            "p10": null,
+            "p90": null
+          },
+          "kind": "daily_life",
+          "model": "TimesFM 3.0 (Google)",
+          "narration": "Hunch Zillow vertical: 30-year quote 7.49% (lender quote; Freddie Mac survey 7.32%). Backtest error -14% vs no-change."
+        },
+        {
+          "id": "life_diesel",
+          "label": "Diesel at the pump (AAA today)",
+          "unit": "$/gal",
+          "median": 6.347,
+          "p10": null,
+          "p90": null,
+          "p_up": null,
+          "p_big_move": null,
+          "baseline": {
+            "median": 6.322,
+            "p10": null,
+            "p90": null
+          },
+          "kind": "daily_life",
+          "model": "Hunch AAA vertical (observed)",
+          "narration": "Year ago $3.66: +74% year over year."
+        }
+      ],
+      "events": [
+        {
+          "id": "fc-1",
+          "label": "The India Meteorological Department (IMD) will officially classify the Deep Depression over the Bay of Bengal ",
+          "prob": 0.85,
+          "source": "argon",
+          "narration": "Hunch's own Argon pilot forecast for 26 Oct (not yet resolved)."
+        },
+        {
+          "id": "fc-2",
+          "label": "By 2026-10-27T00:00:00Z, the number of UK properties without power due to Storm Boelo will fall below 25,000, ",
+          "prob": 0.72,
+          "source": "argon",
+          "narration": "Hunch's own Argon pilot forecast for 26 Oct (not yet resolved)."
+        },
+        {
+          "id": "fc-4",
+          "label": "Between 2026-10-26T00:00:00Z and 2026-10-27T00:00:00Z, the US State Department will NOT order a mandatory depa",
+          "prob": 0.78,
+          "source": "argon",
+          "narration": "Hunch's own Argon pilot forecast for 26 Oct (not yet resolved)."
+        },
+        {
+          "id": "fc-5",
+          "label": "The cumulative view count for 'K/DA - FIRESTARTER ft. MIYEON and SOYEON of i-dle, Sophie Powers, Mimi Webb (Of",
+          "prob": 0.78,
+          "source": "argon",
+          "narration": "Hunch's own Argon pilot forecast for 26 Oct (not yet resolved)."
+        }
+      ],
+      "headline_summary": "Domino on Hunch: first-domino statistics + Gemini 4 Argon beat the NEXTDAY leaderboard on the objective tracks.",
+      "hash": "eb4151d74711f7d8af797bed880495af1952605a250d4bcf2b398b05176a173f"
+    },
+    "t": 17.2
+  }
+]

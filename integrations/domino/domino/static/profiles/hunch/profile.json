@@ -1,0 +1,28 @@
+{
+  "id": "hunch",
+  "brand": "HUNCH \u00d7 DOMINO",
+  "subtitle": "Domino world model on the NEXTDAY benchmark (Masmedeam/Hunch) \u00b7 Gemini 4 Argon + Glasser + TimesFM",
+  "labels": {
+    "pizza_panel": "GAS AT THE PUMP BY STATE (AAA via Glasser)",
+    "pizza_unit": "state \u00f7 national",
+    "attention_panel": "TOMORROW'S SIGNALS",
+    "week_ahead": "YOUR WEEK AHEAD (Hunch verticals)",
+    "forecast_panel": "TOMORROW \u00b7 MON 26 OCT",
+    "backtest_panel": "NEXTDAY BENCHMARK \u00b7 10 cases",
+    "crps_label": "BRIER (Q1+Q2) \u00b7 lower is better",
+    "brier_label": "BRIER Q2 (8-K) \u00b7 lower is better",
+    "domino_name": "Domino-Argon",
+    "baseline_name": "Baseline",
+    "replay_button": "Replay Oct 14\u201323",
+    "series_label": "NASA X posts per day: actual vs Domino Poisson band",
+    "chain_title": "STRONGEST CHAIN NOW"
+  },
+  "fixtures": {
+    "graph": "profiles/hunch/graph.json",
+    "forecast": "profiles/hunch/forecast.json",
+    "backtest": "profiles/hunch/backtest.json",
+    "replay": "profiles/hunch/replay.json",
+    "pizza": "profiles/hunch/pizza.json",
+    "events": "profiles/hunch/events.json"
+  }
+}

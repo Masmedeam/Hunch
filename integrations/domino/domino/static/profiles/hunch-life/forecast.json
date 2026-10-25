@@ -1,0 +1,176 @@
+{
+  "asof": "2026-10-25T18:37:12.120070Z",
+  "target_date": "2026-11-02",
+  "items": [
+    {
+      "id": "life_gas",
+      "label": "Gas next week",
+      "unit": "$/gal",
+      "median": 4.23,
+      "p10": 4.153,
+      "p90": 4.307,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 4.284,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "TimesFM 3.0 (Google)",
+      "narration": null
+    },
+    {
+      "id": "life_mortgage",
+      "label": "Mortgage next week",
+      "unit": "%",
+      "median": 7.284,
+      "p10": 7.151,
+      "p90": 7.401,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 7.32,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "TimesFM 3.0 (Google)",
+      "narration": null
+    },
+    {
+      "id": "life_diesel",
+      "label": "Diesel today",
+      "unit": "$/gal",
+      "median": 6.347,
+      "p10": null,
+      "p90": null,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 6.322,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "AAA via Glasser",
+      "narration": "+74% vs a year ago"
+    },
+    {
+      "id": "life_ev",
+      "label": "EV charging",
+      "unit": "$/kWh",
+      "median": 0.425,
+      "p10": 0.382,
+      "p90": 0.468,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "AAA via Glasser",
+      "narration": null
+    },
+    {
+      "id": "life_car",
+      "label": "Used Camry",
+      "unit": "$",
+      "median": 28160.0,
+      "p10": 25412.8,
+      "p90": 29582.2,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": null,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "daily_life",
+      "model": "Carfax via Glasser",
+      "narration": null
+    },
+    {
+      "id": "insider_ratio",
+      "label": "Insider sell/buy ratio (latest)",
+      "unit": "ratio",
+      "median": 2.41,
+      "p10": 2.41,
+      "p90": 5.5,
+      "p_up": null,
+      "p_big_move": null,
+      "baseline": {
+        "median": 4.12,
+        "p10": null,
+        "p90": null
+      },
+      "kind": "attention",
+      "model": null,
+      "narration": "SEC Form 4 counts, last 10 periods"
+    }
+  ],
+  "events": [
+    {
+      "id": "gas-down",
+      "label": "Gas lower next week than today",
+      "prob": 0.814,
+      "source": "domino",
+      "narration": "TimesFM 3.0 quantiles",
+      "pair": null
+    },
+    {
+      "id": "mortgage-down",
+      "label": "Mortgage rate lower next week",
+      "prob": 0.637,
+      "source": "domino",
+      "narration": "TimesFM 3.0 quantiles",
+      "pair": null
+    }
+  ],
+  "headline_summary": "Households in late October 2026 are locked in a defensive crouch. Even as regular gas eases toward our $4.23/gal forecast, $6.35/gal diesel and 7.67% mortgage APRs freeze big-ticket mobility: Austin condos sit 118 days unsold while rental supply surges. Workers see corporate insiders selling 4-to-1 ",
+  "vertical_notes": [
+    {
+      "model": "aaa_gas_national",
+      "today": "As of 10/25/26, national Regular gas is $4.2892/gal (down fr",
+      "first_domino": "NYMEX RBOB gasoline and ULSD (ultra-low sulfur die"
+    },
+    {
+      "model": "aaa_gas_states",
+      "today": "Across 20 sampled states, Regular gas spans a $2.365/gal spr",
+      "first_domino": "PADD-level refinery outages (especially PADD 5 CAR"
+    },
+    {
+      "model": "aaa_ev_charging",
+      "today": "Across 15 states, public EV charging averages range from $0.",
+      "first_domino": "Commercial utility time-of-use (TOU) tariff filing"
+    },
+    {
+      "model": "zillow_mortgage",
+      "today": "30-Year Fixed Conventional quotes sit at 7.49% interest (7.6",
+      "first_domino": "10-Year US Treasury yield movements and UMBS 30-ye"
+    },
+    {
+      "model": "rentcast_market",
+      "today": "In Austin ZIP 78701, 306 for-sale listings (25 new) carry a ",
+      "first_domino": "Local multifamily lease expirations, corporate ret"
+    },
+    {
+      "model": "insider_ratios",
+      "today": "Individual `filings` are empty (`[]`), but across the 10-per",
+      "first_domino": "SEC Form 4 filings triggered by 10b5-1 trading pla"
+    },
+    {
+      "model": "premarket_movers",
+      "today": "Snapshot is dated 2026-10-23 (2 days behind the 10/25/26 gas",
+      "first_domino": "8-K/S-3 dilution filings, FDA clinical trial headl"
+    },
+    {
+      "model": "wellfound_jobs",
+      "today": "Among 5 startup engineering listings, compensation is sharpl",
+      "first_domino": "Venture capital seed/Series A funding disbursement"
+    }
+  ],
+  "hash": "baf0680d2b833bc4e725031c64f2b05e666270b124b0bcfe094f9b28de51f00e"
+}

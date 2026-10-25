@@ -1,0 +1,36 @@
+{
+  "id": "hunch-life",
+  "brand": "HUNCH \u00d7 DOMINO \u00b7 DAILY LIFE",
+  "subtitle": "What Hunch's verticals mean for your week: pump, power, rent, mortgage, cars and jobs",
+  "labels": {
+    "forecast_panel": "YOUR WEEK \u00b7 ODDS",
+    "pizza_panel": "GAS AT THE PUMP BY STATE (AAA via Glasser)",
+    "pizza_unit": "state \u00f7 national",
+    "week_ahead": "YOUR WEEK AHEAD",
+    "attention_panel": "CORPORATE CONFIDENCE",
+    "backtest_panel": "BACKTESTED SKILL (weekly, vs no-change)",
+    "crps_label": "GAS MAE $/gal, week ahead \u00b7 lower is better",
+    "domino_name": "TimesFM 3.0",
+    "baseline_name": "No change",
+    "leaderboard_cols": {
+      "error_vs_no_change_pct": "error vs no-change %",
+      "direction_hit": "direction right"
+    }
+  },
+  "panels": {
+    "pizza": true,
+    "attention": true,
+    "week_ahead": true,
+    "leaderboard": true,
+    "replay": false,
+    "gauges": true
+  },
+  "fixtures": {
+    "graph": "profiles/hunch-life/graph.json",
+    "forecast": "profiles/hunch-life/forecast.json",
+    "backtest": "profiles/hunch-life/backtest.json",
+    "replay": "profiles/hunch-life/replay.json",
+    "pizza": "profiles/hunch-life/pizza.json",
+    "events": "profiles/hunch-life/events.json"
+  }
+}

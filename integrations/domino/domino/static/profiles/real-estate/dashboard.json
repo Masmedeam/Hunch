@@ -1,0 +1,915 @@
+{
+ "asof": "25 Oct 2026",
+ "subtitle": "What moves housing next, and where the numbers say to invest \u00b7 Dallas, Austin, Houston, San Antonio, Miami, Dubai, Abu Dhabi, Almaty, Astana",
+ "kpis": [
+  {
+   "label": "30-year mortgage \u00b7 Thu 29 Oct",
+   "value": "7.28%",
+   "sub_html": "from 7.32% \u00b7 P(lower) <b>62%</b> stats \u00b7 <b>65%</b> Argon"
+  },
+  {
+   "label": "Rent inflation \u00b7 Sep 2027",
+   "value": "2.9%",
+   "sub_html": "from 3.0% \u00b7 market rents lead CPI rent by <b>13 months</b> (r 0.90)"
+  },
+  {
+   "label": "US home values \u00b7 Oct 2026",
+   "value": "+0.10%",
+   "sub_html": "P(fall) <b>13%</b> stats \u00b7 <b>21%</b> Argon \u00b7 momentum drives it, rates don't"
+  },
+  {
+   "label": "Best risk-adjusted market",
+   "value": "Abu Dhabi",
+   "sub_html": "model <b>+15.3%</b> a year in USD \u00b7 Argon <b>buy</b> (+9.2%)"
+  }
+ ],
+ "markets": [
+  {
+   "key": "abu_dhabi",
+   "market": "Abu Dhabi",
+   "short": "Abu Dhabi",
+   "lat": 24.45,
+   "lon": 54.38,
+   "note": "reported \u00b7 Argon-sourced \u00b7 5.2% loans",
+   "gross": 6.9,
+   "net": 4.32,
+   "price_12m": 24.1,
+   "model_12m": 15.270000000000001,
+   "risk": 0.47333333333333333,
+   "label_offset": [
+    16,
+    22
+   ],
+   "source": "Argon grounded research: City-wide gross apartment yield (~6.89%\u20137.0%) derived from 2026 average annual a",
+   "argon": {
+    "exp": 9.2,
+    "p10": 1.5,
+    "p90": 16.0,
+    "verdict": "buy",
+    "votes": "5/5",
+    "best_for": "All-cash USD investors seeking pegged-currency income and short-term rental upside in completed prime freehold units (avoiding hyped off-plan launches).",
+    "why": "We rank Abu Dhabi #1 globally but haircut the transparent model's 15.27% projection down to 9.2%. The model linearly extrapolates half of the trailing 24.1% price surge (+12.05%), ignoring three late-2026 brakes: ADREC's June 2\u20133, 2026 temporary 0% rent increase cap on renewals, a 19% QoQ (7% YoY) Q3 2026 transaction drop tied to regional geopolitical tensions, and froth where 81%\u201389% of volume is speculative off-plan flipping ahead of ~30 launches ($9B\u2013$12.25B). Even so, completed stock remains tight\u2014only 3,454 units were handed over in H1 2026 (18.8% of the 18,339 nominal pipeline, with full-year handovers estimated at 6,500\u20137,562 on ~409,000 existing units)\u2014delivering a clean 4.32% net long-term yield (12.6% gross STR yield at $180.33 ADR and 61% occupancy) with zero FX drag (USD/AED pegged at 3.6726) across 50 designated freehold Investment Zones.",
+    "first_domino": "Q4 2026/Q1 2027 ADREC secondary-market transaction volume and whether off-plan flip assignments begin discounting below developer launch prices as the $9B\u2013$12.25B supply pipeline hits the market.",
+    "change": "To downgrade to Hold/Avoid: regional geopolitical escalation causing a second consecutive >15% QoQ transaction contraction or an extension of the 0% renewal rent cap into late 2027. To upgrade toward the model's 15%+: lift of the rent cap alongside sustained <7,500 annual unit handovers."
+   }
+  },
+  {
+   "key": "astana",
+   "market": "Astana",
+   "short": "Astana",
+   "lat": 51.17,
+   "lon": 71.45,
+   "note": "reported \u00b7 Argon-sourced \u00b7 19.5% loans",
+   "gross": 10.34,
+   "net": 7.722,
+   "price_12m": 9.7,
+   "model_12m": 11.872,
+   "risk": 0.6376506708013222,
+   "label_offset": [
+    -18,
+    7
+   ],
+   "source": "Argon grounded research: City-wide gross apartment yield calculated from Bureau of National Statistics (B",
+   "argon": {
+    "exp": 3.2,
+    "p10": -12.0,
+    "p90": 14.5,
+    "verdict": "hold",
+    "votes": "4/5",
+    "best_for": "Investors who already hold a Kazakh permanent residence permit (VNZh) or an established local LLC and seek high KZT cash yield without needing 12-month USD liquidity.",
+    "why": "We strongly disagree with the transparent model's 11.87% expected return and 0.64 risk score. First, under Article 9 of the Law 'On the Legal Status of Foreigners' and Article 23 of the Land Code, non-resident foreign individuals are legally barred from directly purchasing or registering residential property, forcing complex local LLC workarounds. Second, the model assumes 0% FX movement, ignoring that Kazakhstan Q3 2026 CPI inflation is running at 9.8%\u201310.2% (meaning 9.7% nominal price growth is negative in real terms) and that KZT appreciated 13.26% YoY to ~453.35/USD only because local interest/mortgage rates sit at a punitive 19.5% (-11.78% leverage spread). With record supply (4.81M sqm delivered in 2025\u201424% of the national total\u2014plus 3.05M sqm commissioned in 2026), weak STR yields (6.96% gross at 49% occupancy), and retail crypto RWA fractional pitches on Solana, expected KZT mean-reversion and corporate friction wipe out most of the 7.72% net local yield for a USD investor.",
+    "first_domino": "USD/KZT exchange rate movement (currently 453.35) if the National Bank of Kazakhstan cuts rates from the 19.5% mortgage regime while CPI remains stuck near 10%.",
+    "change": "A statutory reform allowing direct freehold registration by non-resident foreigners without a VNZh permit, paired with KZT inflation falling below 6% and a slowdown in Left Bank construction commissioning."
+   }
+  },
+  {
+   "key": "almaty",
+   "market": "Almaty",
+   "short": "Almaty",
+   "lat": 43.24,
+   "lon": 76.89,
+   "note": "reported \u00b7 Argon-sourced \u00b7 19.5% loans",
+   "gross": 8.71,
+   "net": 6.418000000000001,
+   "price_12m": 7.9,
+   "model_12m": 9.468000000000002,
+   "risk": 0.6043173374679889,
+   "label_offset": [
+    -18,
+    7
+   ],
+   "source": "Argon grounded research: City-wide median gross apartment yield across 1-, 2-, and 3-bedroom units based ",
+   "argon": {
+    "exp": 1.4,
+    "p10": -13.5,
+    "p90": 11.5,
+    "verdict": "avoid",
+    "votes": "3/5",
+    "best_for": "Existing Kazakhstan permanent residents (VNZh holders) targeting seismic-compliant core units for local KZT rental income.",
+    "why": "We cut the model's 9.47% expected return to 1.0% and raise risk from 0.60 to 0.76. Like Astana, Almaty prohibits direct residential title ownership by non-resident foreigners without a permanent residence permit (VNZh), requiring local corporate structuring. Nominal 12-month price growth of 7.9% trails domestic CPI inflation of 9.8%\u201310.2% (real-terms erosion), leaving USD returns vulnerable to tenge depreciation after a 13.26% 1-year KZT rally (USD/KZT at 453.35). Furthermore, city construction output jumped 23.3% YoY in Jan\u2013Jul 2026 (following 2.61M sqm commissioned in 2025), social feeds show rising 'urgent sale' (\u0441\u0440\u043e\u0447\u043d\u043e \u043f\u0440\u043e\u0434\u0430\u0435\u0442\u0441\u044f) resale inventory and warped-floor quality defects in 'business class' buildings, and active Tien Shan fault lines create severe uninsurable seismic tail risk.",
+    "first_domino": "Spread between 'urgent sale' secondary resale discounts on TikTok/local portals and primary developer list prices as 23.3% YoY construction growth hits the market.",
+    "change": "Removal of the VNZh residency barrier for foreign individual buyers, KZT inflation cooling toward 5%, and verified structural/seismic auditing on post-2020 residential stock."
+   }
+  },
+  {
+   "key": "miami",
+   "market": "Miami",
+   "short": "Miami",
+   "lat": 25.76,
+   "lon": -80.19,
+   "note": "measured \u00b7 Zillow \u00b7 7.3% loans",
+   "gross": 6.679125771384747,
+   "net": 0.5433006171077981,
+   "price_12m": 0.25926544893326575,
+   "model_12m": -0.19481140288322218,
+   "risk": 0.4938882277023414,
+   "label_offset": [
+    -16,
+    6
+   ],
+   "source": "Zillow ZORI/ZHVI (measured)",
+   "argon": {
+    "exp": -2.4,
+    "p10": -9.0,
+    "p90": 4.5,
+    "verdict": "hold",
+    "votes": "3/5",
+    "best_for": "All-cash owners of single-family homes or post-Surfside-compliant luxury units who can self-insure windstorm risk.",
+    "why": "We disagree downward with the model's -0.19% return and 0.49 risk. While tech billionaire inflows support $5M\u2013$21M estates, the investable buy-to-let condo and multifamily market faces a 36,290-unit construction wave across Southeast Florida (adding ~9% to existing stock, backed by 4,473 weekly construction job postings). Downtown condos already show 12\u201320 months of supply with 20%\u201330% price cuts, older buildings face punitive Post-Surfside SIRS reserve mandates and special assessments under Florida Statutes \u00a7 553.899 / \u00a7 718.112 (SB 4-D / HB 913), and nation-leading windstorm insurance costs push annual holding expenses to 4.8%, reducing net yield to a razor-thin 0.54%.",
+    "first_domino": "Foreclosure and special-assessment delinquency rates in pre-1995 Miami-Dade condos still lacking mandatory reserve compliance alongside absorption of the 36,290 multifamily units under construction.",
+    "change": "Downtown condo inventory dropping below 6 months of supply and Florida property/windstorm insurance premiums declining enough to compress holding costs below 3.5%."
+   }
+  },
+  {
+   "key": "dubai",
+   "market": "Dubai",
+   "short": "Dubai",
+   "lat": 25.2,
+   "lon": 55.27,
+   "note": "reported \u00b7 Argon-sourced \u00b7 5.2% loans",
+   "gross": 6.66,
+   "net": 3.978,
+   "price_12m": -4.5,
+   "model_12m": 0.00800000000000023,
+   "risk": 0.5733333333333334,
+   "label_offset": [
+    16,
+    -8
+   ],
+   "source": "Argon grounded research: City-wide gross rental yield for Dubai apartments is 6.66% as of August 2026 per",
+   "argon": {
+    "exp": -2.6,
+    "p10": -11.5,
+    "p90": 5.0,
+    "verdict": "avoid",
+    "votes": "3/5",
+    "best_for": "Existing owners operating high-occupancy short-term rentals (12.08% gross STR yield at 69% occupancy) in established prime freehold zones.",
+    "why": "We adjust the model's 0.01% return down to -1.2% for new 12-month buy-to-let entries. Physical prices are already down -4.5% YoY and rents are down -6.81% YoY, corroborated by flagship developer Emaar Properties (EMAAR.AE) falling -21.54% YoY (-7.63% over 3 months). Dubai faces its largest residential delivery wave in over a decade from late 2026 through late 2028 (~33,000 homes completed in 9M 2026; S&P Global Ratings Oct 2026 warns of apartment oversupply and yield compression, with 133 active projects in Meydan and 103 in Dubai Land Residence Complex). Meanwhile, high promotional hype (0.72) features brokers pitching $44k down payments (20% down / 3-year plans) on overpriced off-plan units, and round-trip transaction costs are steep at 8.6%.",
+    "first_domino": "EMAAR.AE share price trend and DLD registry spread between off-plan apartment valuations and secondary ready-unit transaction prices as late-2026 handovers accelerate.",
+    "change": "Secondary-market apartment rents stabilizing for two consecutive quarters and off-plan valuation premiums compressing below ready-property replacement cost."
+   }
+  },
+  {
+   "key": "dallas",
+   "market": "Dallas\u2013Fort Worth",
+   "short": "Dallas",
+   "lat": 32.78,
+   "lon": -96.8,
+   "note": "measured \u00b7 Zillow \u00b7 7.3% loans",
+   "gross": 5.558173328808968,
+   "net": -0.053461336952826066,
+   "price_12m": -2.048178547324808,
+   "model_12m": -1.9316311502786436,
+   "risk": 0.5985020186310133,
+   "label_offset": [
+    16,
+    -6
+   ],
+   "source": "Zillow ZORI/ZHVI (measured)",
+   "argon": {
+    "exp": 1.8,
+    "p10": -6.0,
+    "p90": 6.5,
+    "verdict": "accumulate",
+    "votes": "5/5",
+    "best_for": "All-cash USD buyers selectively acquiring Class B/C workforce single-family rentals in high-yield Fort Worth and southern Dallas ZIP codes (76164, 75223, 76104).",
+    "why": "We disagree upward with the passive metro model (-1.93%), which reflects a bifurcated market dragged down by 4.5% non-homestead holding costs (taxes plus a 79% statewide insurance jump after $5.8B in 2025 hail/wind losses), 56.4% of multifamily rentals offering concessions, and 8.7\u20138.9 months of soft condo supply. However, DFW leads the entire table in job creation (59,911 weekly / 138,488 monthly LinkedIn job postings; 'Y'all Street' relocations), multifamily units under construction are down 21%\u201343% YoY to ~30,200\u201333,000, and RentCast confirms that workforce SFR in top ZIPs like 76164 ($208,000 median sale price, $1,677 median rent, 11.22% gross yield) leases in a blistering 4 median days on market (7.36 average DOM), generating +3.4% to +6.1% 12-month returns if bought unlevered (avoiding 7.32%\u20137.49% mortgages that create a -7.37% leverage spread).",
+    "first_domino": "The share of DFW rentals offering concessions (currently 56.4%) and price-cut frequency (currently >25% of listings) as the 21%\u201343% drop in multifamily construction works through existing inventory.",
+    "change": "To upgrade to Buy: Freddie Mac 30-year mortgage rates dropping toward 5.75%\u20136.0% or a cap on non-homestead property tax assessments. To downgrade to Avoid: rental median DOM in workforce ZIPs like 76164 stretching past 30 days or another >25% spike in North Texas wind/hail insurance premiums."
+   }
+  },
+  {
+   "key": "austin",
+   "market": "Austin",
+   "short": "Austin",
+   "lat": 30.27,
+   "lon": -97.74,
+   "note": "measured \u00b7 Zillow \u00b7 7.3% loans",
+   "gross": 4.644116374990453,
+   "net": -0.18470690000763712,
+   "price_12m": -4.308405525745263,
+   "model_12m": -2.238343875444475,
+   "risk": 0.5343831864236441,
+   "label_offset": [
+    -16,
+    -4
+   ],
+   "source": "Zillow ZORI/ZHVI (measured)",
+   "argon": {
+    "exp": -4.2,
+    "p10": -11.0,
+    "p90": 2.0,
+    "verdict": "avoid",
+    "votes": "5/5",
+    "best_for": "Patient capital waiting 6\u201312 months to buy distressed tech-corridor single-family homes via short sales or REO auctions.",
+    "why": "We strongly disagree downward with the model's -2.24% return (which erroneously inputs -0.15% appreciation instead of half of the actual -4.31% 12-month price drop, or -2.16%). Despite leading the table in per-capita hiring intensity (17.97 LinkedIn postings per 1k residents/week; 45,830/week) and a 51.5% YoY drop in multifamily deliveries (to 12,737 units from 32,089 in 2024), Austin is still working through severe supply digestion: 4.9 homes for sale per pending contract (vs. 2.9 historical average), 69.8% of homes selling below list price, distressed listings up 34% YoY to 2,198 (short sales nearly doubled), and Aug\u2013Sept 2026 property tax rate hikes by four of Austin's five taxing entities. Furthermore, RentCast's cross-check of Austin's #1 model ZIP (76574 Taylor) exposes sluggish liquidity, with 344 sale listings averaging 109 days on market ($302,240 median / $776,867 average price) and rentals taking 60.11 average days to lease at $1,825 median rent.",
+    "first_domino": "The ratio of homes for sale per pending contract (currently 4.9x vs. 2.9x normal) and the trajectory of the 2,198 distressed/pre-foreclosure listings.",
+    "change": "Active inventory-to-pending ratio falling below 3.2x, absorption of the multifamily vacancy overhang as the 51.5% construction drop takes hold, and gross yields in core Austin ZIPs expanding above 6.5%."
+   }
+  },
+  {
+   "key": "houston",
+   "market": "Houston",
+   "short": "Houston",
+   "lat": 29.76,
+   "lon": -95.37,
+   "note": "measured \u00b7 Zillow \u00b7 7.3% loans",
+   "gross": 6.489204100864202,
+   "net": 0.19136328069136255,
+   "price_12m": -1.8245661877314356,
+   "model_12m": -2.0469892840952237,
+   "risk": 0.6104376613769922,
+   "label_offset": [
+    16,
+    10
+   ],
+   "source": "Zillow ZORI/ZHVI (measured)",
+   "argon": {
+    "exp": -2.1,
+    "p10": -8.5,
+    "p90": 3.0,
+    "verdict": "avoid",
+    "votes": "4/5",
+    "best_for": "Distressed-asset or short-term rental operators (9.82% gross STR yield) demanding 15%+ discounts off builder list prices.",
+    "why": "Our -2.1% projection aligns with the transparent model (-2.05%). Although Houston offers a 6.49% gross yield (7.72% Argon) and 49,596 weekly LinkedIn job postings, it suffers the highest annual holding cost in the dataset at 5.0% (Harris County non-homestead property taxes, coastal windstorm insurance, and HOA fees) plus 9.5% transaction costs. Following a 2023\u20132025 wave that delivered 67,000+ multifamily units (~18,000 still vacant as of April 2026 per CoStar), 60.3% of Houston rentals are offering concessions across 53,689+ available listings, townhome/condo inventory sits at 9.3 months with median prices down 9.1% YoY, and builders are advertising $126k price drops.",
+    "first_domino": "Absorption of the ~18,000 vacant multifamily units and a drop in the share of Houston rentals offering concessions from 60.3% toward <30%.",
+    "change": "A legislative reduction in Harris County non-homestead tax/insurance holding costs below 3.8% and clearance of the 9.3-month townhome/condo inventory overhang."
+   }
+  },
+  {
+   "key": "san_antonio",
+   "market": "San Antonio",
+   "short": "San Antonio",
+   "lat": 29.42,
+   "lon": -98.49,
+   "note": "measured \u00b7 Zillow \u00b7 7.3% loans",
+   "gross": 6.203422946607113,
+   "net": 0.4627383572856907,
+   "price_12m": -1.90437044515388,
+   "model_12m": -2.1147777562214154,
+   "risk": 0.7295272625077024,
+   "label_offset": [
+    16,
+    30
+   ],
+   "source": "Zillow ZORI/ZHVI (measured)",
+   "argon": {
+    "exp": -3.5,
+    "p10": -10.0,
+    "p90": 2.0,
+    "verdict": "avoid",
+    "votes": "5/5",
+    "best_for": "Opportunistic vultures bidding on receivership/REO single-family or STR-eligible packages at deep discounts.",
+    "why": "We downgrade the model's -2.11% return to -2.8% and concur with its table-high 0.73 risk score. San Antonio is the only US market in the cohort with both falling prices (-1.90% YoY) and falling rents (-0.74% YoY), while 4.5% holding costs and 9.5% transaction costs crush net returns. Condos are severely illiquid at ~175 days on market (nearly 3x normal), builders are offering distress-level 2%\u20133.49% mortgage rate buydowns and $100k\u2013$107k price cuts, and the guilty plea of local CEO Devin Elder in a $69.5M real estate Ponzi scheme (the metro's largest former CRE borrower) threatens localized distressed liquidations.",
+    "first_domino": "Receivership liquidation pricing from the $69.5M Devin Elder CRE Ponzi portfolio and whether YoY rent growth (-0.74%) turns positive as the 4,084-unit construction pipeline completes.",
+    "change": "Full resolution of receivership/distressed inventory, YoY rent growth recovering above +2.5%, and condo days on market normalizing below 70 days."
+   }
+  }
+ ],
+ "zips": {
+  "Dallas\u2013Fort Worth": [
+   {
+    "zip": "76164",
+    "city": "Fort Worth",
+    "gross": 11.222930708831935,
+    "price_yoy": 0.34552993564085366
+   },
+   {
+    "zip": "75223",
+    "city": "Dallas",
+    "gross": 10.147586728841592,
+    "price_yoy": -0.0766718106061881
+   },
+   {
+    "zip": "76104",
+    "city": "Fort Worth",
+    "gross": 9.82438805828757,
+    "price_yoy": 0.06404474828083373
+   },
+   {
+    "zip": "76114",
+    "city": "River Oaks",
+    "gross": 9.066690515252336,
+    "price_yoy": 0.7433589933873552
+   }
+  ],
+  "Austin": [
+   {
+    "zip": "76574",
+    "city": "Taylor",
+    "gross": 7.8299074373650575,
+    "price_yoy": -3.0329756418798204
+   },
+   {
+    "zip": "78734",
+    "city": "Austin",
+    "gross": 5.539271496921811,
+    "price_yoy": -0.6332090920010303
+   },
+   {
+    "zip": "78676",
+    "city": "Wimberley",
+    "gross": 4.5330514039720855,
+    "price_yoy": 1.1477956774659903
+   },
+   {
+    "zip": "78656",
+    "city": "Maxwell",
+    "gross": 8.779540020607008,
+    "price_yoy": -4.560325394216935
+   }
+  ]
+ },
+ "chains": [
+  {
+   "title": "Rates \u00b7 measured weekly",
+   "cards": [
+    {
+     "label": "10-year Treasury",
+     "value": "4.99%",
+     "sub": "-11 bp on the week"
+    },
+    {
+     "label": "Freddie 30-year",
+     "value": "7.32%",
+     "sub": "Thu 22 Oct"
+    },
+    {
+     "label": "Freddie \u00b7 Thu 29 Oct",
+     "value": "7.28%",
+     "sub": "forecast",
+     "life": true
+    }
+   ],
+   "evidence_html": "<b>measured</b> \u00b7 Granger p = 3e-34 at a 2-week lag \u00b7 TimesFM -26% error vs no-change"
+  },
+  {
+   "title": "Rents \u00b7 13-month lead",
+   "cards": [
+    {
+     "label": "Market rents (Zillow)",
+     "value": "+2.7%",
+     "sub": "y/y, Sep"
+    },
+    {
+     "label": "CPI rent (BLS)",
+     "value": "3.0%",
+     "sub": "y/y, Sep"
+    },
+    {
+     "label": "Your rent \u00b7 Sep 2027",
+     "value": "2.9%",
+     "sub": "forecast",
+     "life": true
+    }
+   ],
+   "evidence_html": "<b>measured</b> \u00b7 r 0.90 at 13 months \u00b7 12-month-ahead -43% error vs CPI's own history (p 0.04)"
+  }
+ ],
+ "scoreboard": [
+  {
+   "ok": true,
+   "claim": "10-year Treasury \u2192 mortgage rate",
+   "detail": "weekly, 565 weeks",
+   "effect": "-26% error"
+  },
+  {
+   "ok": true,
+   "claim": "Market rents \u2192 CPI rent",
+   "detail": "12 months ahead, 80 origins",
+   "effect": "-43% error"
+  },
+  {
+   "ok": true,
+   "claim": "Momentum \u2192 next month's home values",
+   "detail": "36 metros, 48 months",
+   "effect": "-20% error"
+  },
+  {
+   "ok": false,
+   "claim": "Mortgage rates \u2192 next month's home values",
+   "detail": "6-month horizon too: +1.8% (p 0.90)",
+   "effect": "+8% error"
+  },
+  {
+   "ok": false,
+   "claim": "Price cuts \u2192 next month's home values",
+   "detail": "Realtor.com, 12 test months",
+   "effect": "+0.4% error"
+  },
+  {
+   "ok": false,
+   "claim": "TimesFM 3.0 on home values",
+   "detail": "smoothed Zillow series: momentum wins",
+   "effect": "+170% error"
+  }
+ ],
+ "collectors": [
+  {
+   "name": "LinkedIn jobs",
+   "detail": "9 markets \u00b7 jobs posted this week: Dallas 59,911 \u00b7 Dubai 5,881",
+   "via": "treg \u00b7 harvestapi (the actor Hunch runs)"
+  },
+  {
+   "name": "Airbnb",
+   "detail": "180 listings \u00b7 median night: Dallas $123 \u00b7 Dubai $175 \u00b7 Almaty $50",
+   "via": "Glasser \u00b7 apify tri_angle, Hunch's stay settings"
+  },
+  {
+   "name": "Zillow",
+   "detail": "lender quotes, agents, ZIP and metro values and rents",
+   "via": "Glasser + research CSVs"
+  },
+  {
+   "name": "RentCast",
+   "detail": "ZIP market stats: 76164, 76574",
+   "via": "Glasser market_data (Hunch's RentCast vertical)"
+  },
+  {
+   "name": "LinkedIn companies",
+   "detail": "Emaar 1,701,426 followers \u00b7 ALDAR 536,454 followers \u00b7 Invitation Homes 50,012 followers",
+   "via": "Glasser \u00b7 tikhub"
+  },
+  {
+   "name": "X \u00b7 TikTok \u00b7 YouTube \u00b7 news",
+   "detail": "543 posts and videos + 100 headlines, read by Argon for froth",
+   "via": "treg"
+  },
+  {
+   "name": "Markets",
+   "detail": "EMAAR.AE -22% 1y \u00b7 DHI -6% 1y \u00b7 INVH -0% 1y \u00b7 KZT=X -13% 1y",
+   "via": "yfinance (KZT=X up = tenge weaker)"
+  },
+  {
+   "name": "Gemini 4 Argon",
+   "detail": "9 grounded research calls (Google Search), 9 social readings, 5-sample ranking",
+   "via": "high \u00b7 priority"
+  },
+  {
+   "name": "Official data",
+   "detail": "Realtor.com, BLS CPI, Freddie Mac",
+   "via": "free downloads"
+  }
+ ],
+ "rank_hint": "hover a row for Argon's reasoning \u00b7 model = net yield + half of momentum \u2212 entry/exit costs over 5 years \u00b7 FX swing counts as risk",
+ "spend_text": "spend today: Glasser $0.73 (balance $0.2664) \u00b7 treg $0.08",
+ "hash": "703fedfc2aee903bc5d7d07e2e7c5c2810a9cc254b7a2879528bb464cfd80f2c",
+ "footer": "Research, not investment advice. US numbers are measured (Zillow, Realtor.com, BLS, Freddie Mac) and backtested; Dubai, Abu Dhabi, Almaty and Astana use Argon-grounded published figures with sources (runs/re_invest_research.json). Risk = chance prices fall, price cuts, social froth, FX swing, supply flags. Pre-registered hash covers the model and Argon numbers.",
+ "graph": {
+  "nodes": [
+   {
+    "id": "us10y",
+    "label": "10-year Treasury",
+    "group": "driver",
+    "level": 0,
+    "lat": 40.71,
+    "lon": -74.01,
+    "value": "4.99%"
+   },
+   {
+    "id": "zori",
+    "label": "US market rents (Zillow)",
+    "group": "driver",
+    "level": 0,
+    "lat": 47.61,
+    "lon": -122.33,
+    "value": "+2.7% y/y"
+   },
+   {
+    "id": "jobs_tx",
+    "label": "Texas jobs (LinkedIn)",
+    "group": "driver",
+    "level": 0,
+    "lat": 33.6,
+    "lon": -101.8,
+    "value": "194,453 this week"
+   },
+   {
+    "id": "tx_tax",
+    "label": "Texas tax + insurance",
+    "group": "driver",
+    "level": 0,
+    "lat": 27.3,
+    "lon": -102.5,
+    "value": "\u22484.5% a year"
+   },
+   {
+    "id": "uae_credit",
+    "label": "UAE loans + AED peg",
+    "group": "driver",
+    "level": 0,
+    "lat": 22.6,
+    "lon": 51.6,
+    "value": "5.25% loans"
+   },
+   {
+    "id": "dxb_supply",
+    "label": "Dubai handover pipeline",
+    "group": "driver",
+    "level": 0,
+    "lat": 27.9,
+    "lon": 57.5,
+    "value": "supply risk",
+    "tip": "Dubai faces its largest residential delivery wave in over a decade over the next 24 months (late 2026 through late 2028). In the first nine months of 2026, ~33,000 homes were completed (up from ~24,800 in H1 2026, though"
+   },
+   {
+    "id": "ad_zones",
+    "label": "Abu Dhabi investment zones",
+    "group": "driver",
+    "level": 0,
+    "lat": 21.6,
+    "lon": 55.9,
+    "value": "50 zones"
+   },
+   {
+    "id": "kzt",
+    "label": "Tenge vs USD",
+    "group": "driver",
+    "level": 0,
+    "lat": 46.6,
+    "lon": 80.8,
+    "value": "13% swing in a year"
+   },
+   {
+    "id": "kz_credit",
+    "label": "KZ loans + title rule",
+    "group": "driver",
+    "level": 0,
+    "lat": 48.0,
+    "lon": 66.0,
+    "value": "19.5% \u00b7 VNZh"
+   },
+   {
+    "id": "froth",
+    "label": "Social froth (Argon)",
+    "group": "driver",
+    "level": 0,
+    "lat": null,
+    "lon": null,
+    "value": "Dubai 0.72 \u00b7 Abu Dhabi 0.62"
+   },
+   {
+    "id": "us_mortgage",
+    "label": "US 30-year mortgage",
+    "group": "channel",
+    "level": 1,
+    "lat": 38.93,
+    "lon": -77.18,
+    "value": "7.32% \u2192 7.28%"
+   },
+   {
+    "id": "cpi_rent",
+    "label": "CPI rent (BLS)",
+    "group": "channel",
+    "level": 1,
+    "lat": 36.2,
+    "lon": -86.9,
+    "value": "3.0% \u2192 2.9%"
+   },
+   {
+    "id": "momentum",
+    "label": "US price momentum",
+    "group": "channel",
+    "level": 1,
+    "lat": 37.7,
+    "lon": -92.0,
+    "value": "+0.10% Oct"
+   },
+   {
+    "id": "rent_2027",
+    "label": "Your rent \u00b7 Sep 2027",
+    "group": "outcome",
+    "level": 2,
+    "lat": 34.0,
+    "lon": -81.0,
+    "value": "2.9%"
+   },
+   {
+    "id": "abu_dhabi",
+    "label": "Abu Dhabi",
+    "group": "market",
+    "level": 2,
+    "lat": 24.45,
+    "lon": 54.38,
+    "verdict": "buy",
+    "model": 15.270000000000001,
+    "argon": 9.2,
+    "value": "+15.3% \u00b7 buy",
+    "tip": "We rank Abu Dhabi #1 globally but haircut the transparent model's 15.27% projection down to 9.2%. The model linearly extrapolates half of the trailing 24.1% price surge (+12.05%), ignoring three late-2026 brakes: ADREC's June 2\u20133, 2026 temporary 0% rent increase cap on renewals, a 19% QoQ (7% YoY) Q3 2026 transaction drop tied to regional geopolitical tensions, and froth where 81%\u201389% of volume is speculative off-plan flipping ahead of ~30 launches ($9B\u2013$12.25B). Even so, completed stock remains tight\u2014only 3,454 units were handed over in H1 2026 (18.8% of the 18,339 nominal pipeline, with full-year handovers estimated at 6,500\u20137,562 on ~409,000 existing units)\u2014delivering a clean 4.32% net long-term yield (12.6% gross STR yield at $180.33 ADR and 61% occupancy) with zero FX drag (USD/AED pegged at 3.6726) across 50 designated freehold Investment Zones."
+   },
+   {
+    "id": "astana",
+    "label": "Astana",
+    "group": "market",
+    "level": 2,
+    "lat": 51.17,
+    "lon": 71.45,
+    "verdict": "hold",
+    "model": 11.872,
+    "argon": 3.2,
+    "value": "+11.9% \u00b7 hold",
+    "tip": "We strongly disagree with the transparent model's 11.87% expected return and 0.64 risk score. First, under Article 9 of the Law 'On the Legal Status of Foreigners' and Article 23 of the Land Code, non-resident foreign individuals are legally barred from directly purchasing or registering residential property, forcing complex local LLC workarounds. Second, the model assumes 0% FX movement, ignoring that Kazakhstan Q3 2026 CPI inflation is running at 9.8%\u201310.2% (meaning 9.7% nominal price growth is negative in real terms) and that KZT appreciated 13.26% YoY to ~453.35/USD only because local interest/mortgage rates sit at a punitive 19.5% (-11.78% leverage spread). With record supply (4.81M sqm delivered in 2025\u201424% of the national total\u2014plus 3.05M sqm commissioned in 2026), weak STR yields (6.96% gross at 49% occupancy), and retail crypto RWA fractional pitches on Solana, expected KZT mean-reversion and corporate friction wipe out most of the 7.72% net local yield for a USD investor."
+   },
+   {
+    "id": "almaty",
+    "label": "Almaty",
+    "group": "market",
+    "level": 2,
+    "lat": 43.24,
+    "lon": 76.89,
+    "verdict": "avoid",
+    "model": 9.468000000000002,
+    "argon": 1.4,
+    "value": "+9.5% \u00b7 avoid",
+    "tip": "We cut the model's 9.47% expected return to 1.0% and raise risk from 0.60 to 0.76. Like Astana, Almaty prohibits direct residential title ownership by non-resident foreigners without a permanent residence permit (VNZh), requiring local corporate structuring. Nominal 12-month price growth of 7.9% trails domestic CPI inflation of 9.8%\u201310.2% (real-terms erosion), leaving USD returns vulnerable to tenge depreciation after a 13.26% 1-year KZT rally (USD/KZT at 453.35). Furthermore, city construction output jumped 23.3% YoY in Jan\u2013Jul 2026 (following 2.61M sqm commissioned in 2025), social feeds show rising 'urgent sale' (\u0441\u0440\u043e\u0447\u043d\u043e \u043f\u0440\u043e\u0434\u0430\u0435\u0442\u0441\u044f) resale inventory and warped-floor quality defects in 'business class' buildings, and active Tien Shan fault lines create severe uninsurable seismic tail risk."
+   },
+   {
+    "id": "miami",
+    "label": "Miami",
+    "group": "market",
+    "level": 2,
+    "lat": 25.76,
+    "lon": -80.19,
+    "verdict": "hold",
+    "model": -0.19481140288322218,
+    "argon": -2.4,
+    "value": "-0.2% \u00b7 hold",
+    "tip": "We disagree downward with the model's -0.19% return and 0.49 risk. While tech billionaire inflows support $5M\u2013$21M estates, the investable buy-to-let condo and multifamily market faces a 36,290-unit construction wave across Southeast Florida (adding ~9% to existing stock, backed by 4,473 weekly construction job postings). Downtown condos already show 12\u201320 months of supply with 20%\u201330% price cuts, older buildings face punitive Post-Surfside SIRS reserve mandates and special assessments under Florida Statutes \u00a7 553.899 / \u00a7 718.112 (SB 4-D / HB 913), and nation-leading windstorm insurance costs push annual holding expenses to 4.8%, reducing net yield to a razor-thin 0.54%."
+   },
+   {
+    "id": "dubai",
+    "label": "Dubai",
+    "group": "market",
+    "level": 2,
+    "lat": 25.2,
+    "lon": 55.27,
+    "verdict": "avoid",
+    "model": 0.00800000000000023,
+    "argon": -2.6,
+    "value": "+0.0% \u00b7 avoid",
+    "tip": "We adjust the model's 0.01% return down to -1.2% for new 12-month buy-to-let entries. Physical prices are already down -4.5% YoY and rents are down -6.81% YoY, corroborated by flagship developer Emaar Properties (EMAAR.AE) falling -21.54% YoY (-7.63% over 3 months). Dubai faces its largest residential delivery wave in over a decade from late 2026 through late 2028 (~33,000 homes completed in 9M 2026; S&P Global Ratings Oct 2026 warns of apartment oversupply and yield compression, with 133 active projects in Meydan and 103 in Dubai Land Residence Complex). Meanwhile, high promotional hype (0.72) features brokers pitching $44k down payments (20% down / 3-year plans) on overpriced off-plan units, and round-trip transaction costs are steep at 8.6%."
+   },
+   {
+    "id": "dallas",
+    "label": "Dallas",
+    "group": "market",
+    "level": 2,
+    "lat": 32.78,
+    "lon": -96.8,
+    "verdict": "accumulate",
+    "model": -1.9316311502786436,
+    "argon": 1.8,
+    "value": "-1.9% \u00b7 accumulate",
+    "tip": "We disagree upward with the passive metro model (-1.93%), which reflects a bifurcated market dragged down by 4.5% non-homestead holding costs (taxes plus a 79% statewide insurance jump after $5.8B in 2025 hail/wind losses), 56.4% of multifamily rentals offering concessions, and 8.7\u20138.9 months of soft condo supply. However, DFW leads the entire table in job creation (59,911 weekly / 138,488 monthly LinkedIn job postings; 'Y'all Street' relocations), multifamily units under construction are down 21%\u201343% YoY to ~30,200\u201333,000, and RentCast confirms that workforce SFR in top ZIPs like 76164 ($208,000 median sale price, $1,677 median rent, 11.22% gross yield) leases in a blistering 4 median days on market (7.36 average DOM), generating +3.4% to +6.1% 12-month returns if bought unlevered (avoiding 7.32%\u20137.49% mortgages that create a -7.37% leverage spread)."
+   },
+   {
+    "id": "austin",
+    "label": "Austin",
+    "group": "market",
+    "level": 2,
+    "lat": 30.27,
+    "lon": -97.74,
+    "verdict": "avoid",
+    "model": -2.238343875444475,
+    "argon": -4.2,
+    "value": "-2.2% \u00b7 avoid",
+    "tip": "We strongly disagree downward with the model's -2.24% return (which erroneously inputs -0.15% appreciation instead of half of the actual -4.31% 12-month price drop, or -2.16%). Despite leading the table in per-capita hiring intensity (17.97 LinkedIn postings per 1k residents/week; 45,830/week) and a 51.5% YoY drop in multifamily deliveries (to 12,737 units from 32,089 in 2024), Austin is still working through severe supply digestion: 4.9 homes for sale per pending contract (vs. 2.9 historical average), 69.8% of homes selling below list price, distressed listings up 34% YoY to 2,198 (short sales nearly doubled), and Aug\u2013Sept 2026 property tax rate hikes by four of Austin's five taxing entities. Furthermore, RentCast's cross-check of Austin's #1 model ZIP (76574 Taylor) exposes sluggish liquidity, with 344 sale listings averaging 109 days on market ($302,240 median / $776,867 average price) and rentals taking 60.11 average days to lease at $1,825 median rent."
+   },
+   {
+    "id": "houston",
+    "label": "Houston",
+    "group": "market",
+    "level": 2,
+    "lat": 29.76,
+    "lon": -95.37,
+    "verdict": "avoid",
+    "model": -2.0469892840952237,
+    "argon": -2.1,
+    "value": "-2.0% \u00b7 avoid",
+    "tip": "Our -2.1% projection aligns with the transparent model (-2.05%). Although Houston offers a 6.49% gross yield (7.72% Argon) and 49,596 weekly LinkedIn job postings, it suffers the highest annual holding cost in the dataset at 5.0% (Harris County non-homestead property taxes, coastal windstorm insurance, and HOA fees) plus 9.5% transaction costs. Following a 2023\u20132025 wave that delivered 67,000+ multifamily units (~18,000 still vacant as of April 2026 per CoStar), 60.3% of Houston rentals are offering concessions across 53,689+ available listings, townhome/condo inventory sits at 9.3 months with median prices down 9.1% YoY, and builders are advertising $126k price drops."
+   },
+   {
+    "id": "san_antonio",
+    "label": "San Antonio",
+    "group": "market",
+    "level": 2,
+    "lat": 29.42,
+    "lon": -98.49,
+    "verdict": "avoid",
+    "model": -2.1147777562214154,
+    "argon": -3.5,
+    "value": "-2.1% \u00b7 avoid",
+    "tip": "We downgrade the model's -2.11% return to -2.8% and concur with its table-high 0.73 risk score. San Antonio is the only US market in the cohort with both falling prices (-1.90% YoY) and falling rents (-0.74% YoY), while 4.5% holding costs and 9.5% transaction costs crush net returns. Condos are severely illiquid at ~175 days on market (nearly 3x normal), builders are offering distress-level 2%\u20133.49% mortgage rate buydowns and $100k\u2013$107k price cuts, and the guilty plea of local CEO Devin Elder in a $69.5M real estate Ponzi scheme (the metro's largest former CRE borrower) threatens localized distressed liquidations."
+   }
+  ],
+  "edges": [
+   {
+    "source": "us10y",
+    "target": "us_mortgage",
+    "cls": "measured",
+    "evidence": "Granger p = 3e-34 at a 2-week lag; TimesFM \u221226% error vs no-change"
+   },
+   {
+    "source": "zori",
+    "target": "cpi_rent",
+    "cls": "measured",
+    "evidence": "r 0.90 at a 13-month lead"
+   },
+   {
+    "source": "cpi_rent",
+    "target": "rent_2027",
+    "cls": "measured",
+    "evidence": "12-month-ahead -43% error vs CPI's own history"
+   },
+   {
+    "source": "momentum",
+    "target": "dallas",
+    "cls": "measured",
+    "evidence": "AR momentum -20% error vs naive"
+   },
+   {
+    "source": "momentum",
+    "target": "austin",
+    "cls": "measured",
+    "evidence": "AR momentum -20% error vs naive"
+   },
+   {
+    "source": "momentum",
+    "target": "houston",
+    "cls": "measured",
+    "evidence": "AR momentum -20% error vs naive"
+   },
+   {
+    "source": "momentum",
+    "target": "san_antonio",
+    "cls": "measured",
+    "evidence": "AR momentum -20% error vs naive"
+   },
+   {
+    "source": "momentum",
+    "target": "miami",
+    "cls": "measured",
+    "evidence": "AR momentum -20% error vs naive"
+   },
+   {
+    "source": "us_mortgage",
+    "target": "dallas",
+    "cls": "noskill",
+    "evidence": "tested: rates add +8% error next month, +1.8% at 6 months"
+   },
+   {
+    "source": "us_mortgage",
+    "target": "austin",
+    "cls": "noskill",
+    "evidence": "tested: rates add +8% error next month, +1.8% at 6 months"
+   },
+   {
+    "source": "us_mortgage",
+    "target": "houston",
+    "cls": "noskill",
+    "evidence": "tested: rates add +8% error next month, +1.8% at 6 months"
+   },
+   {
+    "source": "us_mortgage",
+    "target": "san_antonio",
+    "cls": "noskill",
+    "evidence": "tested: rates add +8% error next month, +1.8% at 6 months"
+   },
+   {
+    "source": "us_mortgage",
+    "target": "miami",
+    "cls": "noskill",
+    "evidence": "tested: rates add +8% error next month, +1.8% at 6 months"
+   },
+   {
+    "source": "jobs_tx",
+    "target": "dallas",
+    "cls": "prior",
+    "evidence": "demand: new jobs bring renters"
+   },
+   {
+    "source": "jobs_tx",
+    "target": "austin",
+    "cls": "prior",
+    "evidence": "demand: new jobs bring renters"
+   },
+   {
+    "source": "jobs_tx",
+    "target": "houston",
+    "cls": "prior",
+    "evidence": "demand: new jobs bring renters"
+   },
+   {
+    "source": "jobs_tx",
+    "target": "san_antonio",
+    "cls": "prior",
+    "evidence": "demand: new jobs bring renters"
+   },
+   {
+    "source": "tx_tax",
+    "target": "dallas",
+    "cls": "prior",
+    "evidence": "holding costs eat about 4\u20135 points of gross yield"
+   },
+   {
+    "source": "tx_tax",
+    "target": "austin",
+    "cls": "prior",
+    "evidence": "holding costs eat about 4\u20135 points of gross yield"
+   },
+   {
+    "source": "tx_tax",
+    "target": "houston",
+    "cls": "prior",
+    "evidence": "holding costs eat about 4\u20135 points of gross yield"
+   },
+   {
+    "source": "tx_tax",
+    "target": "san_antonio",
+    "cls": "prior",
+    "evidence": "holding costs eat about 4\u20135 points of gross yield"
+   },
+   {
+    "source": "uae_credit",
+    "target": "dubai",
+    "cls": "prior",
+    "evidence": "dollar-pegged financing; no FX risk for a USD buyer"
+   },
+   {
+    "source": "uae_credit",
+    "target": "abu_dhabi",
+    "cls": "prior",
+    "evidence": "dollar-pegged financing; no FX risk for a USD buyer"
+   },
+   {
+    "source": "dxb_supply",
+    "target": "dubai",
+    "cls": "prior",
+    "evidence": "large 2026\u201327 handovers weigh on prices and rents"
+   },
+   {
+    "source": "ad_zones",
+    "target": "abu_dhabi",
+    "cls": "prior",
+    "evidence": "more freehold zones widen foreign demand"
+   },
+   {
+    "source": "froth",
+    "target": "dubai",
+    "cls": "anecdotal",
+    "evidence": "broker promotion vs macro skepticism (X, TikTok, YouTube)"
+   },
+   {
+    "source": "froth",
+    "target": "abu_dhabi",
+    "cls": "anecdotal",
+    "evidence": "bullish chatter, sentiment +0.78"
+   },
+   {
+    "source": "kzt",
+    "target": "almaty",
+    "cls": "prior",
+    "evidence": "the tenge's swing is the USD investor's risk"
+   },
+   {
+    "source": "kzt",
+    "target": "astana",
+    "cls": "prior",
+    "evidence": "the tenge's swing is the USD investor's risk"
+   },
+   {
+    "source": "kz_credit",
+    "target": "almaty",
+    "cls": "prior",
+    "evidence": "19.5% mortgages; sources say non-residents need a VNZh to register title"
+   },
+   {
+    "source": "kz_credit",
+    "target": "astana",
+    "cls": "prior",
+    "evidence": "19.5% mortgages; sources say non-residents need a VNZh to register title"
+   }
+  ]
+ },
+ "pick": "Abu Dhabi (completed prime freehold units in designated Investment Zones) is our #1 overall pick for a 12-month USD investor (+9.2% expected return), paired with selective all-cash accumulation in Fort Worth ZIP 76164 (+6.1% ZIP model return, 11.22% gross yield, and 4-day median rental DOM on RentCast) as our #1 US submarket pick."
+}

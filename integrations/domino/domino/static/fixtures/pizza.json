@@ -1,0 +1,79 @@
+{
+ "asof": "2026-10-25T11:45:00-07:00",
+ "index": 1.42,
+ "places": [
+  {
+   "name": "Extreme Pizza",
+   "lat": 38.8602,
+   "lon": -77.056,
+   "live": 66,
+   "usual": 35,
+   "ratio": 1.89,
+   "status": "busier than usual"
+  },
+  {
+   "name": "We, The Pizza",
+   "lat": 38.8549,
+   "lon": -77.0496,
+   "live": 53,
+   "usual": 30,
+   "ratio": 1.77,
+   "status": "busier than usual"
+  },
+  {
+   "name": "District Pizza Palace",
+   "lat": 38.8527,
+   "lon": -77.0526,
+   "live": 41,
+   "usual": 28,
+   "ratio": 1.46,
+   "status": "busier than usual"
+  },
+  {
+   "name": "Domino's Pizza",
+   "lat": 38.8655,
+   "lon": -77.0618,
+   "live": 49,
+   "usual": 38,
+   "ratio": 1.29,
+   "status": "busier than usual"
+  },
+  {
+   "name": "Papa Johns Pizza",
+   "lat": 38.8626,
+   "lon": -77.0846,
+   "live": 33,
+   "usual": 31,
+   "ratio": 1.06,
+   "status": "as busy as usual"
+  },
+  {
+   "name": "Pizza Hut",
+   "lat": 38.8573,
+   "lon": -77.0581,
+   "live": 29,
+   "usual": 30,
+   "ratio": 0.97,
+   "status": "as busy as usual"
+  },
+  {
+   "name": "California Pizza Kitchen",
+   "lat": 38.8628,
+   "lon": -77.0595,
+   "live": 61,
+   "usual": 42,
+   "ratio": 1.45,
+   "status": "busier than usual"
+  },
+  {
+   "name": "Wiseguy Pizza",
+   "lat": 38.8627,
+   "lon": -77.0588,
+   "live": null,
+   "usual": null,
+   "ratio": null,
+   "status": "no live data from Google today"
+  }
+ ],
+ "note": null
+}

@@ -1,0 +1,158 @@
+[
+  {
+    "type": "data_call",
+    "target": "zillow.com \u00b7 ZHVI metro CSV",
+    "usd": 0,
+    "seconds": 0.8,
+    "cached": true,
+    "t": 0.7
+  },
+  {
+    "type": "data_call",
+    "target": "zillow.com \u00b7 ZORI metro CSV",
+    "usd": 0,
+    "seconds": 0.8,
+    "cached": true,
+    "t": 1.4
+  },
+  {
+    "type": "data_call",
+    "target": "realtor.com \u00b7 inventory history",
+    "usd": 0,
+    "seconds": 0.8,
+    "cached": true,
+    "t": 2.1
+  },
+  {
+    "type": "data_call",
+    "target": "bls.gov \u00b7 CPI rent (API v1)",
+    "usd": 0,
+    "seconds": 0.8,
+    "cached": true,
+    "t": 2.8
+  },
+  {
+    "type": "data_call",
+    "target": "freddiemac.com \u00b7 PMMS history",
+    "usd": 0,
+    "seconds": 0.8,
+    "cached": true,
+    "t": 3.5
+  },
+  {
+    "type": "data_call",
+    "target": "yfinance \u00b7 ^TNX",
+    "usd": 0,
+    "seconds": 0.8,
+    "cached": true,
+    "t": 4.2
+  },
+  {
+    "type": "data_call",
+    "target": "treg \u00b7 news 'rates'",
+    "usd": 0.0,
+    "seconds": 1.5,
+    "cached": true,
+    "t": 4.9
+  },
+  {
+    "type": "data_call",
+    "target": "treg \u00b7 news 'housing'",
+    "usd": 0.0,
+    "seconds": 1.5,
+    "cached": true,
+    "t": 5.6
+  },
+  {
+    "type": "data_call",
+    "target": "treg \u00b7 news 'rent'",
+    "usd": 0.0,
+    "seconds": 1.5,
+    "cached": true,
+    "t": 6.3
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon housing ensemble 1/5",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 6000,
+    "output_tokens": 900,
+    "thought_tokens": 2500,
+    "cached": true,
+    "t": 7.0
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon housing ensemble 2/5",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 6000,
+    "output_tokens": 900,
+    "thought_tokens": 2500,
+    "cached": true,
+    "t": 7.7
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon housing ensemble 3/5",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 6000,
+    "output_tokens": 900,
+    "thought_tokens": 2500,
+    "cached": true,
+    "t": 8.4
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon housing ensemble 4/5",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 6000,
+    "output_tokens": 900,
+    "thought_tokens": 2500,
+    "cached": true,
+    "t": 9.1
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon housing ensemble 5/5",
+    "thinking_level": "high",
+    "seconds": 60,
+    "input_tokens": 6000,
+    "output_tokens": 900,
+    "thought_tokens": 2500,
+    "cached": true,
+    "t": 9.8
+  },
+  {
+    "type": "argon_call",
+    "purpose": "Argon metro brief",
+    "thinking_level": "high",
+    "seconds": 80,
+    "input_tokens": 14000,
+    "output_tokens": 2500,
+    "thought_tokens": 4000,
+    "cached": true,
+    "t": 10.5
+  },
+  {
+    "type": "log",
+    "level": "info",
+    "text": "Market rents lead CPI rent by 13 months (corr 0.90)",
+    "t": 11.2
+  },
+  {
+    "type": "log",
+    "level": "warn",
+    "text": "Mortgage rates add no next-month skill for home values (+8% error); momentum rules",
+    "t": 11.9
+  },
+  {
+    "type": "log",
+    "level": "warn",
+    "text": "Price cuts add no next-month skill (+0.4%, p=0.40)",
+    "t": 12.6
+  }
+]

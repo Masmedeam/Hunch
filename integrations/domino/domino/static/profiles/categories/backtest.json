@@ -1,0 +1,84 @@
+{
+  "window": "2024..2026 daily",
+  "n_days": null,
+  "target": "Next-day attention (social-engagement proxy) and first-domino volatility models",
+  "metrics": {
+    "crps": {
+      "domino": {
+        "mean": 0.39820667240086827
+      },
+      "ewma": {
+        "mean": 0.41771755447469605
+      }
+    }
+  },
+  "dm_test": {},
+  "reliability": [],
+  "series": [],
+  "leaderboard": [
+    {
+      "model": "Macro stress \u2192 equities, rates, gold",
+      "attention_mae_diff": -0.035,
+      "attention_p": 3.977152262000017e-08,
+      "first_domino": "Recession",
+      "attn_leads_mkts": 3,
+      "mkts_lead_attn": 1
+    },
+    {
+      "model": "Weather and disasters \u2192 gas, insurers,",
+      "attention_mae_diff": -0.035,
+      "attention_p": 9.884276030427849e-12,
+      "first_domino": "none",
+      "attn_leads_mkts": 0,
+      "mkts_lead_attn": 0
+    },
+    {
+      "model": "China\u2013Taiwan and trade \u2192 chips, China ",
+      "attention_mae_diff": -0.029,
+      "attention_p": 0.0007403226451498223,
+      "first_domino": "China\u2013United States trade wa",
+      "attn_leads_mkts": 1,
+      "mkts_lead_attn": 0
+    },
+    {
+      "model": "AI hype \u2192 AI stocks",
+      "attention_mae_diff": -0.027,
+      "attention_p": 2.0098022337282193e-08,
+      "first_domino": "none",
+      "attn_leads_mkts": 0,
+      "mkts_lead_attn": 0
+    },
+    {
+      "model": "Outbreak attention \u2192 biotech",
+      "attention_mae_diff": -0.025,
+      "attention_p": 7.61856281960521e-06,
+      "first_domino": "none",
+      "attn_leads_mkts": 0,
+      "mkts_lead_attn": 0
+    },
+    {
+      "model": "Crypto attention \u2192 crypto prices",
+      "attention_mae_diff": -0.014,
+      "attention_p": 0.02640896360923015,
+      "first_domino": "Ethereum",
+      "attn_leads_mkts": 3,
+      "mkts_lead_attn": 4
+    },
+    {
+      "model": "Middle East geopolitics \u2192 energy",
+      "attention_mae_diff": -0.008,
+      "attention_p": 0.25976036082347487,
+      "first_domino": "none",
+      "attn_leads_mkts": 0,
+      "mkts_lead_attn": 0
+    },
+    {
+      "model": "Russia\u2013Ukraine \u2192 gas, grain, defense",
+      "attention_mae_diff": 0.017,
+      "attention_p": 0.08855141977558106,
+      "first_domino": "Russian invasion of Ukraine",
+      "attn_leads_mkts": 1,
+      "mkts_lead_attn": 0
+    }
+  ]
+}
