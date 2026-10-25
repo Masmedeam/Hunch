@@ -253,7 +253,10 @@ const LIVE_FORECAST_SCHEMA = {
 
 async function generatePredictionRun(body, env, requestUrl) {
   const t0 = Date.now();
-  const selected = new Set(body.selected_sources || ["news", "x", "markets"]);
+  const rawSources = Array.isArray(body.selected_sources) && body.selected_sources.length > 0
+    ? body.selected_sources
+    : ["news", "markets", "zillow", "gas"];
+  const selected = new Set(rawSources);
   const fields = body.field_values || {};
   const userPrompt = (body.prompt || "").trim();
   const model = "gemini-4-argon";
@@ -331,7 +334,7 @@ async function generatePredictionRun(body, env, requestUrl) {
   }
 
   const systemText = [
-    "You are NEXTDAY, a rigorous probabilistic next-day forecasting engine powered by gemini-4-argon.",
+    "You are Hunch, a rigorous probabilistic next-day forecasting engine powered by gemini-4-argon.",
     "You are given cached Glasser multi-source evidence snapshots captured on 2026-10-25 UTC and user configuration.",
     "Generate between 4 and 6 concrete, quantitatively resolvable next-day (24-hour horizon: 2026-10-26 UTC) forecasts.",
     userPrompt
@@ -405,12 +408,7 @@ async function generatePredictionRun(body, env, requestUrl) {
     return {
       ...f,
       id: `${runId}-${idx + 1}`,
-      probability: p,
-      model_comparison: {
-        "gemini-4-argon": p,
-        "claude-4.6-opus": Math.max(0.05, Math.min(0.95, Number((p - 0.04).toFixed(2)))),
-        "gpt-5.4": Math.max(0.05, Math.min(0.95, Number((p - 0.06).toFixed(2))))
-      }
+      probability: p
     };
   });
 

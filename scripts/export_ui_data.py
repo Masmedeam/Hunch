@@ -295,6 +295,7 @@ def export_ui_bundle(out_dir="ui/public/data"):
             "resume_status": resume_status,
             "batches_summary": bench_batches,
             "cases": cases_summary,
+            "evaluations": load_json("data/benchmarks/retrospective-v0/evaluations/summary.json", {}),
             "empirical_baselines": {
                 "q1_weekday_cases": len(q1_weekday_up),
                 "q1_up_rate": round(sum(1 for x in q1_weekday_up if x) / len(q1_weekday_up), 4) if q1_weekday_up else None,
