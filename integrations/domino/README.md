@@ -32,12 +32,21 @@ The dashboards run from prebuilt fixtures in `domino/static/profiles/`. Press 1�
 | `/?profile=categories` | 8-category sweep: what is predictable next day, and the first dominoes |
 | `/realestate` | Real estate: where to invest over the next 12 months (USD), measured chains, scoreboard |
 | `/realestate/mock?v=1`, `?v=2`, `?v=3` | Three simplified layouts built on the globe and causal links: map-first, linked views, causal flow |
+| `/realestate/mock?v=1&theme=white`, `&theme=offwhite` | White and off-white versions of the same mocks (also `v=2`, `v=3`; the header switch toggles dark · white · off-white) |
 | `/?mock=1` | The live Domino page (Hormuz → oil → your pump) on demo fixtures |
 
 | | |
 |---|---|
 | ![Map-first](docs/screens/mock-v1-map-first.jpg) | ![Linked views](docs/screens/mock-v2-linked-views.jpg) |
 | ![Causal flow](docs/screens/mock-v3-causal-flow.jpg) | ![Real estate](docs/screens/real-estate.jpg) |
+
+### White and off-white versions
+
+| | White (`&theme=white`) | Off-white (`&theme=offwhite`) |
+|---|---|---|
+| V1 · Map-first | ![V1 white](docs/screens/mock-v1-map-first-white.jpg) | ![V1 off-white](docs/screens/mock-v1-map-first-offwhite.jpg) |
+| V2 · Linked views | ![V2 white](docs/screens/mock-v2-linked-views-white.jpg) | ![V2 off-white](docs/screens/mock-v2-linked-views-offwhite.jpg) |
+| V3 · Causal flow | ![V3 white](docs/screens/mock-v3-causal-flow-white.jpg) | ![V3 off-white](docs/screens/mock-v3-causal-flow-offwhite.jpg) |
 
 ## Re-run the analyses
 
