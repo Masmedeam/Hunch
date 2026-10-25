@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hunch — Pitch</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23171716'/%3E%3Cpath d='M11 29c0-7.5 3.8-14 9-14s9 6.5 9 14' fill='%23FAF9F6'/%3E%3Cpath d='M13 17l-2.5-5.5L16 14M27 17l2.5-5.5L24 14' fill='%23FAF9F6' stroke='%23FAF9F6' stroke-width='1.5' stroke-linejoin='round'/%3E%3Ccircle cx='16.5' cy='20.5' r='3.2' fill='%23171716'/%3E%3Ccircle cx='23.5' cy='20.5' r='3.2' fill='%23171716'/%3E%3Ccircle cx='17.3' cy='19.7' r='1.1' fill='%23FAF9F6'/%3E%3Ccircle cx='24.3' cy='19.7' r='1.1' fill='%23FAF9F6'/%3E%3Ccircle cx='23.5' cy='20.5' r='4.6' fill='none' stroke='%23E1381C' stroke-width='1.6'/%3E%3Cpath d='M18.5 24.2c1 1.1 2 1.1 3 0' fill='none' stroke='%23E1381C' stroke-width='1.8' stroke-linecap='round'/%3E%3Ccircle cx='29' cy='10' r='2.2' fill='%23E1381C'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F8F7F4;
+      --surface: #FFFFFF;
+      --surface-subtle: #F1EFEA;
+      --ink: #141413;
+      --ink-secondary: #5A5853;
+      --ink-muted: #9A978F;
+      --border: #E5E2DC;
+      --accent: #E1381C;
+      --accent-soft: #FDECE9;
+      --green: #0E7A5D;
+      --green-soft: #E8F6F2;
+      --indigo: #4F46E5;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* TOP BAR */
+    .deck-topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(248, 247, 244, 0.94);
+      backdrop-filter: blur(10px);
+      z-index: 30;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-dots {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--surface-subtle);
+      padding: 3px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
+    .slide-pill {
+      background: transparent;
+      border: none;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .slide-pill:hover {
+      color: var(--ink);
+    }
+
+    .slide-pill.active {
+      background: var(--ink);
+      color: #FFF;
+      font-weight: 600;
+    }
+
+    .app-link {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #FFF;
+      background: var(--ink);
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: opacity 0.15s ease;
+    }
+
+    .app-link:hover {
+      opacity: 0.88;
+    }
+
+    /* SLIDE STAGE */
+    .deck-stage {
+      height: 100vh;
+      padding: 56px 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1120px;
+      padding: 0 36px;
+      animation: fadeSlide 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TYPOGRAPHY (NO EYEBROW TITLES) */
+    .slide-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 4.3vw, 54px);
+      font-weight: 400;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .slide-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .slide-lead {
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--ink-secondary);
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    /* SLIDE 1 HERO SPLIT */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1.18fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .mini-chain {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 18px 0;
+    }
+
+    .mini-chain-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .mini-chain-pill.hot {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFF;
+    }
+
+    .mini-chain-arrow {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    .problem-points {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .problem-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .problem-num {
+      font-family: var(--mono);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 74px;
+    }
+
+    .problem-text {
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      line-height: 1.42;
+    }
+
+    .problem-text strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* WEATHER WOMAN + HOT MAP CARD */
+    .weather-stage-card {
+      background: #141413;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 20px 50px rgba(20, 20, 19, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .weather-stage-card svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @keyframes pulseRed {
+      0%, 100% { r: 22px; opacity: 0.28; }
+      50% { r: 30px; opacity: 0.5; }
+    }
+
+    .hot-pulse {
+      animation: pulseRed 2.4s infinite ease-in-out;
+    }
+
+    /* GRIDS & CARDS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .card.dark {
+      background: var(--ink);
+      color: #FAF9F6;
+      border-color: var(--ink);
+    }
+
+    .card-stat {
+      font-family: var(--serif);
+      font-size: 44px;
+      line-height: 1;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .card.dark .card-stat {
+      color: #FFF;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .card-body {
+      font-size: 13.5px;
+      line-height: 1.48;
+      color: var(--ink-secondary);
+    }
+
+    .card.dark .card-body {
+      color: #B8B5AD;
+    }
+
+    .pill-tag {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: var(--surface-subtle);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--ink);
+      margin: 4px 4px 0 0;
+    }
+
+    /* BARS */
+    .bar-row {
+      margin-bottom: 11px;
+    }
+
+    .bar-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    .bar-track {
+      height: 7px;
+      background: var(--surface-subtle);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--ink);
+      border-radius: 999px;
+    }
+
+    .bar-fill.accent { background: var(--accent); }
+    .bar-fill.green { background: var(--green); }
+    .bar-fill.indigo { background: var(--indigo); }
+
+    /* SLIDE 4: 3 HOTSPOTS + INTERACTIVE 3D OFFICE STAGE */
+    .hotspot-3d-layout {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hotspot-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hotspot-item {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .hotspot-item:hover {
+      border-color: #B8B4AC;
+    }
+
+    .hotspot-item.active {
+      border-color: var(--ink);
+      background: #FFFDFC;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    }
+
+    .hs-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .hs-title {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .hs-prob {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #FFF;
+    }
+
+    .hs-body {
+      font-size: 12.5px;
+      color: var(--ink-secondary);
+      line-height: 1.42;
+    }
+
+    /* 3D STAGE BOX */
+    .stage-3d-card {
+      background: #141413;
+      color: #FAF9F6;
+      border-radius: 16px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid #2A2927;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stage-3d-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stage-3d-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #FFF;
+    }
+
+    .stage-3d-meta {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: #A3A098;
+    }
+
+    .canvas-wrap {
+      position: relative;
+      width: 100%;
+      height: 265px;
+      margin: 8px 0;
+      border-radius: 10px;
+      background: radial-gradient(circle at 50% 35%, #252522 0%, #141413 78%);
+      border: 1px solid #262624;
+      cursor: grab;
+    }
+
+    .canvas-wrap:active {
+      cursor: grabbing;
+    }
+
+    #office-3d-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .stage-3d-overlay {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: #B5B2AA;
+    }
+
+    .phase-controls {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .phase-btn {
+      background: #222220;
+      border: 1px solid #33322F;
+      color: #B5B2AA;
+      border-radius: 8px;
+      padding: 7px 9px;
+      font-family: var(--mono);
+      font-size: 10px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .phase-btn strong {
+      display: block;
+      color: #FFF;
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    .phase-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFF;
+    }
+
+    /* FOOTER */
+    .deck-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      padding: 0 32px;
+      border-top: 1px solid var(--border);
+      background: rgba(248, 247, 244, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 30;
+    }
+
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .slide-counter {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .progress-track {
+      width: 120px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 20%;
+      transition: width 0.2s ease;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      width: 32px;
+      height: 30px;
+      border-radius: 7px;
+      font-family: var(--mono);
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: var(--ink);
+      color: #FFF;
+      border-color: var(--ink);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #FFF;
+      font-weight: 600;
+      font-size: 13.5px;
+      padding: 11px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .cta-btn:hover {
+      opacity: 0.92;
+    }
+
+    @media (max-width: 960px) {
+      html, body { overflow: auto; }
+      .deck-stage { height: auto; padding: 76px 0 72px; }
+      .hero-split, .grid-3, .hotspot-3d-layout { grid-template-columns: 1fr; }
+      .slide-dots { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION -->
+  <header class="deck-topbar">
+    <a href="/" class="brand-link">
+      <svg viewBox="0 0 40 40" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="10" fill="#171716"/>
+        <path d="M10.5 31C10.5 22.2 14.4 15.5 20 15.5C25.6 15.5 29.5 22.2 29.5 31H10.5Z" fill="#FAF9F6"/>
+        <path d="M13.5 17.5L11 11.5L16.8 15.2Z" fill="#FAF9F6" stroke="#FAF9F6" stroke-width="1.2" stroke-linejoin="round"/>
+        <path d="M26.5 17.5L29 11.5L23.2 15.2Z" fill="#FAF9F6" stroke="#FAF9F6" stroke-width="1.2" stroke-linejoin="round"/>
+        <circle cx="16.5" cy="21.5" r="3.1" fill="#171716"/>
+        <circle cx="23.5" cy="21.5" r="3.1" fill="#171716"/>
+        <circle cx="17.4" cy="20.6" r="1.15" fill="#FFFFFF"/>
+        <circle cx="24.4" cy="20.6" r="1.15" fill="#FFFFFF"/>
+        <circle cx="23.5" cy="21.5" r="4.7" stroke="#E1381C" stroke-width="1.6"/>
+        <path d="M28.2 22.5L30.2 25" stroke="#E1381C" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M18.6 25.2Q20 26.8 21.4 25.2" stroke="#E1381C" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="30.5" cy="9.5" r="2.2" fill="#E1381C"/>
+      </svg>
+      <span>Hunch</span>
+    </a>
+
+    <nav class="slide-dots" aria-label="Slide navigation">
+      <button class="slide-pill active" data-slide="0">1 · Problem</button>
+      <button class="slide-pill" data-slide="1">2 · Solution</button>
+      <button class="slide-pill" data-slide="2">3 · Data</button>
+      <button class="slide-pill" data-slide="3">4 · 3D Hotspots</button>
+      <button class="slide-pill" data-slide="4">5 · Demo</button>
+    </nav>
+
+    <a href="/?hq=1" class="app-link">Open Live App →</a>
+  </header>
+
+  <!-- 5-SLIDE MINIMALIST STAGE -->
+  <main class="deck-stage">
+
+    <!-- ===================================================================
+         SLIDE 1: PROBLEM + WEATHER WOMAN WITH GLASSES & STICK NEXT TO MAP
+         =================================================================== -->
+    <section class="slide active" data-index="0">
+      <div class="hero-split">
+        <div>
+          <h1 class="slide-title">
+            We have a weather forecast for rain—but not for <em>which neighborhoods get hot</em>.
+          </h1>
+          <p class="slide-lead" style="margin-bottom:0;">
+            An HQ move sets off a chain reaction. We read early public signals to predict the next hotspot—and simulate how the neighborhood evolves.
+          </p>
+
+          <div class="mini-chain">
+            <span class="mini-chain-pill hot">Signals</span>
+            <span class="mini-chain-arrow">→</span>
+            <span class="mini-chain-pill">HQ &amp; Jobs</span>
+            <span class="mini-chain-arrow">→</span>
+            <span class="mini-chain-pill">Housing</span>
+            <span class="mini-chain-arrow">→</span>
+            <span class="mini-chain-pill">Rents</span>
+            <span class="mini-chain-arrow">→</span>
+            <span class="mini-chain-pill">New Businesses</span>
+          </div>
+
+          <div class="problem-points">
+            <div class="problem-row">
+              <span class="problem-num">T − 0</span>
+              <span class="problem-text"><strong>Portals are too late</strong>—Zillow only shows today’s prices after the press release drops.</span>
+            </div>
+            <div class="problem-row">
+              <span class="problem-num">$825B</span>
+              <span class="problem-text"><strong>Moves reprice cities</strong>—Meta’s Oct 25 AI lease disclosure moved markets 8% overnight.</span>
+            </div>
+            <div class="problem-row">
+              <span class="problem-num">32,490</span>
+              <span class="problem-text"><strong>Public signals fused</strong> across LinkedIn, Zillow, energy, and geopolitics by <code>gemini-4-argon</code>.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- WEATHER WOMAN WITH GLASSES & POINTER STICK NEXT TO MAP WITH HOT REGIONS IN RED -->
+        <div class="weather-stage-card" style="padding:10px;" aria-label="Meteorologist with glasses and pointer stick next to map with hot regions in red">
+          <img
+            src="/pitch/weather-woman-map.png"
+            alt="TV meteorologist with glasses and pointer stick pointing at red hot HQ regions (Dallas 91%, Salt Lake City 89%, Kazakhstan 84%) on a map"
+            style="width:100%;height:auto;display:block;border-radius:14px;"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SLIDE 2: SOLUTION
+         =================================================================== -->
+    <section class="slide" data-index="1">
+      <div class="hero-split">
+        <div>
+          <h1 class="slide-title">
+            Public signals in. <em>3D neighborhood forecast</em> out.
+          </h1>
+          <p class="slide-lead" style="margin-bottom:18px;">
+            Hunch fuses 12 live sources into <code>gemini-4-argon</code> (1M context) to predict where companies move next.
+          </p>
+
+          <div class="problem-points">
+            <div class="problem-row">
+              <span class="problem-num">1. Fetch</span>
+              <span class="problem-text"><strong>545 live API runs</strong> across LinkedIn jobs, Zillow homes, Airbnb stays, AAA grid, and SEC 8-K filings.</span>
+            </div>
+            <div class="problem-row">
+              <span class="problem-num">2. Clean</span>
+              <span class="problem-text"><strong>Zero time leakage</strong> across 32,490 records—tracking the <strong>Jobs → Housing → Rents</strong> chain.</span>
+            </div>
+            <div class="problem-row">
+              <span class="problem-num">3. Model</span>
+              <span class="problem-text"><strong><code>gemini-4-argon</code> world model</strong> pinpoints Kazakhstan, Salt Lake City, and Dallas and simulates 3D growth.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="weather-stage-card" style="padding:10px;">
+          <img
+            src="/pitch/slide-2-solution.png"
+            alt="LinkedIn Jobs, Zillow Homes, AAA Grid, and SEC 8-K streams converging into a Gemini 4 Argon prism projecting a 3D city neighborhood"
+            style="width:100%;height:auto;display:block;border-radius:14px;"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SLIDE 3: ACTUAL FETCHED DATA
+         =================================================================== -->
+    <section class="slide" data-index="2">
+      <h1 class="slide-title">
+        Real data captured <em>today</em>.
+      </h1>
+      <p class="slide-lead" style="margin-bottom:14px;">
+        Three hotspots uncovered from our live Glasser evidence database.
+      </p>
+
+      <div class="weather-stage-card" style="padding:8px;margin-bottom:16px;">
+        <img
+          src="/pitch/slide-3-data.png"
+          alt="Kazakhstan 84%, Salt Lake City $0.35/kWh, and Dallas $3.72/gal triptych"
+          style="width:100%;max-height:190px;object-fit:cover;display:block;border-radius:12px;"
+        />
+      </div>
+
+      <div class="grid-3">
+        <!-- KAZAKHSTAN -->
+        <div class="card" style="padding:18px;">
+          <div class="card-title">1. Kazakhstan · US–China AI Bridge</div>
+          <p class="card-body">
+            AP News (`run 60cf796a`) + 60-day Russia waiver (`EO 14436`) and $116 oil drive Eurasian HQs to <strong>Astana &amp; Almaty</strong>.
+          </p>
+        </div>
+
+        <!-- SALT LAKE CITY -->
+        <div class="card" style="padding:18px;">
+          <div class="card-title">2. Salt Lake City · -59% Pay &amp; Grid Edge</div>
+          <p class="card-body">
+            <strong>Alto Cirra</strong> (`run e5041c13`) hires Data Engineers at $115k–$155k (vs $300k–$380k SF) with $0.35/kWh Utah power.
+          </p>
+        </div>
+
+        <!-- DALLAS -->
+        <div class="card" style="padding:18px;">
+          <div class="card-title">3. Dallas · Data Centers &amp; $3.72 Fuel</div>
+          <p class="card-body">
+            <strong>CBRE</strong> acquires <em>Onnec</em> (`run bdfac0bb`) to scale AI data centers alongside <strong>MOLTEN Cloud</strong> hiring and 38% cheaper fuel.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SLIDE 4: 3 PREDICTED HOTSPOTS & INTERACTIVE 3D OFFICE MODELS
+         =================================================================== -->
+    <section class="slide" data-index="3">
+      <h1 class="slide-title">
+        Predicted hotspots &amp; <em>3D office models</em>.
+      </h1>
+      <p class="slide-lead" style="margin-bottom:14px;">
+        Click a hotspot and scrub the 4 stages to watch the HQ and neighborhood evolve.
+      </p>
+
+      <div class="hotspot-3d-layout">
+        <div class="hotspot-list" id="hotspot-list">
+          <div class="weather-stage-card" style="padding:6px;">
+            <img
+              src="/pitch/slide-4-offices.png"
+              alt="Architectural scale model of an HQ tower surrounded by new apartments and cafes"
+              style="width:100%;height:96px;object-fit:cover;display:block;border-radius:10px;"
+            />
+          </div>
+
+          <div class="hotspot-item active" data-city="kazakhstan" style="padding:11px 14px;">
+            <div class="hs-top">
+              <div class="hs-title">1. Astana / Almaty, Kazakhstan</div>
+              <span class="hs-prob">84%</span>
+            </div>
+            <p class="hs-body">
+              <strong>Eurasian AI Twin Towers</strong> (42,000 m²) · US–China AI bridge.
+            </p>
+          </div>
+
+          <div class="hotspot-item" data-city="slc" style="padding:11px 14px;">
+            <div class="hs-top">
+              <div class="hs-title">2. Salt Lake City, Utah</div>
+              <span class="hs-prob">89%</span>
+            </div>
+            <p class="hs-body">
+              <strong>Wasatch Mass-Timber Campus</strong> (28,500 m²) · $0.35/kWh grid.
+            </p>
+          </div>
+
+          <div class="hotspot-item" data-city="dallas" style="padding:11px 14px;">
+            <div class="hs-top">
+              <div class="hs-title">3. Dallas, Texas</div>
+              <span class="hs-prob">91%</span>
+            </div>
+            <p class="hs-body">
+              <strong>Uptown Skybridge HQ</strong> (64,000 m²) · CBRE data-center hub.
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT: INTERACTIVE 3D SIMULATOR -->
+        <div class="stage-3d-card">
+          <div class="stage-3d-head">
+            <div>
+              <div class="stage-3d-title" id="sim-3d-title">Astana Hub — Eurasian AI &amp; Compute HQ Tower</div>
+              <div class="stage-3d-meta" id="sim-3d-specs">42,000 m² · 1,850 Desks · +24% Predicted 12m Rent Delta · Drag to Rotate 3D</div>
+            </div>
+            <span class="hs-prob" id="sim-3d-badge" style="background:#E1381C;color:#FFF;">STAGE 4: FULL ECOSYSTEM</span>
+          </div>
+
+          <div class="canvas-wrap" id="canvas-wrap">
+            <canvas id="office-3d-canvas" width="680" height="265"></canvas>
+            <div class="stage-3d-overlay">
+              <span id="sim-3d-chain-caption">Signals → +1,850 Jobs → Housing Absorption → +24% Rents → +14 New Businesses</span>
+              <span>Drag to Orbit 3D</span>
+            </div>
+          </div>
+
+          <div class="phase-controls" id="phase-controls">
+            <button class="phase-btn" data-phase="1" type="button">
+              1 · SIGNALS
+              <strong id="p1-metric">LinkedIn + Geopolitics</strong>
+            </button>
+            <button class="phase-btn" data-phase="2" type="button">
+              2 · HQ &amp; JOBS
+              <strong id="p2-metric">+1,850 Tech Jobs</strong>
+            </button>
+            <button class="phase-btn" data-phase="3" type="button">
+              3 · RENTS
+              <strong id="p3-metric">+24% Zillow Rent</strong>
+            </button>
+            <button class="phase-btn active" data-phase="4" type="button">
+              4 · BUSINESSES
+              <strong id="p4-metric">+14 Retail &amp; Towers</strong>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SLIDE 5: WHY THE LIVE APP DEMO MATTERS
+         =================================================================== -->
+    <section class="slide" data-index="4">
+      <div class="hero-split">
+        <div>
+          <h1 class="slide-title">
+            Not a static deck. <em>A live engine.</em>
+          </h1>
+          <p class="slide-lead" style="margin-bottom:18px;">
+            Verified across 10 historical days and 50 questions—ready for live judging.
+          </p>
+
+          <div class="problem-points" style="margin-bottom:18px;">
+            <div class="problem-row">
+              <span class="problem-num">~12s</span>
+              <span class="problem-text"><strong>Live HQ &amp; 3D Sim</strong>—pick sources, orbit 3D offices, and run <code>gemini-4-argon</code> live.</span>
+            </div>
+            <div class="problem-row">
+              <span class="problem-num">3.98/5</span>
+              <span class="problem-text"><strong>#1 Benchmark</strong>—beats <code>3.1-pro</code>, <code>3.8-flash</code>, and baseline (0.1759 Brier).</span>
+            </div>
+            <div class="problem-row">
+              <span class="problem-num">100%</span>
+              <span class="problem-text"><strong>Auditable Run IDs</strong>—every claim links to raw Glasser captures (`e5041c13`, `bdfac0bb`).</span>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="/?view=hotspots" class="cta-btn" style="background:var(--ink);">Explore 3D Offices →</a>
+            <a href="/?hq=1" class="cta-btn">Launch Live HQ Demo →</a>
+          </div>
+        </div>
+
+        <div class="weather-stage-card" style="padding:10px;">
+          <img
+            src="/pitch/slide-5-demo.png"
+            alt="Keynote stage displaying the Hunch AI forecasting observatory with #1 Brier 0.1759 and 3.98/5 Judge Score"
+            style="width:100%;height:auto;display:block;border-radius:14px;"
+          />
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER CONTROLS -->
+  <footer class="deck-footer">
+    <div class="progress-wrap">
+      <span class="slide-counter" id="slide-counter">1 / 5</span>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" aria-label="Previous slide" disabled>←</button>
+      <button class="nav-btn" id="next-btn" aria-label="Next slide">→</button>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const pills = Array.from(document.querySelectorAll('.slide-pill'));
+      const counter = document.getElementById('slide-counter');
+      const fill = document.getElementById('progress-fill');
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      let current = 0;
+
+      function goTo(idx) {
+        if (idx < 0 || idx >= slides.length) return;
+        current = idx;
+        slides.forEach((s, i) => s.classList.toggle('active', i === current));
+        pills.forEach((p, i) => p.classList.toggle('active', i === current));
+        counter.textContent = `${current + 1} / ${slides.length}`;
+        fill.style.width = `${((current + 1) / slides.length) * 100}%`;
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === slides.length - 1;
+        history.replaceState(null, '', `#slide-${current + 1}`);
+      }
+
+      pills.forEach(p => {
+        p.addEventListener('click', () => goTo(Number(p.dataset.slide)));
+      });
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      window.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          goTo(current + 1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          goTo(current - 1);
+        } else if (e.key >= '1' && e.key <= '5') {
+          goTo(Number(e.key) - 1);
+        }
+      });
+
+      const hashMatch = (location.hash || '').match(/slide-(\d)/);
+      if (hashMatch) {
+        const n = Number(hashMatch[1]) - 1;
+        if (n >= 0 && n < slides.length) goTo(n);
+      }
+
+      /* ===================================================================
+         INTERACTIVE 3D OFFICE & NEIGHBORHOOD EVOLUTION RENDERER
+         =================================================================== */
+      const CITY_MODELS = {
+        kazakhstan: {
+          title: "Astana Hub, Kazakhstan — Eurasian AI & Compute Twin Towers",
+          specs: "42,000 m² · 1,850 Desks · US–China AI Neutrality Corridor · Drag to Orbit 3D",
+          chain: "Signals → +1,850 AI/Ops Jobs → +19% Stay Demand → +24% Rents → +14 New Businesses",
+          p1: "AP News + EO 14436",
+          p2: "+1,850 AI/Eng Jobs",
+          p3: "+24% Astana Rents",
+          p4: "+14 Tech Suppliers",
+          buildings: [
+            { x: -1.1, z: -0.3, w: 1.35, d: 1.35, h: 4.4, phase: 2, role: "hq", label: "HQ Tower A (AI Core)" },
+            { x: 1.1, z: -0.3, w: 1.35, d: 1.35, h: 3.7, phase: 2, role: "hq", label: "HQ Tower B (Ops)" },
+            { x: 0.0, z: -0.3, w: 1.1, d: 0.75, h: 2.4, y0: 1.7, phase: 2, role: "bridge", label: "Skybridge Atrium" },
+            { x: -2.8, z: 1.2, w: 1.1, d: 1.1, h: 2.3, phase: 3, role: "res", label: "Relocation Lofts (+24% Rent)" },
+            { x: 2.7, z: 1.1, w: 1.15, d: 1.1, h: 2.6, phase: 3, role: "res", label: "Executive Towers" },
+            { x: -2.5, z: -2.1, w: 1.2, d: 1.0, h: 1.9, phase: 3, role: "res", label: "Astana Stay Hotel" },
+            { x: -0.9, z: 1.8, w: 1.2, d: 0.9, h: 1.05, phase: 4, role: "biz", label: "New Cafes & Retail Row" },
+            { x: 0.9, z: 1.8, w: 1.2, d: 0.9, h: 1.2, phase: 4, role: "biz", label: "Cloud Hardware Lab" },
+            { x: 2.5, z: -2.0, w: 1.2, d: 1.2, h: 1.65, phase: 4, role: "biz", label: "Venture & Legal Hub" },
+            { x: 0.0, z: -2.4, w: 1.5, d: 0.9, h: 1.4, phase: 4, role: "biz", label: "Compute Substation" }
+          ]
+        },
+        slc: {
+          title: "Salt Lake City, UT — Silicon Slopes Mass-Timber & Solar HQ Campus",
+          specs: "28,500 m² · 1,200 Desks · $115k–$155k Data Eng Comp · $0.353/kWh Utah Grid",
+          chain: "Alto Cirra Hiring + $0.353/kWh Grid → +1,200 Data Jobs → +18% Rents → +11 New Businesses",
+          p1: "Wellfound + $0.35/kWh",
+          p2: "+1,200 Data/AI Jobs",
+          p3: "+18% SLC Zillow Rent",
+          p4: "+11 Slopes Businesses",
+          buildings: [
+            { x: -1.2, z: -0.2, w: 1.8, d: 1.4, h: 2.6, phase: 2, role: "hq", label: "West Timber Wing" },
+            { x: 1.0, z: -0.2, w: 1.8, d: 1.4, h: 3.2, phase: 2, role: "hq", label: "East AI Wing (Alto Cirra)" },
+            { x: -0.1, z: 0.3, w: 1.4, d: 1.1, h: 1.8, phase: 2, role: "bridge", label: "Solar Glass Pavilion" },
+            { x: -2.9, z: 1.4, w: 1.2, d: 1.1, h: 2.1, phase: 3, role: "res", label: "Lehi / Draper Townhomes" },
+            { x: 2.8, z: 1.3, w: 1.2, d: 1.1, h: 2.4, phase: 3, role: "res", label: "Downtown SLC Lofts" },
+            { x: -2.6, z: -1.9, w: 1.1, d: 1.1, h: 1.9, phase: 3, role: "res", label: "Mountain View Flats" },
+            { x: -1.1, z: 2.0, w: 1.3, d: 0.85, h: 0.95, phase: 4, role: "biz", label: "Roastery & Food Hall" },
+            { x: 1.1, z: 2.0, w: 1.3, d: 0.85, h: 1.1, phase: 4, role: "biz", label: "Outdoor Gear & Fitness" },
+            { x: 2.4, z: -1.9, w: 1.3, d: 1.1, h: 1.5, phase: 4, role: "biz", label: "B2B SaaS Incubator" }
+          ]
+        },
+        dallas: {
+          title: "Dallas, TX (Uptown / Frisco) — Hyperscale Skybridge Corporate HQ",
+          specs: "64,000 m² · 3,100 Desks · CBRE Onnec 8-K + MOLTEN Cloud · $3.72/gal TX Fuel",
+          chain: "CBRE 8-K + $3.72 TX Fuel → +3,100 Corp/Cloud Jobs → +21% Rents → +19 New Businesses",
+          p1: "CBRE 8-K + $3.72 Fuel",
+          p2: "+3,100 HQ & Cloud Jobs",
+          p3: "+21% Uptown Rents",
+          p4: "+19 New Businesses",
+          buildings: [
+            { x: 0.0, z: -0.4, w: 1.7, d: 1.5, h: 4.8, phase: 2, role: "hq", label: "Dallas HQ Flagship Tower" },
+            { x: -1.7, z: -0.2, w: 1.3, d: 1.3, h: 3.1, phase: 2, role: "hq", label: "Cloud Ops Annex" },
+            { x: 1.7, z: -0.2, w: 1.3, d: 1.3, h: 3.4, phase: 2, role: "hq", label: "Data Center & Trading Wing" },
+            { x: -2.9, z: 1.4, w: 1.2, d: 1.2, h: 2.8, phase: 3, role: "res", label: "Uptown High-Rise Condos" },
+            { x: 2.9, z: 1.4, w: 1.2, d: 1.2, h: 2.6, phase: 3, role: "res", label: "Frisco Station Residences" },
+            { x: -2.6, z: -2.1, w: 1.2, d: 1.1, h: 2.2, phase: 3, role: "res", label: "Corporate Stay Suites" },
+            { x: -1.0, z: 1.9, w: 1.3, d: 0.9, h: 1.15, phase: 4, role: "biz", label: "Steakhouse & Dining Block" },
+            { x: 1.0, z: 1.9, w: 1.3, d: 0.9, h: 1.25, phase: 4, role: "biz", label: "FinTech & Legal Plaza" },
+            { x: 2.5, z: -2.1, w: 1.4, d: 1.1, h: 1.7, phase: 4, role: "biz", label: "Enterprise Co-Working" }
+          ]
+        }
+      };
+
+      let activeCity = "kazakhstan";
+      let activePhase = 4;
+      let yaw = -0.62;
+      let pitch = 0.48;
+      let dragging = false;
+      let lastX = 0, lastY = 0;
+
+      const canvas = document.getElementById("office-3d-canvas");
+      const ctx = canvas ? canvas.getContext("2d") : null;
+
+      function update3DHeader() {
+        const cfg = CITY_MODELS[activeCity];
+        document.getElementById("sim-3d-title").textContent = cfg.title;
+        document.getElementById("sim-3d-specs").textContent = cfg.specs;
+        document.getElementById("sim-3d-chain-caption").textContent = cfg.chain;
+        document.getElementById("p1-metric").textContent = cfg.p1;
+        document.getElementById("p2-metric").textContent = cfg.p2;
+        document.getElementById("p3-metric").textContent = cfg.p3;
+        document.getElementById("p4-metric").textContent = cfg.p4;
+        const phaseNames = {
+          1: "STAGE 1: SIGNALS",
+          2: "STAGE 2: HQ & JOBS",
+          3: "STAGE 3: HOUSING & RENTS",
+          4: "STAGE 4: NEW BUSINESSES"
+        };
+        document.getElementById("sim-3d-badge").textContent = phaseNames[activePhase];
+      }
+
+      function projectIso(x, y, z, cx, cy, scale) {
+        const cosY = Math.cos(yaw), sinY = Math.sin(yaw);
+        const rx = x * cosY - z * sinY;
+        const rz = x * sinY + z * cosY;
+        const cosP = Math.cos(pitch), sinP = Math.sin(pitch);
+        const py = y * cosP - rz * sinP;
+        const pz = y * sinP + rz * cosP;
+        const fov = 14 / (14 + pz * 0.35);
+        return {
+          x: cx + rx * scale * fov,
+          y: cy - py * scale * fov,
+          depth: pz
+        };
+      }
+
+      function drawBox(b, cx, cy, scale) {
+        const y0 = b.y0 || 0;
+        const y1 = y0 + b.h;
+        const hw = b.w / 2, hd = b.d / 2;
+        const corners = [
+          { x: b.x - hw, y: y0, z: b.z - hd },
+          { x: b.x + hw, y: y0, z: b.z - hd },
+          { x: b.x + hw, y: y0, z: b.z + hd },
+          { x: b.x - hw, y: y0, z: b.z + hd },
+          { x: b.x - hw, y: y1, z: b.z - hd },
+          { x: b.x + hw, y: y1, z: b.z - hd },
+          { x: b.x + hw, y: y1, z: b.z + hd },
+          { x: b.x - hw, y: y1, z: b.z + hd }
+        ].map(p => projectIso(p.x, p.y, p.z, cx, cy, scale));
+
+        const faces = [
+          { idx: [0, 1, 5, 4], shade: 0.72 },
+          { idx: [1, 2, 6, 5], shade: 0.88 },
+          { idx: [2, 3, 7, 6], shade: 0.96 },
+          { idx: [3, 0, 4, 7], shade: 0.64 },
+          { idx: [4, 5, 6, 7], shade: 1.12 }
+        ];
+
+        faces.sort((a, bFace) => {
+          const da = a.idx.reduce((s, i) => s + corners[i].depth, 0) / 4;
+          const db = bFace.idx.reduce((s, i) => s + corners[i].depth, 0) / 4;
+          return db - da;
+        });
+
+        let baseRGB = [56, 189, 248];
+        if (b.role === "hq") baseRGB = activeCity === "kazakhstan" ? [56, 189, 248] : (activeCity === "slc" ? [99, 102, 241] : [16, 185, 129]);
+        else if (b.role === "bridge") baseRGB = [225, 56, 28];
+        else if (b.role === "res") baseRGB = [245, 158, 11];
+        else if (b.role === "biz") baseRGB = [168, 85, 247];
+
+        faces.forEach(f => {
+          ctx.beginPath();
+          f.idx.forEach((ci, k) => {
+            if (k === 0) ctx.moveTo(corners[ci].x, corners[ci].y);
+            else ctx.lineTo(corners[ci].x, corners[ci].y);
+          });
+          ctx.closePath();
+          const r = Math.min(255, Math.round(baseRGB[0] * f.shade));
+          const g = Math.min(255, Math.round(baseRGB[1] * f.shade));
+          const bl = Math.min(255, Math.round(baseRGB[2] * f.shade));
+          ctx.fillStyle = `rgba(${r}, ${g}, ${bl}, 0.88)`;
+          ctx.fill();
+          ctx.strokeStyle = "rgba(255,255,255,0.22)";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
+
+        if (b.role === "hq") {
+          const floors = Math.floor(b.h * 2.2);
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.28)";
+          ctx.lineWidth = 0.8;
+          for (let fl = 1; fl < floors; fl++) {
+            const fy = y0 + (b.h * fl) / floors;
+            const pA = projectIso(b.x - hw, fy, b.z + hd, cx, cy, scale);
+            const pB = projectIso(b.x + hw, fy, b.z + hd, cx, cy, scale);
+            const pC = projectIso(b.x + hw, fy, b.z - hd, cx, cy, scale);
+            ctx.beginPath();
+            ctx.moveTo(pA.x, pA.y);
+            ctx.lineTo(pB.x, pB.y);
+            ctx.lineTo(pC.x, pC.y);
+            ctx.stroke();
+          }
+        }
+
+        if (b.role === "hq" || (b.phase === activePhase && activePhase >= 3)) {
+          const topCenter = projectIso(b.x, y1 + 0.25, b.z, cx, cy, scale);
+          ctx.font = "600 10px 'JetBrains Mono', monospace";
+          const tw = ctx.measureText(b.label).width + 10;
+          ctx.fillStyle = "rgba(20, 20, 19, 0.86)";
+          ctx.fillRect(topCenter.x - tw / 2, topCenter.y - 14, tw, 16);
+          ctx.strokeStyle = b.role === "hq" ? "#38BDF8" : (b.role === "res" ? "#F59E0B" : "#A855F7");
+          ctx.strokeRect(topCenter.x - tw / 2, topCenter.y - 14, tw, 16);
+          ctx.fillStyle = "#FAF9F6";
+          ctx.textAlign = "center";
+          ctx.fillText(b.label, topCenter.x, topCenter.y - 3);
+        }
+      }
+
+      function render3D() {
+        if (!ctx || !canvas) return;
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cfg = CITY_MODELS[activeCity];
+        const cx = W * 0.5, cy = H * 0.72, scale = 34;
+
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.09)";
+        ctx.lineWidth = 1;
+        for (let g = -4; g <= 4; g++) {
+          const a = projectIso(g, 0, -4, cx, cy, scale);
+          const b = projectIso(g, 0, 4, cx, cy, scale);
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          const c = projectIso(-4, 0, g, cx, cy, scale);
+          const d = projectIso(4, 0, g, cx, cy, scale);
+          ctx.beginPath(); ctx.moveTo(c.x, c.y); ctx.lineTo(d.x, d.y); ctx.stroke();
+        }
+
+        const ringPts = 36;
+        [1.8, 3.2].forEach((rad, ri) => {
+          ctx.beginPath();
+          for (let i = 0; i <= ringPts; i++) {
+            const ang = (i / ringPts) * Math.PI * 2;
+            const p = projectIso(Math.cos(ang) * rad, 0.02, Math.sin(ang) * rad, cx, cy, scale);
+            if (i === 0) ctx.moveTo(p.x, p.y);
+            else ctx.lineTo(p.x, p.y);
+          }
+          ctx.strokeStyle = ri === 0 ? "rgba(225, 56, 28, 0.55)" : "rgba(56, 189, 248, 0.28)";
+          ctx.lineWidth = 1.4;
+          ctx.stroke();
+        });
+
+        const visible = cfg.buildings
+          .filter(b => b.phase <= activePhase || (activePhase === 1 && b.role === "hq"))
+          .map(b => {
+            const hScale = (activePhase === 1 && b.role === "hq") ? 0.35 : 1.0;
+            const center = projectIso(b.x, (b.y0 || 0) + (b.h * hScale) / 2, b.z, cx, cy, scale);
+            return { ...b, h: b.h * hScale, depth: center.depth };
+          })
+          .sort((a, b) => b.depth - a.depth);
+
+        visible.forEach(b => drawBox(b, cx, cy, scale));
+      }
+
+      document.querySelectorAll("#hotspot-list .hotspot-item").forEach(item => {
+        item.addEventListener("click", () => {
+          activeCity = item.dataset.city;
+          document.querySelectorAll("#hotspot-list .hotspot-item").forEach(el => el.classList.toggle("active", el === item));
+          update3DHeader();
+          render3D();
+        });
+      });
+
+      document.querySelectorAll("#phase-controls .phase-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activePhase = Number(btn.dataset.phase);
+          document.querySelectorAll("#phase-controls .phase-btn").forEach(el => el.classList.toggle("active", el === btn));
+          update3DHeader();
+          render3D();
+        });
+      });
+
+      const wrap = document.getElementById("canvas-wrap");
+      if (wrap) {
+        wrap.addEventListener("mousedown", e => {
+          dragging = true;
+          lastX = e.clientX;
+          lastY = e.clientY;
+        });
+        window.addEventListener("mousemove", e => {
+          if (!dragging) return;
+          const dx = e.clientX - lastX;
+          const dy = e.clientY - lastY;
+          lastX = e.clientX;
+          lastY = e.clientY;
+          yaw += dx * 0.01;
+          pitch = Math.max(0.2, Math.min(1.05, pitch + dy * 0.008));
+          render3D();
+        });
+        window.addEventListener("mouseup", () => { dragging = false; });
+      }
+
+      setInterval(() => {
+        if (!dragging && current === 3) {
+          yaw += 0.006;
+          render3D();
+        }
+      }, 45);
+
+      update3DHeader();
+      render3D();
+    })();
+  </script>
+</body>
+</html>

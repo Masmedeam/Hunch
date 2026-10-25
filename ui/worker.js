@@ -293,27 +293,59 @@ async function generatePredictionRun(body, env, requestUrl) {
       sample_market_evidence: (latestCase.sample_evidence || []).filter(e => e.kind === "equity_price" || e.kind === "sec_filing").slice(0, 8)
     };
   }
-  if (selected.has("gas") || userPrompt.toLowerCase().includes("gas") || userPrompt.toLowerCase().includes("fuel") || userPrompt.toLowerCase().includes("ev")) {
+  const isHqPrompt = /hq|headquarters|hub|office|relocat|city|cities|neighborhood|hot|dallas|salt lake|utah|texas|kazakh|astana|almaty/.test(userPrompt.toLowerCase());
+  if (selected.has("gas") || isHqPrompt || userPrompt.toLowerCase().includes("gas") || userPrompt.toLowerCase().includes("fuel") || userPrompt.toLowerCase().includes("ev")) {
+    const priorityStates = new Set(["California", "Texas", "Utah", "New York", "Florida", "North Carolina", "Washington"]);
+    const stateGasAll = vc.aaa_gas_states || [];
+    const stateEvAll = vc.aaa_ev_charging || [];
     cachedEvidence.aaa_gas_and_ev = {
       national_average: vc.aaa_gas_national,
-      state_averages_sample: (vc.aaa_gas_states || []).slice(0, 12),
-      ev_charging_sample: (vc.aaa_ev_charging || []).slice(0, 10),
-      requested_states: fields.gas_states || "CA, TX, NY, FL"
+      state_averages_sample: [
+        ...stateGasAll.filter(s => priorityStates.has(s.state)),
+        ...stateGasAll.filter(s => !priorityStates.has(s.state)).slice(0, 8)
+      ],
+      ev_charging_sample: [
+        ...stateEvAll.filter(s => priorityStates.has(s.LOCATION_NAME) || priorityStates.has(s.LOCATION_ID)),
+        ...stateEvAll.filter(s => !priorityStates.has(s.LOCATION_NAME)).slice(0, 6)
+      ],
+      requested_states: fields.gas_states || "CA, TX, UT, NY, FL"
     };
   }
-  if (selected.has("zillow") || selected.has("airbnb") || /rent|zillow|house|housing|mortgage|real estate|airbnb|hotel/.test(userPrompt.toLowerCase())) {
+  if (selected.has("zillow") || selected.has("airbnb") || isHqPrompt || /rent|zillow|house|housing|mortgage|real estate|airbnb|hotel/.test(userPrompt.toLowerCase())) {
     cachedEvidence.real_estate_and_rentals = {
       zillow_mortgage_rates: vc.zillow_mortgage,
       rentcast_us_market_stats: vc.rentcast_market,
-      requested_zillow_cities: fields.zillow_locs || "Austin, TX; Miami, FL",
-      requested_airbnb_cities: fields.airbnb_locs || "New York, NY; San Francisco, CA"
+      requested_zillow_cities: fields.zillow_locs || "Dallas, TX; Salt Lake City, UT; Austin, TX; San Francisco, CA",
+      requested_airbnb_cities: fields.airbnb_locs || "Astana, Kazakhstan; Salt Lake City, UT; Dallas, TX; New York, NY"
     };
   }
-  if (selected.has("linkedin") || /job|hiring|linkedin|layoff|salary|engineer/.test(userPrompt.toLowerCase())) {
+  if (selected.has("linkedin") || isHqPrompt || /job|hiring|linkedin|layoff|salary|engineer/.test(userPrompt.toLowerCase())) {
     cachedEvidence.job_market = {
       wellfound_trending_startup_jobs: vc.wellfound_jobs,
-      requested_linkedin_queries: fields.linkedin_jobs || "AI Engineer @ San Francisco; Software Engineer @ New York",
-      requested_companies: fields.linkedin_cos || "openai, anthropic, shopify"
+      requested_linkedin_queries: fields.linkedin_jobs || "Software & Data Engineer @ Salt Lake City; Cloud Engineer @ Dallas; AI Engineer @ Astana",
+      requested_companies: fields.linkedin_cos || "Alto Cirra, MOLTEN Cloud, CBRE, OpenAI, Anthropic"
+    };
+  }
+  if (isHqPrompt || (selected.has("zillow") && selected.has("linkedin"))) {
+    cachedEvidence.hq_neighborhood_hotspots = {
+      causal_chain_model: "Corporate HQ & expansion signal -> 1. Jobs (LinkedIn/Wellfound velocity) -> 2. Relocation Demand (Airbnb short-stay compression) -> 3. Rents & Home Prices (Zillow/RentCast) -> 4. New Local Businesses & Office Absorption",
+      captured_hotspots: [
+        {
+          hotspot: "Dallas, TX (Uptown / Frisco Corporate Corridor)",
+          glasser_runs: ["bdfac0bb (SEC 8-K cbre-ex99_1.htm)", "e5041c13 (Wellfound)", "a1dcecca (AAA Fuel)", "26e9741d (AAA EV)"],
+          signals: "CBRE Group (Dallas HQ, Oct 20 SEC Ex-99.1) expanding data-center & commercial infrastructure via Onnec acquisition; MOLTEN Cloud actively hiring engineers in Dallas ($70k-$90k + 0.1% eq); Texas regular fuel $3.7168/gal & diesel $5.7382/gal (38% below CA's $6.02/$8.46); 6,550 TX EV chargers at $0.431/kWh."
+        },
+        {
+          hotspot: "Salt Lake City, UT (Silicon Slopes / Downtown Tech District)",
+          glasser_runs: ["e5041c13 (Wellfound)", "26e9741d (AAA EV)", "a1dcecca (AAA Fuel)"],
+          signals: "Alto Cirra hiring Software & Data Engineers in Salt Lake City at $115k-$155k (59% comp savings vs SF's $300k-$380k Staff Data Engineer roles at Green); Utah commercial EV electricity rate at $0.353/kWh across 1,357 chargers (25% cheaper than CA's $0.472/kWh); regular gas $4.6555/gal."
+        },
+        {
+          hotspot: "Astana & Almaty, Kazakhstan (Central Asia Non-Aligned AI & Energy Corridor)",
+          glasser_runs: ["60cf796a (AP News Exa)", "argon-pilot (EO 14436 Sanctions Waiver)"],
+          signals: "AP News captures Kazakh President Tokayev & Xi Jinping at World AI crossroads as non-aligned nations bridge US and China AI blocs; combined with the US 60-day Graham Act Russia sanctions waiver (EO 14436) and $105-$116 Brent energy realignment, multinational tech & energy firms route regional headquarters into Astana Hub & Almaty."
+        }
+      ]
     };
   }
   if (selected.has("signals") || /insider|form 4|premarket|pre-market|short/.test(userPrompt.toLowerCase())) {
@@ -462,6 +494,45 @@ export default {
         return jsonResponse(result);
       } catch (err) {
         return jsonResponse({ error: String(err.message || err) }, 400);
+      }
+    }
+
+    if (url.pathname === "/api/validate-forecast" && request.method === "POST") {
+      try {
+        const body = await request.json();
+        const forecasts = Array.isArray(body.forecasts) ? body.forecasts : [];
+        const errors = [];
+        forecasts.forEach((fc, idx) => {
+          const p = Number(fc.probability);
+          if (!Number.isFinite(p) || p < 0.05 || p > 0.95) {
+            errors.push(`Forecast[${idx}] probability (${fc.probability}) must be in [0.05, 0.95]`);
+          }
+          if (Array.isArray(fc.outcomes) && fc.outcomes.length > 0) {
+            const sum = fc.outcomes.reduce((a, o) => a + (Number(o.probability) || 0), 0);
+            if (Math.abs(sum - 1.0) > 0.05) {
+              errors.push(`Forecast[${idx}] outcome probabilities sum to ${sum.toFixed(3)} (expected 1.0)`);
+            }
+          }
+          if (fc.estimate && typeof fc.estimate === "object") {
+            const { lower, value, upper } = fc.estimate;
+            if (Number(lower) > Number(value) || Number(value) > Number(upper)) {
+              errors.push(`Forecast[${idx}] estimate bounds invalid (${lower} <= ${value} <= ${upper})`);
+            }
+          }
+        });
+        return jsonResponse({
+          valid: errors.length === 0,
+          forecast_count: forecasts.length,
+          errors
+        });
+      } catch (err) {
+        return jsonResponse({ valid: false, error: String(err.message || err) }, 400);
+      }
+    }
+
+    if (url.pathname === "/pitch" || url.pathname === "/pitch/") {
+      if (env.ASSETS) {
+        return env.ASSETS.fetch(new URL("/pitch/index.html", request.url));
       }
     }
 

@@ -2294,6 +2294,57 @@ let HISTORICAL_DAYS = [
 
 const VERTICAL_FORECASTS = [
   {
+    id: "fc-hotspot-dallas",
+    sourceId: "zillow",
+    sourceLabel: "Hotspot · Dallas, TX",
+    forecast_type: "neighborhood hotspot",
+    title: "Dallas (Uptown / Frisco) Corporate HQ Inflow & +21% Rent Trajectory",
+    claim: "CBRE data-center infrastructure expansion (Onnec 8-K) + MOLTEN Cloud engineering hiring + $3.72/gal TX fuel trigger the chain: +3,100 HQ jobs → housing absorption → +21% commercial/residential rent surge.",
+    probability: 0.91,
+    estimate: { value: 21.0, lower: 14.5, upper: 27.0, unit: "% 12m rent growth", interval_probability: 0.8 },
+    outcomes: [
+      { label: "Moderate growth (< 14%)", probability: 0.09 },
+      { label: "Hotspot surge (14%–27%)", probability: 0.80 },
+      { label: "Hyper-compression (> 27%)", probability: 0.11 }
+    ],
+    rationale: "Grounded in SEC Ex-99.1 (cbre-ex99_1.htm, Run bdfac0bb: Dallas-HQ CBRE acquiring Onnec for data-center scale), Wellfound Run e5041c13 (MOLTEN Cloud hiring in Dallas at $70k–$90k + eq), AAA Fuel Run a1dcecca (TX regular $3.7168/gal & diesel $5.7382/gal, 38% below CA), and AAA EV Run 26e9741d (6,550 TX chargers at $0.431/kWh).",
+    resolution: { mode: "measurable", rule: "Track LinkedIn/Wellfound Dallas job velocity, Zillow/RentCast rent index, and new commercial registrations." }
+  },
+  {
+    id: "fc-hotspot-slc",
+    sourceId: "linkedin",
+    sourceLabel: "Hotspot · Salt Lake City",
+    forecast_type: "neighborhood hotspot",
+    title: "Salt Lake City (Silicon Slopes) Data/AI HQ Relocation & +18% Rent Surge",
+    claim: "59% engineering salary arbitrage ($115k–$155k in SLC vs $300k–$380k in SF) + $0.353/kWh Utah commercial power trigger +1,200 new data/AI roles and +18% neighborhood rent expansion.",
+    probability: 0.89,
+    estimate: { value: 18.2, lower: 12.0, upper: 24.0, unit: "% 12m rent growth", interval_probability: 0.8 },
+    outcomes: [
+      { label: "Baseline absorption (< 12%)", probability: 0.11 },
+      { label: "Silicon Slopes breakout (12%–24%)", probability: 0.78 },
+      { label: "Supply squeeze (> 24%)", probability: 0.11 }
+    ],
+    rationale: "Grounded in Wellfound Run e5041c13 (Alto Cirra hiring Software & Data Engineers in Salt Lake City at $115k–$155k vs Green in SF at $300k–$380k), AAA EV Run 26e9741d (Utah electricity at $0.353/kWh across 1,357 chargers — 25% cheaper than CA's $0.472/kWh), and AAA Fuel Run a1dcecca (Utah regular $4.6555/gal).",
+    resolution: { mode: "measurable", rule: "Track Silicon Slopes LinkedIn/Wellfound job openings and Zillow SLC metro rent/price delta." }
+  },
+  {
+    id: "fc-hotspot-kazakhstan",
+    sourceId: "news",
+    sourceLabel: "Hotspot · Kazakhstan",
+    forecast_type: "neighborhood hotspot",
+    title: "Astana Hub / Almaty Non-Aligned AI & Energy HQ Corridor (+24% Rent)",
+    claim: "US–China AI bloc neutrality + the 60-day US Russia sanctions waiver (EO 14436) drive multinational AI & energy regional headquarters into Astana & Almaty (+1,850 jobs → +24% prime district rents).",
+    probability: 0.84,
+    estimate: { value: 24.0, lower: 15.0, upper: 32.0, unit: "% 12m prime rent delta", interval_probability: 0.8 },
+    outcomes: [
+      { label: "Delayed relocation (< 15%)", probability: 0.16 },
+      { label: "Active HQ corridor (15%–32%)", probability: 0.73 },
+      { label: "Rapid sovereign compute boom (> 32%)", probability: 0.11 }
+    ],
+    rationale: "Grounded in Exa/AP News Run 60cf796a ('As the US and China form AI blocs, countries are increasingly torn between them' featuring Kazakh President Tokayev & Xi Jinping at the World AI crossroads) and held-out benchmark evidence on EO 14436 (60-day Graham Act Russia sanctions waiver) & $116 Brent crude reshaping Eurasian headquarters.",
+    resolution: { mode: "measurable", rule: "Track Astana Hub corporate registrations, LinkedIn regional openings, and short-term stay compression." }
+  },
+  {
     id: "fc-zillow",
     sourceId: "zillow",
     sourceLabel: "Zillow",
@@ -2485,6 +2536,18 @@ async function init() {
     for (const f of s.fields) STATE.fieldValues[f.key] = f.value;
   }
 
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("hq") === "1") {
+    ["news", "markets", "zillow", "airbnb", "linkedin", "gas"].forEach(id => STATE.selectedSources.add(id));
+    const promptInp = document.getElementById("user-prompt-input");
+    if (promptInp) {
+      promptInp.value = "Predict which neighborhoods are about to get hot for corporate headquarters across Kazakhstan (Astana/Almaty), Salt Lake City, and Dallas—modeling the chain from jobs to housing demand, Zillow rents, and new businesses";
+    }
+  }
+  if (params.get("view") === "hotspots") {
+    switchToView("hotspots");
+  }
+
   document.querySelector(".brand")?.addEventListener("click", () => switchToView("sources"));
 
   document.querySelectorAll(".step-tab").forEach(btn => {
@@ -2505,6 +2568,7 @@ async function init() {
   });
 
   renderSourcesView();
+  renderHotspots3DView();
   renderPredictionsView();
   renderBenchmarkView();
 }
@@ -3033,7 +3097,10 @@ function renderForecastCardHtml(fc, idx) {
       </div>
 
       <div>
-        ${est ? `
+        ${est ? (() => {
+          const span = Number(est.upper) - Number(est.lower);
+          const pct = span > 0 ? Math.max(12, Math.min(88, ((Number(est.value) - Number(est.lower)) / span) * 76 + 12)) : 50;
+          return `
           <div class="range-bar-box" style="margin-bottom:12px;">
             <div class="range-labels">
               <span>${Number(est.lower).toLocaleString()}</span>
@@ -3041,11 +3108,12 @@ function renderForecastCardHtml(fc, idx) {
               <span>${Number(est.upper).toLocaleString()}</span>
             </div>
             <div class="range-track">
-              <div class="range-fill"></div>
-              <div class="range-dot"></div>
+              <div class="range-fill" style="left:12%;right:12%;"></div>
+              <div class="range-dot" style="left:calc(${pct.toFixed(1)}% - 6px);"></div>
             </div>
           </div>
-        ` : ""}
+          `;
+        })() : ""}
         <div class="fc-footer">
           <span>${esc(fc.forecast_type || "24h Forecast")}</span>
           <span>Inspect →</span>
@@ -3444,6 +3512,272 @@ function renderBenchmarkTable() {
       );
     });
   });
+}
+
+/* ===================================================================
+   VIEW 1.5: HOTSPOTS & 3D OFFICES (NEIGHBORHOOD WORLD MODEL)
+   =================================================================== */
+function renderHotspots3DView() {
+  const canvas = document.getElementById("app-office-3d-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  const HOTSPOT_3D_CONFIG = {
+    kazakhstan: {
+      title: "Astana Hub, Kazakhstan — Eurasian AI & Compute Twin Towers",
+      sub: "42,000 m² · 1,850 Desks · US–China AI Neutrality Corridor · Drag to Orbit 3D",
+      chain: "Chain: EO 14436 + AI Bloc Neutrality → +1,850 AI/Ops Jobs → +19% Short-Stay Demand → +24% Rents → +14 New Businesses",
+      m1: "AP News + EO 14436",
+      m2: "+1,850 AI/Eng Jobs",
+      m3: "+24% Astana Rents",
+      m4: "+14 Tech Suppliers",
+      prompt: "Simulate how Astana Hub & Almaty, Kazakhstan evolve as a corporate HQ hotspot driven by US-China AI bloc neutrality (AP News run 60cf796a) and EO 14436 sanctions routing: model the chain from jobs to housing demand, rents, and new businesses",
+      buildings: [
+        { x: -1.1, z: -0.3, w: 1.35, d: 1.35, h: 4.5, phase: 2, role: "hq", label: "HQ Tower A (AI Core)" },
+        { x: 1.1, z: -0.3, w: 1.35, d: 1.35, h: 3.8, phase: 2, role: "hq", label: "HQ Tower B (Ops)" },
+        { x: 0.0, z: -0.3, w: 1.1, d: 0.75, h: 2.4, y0: 1.7, phase: 2, role: "bridge", label: "Skybridge Atrium" },
+        { x: -2.8, z: 1.2, w: 1.15, d: 1.15, h: 2.4, phase: 3, role: "res", label: "Relocation Lofts (+24% Rent)" },
+        { x: 2.7, z: 1.1, w: 1.15, d: 1.1, h: 2.7, phase: 3, role: "res", label: "Executive Towers" },
+        { x: -2.5, z: -2.1, w: 1.2, d: 1.0, h: 1.9, phase: 3, role: "res", label: "Astana Stay Hotel" },
+        { x: -0.9, z: 1.8, w: 1.2, d: 0.9, h: 1.05, phase: 4, role: "biz", label: "New Cafes & Retail Row" },
+        { x: 0.9, z: 1.8, w: 1.2, d: 0.9, h: 1.2, phase: 4, role: "biz", label: "Cloud Hardware Lab" },
+        { x: 2.5, z: -2.0, w: 1.2, d: 1.2, h: 1.65, phase: 4, role: "biz", label: "Venture & Legal Hub" },
+        { x: 0.0, z: -2.4, w: 1.5, d: 0.9, h: 1.4, phase: 4, role: "biz", label: "Compute Substation" }
+      ]
+    },
+    slc: {
+      title: "Salt Lake City, UT — Silicon Slopes Mass-Timber & Solar HQ Campus",
+      sub: "28,500 m² · 1,200 Desks · $115k–$155k Data Eng Comp · $0.353/kWh Utah Grid",
+      chain: "Chain: Alto Cirra Hiring + $0.353/kWh Grid → +1,200 Data Jobs → Zillow Inventory Drop → +18% Rents → +11 New Businesses",
+      m1: "Wellfound + $0.35/kWh",
+      m2: "+1,200 Data/AI Jobs",
+      m3: "+18% SLC Zillow Rent",
+      m4: "+11 Slopes Businesses",
+      prompt: "Simulate how Salt Lake City (Silicon Slopes) evolves as a corporate HQ hotspot driven by Alto Cirra $115k-$155k Data Eng hiring (Wellfound run e5041c13) and $0.353/kWh Utah EV/grid power (run 26e9741d): model jobs, housing demand, Zillow rents, and new businesses",
+      buildings: [
+        { x: -1.2, z: -0.2, w: 1.8, d: 1.4, h: 2.7, phase: 2, role: "hq", label: "West Timber Wing" },
+        { x: 1.0, z: -0.2, w: 1.8, d: 1.4, h: 3.3, phase: 2, role: "hq", label: "East AI Wing (Alto Cirra)" },
+        { x: -0.1, z: 0.3, w: 1.4, d: 1.1, h: 1.8, phase: 2, role: "bridge", label: "Solar Glass Pavilion" },
+        { x: -2.9, z: 1.4, w: 1.2, d: 1.1, h: 2.2, phase: 3, role: "res", label: "Lehi / Draper Townhomes" },
+        { x: 2.8, z: 1.3, w: 1.2, d: 1.1, h: 2.5, phase: 3, role: "res", label: "Downtown SLC Lofts (+18% Rent)" },
+        { x: -2.6, z: -1.9, w: 1.1, d: 1.1, h: 1.9, phase: 3, role: "res", label: "Mountain View Flats" },
+        { x: -1.1, z: 2.0, w: 1.3, d: 0.85, h: 0.95, phase: 4, role: "biz", label: "Roastery & Food Hall" },
+        { x: 1.1, z: 2.0, w: 1.3, d: 0.85, h: 1.1, phase: 4, role: "biz", label: "Outdoor Gear & Fitness" },
+        { x: 2.4, z: -1.9, w: 1.3, d: 1.1, h: 1.5, phase: 4, role: "biz", label: "B2B SaaS Incubator" }
+      ]
+    },
+    dallas: {
+      title: "Dallas, TX (Uptown / Frisco) — Hyperscale Skybridge Corporate HQ",
+      sub: "64,000 m² · 3,100 Desks · CBRE Onnec 8-K + MOLTEN Cloud · $3.72/gal TX Fuel",
+      chain: "Chain: CBRE 8-K + $3.72 TX Fuel → +3,100 Corp/Cloud Jobs → Listings Absorbed → +21% Rents → +19 New Businesses",
+      m1: "CBRE 8-K + $3.72 Fuel",
+      m2: "+3,100 HQ & Cloud Jobs",
+      m3: "+21% Uptown Rents",
+      m4: "+19 New Businesses",
+      prompt: "Simulate how Dallas (Uptown / Frisco) evolves as a corporate HQ hotspot driven by CBRE's Onnec data-center acquisition (SEC 8-K run bdfac0bb), MOLTEN Cloud engineering hiring (run e5041c13), and $3.72/gal TX fuel (run a1dcecca): model jobs, housing demand, rents, and new businesses",
+      buildings: [
+        { x: 0.0, z: -0.4, w: 1.7, d: 1.5, h: 4.9, phase: 2, role: "hq", label: "Dallas HQ Flagship Tower" },
+        { x: -1.7, z: -0.2, w: 1.3, d: 1.3, h: 3.2, phase: 2, role: "hq", label: "Cloud Ops Annex" },
+        { x: 1.7, z: -0.2, w: 1.3, d: 1.3, h: 3.5, phase: 2, role: "hq", label: "Data Center & Trading Wing" },
+        { x: -2.9, z: 1.4, w: 1.2, d: 1.2, h: 2.8, phase: 3, role: "res", label: "Uptown High-Rise Condos (+21% Rent)" },
+        { x: 2.9, z: 1.4, w: 1.2, d: 1.2, h: 2.6, phase: 3, role: "res", label: "Frisco Station Residences" },
+        { x: -2.6, z: -2.1, w: 1.2, d: 1.1, h: 2.2, phase: 3, role: "res", label: "Corporate Stay Suites" },
+        { x: -1.0, z: 1.9, w: 1.3, d: 0.9, h: 1.15, phase: 4, role: "biz", label: "Steakhouse & Dining Block" },
+        { x: 1.0, z: 1.9, w: 1.3, d: 0.9, h: 1.25, phase: 4, role: "biz", label: "FinTech & Legal Plaza" },
+        { x: 2.5, z: -2.1, w: 1.4, d: 1.1, h: 1.7, phase: 4, role: "biz", label: "Enterprise Co-Working" }
+      ]
+    }
+  };
+
+  let curCity = "kazakhstan";
+  let curPhase = 4;
+  let yaw = -0.62;
+  let pitch = 0.48;
+  let dragging = false;
+  let lastX = 0, lastY = 0;
+
+  function syncLabels() {
+    const cfg = HOTSPOT_3D_CONFIG[curCity];
+    document.getElementById("app-3d-title").textContent = cfg.title;
+    document.getElementById("app-3d-sub").textContent = cfg.sub;
+    document.getElementById("app-3d-chain-line").textContent = cfg.chain;
+    document.getElementById("ap-m1").textContent = cfg.m1;
+    document.getElementById("ap-m2").textContent = cfg.m2;
+    document.getElementById("ap-m3").textContent = cfg.m3;
+    document.getElementById("ap-m4").textContent = cfg.m4;
+    const pNames = {
+      1: "STAGE 1: PUBLIC SIGNALS",
+      2: "STAGE 2: HQ & JOBS SURGE",
+      3: "STAGE 3: DEMAND & RENTS",
+      4: "STAGE 4: NEW BUSINESSES"
+    };
+    document.getElementById("app-3d-phase-badge").textContent = pNames[curPhase];
+  }
+
+  function project(x, y, z, cx, cy, scale) {
+    const cosY = Math.cos(yaw), sinY = Math.sin(yaw);
+    const rx = x * cosY - z * sinY;
+    const rz = x * sinY + z * cosY;
+    const cosP = Math.cos(pitch), sinP = Math.sin(pitch);
+    const py = y * cosP - rz * sinP;
+    const pz = y * sinP + rz * cosP;
+    const fov = 14 / (14 + pz * 0.35);
+    return { x: cx + rx * scale * fov, y: cy - py * scale * fov, depth: pz };
+  }
+
+  function drawScene() {
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    const cfg = HOTSPOT_3D_CONFIG[curCity];
+    const cx = W * 0.5, cy = H * 0.73, scale = 40;
+
+    ctx.strokeStyle = "rgba(255,255,255,0.09)";
+    ctx.lineWidth = 1;
+    for (let g = -4; g <= 4; g++) {
+      const a = project(g, 0, -4, cx, cy, scale), b = project(g, 0, 4, cx, cy, scale);
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      const c = project(-4, 0, g, cx, cy, scale), d = project(4, 0, g, cx, cy, scale);
+      ctx.beginPath(); ctx.moveTo(c.x, c.y); ctx.lineTo(d.x, d.y); ctx.stroke();
+    }
+
+    [1.8, 3.3].forEach((rad, ri) => {
+      ctx.beginPath();
+      for (let i = 0; i <= 36; i++) {
+        const ang = (i / 36) * Math.PI * 2;
+        const p = project(Math.cos(ang) * rad, 0.02, Math.sin(ang) * rad, cx, cy, scale);
+        if (i === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      }
+      ctx.strokeStyle = ri === 0 ? "rgba(225,56,28,0.55)" : "rgba(56,189,248,0.28)";
+      ctx.lineWidth = 1.4;
+      ctx.stroke();
+    });
+
+    const visible = cfg.buildings
+      .filter(b => b.phase <= curPhase || (curPhase === 1 && b.role === "hq"))
+      .map(b => {
+        const hScale = (curPhase === 1 && b.role === "hq") ? 0.35 : 1.0;
+        const center = project(b.x, (b.y0 || 0) + (b.h * hScale) / 2, b.z, cx, cy, scale);
+        return { ...b, h: b.h * hScale, depth: center.depth };
+      })
+      .sort((a, b) => b.depth - a.depth);
+
+    visible.forEach(b => {
+      const y0 = b.y0 || 0, y1 = y0 + b.h;
+      const hw = b.w / 2, hd = b.d / 2;
+      const corners = [
+        { x: b.x - hw, y: y0, z: b.z - hd },
+        { x: b.x + hw, y: y0, z: b.z - hd },
+        { x: b.x + hw, y: y0, z: b.z + hd },
+        { x: b.x - hw, y: y0, z: b.z + hd },
+        { x: b.x - hw, y: y1, z: b.z - hd },
+        { x: b.x + hw, y: y1, z: b.z - hd },
+        { x: b.x + hw, y: y1, z: b.z + hd },
+        { x: b.x - hw, y: y1, z: b.z + hd }
+      ].map(p => project(p.x, p.y, p.z, cx, cy, scale));
+
+      const faces = [
+        { idx: [0, 1, 5, 4], shade: 0.72 },
+        { idx: [1, 2, 6, 5], shade: 0.88 },
+        { idx: [2, 3, 7, 6], shade: 0.96 },
+        { idx: [3, 0, 4, 7], shade: 0.64 },
+        { idx: [4, 5, 6, 7], shade: 1.12 }
+      ].sort((a, bFace) => {
+        const da = a.idx.reduce((s, i) => s + corners[i].depth, 0) / 4;
+        const db = bFace.idx.reduce((s, i) => s + corners[i].depth, 0) / 4;
+        return db - da;
+      });
+
+      let rgb = [56, 189, 248];
+      if (b.role === "hq") rgb = curCity === "kazakhstan" ? [56, 189, 248] : (curCity === "slc" ? [99, 102, 241] : [16, 185, 129]);
+      else if (b.role === "bridge") rgb = [225, 56, 28];
+      else if (b.role === "res") rgb = [245, 158, 11];
+      else if (b.role === "biz") rgb = [168, 85, 247];
+
+      faces.forEach(f => {
+        ctx.beginPath();
+        f.idx.forEach((ci, k) => {
+          if (k === 0) ctx.moveTo(corners[ci].x, corners[ci].y);
+          else ctx.lineTo(corners[ci].x, corners[ci].y);
+        });
+        ctx.closePath();
+        ctx.fillStyle = `rgba(${Math.min(255, Math.round(rgb[0] * f.shade))}, ${Math.min(255, Math.round(rgb[1] * f.shade))}, ${Math.min(255, Math.round(rgb[2] * f.shade))}, 0.88)`;
+        ctx.fill();
+        ctx.strokeStyle = "rgba(255,255,255,0.22)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      });
+
+      if (b.role === "hq" || (b.phase === curPhase && curPhase >= 3)) {
+        const top = project(b.x, y1 + 0.25, b.z, cx, cy, scale);
+        ctx.font = "600 10px 'JetBrains Mono', monospace";
+        const tw = ctx.measureText(b.label).width + 10;
+        ctx.fillStyle = "rgba(20,20,19,0.88)";
+        ctx.fillRect(top.x - tw / 2, top.y - 14, tw, 16);
+        ctx.strokeStyle = b.role === "hq" ? "#38BDF8" : (b.role === "res" ? "#F59E0B" : "#A855F7");
+        ctx.strokeRect(top.x - tw / 2, top.y - 14, tw, 16);
+        ctx.fillStyle = "#FAF9F6";
+        ctx.textAlign = "center";
+        ctx.fillText(b.label, top.x, top.y - 3);
+      }
+    });
+  }
+
+  document.querySelectorAll("#app-hotspot-list .app-hs-card").forEach(card => {
+    card.addEventListener("click", () => {
+      curCity = card.dataset.hcity;
+      document.querySelectorAll("#app-hotspot-list .app-hs-card").forEach(el => el.classList.toggle("active", el === card));
+      syncLabels();
+      drawScene();
+    });
+  });
+
+  document.querySelectorAll("#app-phase-bar .app-phase-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      curPhase = Number(btn.dataset.aphase);
+      document.querySelectorAll("#app-phase-bar .app-phase-btn").forEach(el => el.classList.toggle("active", el === btn));
+      syncLabels();
+      drawScene();
+    });
+  });
+
+  const box = document.getElementById("app-canvas-box");
+  if (box) {
+    box.addEventListener("mousedown", e => {
+      dragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+    window.addEventListener("mousemove", e => {
+      if (!dragging) return;
+      yaw += (e.clientX - lastX) * 0.01;
+      pitch = Math.max(0.2, Math.min(1.05, pitch + (e.clientY - lastY) * 0.008));
+      lastX = e.clientX;
+      lastY = e.clientY;
+      drawScene();
+    });
+    window.addEventListener("mouseup", () => { dragging = false; });
+  }
+
+  document.getElementById("btn-simulate-hotspot")?.addEventListener("click", () => {
+    ["news", "markets", "zillow", "airbnb", "linkedin", "gas"].forEach(id => STATE.selectedSources.add(id));
+    renderSourcesView();
+    const promptInp = document.getElementById("user-prompt-input");
+    if (promptInp) {
+      promptInp.value = HOTSPOT_3D_CONFIG[curCity].prompt;
+    }
+    document.getElementById("btn-run-prediction")?.click();
+  });
+
+  setInterval(() => {
+    if (!dragging && STATE.view === "hotspots") {
+      yaw += 0.006;
+      drawScene();
+    }
+  }, 45);
+
+  syncLabels();
+  drawScene();
 }
 
 document.addEventListener("DOMContentLoaded", init);

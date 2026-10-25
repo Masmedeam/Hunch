@@ -42,11 +42,14 @@
 
       <nav class="steps-nav" aria-label="Navigation">
         <button class="step-tab active" data-view="sources">Sources</button>
+        <button class="step-tab" data-view="hotspots">Hotspots &amp; 3D Offices</button>
         <button class="step-tab" data-view="predict">Predictions</button>
         <button class="step-tab" data-view="benchmark">Benchmark</button>
       </nav>
 
-      <div class="header-spacer"></div>
+      <div class="header-spacer" style="display:flex;justify-content:flex-end;">
+        <a href="/pitch" style="font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);">Pitch Deck ↗</a>
+      </div>
     </div>
   </header>
 
@@ -83,6 +86,138 @@
         </div>
         <div class="action-bar-right">
           <button class="btn-primary" id="btn-run-prediction" type="button">Run Prediction →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 1.5: HOTSPOTS & 3D OFFICES (NEIGHBORHOOD WORLD MODEL)
+         =================================================================== -->
+    <section class="view" id="view-hotspots">
+      <div class="view-header">
+        <div>
+          <h1>Neighborhood Forecast &amp; 3D Office World Model</h1>
+          <p style="color:var(--ink-secondary);font-size:14px;margin-top:4px;max-width:780px;">
+            We have a weather forecast for rain—but no prediction for which neighborhoods are about to get hot. Public signals trigger a predictable chain: <strong>Jobs → Demand → Rents → New Businesses</strong>.
+          </p>
+        </div>
+        <button class="btn-primary" id="btn-simulate-hotspot" type="button">Simulate Hotspot with gemini-4-argon →</button>
+      </div>
+
+      <!-- CAUSAL CHAIN BAR -->
+      <div class="app-chain-grid" id="app-chain-grid">
+        <div class="app-chain-step">
+          <span class="ac-num">01 · PUBLIC SIGNALS</span>
+          <strong>Geopolitics, Grid &amp; SEC</strong>
+          <span id="ac-desc-1">EO 14436 waiver, $0.35/kWh power, CBRE 8-K</span>
+        </div>
+        <div class="app-chain-step">
+          <span class="ac-num">02 · CATALYST</span>
+          <strong>HQ Move &amp; Jobs Surge</strong>
+          <span id="ac-desc-2">LinkedIn &amp; Wellfound engineering velocity</span>
+        </div>
+        <div class="app-chain-step">
+          <span class="ac-num">03 · ABSORPTION</span>
+          <strong>Housing &amp; Rents</strong>
+          <span id="ac-desc-3">Airbnb short-stay &amp; Zillow rent repricing</span>
+        </div>
+        <div class="app-chain-step">
+          <span class="ac-num">04 · ECOSYSTEM</span>
+          <strong>New Businesses &amp; Towers</strong>
+          <span id="ac-desc-4">Suppliers, retail &amp; 3D office campus expansion</span>
+        </div>
+      </div>
+
+      <!-- 3 HOTSPOTS + INTERACTIVE 3D STAGE -->
+      <div class="app-hotspot-layout">
+        <div class="app-hotspot-sidebar" id="app-hotspot-list">
+          <div class="app-hs-card active" data-hcity="kazakhstan">
+            <div class="app-hs-head">
+              <div>
+                <div class="app-hs-tag">GEOPOLITICS · US–CHINA AI BRIDGE</div>
+                <div class="app-hs-name">1. Astana / Almaty, Kazakhstan</div>
+              </div>
+              <span class="outcome-badge hit">84% Hot</span>
+            </div>
+            <p class="app-hs-text">
+              <strong>Research Signal:</strong> AP News (`run 60cf796a`) captures Kazakh President Tokayev &amp; Xi Jinping at the World AI crossroads as non-aligned nations bridge US &amp; China AI blocs, paired with the 60-day US Russia sanctions waiver (`EO 14436`).
+            </p>
+            <div class="app-hs-foot">
+              <span>3D Office: Eurasian AI Twin Towers (42,000 m²)</span>
+              <span>+24% Rent Est.</span>
+            </div>
+          </div>
+
+          <div class="app-hs-card" data-hcity="slc">
+            <div class="app-hs-head">
+              <div>
+                <div class="app-hs-tag">LINKEDIN · WELLFOUND · UTAH GRID</div>
+                <div class="app-hs-name">2. Salt Lake City, Utah</div>
+              </div>
+              <span class="outcome-badge hit">89% Hot</span>
+            </div>
+            <p class="app-hs-text">
+              <strong>Research Signal:</strong> Wellfound (`run e5041c13`) captures <strong>Alto Cirra</strong> hiring Software &amp; Data Engineers in Salt Lake City at <strong>$115k–$155k</strong> (59% below SF's $300k–$380k) with Utah EV/grid electricity at <strong>$0.353/kWh</strong> (`run 26e9741d`, 25% below CA).
+            </p>
+            <div class="app-hs-foot">
+              <span>3D Office: Silicon Slopes Timber Campus (28,500 m²)</span>
+              <span>+18% Rent Est.</span>
+            </div>
+          </div>
+
+          <div class="app-hs-card" data-hcity="dallas">
+            <div class="app-hs-head">
+              <div>
+                <div class="app-hs-tag">SEC 8-K · ZILLOW · TEXAS ENERGY</div>
+                <div class="app-hs-name">3. Dallas, Texas (Uptown / Frisco)</div>
+              </div>
+              <span class="outcome-badge hit">91% Hot</span>
+            </div>
+            <p class="app-hs-text">
+              <strong>Research Signal:</strong> SEC Ex-99.1 (`cbre-ex99_1.htm`, `run bdfac0bb`) shows Dallas-HQ <strong>CBRE</strong> acquiring <em>Onnec</em> for data-center scale; <strong>MOLTEN Cloud</strong> (`run e5041c13`) hiring in Dallas ($70k–$90k + eq); TX fuel at <strong>$3.72/gal</strong> (`run a1dcecca`, 38% below CA).
+            </p>
+            <div class="app-hs-foot">
+              <span>3D Office: Uptown Skybridge HQ (64,000 m²)</span>
+              <span>+21% Rent Est.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="app-3d-stage">
+          <div class="app-3d-header">
+            <div>
+              <div class="app-3d-title" id="app-3d-title">Astana Hub, Kazakhstan — Eurasian AI &amp; Compute Twin Towers</div>
+              <div class="app-3d-sub" id="app-3d-sub">42,000 m² · 1,850 Desks · US–China AI Neutrality Corridor · Drag to Orbit 3D</div>
+            </div>
+            <span class="outcome-badge hit" id="app-3d-phase-badge" style="background:#E1381C;color:#FFF;">STAGE 4: NEW BUSINESSES</span>
+          </div>
+
+          <div class="app-canvas-box" id="app-canvas-box">
+            <canvas id="app-office-3d-canvas" width="660" height="330"></canvas>
+            <div class="app-canvas-caption">
+              <span id="app-3d-chain-line">Chain: EO 14436 + AI Bloc Neutrality → +1,850 Jobs → Housing Demand → +24% Rents → +14 New Businesses</span>
+              <span>Drag to Rotate 3D Office &amp; Neighborhood</span>
+            </div>
+          </div>
+
+          <div class="app-phase-bar" id="app-phase-bar">
+            <button class="app-phase-btn" data-aphase="1" type="button">
+              01 · PUBLIC SIGNALS
+              <strong id="ap-m1">AP News + EO 14436</strong>
+            </button>
+            <button class="app-phase-btn" data-aphase="2" type="button">
+              02 · HQ &amp; JOBS
+              <strong id="ap-m2">+1,850 AI/Eng Jobs</strong>
+            </button>
+            <button class="app-phase-btn" data-aphase="3" type="button">
+              03 · DEMAND &amp; RENTS
+              <strong id="ap-m3">+24% Astana Rents</strong>
+            </button>
+            <button class="app-phase-btn active" data-aphase="4" type="button">
+              04 · NEW BUSINESSES
+              <strong id="ap-m4">+14 Tech Suppliers</strong>
+            </button>
+          </div>
         </div>
       </div>
     </section>

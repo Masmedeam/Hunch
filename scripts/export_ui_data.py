@@ -188,10 +188,10 @@ def export_ui_bundle(out_dir="ui/public/data"):
             vertical_cache["aaa_gas_national"] = out.get("data", {})
         elif src == "aaa_gas_states":
             states = out.get("data", {}).get("states", [])
-            vertical_cache["aaa_gas_states"] = states[:20]
+            vertical_cache["aaa_gas_states"] = states
         elif src == "aaa_ev_charging":
             ev = out.get("data", {}).get("ev_data", [])
-            vertical_cache["aaa_ev_charging"] = ev[:15]
+            vertical_cache["aaa_ev_charging"] = ev
         elif src == "zillow_mortgage":
             vertical_cache["zillow_mortgage"] = out.get("data", {})
         elif src == "rentcast_market":

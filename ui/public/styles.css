@@ -1000,3 +1000,210 @@ html, body {
   font-size: 12px;
   z-index: 200;
 }
+
+/* ===================================================================
+   VIEW 1.5: HOTSPOTS & 3D OFFICES (NEIGHBORHOOD WORLD MODEL)
+   =================================================================== */
+.app-chain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.app-chain-step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ac-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.app-chain-step strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.app-chain-step span:last-child {
+  font-size: 12px;
+  color: var(--ink-secondary);
+}
+
+.app-hotspot-layout {
+  display: grid;
+  grid-template-columns: 390px 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.app-hotspot-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.app-hs-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.app-hs-card:hover {
+  border-color: #B8B4AC;
+}
+
+.app-hs-card.active {
+  border-color: var(--ink);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.app-hs-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.app-hs-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+}
+
+.app-hs-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.app-hs-text {
+  font-size: 12.5px;
+  color: var(--ink-secondary);
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.app-hs-foot {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-muted);
+  padding-top: 8px;
+  border-top: 1px solid var(--surface-subtle);
+}
+
+.app-3d-stage {
+  background: #141413;
+  color: #FAF9F6;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.app-3d-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.app-3d-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFF;
+}
+
+.app-3d-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #A3A098;
+  margin-top: 2px;
+}
+
+.app-canvas-box {
+  position: relative;
+  width: 100%;
+  height: 330px;
+  border-radius: 12px;
+  background: radial-gradient(circle at 50% 35%, #262623 0%, #141413 78%);
+  border: 1px solid #2A2927;
+  cursor: grab;
+  overflow: hidden;
+}
+
+.app-canvas-box:active {
+  cursor: grabbing;
+}
+
+#app-office-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.app-canvas-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: #B5B2AA;
+  pointer-events: none;
+}
+
+.app-phase-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.app-phase-btn {
+  background: #222220;
+  border: 1px solid #33322F;
+  color: #B5B2AA;
+  border-radius: 9px;
+  padding: 9px 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.app-phase-btn strong {
+  display: block;
+  color: #FFF;
+  font-size: 11.5px;
+  margin-top: 3px;
+}
+
+.app-phase-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #FFF;
+}
+
+@media (max-width: 960px) {
+  .app-chain-grid, .app-hotspot-layout, .app-phase-bar {
+    grid-template-columns: 1fr;
+  }
+}
