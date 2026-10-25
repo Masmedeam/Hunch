@@ -173,11 +173,20 @@
             <span class="outcome-badge hit" id="app-3d-phase-badge" style="background:#E1381C;color:#FFF;">STAGE 4: NEW BUSINESSES</span>
           </div>
 
-          <div class="app-canvas-box" id="app-canvas-box">
+          <div class="app-canvas-box" id="app-canvas-box" data-mode="render">
             <canvas id="app-office-3d-canvas" width="660" height="330"></canvas>
+            <!-- Walkable World Labs Marble render of a real office for the selected hotspot -->
+            <iframe id="app-office-render" title="3D office render"></iframe>
+            <div class="app-render-controls">
+              <div class="app-render-toggle" role="group" aria-label="3D view">
+                <button type="button" data-rmode="render" class="active">Office Render</button>
+                <button type="button" data-rmode="model">City Model</button>
+              </div>
+              <a class="app-render-full" id="app-render-full" href="/offices/astana-office.html" target="_blank" rel="noopener">Full View ↗</a>
+            </div>
             <div class="app-canvas-caption">
               <span id="app-3d-chain-line">Chain: EO 14436 + AI Bloc Neutrality → +1,850 Jobs → Housing Demand → +24% Rents → +14 New Businesses</span>
-              <span>Drag to Rotate 3D Office &amp; Neighborhood</span>
+              <span id="app-3d-drag-hint">Drag to Look Around the Office</span>
             </div>
           </div>
 

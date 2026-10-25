@@ -9,3 +9,6 @@ data/
 .wrangler/
 node_modules/
 .DS_Store
+
+# full-resolution office splats are too big for Workers assets (25 MiB limit) and git
+ui/public/offices/*/world-full.spz
