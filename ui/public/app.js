@@ -2557,7 +2557,7 @@ async function init() {
       const frame = document.getElementById("domino-iframe");
       const fullLink = document.getElementById("domino-fullscreen-link");
       if (frame) frame.src = targetUrl;
-      if (fullLink) fullLink.href = targetUrl;
+      if (fullLink) fullLink.href = targetUrl.replace(/&walk=[^&]*/, ""); // walking in only works inside Hunch
     });
   });
 
@@ -2582,6 +2582,7 @@ async function init() {
 
   renderSourcesView();
   renderHotspots3DView();
+  setupOfficeRenderModal();
   renderHotspotWorldMap();
   renderPredictionsView();
   renderBenchmarkView();
@@ -3857,6 +3858,47 @@ const MAP_RENDER_FOR_MARKET = { almaty: "kazakhstan" };
 // Texas markets sit close together, so a couple of labels go to another side of their dot
 const MAP_LABEL_SIDE = { austin: "left", san_antonio: "below" };
 
+// Walkable office render in a modal, shared by the hotspot globe and the Domino tab.
+// The globe listens for hunch:render-open / hunch:render-close to pause while it's up.
+function openOfficeRender(p) {
+  const modal = document.getElementById("hs-render-modal");
+  const frame = document.getElementById("hs-render-frame");
+  if (!modal || !frame || !p?.render) return;
+  document.getElementById("hs-render-title").textContent = `${p.name} — ${p.office}`;
+  document.getElementById("hs-render-newtab").href = p.render;
+  frame.src = p.render;
+  modal.hidden = false;
+  frame.focus();
+  window.dispatchEvent(new Event("hunch:render-open"));
+}
+
+function closeOfficeRender() {
+  const modal = document.getElementById("hs-render-modal");
+  const frame = document.getElementById("hs-render-frame");
+  if (!modal || modal.hidden) return;
+  modal.hidden = true;
+  frame.removeAttribute("src"); // stop the render so it frees the GPU
+  window.dispatchEvent(new Event("hunch:render-close"));
+}
+
+// the hotspot (with its office) behind a Domino market id, if it has one
+function officeForMarket(id) {
+  return MAP_HOTSPOTS.find(h => h.domino === id || h.hcity === MAP_RENDER_FOR_MARKET[id]) || null;
+}
+
+function setupOfficeRenderModal() {
+  const modal = document.getElementById("hs-render-modal");
+  document.getElementById("hs-render-close")?.addEventListener("click", closeOfficeRender);
+  modal?.addEventListener("click", e => { if (e.target === modal) closeOfficeRender(); });
+  window.addEventListener("keydown", e => { if (e.key === "Escape") closeOfficeRender(); });
+  // Domino pages (embedded with ?walk=…) report a click on a walkable city
+  window.addEventListener("message", e => {
+    if (e.origin !== location.origin || e.data?.source !== "domino" || e.data.type !== "walk") return;
+    const h = officeForMarket(e.data.id);
+    if (h) openOfficeRender(h);
+  });
+}
+
 // camera for each region button (altitude in globe radii)
 const MAP_REGIONS = {
   world: { lat: 38, lng: -30, altitude: 1.75 },
@@ -4047,27 +4089,15 @@ async function buildHotspotGlobe() {
     if (card && !card.classList.contains("active")) card.click();
   }
 
-  const modal = document.getElementById("hs-render-modal");
-  const frame = document.getElementById("hs-render-frame");
   function openRender(p) {
     hidePop();
     selectHotspot(p.hcity);
     controls.autoRotate = false;
-    globe.pauseAnimation(); // the office render gets the GPU while it's open
-    document.getElementById("hs-render-title").textContent = `${p.name} — ${p.office}`;
-    document.getElementById("hs-render-newtab").href = p.render;
-    frame.src = p.render;
-    modal.hidden = false;
-    frame.focus();
+    openOfficeRender(p);
   }
-  function closeRender() {
-    modal.hidden = true;
-    frame.removeAttribute("src"); // stop the render so it frees the GPU
-    globe.resumeAnimation();
-  }
-  document.getElementById("hs-render-close")?.addEventListener("click", closeRender);
-  modal?.addEventListener("click", e => { if (e.target === modal) closeRender(); });
-  window.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeRender(); });
+  // the office render gets the GPU while it's open
+  window.addEventListener("hunch:render-open", () => globe.pauseAnimation());
+  window.addEventListener("hunch:render-close", () => globe.resumeAnimation());
 }
 
 document.addEventListener("DOMContentLoaded", init);
