@@ -8,6 +8,11 @@
 <script>/* hold the window load event until the first data render, so a headless "--screenshot" (taken at load) shows the finished page */
 (() => { const q = new URLSearchParams(location.search); if (q.has('mock') && q.get('mock') !== '0' && !q.get('profile')) return; const im = document.createElement('img'); im.alt = ''; im.hidden = true; im.src = (q.get('api') || '').replace(/\/$/, '') + '/events'; document.head.appendChild(im); let done = false; window.__releaseLoad = () => { if (done) return; done = true; im.removeAttribute('src'); im.remove(); }; setTimeout(window.__releaseLoad, 6000); })();
 </script>
+<script>(() => { // ?theme=white | offwhite (dark is the default), same switch as the real estate mocks
+  const t = (new URLSearchParams(location.search).get('theme') || '').toLowerCase().replace(/[^a-z]/g, '');
+  if (t === 'white' || t === 'light' || t === 'offwhite') document.documentElement.dataset.theme = 'light';
+  if (t === 'offwhite') document.documentElement.dataset.tone = 'offwhite';
+})();</script>
 <style>
 :root{
   --plane:#0A0F16; --panel:#0E141D; --card:#131B26; --card-2:#182230; --hair:#1F2A38; --hair-2:#2B3849;
@@ -308,6 +313,50 @@ main{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:1px;back
 .lvl.medium{color:var(--ink);border-color:var(--ink-3)} .lvl.high{color:var(--accent);border-color:var(--accent)} .lvl.max{color:#fff;background:var(--crit);border-color:var(--crit)}
 .cached{font:600 10px/1 var(--mono);color:var(--ink-3);border:1px dashed var(--ink-3);padding:2px 4px;border-radius:3px}
 @keyframes evin{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+/* white version: ?theme=white */
+:root[data-theme="light"]{
+  --plane:#F3F5F8; --panel:#FFFFFF; --card:#F7F9FB; --card-2:#EDF1F6; --hair:#E4E8EE; --hair-2:#D3D9E2;
+  --ink:#141A22; --ink-2:#4A5563; --ink-3:#7A8595;
+  --accent:#E08A14; --accent-ink:#1A1206; --accent-wash:rgba(224,138,20,.22);
+  --up:#1E9E64; --down:#D64545; --crit:#D63A2E;
+  --k-market:#2F6FC4; --k-latent:#B07300; --k-observed:#14855F; --k-attention:#6E61D1; --k-news:#C23D6D; --k-life:#8C6D2C;
+  --tile:#FFFFFF; --tile-ink:#141A22; --tile-edge:#D3D9E2;
+}
+:root[data-theme="light"] kbd{background:rgba(20,26,34,.07)}
+:root[data-theme="light"] .profmenu{box-shadow:0 12px 30px rgba(20,26,34,.16)}
+:root[data-theme="light"] .profmenu a:hover,:root[data-theme="light"] .profmenu a:focus-visible{background:rgba(20,26,34,.05)}
+:root[data-theme="light"] .datebox{background:linear-gradient(90deg,rgba(243,245,248,.9) 55%,rgba(243,245,248,0))}
+:root[data-theme="light"] .datebox .bigdate{text-shadow:0 2px 18px rgba(255,255,255,.9)}
+:root[data-theme="light"] .narr,:root[data-theme="light"] .reveal,:root[data-theme="light"] .think,:root[data-theme="light"] .legend,
+:root[data-theme="light"] .pizza,:root[data-theme="light"] .attn,:root[data-theme="light"] .nodecard{background:rgba(255,255,255,.94);box-shadow:0 4px 14px rgba(20,26,34,.08)}
+:root[data-theme="light"] .pz-row.ping{background:rgba(20,133,95,.14)}
+:root[data-theme="light"] .gl-in{color:#243245;text-shadow:0 0 3px #FFFFFF,0 0 8px #FFFFFF}
+:root[data-theme="light"] .gl-place{color:#4A5563}
+:root[data-theme="light"] .gl-pill{box-shadow:0 0 0 1px var(--hair-2),0 4px 12px rgba(20,26,34,.12)}
+:root[data-theme="light"] .tile{box-shadow:inset 0 -3px 0 var(--tile-edge),0 0 0 1px var(--hair-2),0 4px 12px rgba(20,26,34,.08)}
+:root[data-theme="light"] .tile.life{box-shadow:inset 0 -3px 0 var(--tile-edge),0 0 0 2px var(--accent),0 4px 12px rgba(20,26,34,.08)}
+:root[data-theme="light"] .tsep{background:var(--hair-2)}
+:root[data-theme="light"] .nl{text-shadow:0 0 3px #FFFFFF,0 0 6px #FFFFFF}
+:root[data-theme="light"] .ev-tag.measured{border-color:#243245}
+:root[data-theme="light"] .fc-row:hover,:root[data-theme="light"] .fc-row.focus{background:linear-gradient(90deg,rgba(224,138,20,.10),transparent 70%)}
+:root[data-theme="light"] .fan .band,:root[data-theme="light"] .fan .pfill{box-shadow:inset 0 0 0 1px rgba(224,138,20,.6)}
+:root[data-theme="light"] .fan .base{background:rgba(74,85,99,.28)}
+:root[data-theme="light"] .fan .ptrack{background:rgba(20,26,34,.05)}
+:root[data-theme="light"] .lbd tr.me td{background:rgba(224,138,20,.12)}
+:root[data-theme="light"] .tag.rec{background:#FFF3DF} :root[data-theme="light"] .tag.graph{background:#2F6FC4}
+:root[data-theme="light"] .tag.warn{background:#FFF1D6;color:#8A5A00} :root[data-theme="light"] .tag.error{background:#FDE4E2;color:#A12A22}
+:root[data-theme="light"][data-tone="offwhite"]{
+  --plane:#F1EDE4; --panel:#FBF9F4; --card:#F5F1E8; --card-2:#EDE7DA; --hair:#E4DDCF; --hair-2:#D6CDBB;
+  --ink:#1A1916; --ink-2:#55514A; --ink-3:#8B857A; --tile:#FFFDF8; --tile-edge:#D6CDBB;
+}
+:root[data-tone="offwhite"] .datebox{background:linear-gradient(90deg,rgba(241,237,228,.9) 55%,rgba(241,237,228,0))}
+:root[data-tone="offwhite"] .narr,:root[data-tone="offwhite"] .reveal,:root[data-tone="offwhite"] .think,:root[data-tone="offwhite"] .legend,
+:root[data-tone="offwhite"] .pizza,:root[data-tone="offwhite"] .attn,:root[data-tone="offwhite"] .nodecard{background:rgba(251,249,244,.95)}
+:root[data-tone="offwhite"] .gl-in{text-shadow:0 0 3px #FBF9F4,0 0 8px #FBF9F4}
+:root[data-tone="offwhite"] .nl{text-shadow:0 0 3px #FBF9F4,0 0 6px #FBF9F4}
+:root[data-tone="offwhite"] body .float-tooltip-kap{background:rgba(251,249,244,.98)}
+:root[data-theme="light"] body .float-tooltip-kap{background:rgba(255,255,255,.98);box-shadow:0 8px 20px rgba(20,26,34,.16)}
+:root[data-theme="light"] .gleg .lk-measured{stroke:#243245} :root[data-theme="light"] .gleg .lk-prior{stroke:#6E7C8E} :root[data-theme="light"] .gleg .lk-anec{stroke:#8A94A3} :root[data-theme="light"] .gleg .lk-inv{stroke:#D64545}
 body .float-tooltip-kap{background:rgba(19,27,38,.97);border:1px solid var(--hair-2);border-radius:8px;padding:8px 10px;font:400 13px/1.4 var(--sans);color:var(--ink);max-width:360px;box-shadow:0 8px 20px rgba(0,0,0,.4)}
 .tt b{font-weight:600} .tt .m{color:var(--ink-2);display:block;margin-top:2px}
 @media (max-height:950px){.fc-narr{-webkit-line-clamp:1;min-height:1.35em}}
@@ -374,7 +423,7 @@ body .float-tooltip-kap{background:rgba(19,27,38,.97);border:1px solid var(--hai
   <aside class="rightcol">
     <section class="panel graph-panel" aria-label="Causal graph">
       <div class="ph"><span class="eyebrow">Causal graph</span>
-        <span class="gleg"><span><svg width="24" height="6"><line x1="0" y1="3" x2="24" y2="3" stroke="#E4ECF6" stroke-width="2.5"/></svg> measured</span><span><svg width="24" height="6"><line x1="0" y1="3" x2="24" y2="3" stroke="#9AA7B8" stroke-width="1.5" stroke-dasharray="5 3"/></svg> prior</span><span><svg width="24" height="6"><line x1="0" y1="3" x2="24" y2="3" stroke="#7D8999" stroke-width="1.5" stroke-dasharray="1.5 2.5"/></svg> anecdotal</span><span><svg width="24" height="6"><line x1="0" y1="3" x2="24" y2="3" stroke="#EF6461" stroke-width="2.5"/></svg> inverse</span></span>
+        <span class="gleg"><span><svg width="24" height="6"><line x1="0" y1="3" x2="24" y2="3" stroke="#E4ECF6" stroke-width="2.5" class="lk-measured"/></svg> measured</span><span><svg width="24" height="6"><line x1="0" y1="3" x2="24" y2="3" stroke="#9AA7B8" stroke-width="1.5" stroke-dasharray="5 3" class="lk-prior"/></svg> prior</span><span><svg width="24" height="6"><line x1="0" y1="3" x2="24" y2="3" stroke="#7D8999" stroke-width="1.5" stroke-dasharray="1.5 2.5" class="lk-anec"/></svg> anecdotal</span><span><svg width="24" height="6"><line x1="0" y1="3" x2="24" y2="3" stroke="#EF6461" stroke-width="2.5" class="lk-inv"/></svg> inverse</span></span>
       </div>
       <div class="gwrap"><div id="graph"></div><div id="glabels"></div></div>
     </section>
@@ -430,6 +479,16 @@ const SPEED = Math.min(4, Math.max(0.25, parseFloat(Q.get('speed')) || 1));
 const $ = s => document.querySelector(s);
 const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const KC = { observed: cssv('--k-observed'), attention: cssv('--k-attention'), news: cssv('--k-news'), latent: cssv('--k-latent'), market: cssv('--k-market'), daily_life: cssv('--k-life') };
+const LIGHT = document.documentElement.dataset.theme === 'light', OFF = document.documentElement.dataset.tone === 'offwhite';
+const TQ = OFF ? '&theme=offwhite' : LIGHT ? '&theme=white' : ''; // kept when switching profiles
+const PAL = OFF
+  ? { atmosphere: '#B1C1CF', landStroke: 'rgba(62,64,70,.5)', sea: '#DCE4EB', seaGlow: '#86939F', shine: 0, land: '#F3EFE6', noData: '#ADA698', none: '#CFC8BA', neutral: '#8B857A',
+      dimLink: 'rgba(120,120,115,0.18)', measured: '#2A2824', measuredNeg: '#D64545', neg: '#C9706B', anecdotal: '#8B857A', prior: '#6F6A60', inBand: 'rgba(26,25,22,.35)', band: 'rgba(224,138,20,.18)' }
+  : LIGHT
+  ? { atmosphere: '#8FB4DE', landStroke: 'rgba(55,80,110,.55)', sea: '#D9E6F3', seaGlow: '#7C93AE', shine: 0, land: '#EEF3F8', noData: '#A7B1BE', none: '#C4CCD6', neutral: '#7A8595',
+      dimLink: 'rgba(120,135,155,0.18)', measured: '#243245', measuredNeg: '#D64545', neg: '#C9706B', anecdotal: '#8A94A3', prior: '#6E7C8E', inBand: 'rgba(20,26,34,.35)', band: 'rgba(224,138,20,.18)' }
+  : { atmosphere: '#4F7CAD', landStroke: 'rgba(150,172,200,.26)', sea: '#0F2034', seaGlow: '#060E19', shine: 3, land: '#25364A', noData: '#59677A', none: '#3A4657', neutral: '#8A94A3',
+      dimLink: 'rgba(120,135,155,0.12)', measured: '#E4ECF6', measuredNeg: '#F08A85', neg: '#C9706B', anecdotal: '#7D8999', prior: '#9AA7B8', inBand: PAL.inBand, band: 'rgba(240,164,58,.2)' };
 const ACC = cssv('--accent'), UP = cssv('--up'), DOWN = cssv('--down'), CRIT = cssv('--crit'), INK = cssv('--ink'), INK3 = cssv('--ink-3'), LIFE = KC.daily_life;
 const isNum = v => typeof v === 'number' && isFinite(v);
 const num = (v, d = null) => (isNum(v) ? v : d);
@@ -574,8 +633,8 @@ const Globe3 = (() => {
   const cache = { pts: new Map(), rings: new Map(), arcs: new Map(), labels: new Map() };
   const vis = el => { el.style.opacity = el.__vis !== false && !el.__hide ? '' : '0'; };
   if (G) {
-    G.backgroundColor('rgba(0,0,0,0)').showAtmosphere(true).atmosphereColor('#4F7CAD').atmosphereAltitude(0.13).showGraticules(true)
-      .polygonCapColor(capColor).polygonSideColor(() => 'rgba(0,0,0,0)').polygonStrokeColor(() => 'rgba(150,172,200,.26)').polygonAltitude(0.004).polygonsTransitionDuration(0)
+    G.backgroundColor('rgba(0,0,0,0)').showAtmosphere(true).atmosphereColor(PAL.atmosphere).atmosphereAltitude(0.13).showGraticules(true)
+      .polygonCapColor(capColor).polygonSideColor(() => 'rgba(0,0,0,0)').polygonStrokeColor(() => PAL.landStroke).polygonAltitude(0.004).polygonsTransitionDuration(0)
       .pointLat('lat').pointLng('lng').pointAltitude('alt').pointRadius('r').pointColor('color').pointResolution(14).pointsMerge(false).pointsTransitionDuration(900).pointLabel('tip')
       .ringLat('lat').ringLng('lng').ringColor(d => t => rgba(d.color, (1 - t) * d.alpha)).ringMaxRadius('maxR').ringPropagationSpeed('speed').ringRepeatPeriod('period').ringAltitude(0.006)
       .arcStartLat('sLat').arcStartLng('sLng').arcEndLat('eLat').arcEndLng('eLng').arcColor('colors').arcStroke('stroke').arcDashLength('dash').arcDashGap('gap')
@@ -583,7 +642,7 @@ const Globe3 = (() => {
       .htmlLat('lat').htmlLng('lng').htmlAltitude('alt').htmlElement('el').htmlTransitionDuration(0)
       .htmlElementVisibilityModifier((el, v) => { el.__vis = v; vis(el); if (!el.__seen && !placeQ) { placeQ = true; queueMicrotask(() => { placeQ = false; place(); }); } }) // first render of a label: place it in the same frame
       .onPointClick(d => d && d.id && select(d.id)).onArcClick(d => d && d.src && select(d.src));
-    const m = G.globeMaterial(); m.color.set('#0F2034'); if (m.emissive) m.emissive.set('#060E19'); m.shininess = 3;
+    const m = G.globeMaterial(); m.color.set(PAL.sea); if (m.emissive) m.emissive.set(PAL.seaGlow); m.shininess = PAL.shine;
     try { G.renderer().setPixelRatio(Math.min(1.75, window.devicePixelRatio || 1)); } catch (e) { /* keep default */ }
     G.pointOfView({ lat: 30, lng: -20, altitude: 1.7 });
     const c = G.controls(); c.autoRotate = !matchMedia('(prefers-reduced-motion: reduce)').matches; c.autoRotateSpeed = 0.35;
@@ -595,7 +654,7 @@ const Globe3 = (() => {
     const a3 = f && f.properties && f.properties.a3; const id = a3 === 'IRN' ? 'escalation' : a3 === 'ISR' ? 'israel' : null;
     const n = id && g && g.byId.get(id); const p = n && !noData(n) ? num(n.prob, 0) : 0;
     if (p > 0.05) return rgba(KC.latent, 0.25 + 0.6 * p);
-    return '#25364A';
+    return PAL.land;
   }
   const dimmed = id => !!S.chain && !S.chain.has(id);
   const inPath = id => (S.chain ? S.chain.has(id) : Dominoes.path().includes(id));
@@ -628,14 +687,14 @@ const Globe3 = (() => {
     for (const c of cl) for (const n of c.nodes) {
       const it = intensity(n), dim = dimmed(n.id), col = kcol(n.kind), mk = n.kind === 'market', life = n.kind === 'daily_life';
       if (!(n.id === 'pizza' && places.length)) {
-        pts.push(keep(cache.pts, n.id, { id: n.id, lat: n._lat, lng: n._lon, alt: mk ? 0.012 + 0.09 * clamp(num(n.prob, 0) * 1.6) : life ? 0.012 : 0.004 + 0.01 * it, r: mk ? 0.5 : life ? 0.55 : 0.36, color: rgba(noData(n) ? '#59677A' : col, dim ? 0.18 : 0.96), tip: tipNode(n) })); seen.pts.add(n.id);
+        pts.push(keep(cache.pts, n.id, { id: n.id, lat: n._lat, lng: n._lon, alt: mk ? 0.012 + 0.09 * clamp(num(n.prob, 0) * 1.6) : life ? 0.012 : 0.004 + 0.01 * it, r: mk ? 0.5 : life ? 0.55 : 0.36, color: rgba(noData(n) ? PAL.noData : col, dim ? 0.18 : 0.96), tip: tipNode(n) })); seen.pts.add(n.id);
       }
       if (it >= 0.28 && !dim && (!life || n.id === 'pump')) { rings.push(keep(cache.rings, n.id, { lat: n._lat, lng: n._lon, color: col, alpha: 0.5 + 0.5 * it, maxR: 1.6 + 5.5 * it, speed: 1.2 + 4 * it, period: Math.round(2300 - 1500 * it) })); seen.rings.add(n.id); }
     }
     if (places.length && spread()) { // places spread over a region (e.g. states): bars at true positions, height relative to the spread of ratios
       const rr = places.map(ratioOf), byLive = !rr.some(isNum), vs = places.map((p, i) => (byLive ? toNum(p.live) : rr[i])), ok = vs.filter(isNum), lo = byLive ? 0 : Math.min(...ok), hi = Math.max(...ok);
       places.forEach((p, i) => { const ratio = rr[i], v = vs[i], u = isNum(v) && hi > lo ? (v - lo) / (hi - lo) : 0.5;
-        pts.push(keep(cache.pts, 'pz' + i, { id: null, lat: p.lat, lng: p.lon, alt: isNum(v) ? 0.012 + 0.08 * u : 0.004, r: 0.55, color: rgba(!isNum(v) ? '#3A4657' : (byLive ? u >= 0.5 : v >= 1) ? KC.observed : '#8A94A3', 0.95),
+        pts.push(keep(cache.pts, 'pz' + i, { id: null, lat: p.lat, lng: p.lon, alt: isNum(v) ? 0.012 + 0.08 * u : 0.004, r: 0.55, color: rgba(!isNum(v) ? PAL.none : (byLive ? u >= 0.5 : v >= 1) ? KC.observed : PAL.neutral, 0.95),
           tip: `<div class="tt"><b>${esc(p.name)}</b><span class="m">${fmtCount(toNum(p.live))}${isNum(toNum(p.usual)) ? ' vs ' + fmtCount(toNum(p.usual)) + ' usual' : ''}${isNum(ratio) ? ' · ' + ratio.toFixed(3) + '×' : ''}</span>${p.status ? `<span class="m">${esc(p.status)}</span>` : ''}</div>` })); seen.pts.add('pz' + i); });
     } else if (places.length && center) {
       const dim = pn && dimmed('pizza');
@@ -643,7 +702,7 @@ const Globe3 = (() => {
       places.forEach((p, i) => { const ratio = num(p.ratio, isNum(p.live) && isNum(p.usual) && p.usual > 0 ? p.live / p.usual : null);
         const br = Math.atan2(p.lat - center.lat, (p.lon - center.lon) * cf), rr = 0.9 + 0.8 * ds[i] / dmax; // schematic: true bearing, distance squeezed into a ring visible from orbit
         pts.push(keep(cache.pts, 'pz' + i, { id: 'pizza', lat: center.lat + rr * Math.sin(br), lng: center.lon + rr * Math.cos(br) / cf, alt: isNum(ratio) ? 0.008 + 0.03 * clamp(ratio, 0, 3.5) : 0.003, r: 0.17,
-          color: rgba(!isNum(ratio) ? '#3A4657' : ratio >= 1.15 ? KC.observed : '#8A94A3', dim ? 0.25 : 0.98), tip: `<div class="tt"><b>${esc(p.name)}</b><span class="m">${isNum(p.live) ? p.live : '—'} now vs ${isNum(p.usual) ? p.usual : '—'} usual · ${isNum(ratio) ? ratio.toFixed(2) + '×' : 'no data'}</span><span class="m">${esc(p.status || '')} · schematic position (true bearing from the Pentagon)</span></div>` })); seen.pts.add('pz' + i); });
+          color: rgba(!isNum(ratio) ? PAL.none : ratio >= 1.15 ? KC.observed : PAL.neutral, dim ? 0.25 : 0.98), tip: `<div class="tt"><b>${esc(p.name)}</b><span class="m">${isNum(p.live) ? p.live : '—'} now vs ${isNum(p.usual) ? p.usual : '—'} usual · ${isNum(ratio) ? ratio.toFixed(2) + '×' : 'no data'}</span><span class="m">${esc(p.status || '')} · schematic position (true bearing from the Pentagon)</span></div>` })); seen.pts.add('pz' + i); });
     }
     const addArc = (k, s, t, e, final) => {
       if (!geo(s) || !geo(t) || angDeg({ lat: s._lat, lon: s._lon }, { lat: t._lat, lon: t._lon }) < 1.5) return;
@@ -665,7 +724,7 @@ const Globe3 = (() => {
       const ranked = c.nodes.slice().sort((a, b) => prio(b) - prio(a)), shown = ranked.slice(0, 3), more = ranked.length - shown.length;
       const pumpN = c.nodes.find(n => n.id === 'pump'), gas = pumpN && S.mode !== 'replay' && lifeItem('pump');
       const pill = gas ? `<div class="gl-pill"><span class="k">Your gas next week</span><b>${fmtLife(gas.median, gas.unit)}</b><small>80% range ${fmtLife(gas.p10, gas.unit)}–${fmtLife(gas.p90, gas.unit)} · now ${fmtLife(num(gas.last_close, gas.baseline && gas.baseline.median), gas.unit)}</small></div>` : '';
-      const rows = shown.filter(n => !(gas && n === pumpN)).map(n => `<div class="gl-row"><i style="background:${noData(n) ? '#59677A' : kcol(n.kind)}"></i><span>${esc(short(n))}</span><b>${esc(labelVal(n))}</b></div>`).join('');
+      const rows = shown.filter(n => !(gas && n === pumpN)).map(n => `<div class="gl-row"><i style="background:${noData(n) ? PAL.noData : kcol(n.kind)}"></i><span>${esc(short(n))}</span><b>${esc(labelVal(n))}</b></div>`).join('');
       const html = (c.name ? `<div class="gl-place">${esc(c.name)}</div>` : '') + pill + rows + (more > 0 ? `<div class="gl-more">+${more} more</div>` : '');
       if (o.html !== html) { o.inner.innerHTML = html; o.html = html; o.w = 0; }
       o.inner.classList.toggle('gl-dim', c.nodes.every(n => dimmed(n.id)));
@@ -728,9 +787,9 @@ const Graph3 = (() => {
   const nodes = new Map(), links = new Map(); let topo = '', fitted = false, dashBase = null, hoverId = null; const dashMats = new Map(); const DASH_T = { value: 0 };
   const dim = id => !!S.chain && !S.chain.has(id);
   const val = n => 1.4 + 18 * Math.pow(intensity(n.d), 1.2);
-  const linkCol = l => (S.chain && !l._on ? 'rgba(120,135,155,0.12)' : l._on && S.chain ? ACC : l._cls === 'measured' ? (l.sign < 0 ? '#F08A85' : '#E4ECF6') : l.sign < 0 ? '#C9706B' : l._cls === 'anecdotal' ? '#7D8999' : '#9AA7B8');
+  const linkCol = l => (S.chain && !l._on ? PAL.dimLink : l._on && S.chain ? ACC : l._cls === 'measured' ? (l.sign < 0 ? PAL.measuredNeg : PAL.measured) : l.sign < 0 ? PAL.neg : l._cls === 'anecdotal' ? PAL.anecdotal : PAL.prior);
   F.backgroundColor('rgba(0,0,0,0)').showNavInfo(false).nodeId('id').nodeRelSize(4.2).nodeResolution(18).nodeOpacity(0.96)
-    .nodeVal(val).nodeColor(n => rgba(n.d && noData(n.d) ? '#59677A' : kcol(n.d && n.d.kind), dim(n.id) ? 0.2 : 1)).nodeLabel(n => (n.d ? tipNode(n.d) : ''))
+    .nodeVal(val).nodeColor(n => rgba(n.d && noData(n.d) ? PAL.noData : kcol(n.d && n.d.kind), dim(n.id) ? 0.2 : 1)).nodeLabel(n => (n.d ? tipNode(n.d) : ''))
     .linkColor(linkCol).linkOpacity(0.85).linkHoverPrecision(5)
     .linkWidth(l => (l._cls === 'measured' ? 0.7 + 2.2 * l.active : 0)).linkResolution(6).linkLabel(l => (l.e ? tipEdge(l.e, S.graph) : ''))
     .linkMaterial(l => (l._cls !== 'measured' ? dashMat(l) : null))
@@ -1007,7 +1066,7 @@ function drawSeries() {
   const med = s.map((x, i) => `${X(i).toFixed(1)},${Y(num(x.median, 0)).toFixed(1)}`).join(' ');
   const dots = s.map((x, i) => { const out = isNum(x.p10) && isNum(x.p90) && (x.actual < x.p10 || x.actual > x.p90); return `<circle cx="${X(i).toFixed(1)}" cy="${Y(x.actual).toFixed(1)}" r="${few ? (out ? 3.4 : 2.6) : out ? 2.4 : 1.3}" fill="${out ? (num(x.surprise, 0) > 2 ? CRIT : INK) : 'rgba(239,232,216,.55)'}"/>`; }).join('');
   const idle = LBL('series_label') || `last ${s.length} days`;
-  host.innerHTML = `<div class="hd"><span class="dm" title="Last ${s.length} days: Domino 80% band, median and actual; bright dots fall outside the band">${S.dmHTML || ''}</span><span id="serRead">${esc(idle)}</span></div><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:${H}px"><line x1="0" x2="${W}" y1="${y0}" y2="${y0}" stroke="${cssv('--hair-2')}"/><polygon points="${band}" fill="rgba(240,164,58,.2)"/><polyline points="${med}" fill="none" stroke="${ACC}" stroke-width="1.5"/>${dots}<line id="serX" y1="0" y2="${H}" stroke="${INK}" stroke-width="1" opacity="0"/></svg>`;
+  host.innerHTML = `<div class="hd"><span class="dm" title="Last ${s.length} days: Domino 80% band, median and actual; bright dots fall outside the band">${S.dmHTML || ''}</span><span id="serRead">${esc(idle)}</span></div><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:${H}px"><line x1="0" x2="${W}" y1="${y0}" y2="${y0}" stroke="${cssv('--hair-2')}"/><polygon points="${band}" fill="${PAL.band}"/><polyline points="${med}" fill="none" stroke="${ACC}" stroke-width="1.5"/>${dots}<line id="serX" y1="0" y2="${H}" stroke="${INK}" stroke-width="1" opacity="0"/></svg>`;
   const svg = host.querySelector('svg'), lx = host.querySelector('#serX'), rd = host.querySelector('#serRead'); let raf = 0;
   svg.addEventListener('mousemove', ev => { const r = svg.getBoundingClientRect(); const i = Math.round(clamp((ev.clientX - r.left) / r.width) * (s.length - 1)); cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { const x = s[i]; lx.setAttribute('x1', X(i)); lx.setAttribute('x2', X(i)); lx.setAttribute('opacity', '.6'); rd.textContent = `${x.date} · actual ${fv(x.actual)} · band ${fv(x.p10)} to ${fv(x.p90)} · surprise ${num(x.surprise) ?? '—'}`; }); });
   svg.addEventListener('mouseleave', () => { lx.setAttribute('opacity', '0'); rd.textContent = idle; });
@@ -1285,12 +1344,12 @@ async function profiles() {
   if (PROFILE && !list.some(x => x.id === PROFILE)) list.unshift({ id: PROFILE, title: P.title || P.brand || PROFILE, blurb: P.subtitle || '' });
   return (profList = [{ id: '', title: home.title || 'Domino (live)', blurb: home.blurb || 'Live API and event stream' }, ...list]);
 }
-function goProfile(id) { const q = new URLSearchParams(); if (id) q.set('profile', id); if (API) q.set('api', API); const s2 = q.toString(); location.href = location.pathname + (s2 ? '?' + s2 : ''); }
+function goProfile(id) { const q = new URLSearchParams(); if (id) q.set('profile', id); if (API) q.set('api', API); if (LIGHT) q.set('theme', OFF ? 'offwhite' : 'white'); const s2 = q.toString(); location.href = location.pathname + (s2 ? '?' + s2 : ''); }
 async function toggleProfMenu(open) {
   const m = $('#profMenu'), b = $('#profBtn'), show = open ?? m.hidden;
   if (!show) { m.hidden = true; b.setAttribute('aria-expanded', 'false'); return; }
   const list = await profiles();
-  m.innerHTML = list.map((x, i) => `<a href="${esc(x.id ? '?profile=' + encodeURIComponent(x.id) : location.pathname)}" data-id="${esc(x.id)}" class="${x.id === PROFILE ? 'cur' : ''}">${i < 9 ? `<kbd>${i + 1}</kbd>` : '<span></span>'}<span>${esc(x.title || x.id)}</span>${x.blurb ? `<small>${esc(x.blurb)}</small>` : ''}</a>`).join('');
+  m.innerHTML = list.map((x, i) => `<a href="${esc(x.id ? '?profile=' + encodeURIComponent(x.id) + TQ : location.pathname + (TQ ? '?' + TQ.slice(1) : ''))}" data-id="${esc(x.id)}" class="${x.id === PROFILE ? 'cur' : ''}">${i < 9 ? `<kbd>${i + 1}</kbd>` : '<span></span>'}<span>${esc(x.title || x.id)}</span>${x.blurb ? `<small>${esc(x.blurb)}</small>` : ''}</a>`).join('');
   m.hidden = false; b.setAttribute('aria-expanded', 'true');
 }
 window.domino = { select, runLive, startReplay, exitReplay, dispatch, state: S, graph: Graph3, profiles: () => profiles(), goProfile: id => goProfile(id) }; // console handle for rehearsals
