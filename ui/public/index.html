@@ -137,19 +137,6 @@
         </div>
       </div>
 
-      <!-- walkable office render, opened from a map pin -->
-      <div class="hs-render-modal" id="hs-render-modal" hidden>
-        <div class="hs-render-box">
-          <div class="hs-render-bar">
-            <strong id="hs-render-title">Office render</strong>
-            <span class="hs-render-hint">WASD to walk · drag or click to look · F at the laptop</span>
-            <a id="hs-render-newtab" href="#" target="_blank" rel="noopener">Open in new tab ↗</a>
-            <button type="button" id="hs-render-close" aria-label="Close render">Close ✕</button>
-          </div>
-          <iframe id="hs-render-frame" title="Walkable office render"></iframe>
-        </div>
-      </div>
-
       <!-- 3 HOTSPOTS + INTERACTIVE 3D STAGE -->
       <div class="app-hotspot-layout">
         <div class="app-hotspot-sidebar" id="app-hotspot-list">
@@ -371,5 +358,18 @@
   <div class="toast hidden" id="toast"></div>
 
   <script src="/app.js" defer></script>
+  <!-- walkable office render, opened from the hotspot globe or a Domino city; page-level so it shows on any tab -->
+  <div class="hs-render-modal" id="hs-render-modal" hidden>
+    <div class="hs-render-box">
+      <div class="hs-render-bar">
+        <strong id="hs-render-title">Office render</strong>
+        <span class="hs-render-hint">WASD to walk · drag or click to look · F at the laptop</span>
+        <a id="hs-render-newtab" href="#" target="_blank" rel="noopener">Open in new tab ↗</a>
+        <button type="button" id="hs-render-close" aria-label="Close render">Close ✕</button>
+      </div>
+      <iframe id="hs-render-frame" title="Walkable office render"></iframe>
+    </div>
+  </div>
+
 </body>
 </html>
