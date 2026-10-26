@@ -2582,6 +2582,7 @@ async function init() {
 
   renderSourcesView();
   renderHotspots3DView();
+  renderHotspotWorldMap();
   renderPredictionsView();
   renderBenchmarkView();
 }
@@ -3826,6 +3827,247 @@ function renderHotspots3DView() {
   syncLabels();
   syncRender();
   drawScene();
+}
+
+/* ===================================================================
+   GLOBAL SIGNAL MAP (WHITE GLOBE OF EVERY ANALYSED PLACE)
+   Hunch's three hotspots open their walkable office render; Domino's
+   real-estate markets show their 12-month screen.
+   =================================================================== */
+const MAP_HOTSPOTS = [
+  {
+    hcity: "kazakhstan", domino: "astana", name: "Astana, Kazakhstan", lat: 51.17, lon: 71.45,
+    tag: "GEOPOLITICS · US–CHINA AI BRIDGE", hot: 84, rent: "+24%", jobs: "+1,850",
+    office: "Eurasian AI Twin Towers", render: "/offices/astana-office.html"
+  },
+  {
+    hcity: "slc", domino: null, name: "Salt Lake City, Utah", lat: 40.76, lon: -111.89,
+    tag: "LINKEDIN · WELLFOUND · UTAH GRID", hot: 89, rent: "+18%", jobs: "+1,200",
+    office: "Silicon Slopes Timber Campus", render: "/offices/slc-office.html"
+  },
+  {
+    hcity: "dallas", domino: "dallas", name: "Dallas, Texas", lat: 32.78, lon: -96.8,
+    tag: "SEC 8-K · ZILLOW · TEXAS ENERGY", hot: 91, rent: "+21%", jobs: "+3,100",
+    office: "Uptown Skybridge HQ", render: "/offices/dallas-office.html"
+  }
+];
+
+// the Kazakhstan office render was built from photos of an Almaty office
+const MAP_RENDER_FOR_MARKET = { almaty: "kazakhstan" };
+// Texas markets sit close together, so a couple of labels go to another side of their dot
+const MAP_LABEL_SIDE = { austin: "left", san_antonio: "below" };
+
+// camera for each region button (altitude in globe radii)
+const MAP_REGIONS = {
+  world: { lat: 38, lng: -30, altitude: 1.75 },
+  americas: { lat: 37, lng: -100, altitude: 0.75 },
+  gulf: { lat: 24.8, lng: 54.8, altitude: 0.35 },
+  kazakhstan: { lat: 47, lng: 72, altitude: 0.8 }
+};
+
+function loadScriptOnce(src) {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) return resolve();
+    const el = document.createElement("script");
+    el.src = src; el.onload = resolve; el.onerror = reject;
+    document.head.appendChild(el);
+  });
+}
+
+// globe.gl (already vendored for Domino) is ~1.9 MB, so it loads only once the map scrolls into view
+function renderHotspotWorldMap() {
+  const stage = document.getElementById("hs-map-stage");
+  if (!stage) return;
+  const io = new IntersectionObserver(entries => {
+    if (!entries.some(e => e.isIntersecting)) return;
+    io.disconnect();
+    buildHotspotGlobe().catch(() => {
+      stage.insertAdjacentHTML("beforeend", '<p style="position:absolute;inset:auto 0 50%;text-align:center;color:var(--ink-muted)">The globe could not be loaded.</p>');
+    });
+  });
+  io.observe(stage);
+}
+
+async function buildHotspotGlobe() {
+  const stage = document.getElementById("hs-map-stage");
+  const host = document.getElementById("hs-globe");
+  const pop = document.getElementById("hs-map-pop");
+
+  const [, geo, dash] = await Promise.all([
+    loadScriptOnce("/domino/vendor/globe.gl-2.46.2.min.js"),
+    fetch("/domino/vendor/ne_110m_countries.json").then(r => r.json()),
+    fetch("/domino/profiles/real-estate/dashboard.json").then(r => r.ok ? r.json() : { markets: [] }).catch(() => ({ markets: [] }))
+  ]);
+  const markets = dash.markets || [];
+
+  // one pin per place: hotspots merged with their Domino market, then the remaining markets
+  const byKey = Object.fromEntries(markets.map(m => [m.key, m]));
+  const pins = MAP_HOTSPOTS.map(h => ({ ...h, market: h.domino ? byKey[h.domino] : null }));
+  const merged = new Set(MAP_HOTSPOTS.map(h => h.domino));
+  markets.filter(m => !merged.has(m.key)).forEach(m => {
+    const via = MAP_HOTSPOTS.find(h => h.hcity === MAP_RENDER_FOR_MARKET[m.key]);
+    pins.push({
+      name: m.market, lat: m.lat, lon: m.lon, market: m,
+      hcity: via ? via.hcity : null, render: via ? via.render : null, office: via ? via.office : null, minor: true
+    });
+  });
+
+  // Domino's off-white palette (PR #4: realestate_mock ?theme=offwhite)
+  const DOMINO_OFFWHITE = {
+    globe: "#DCE4EB", emissive: "#86939F", atmosphere: "#B1C1CF", land: "rgba(62,64,70,0.6)",
+    verdict: { buy: "#1E9E64", accumulate: "#1E9E64", hold: "#B8890F", avoid: "#D64545" }
+  };
+  const verdictColor = v => DOMINO_OFFWHITE.verdict[v] || "#A3AEBB";
+
+  function pinElement(p) {
+    const el = document.createElement("div");
+    el.className = "gpin " + (p.minor ? "minor" : "hot") + (MAP_LABEL_SIDE[p.market?.key] ? " side-" + MAP_LABEL_SIDE[p.market.key] : "");
+    el.tabIndex = 0;
+    el.setAttribute("role", "button");
+    el.setAttribute("aria-label", p.name);
+    const v = p.market?.argon?.verdict;
+    // globe.gl centres the element on the point, so it is a zero-size anchor and the dot sits on it
+    el.innerHTML = `<span class="gpin-body"><span class="gpin-dot"${p.minor ? ` style="background:${verdictColor(v)}"` : ""}></span>
+      <span class="gpin-text"><b>${p.name.split(",")[0]}</b>${p.minor ? "" : `<small><em>${p.hot}% hot</em> · walk into 3D office</small>`}</span></span>`;
+    el.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") showPop(p); });
+    el.addEventListener("pointerleave", e => { if (e.pointerType === "mouse" && !pop.dataset.pinned) hidePop(); });
+    el.addEventListener("click", e => {
+      e.stopPropagation();
+      if (p.render) openRender(p);
+      else { showPop(p); pop.dataset.pinned = "1"; }
+    });
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); el.click(); } });
+    return el;
+  }
+
+  // country rings drawn as outlines on a muted sea, the Domino off-white look
+  const LAND = [];
+  for (const f of geo.features) {
+    if (f.properties.a3 === "ATA") continue;
+    const g = f.geometry;
+    for (const poly of g.type === "Polygon" ? [g.coordinates] : g.coordinates) for (const ring of poly) LAND.push({ pts: ring });
+  }
+  const globe = Globe()(host)
+    .width(stage.clientWidth)
+    .height(stage.clientHeight)
+    .backgroundColor("rgba(0,0,0,0)")
+    .showAtmosphere(true)
+    .atmosphereColor(DOMINO_OFFWHITE.atmosphere)
+    .atmosphereAltitude(0.13)
+    .showGraticules(true)
+    .pathsData(LAND)
+    .pathPoints("pts")
+    .pathPointLat(pt => pt[1])
+    .pathPointLng(pt => pt[0])
+    .pathPointAlt(0.002)
+    .pathColor(() => DOMINO_OFFWHITE.land)
+    .pathStroke(null)
+    .pathTransitionDuration(0)
+    .htmlElementsData(pins)
+    .htmlLat("lat")
+    .htmlLng("lon")
+    .htmlAltitude(0.02)
+    .htmlElement(pinElement)
+    .htmlElementVisibilityModifier((el, visible) => { if (visible) el.removeAttribute("data-hidden"); else el.setAttribute("data-hidden", ""); })
+    .htmlTransitionDuration(0);
+  const sea = globe.globeMaterial();
+  sea.color.set(DOMINO_OFFWHITE.globe);
+  if (sea.emissive) sea.emissive.set(DOMINO_OFFWHITE.emissive);
+  sea.shininess = 0;
+
+  const controls = globe.controls();
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.35;
+  globe.pointOfView(MAP_REGIONS.world, 0);
+
+  let region = "world";
+  // name the small market pins once the camera is close enough to separate them
+  globe.onZoom(pov => {
+    host.classList.toggle("zoomed", pov.altitude < 1.3);
+    if (!pop.dataset.pinned && !pop.matches(":hover")) hidePop();
+  });
+  // hold still while you're reading or dragging
+  stage.addEventListener("pointerenter", () => { controls.autoRotate = false; });
+  stage.addEventListener("pointerleave", () => { controls.autoRotate = region === "world"; });
+
+  document.querySelectorAll("#hs-map-regions button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#hs-map-regions button").forEach(b => b.classList.toggle("active", b === btn));
+      region = btn.dataset.region;
+      hidePop();
+      controls.autoRotate = false;
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      globe.pointOfView(MAP_REGIONS[region], reduce ? 0 : 1200);
+    });
+  });
+
+  new ResizeObserver(() => globe.width(stage.clientWidth).height(stage.clientHeight)).observe(stage);
+
+  function showPop(p) {
+    const m = p.market, a = m?.argon;
+    const rows = [];
+    if (!p.minor) rows.push(["Hunch hotspot", `${p.hot}% hot`], ["Rent estimate", p.rent], ["New jobs", p.jobs]);
+    if (m) {
+      rows.push(["Gross yield", `${m.gross.toFixed(1)}%`], ["12-month model", `${m.model_12m >= 0 ? "+" : ""}${m.model_12m.toFixed(1)}%`]);
+      if (a) rows.push(["Argon call", `<span class="pop-verdict v-${a.verdict}">${a.verdict}</span> · ${a.exp >= 0 ? "+" : ""}${a.exp}%`]);
+    }
+    pop.innerHTML = `
+      <div class="pop-tag">${p.tag || (m ? "DOMINO · REAL ESTATE 12M SCREEN" : "")}</div>
+      <div class="pop-name">${p.name}</div>
+      <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>
+      <div class="pop-note">${p.render ? `3D office: ${p.office}` : "No office render for this market yet."}</div>
+      ${p.render ? `<div class="pop-actions"><button type="button" class="primary" data-act="walk">Walk into office</button><button type="button" data-act="stage">Show below</button></div>` : ""}`;
+    pop.querySelector('[data-act="walk"]')?.addEventListener("click", () => openRender(p));
+    pop.querySelector('[data-act="stage"]')?.addEventListener("click", () => {
+      selectHotspot(p.hcity);
+      document.getElementById("app-canvas-box")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      hidePop();
+    });
+    // place the card beside the pin, flipped to stay inside the stage
+    const { x, y } = globe.getScreenCoords(p.lat, p.lon, 0.02);
+    pop.hidden = false;
+    let left = x + 18, top = y - 24;
+    if (left + pop.offsetWidth > stage.clientWidth - 8) left = x - pop.offsetWidth - 18;
+    top = Math.max(8, Math.min(top, stage.clientHeight - pop.offsetHeight - 8));
+    pop.style.left = `${Math.max(8, left)}px`;
+    pop.style.top = `${top}px`;
+  }
+
+  function hidePop() {
+    pop.hidden = true;
+    delete pop.dataset.pinned;
+  }
+  pop.addEventListener("click", e => e.stopPropagation());
+  pop.addEventListener("pointerleave", e => { if (e.pointerType === "mouse" && !pop.dataset.pinned) hidePop(); });
+  globe.onGlobeClick(hidePop);
+
+  // keep the hotspot cards and 3D stage below in step with the globe
+  function selectHotspot(hcity) {
+    const card = document.querySelector(`#app-hotspot-list .app-hs-card[data-hcity="${hcity}"]`);
+    if (card && !card.classList.contains("active")) card.click();
+  }
+
+  const modal = document.getElementById("hs-render-modal");
+  const frame = document.getElementById("hs-render-frame");
+  function openRender(p) {
+    hidePop();
+    selectHotspot(p.hcity);
+    controls.autoRotate = false;
+    globe.pauseAnimation(); // the office render gets the GPU while it's open
+    document.getElementById("hs-render-title").textContent = `${p.name} — ${p.office}`;
+    document.getElementById("hs-render-newtab").href = p.render;
+    frame.src = p.render;
+    modal.hidden = false;
+    frame.focus();
+  }
+  function closeRender() {
+    modal.hidden = true;
+    frame.removeAttribute("src"); // stop the render so it frees the GPU
+    globe.resumeAnimation();
+  }
+  document.getElementById("hs-render-close")?.addEventListener("click", closeRender);
+  modal?.addEventListener("click", e => { if (e.target === modal) closeRender(); });
+  window.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeRender(); });
 }
 
 document.addEventListener("DOMContentLoaded", init);

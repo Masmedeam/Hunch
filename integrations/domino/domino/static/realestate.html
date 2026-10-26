@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Domino · Real estate</title>
+<script>(() => { // ?theme=white | offwhite (dark is the default), same switch as the real estate mocks
+  const t = (new URLSearchParams(location.search).get('theme') || '').toLowerCase().replace(/[^a-z]/g, '');
+  if (t === 'white' || t === 'light' || t === 'offwhite') document.documentElement.dataset.theme = 'light';
+  if (t === 'offwhite') document.documentElement.dataset.tone = 'offwhite';
+})();</script>
 <style>
 :root{
   --plane:#0A0F16; --panel:#0E141D; --card:#131B26; --card-2:#182230; --hair:#1F2A38; --hair-2:#2B3849;
@@ -97,6 +102,29 @@ footer{color:var(--ink-3);font-size:11.5px;padding:0 2px}
 .err{color:var(--down)}
 @media (max-width:1300px){.g2,.g2b{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:760px){.kpis{grid-template-columns:1fr}.cgroups{grid-template-columns:1fr}.sep{display:none}.card{width:104px}.zips,.cols{grid-template-columns:1fr}main{padding:12px 16px}}
+/* white version: ?theme=white */
+:root[data-theme="light"]{
+  --plane:#F3F5F8; --panel:#FFFFFF; --card:#F7F9FB; --card-2:#EDF1F6; --hair:#E4E8EE; --hair-2:#D3D9E2;
+  --ink:#141A22; --ink-2:#4A5563; --ink-3:#7A8595;
+  --accent:#E08A14; --up:#1E9E64; --down:#D64545; --hold:#B8890F;
+  --tile:#FFFFFF; --tile-ink:#141A22; --tile-edge:#D3D9E2;
+}
+:root[data-theme="light"] .panel{box-shadow:0 1px 2px rgba(20,26,34,.05)}
+:root[data-theme="light"] .mark{box-shadow:0 0 0 1px var(--hair-2)}
+:root[data-theme="light"] .pill.buy,:root[data-theme="light"] .pill.accumulate{background:rgba(30,158,100,.12)}
+:root[data-theme="light"] .pill.hold{background:rgba(184,137,15,.12)} :root[data-theme="light"] .pill.avoid{background:rgba(214,69,69,.10)}
+:root[data-theme="light"] #map path{fill:#E8EEF4;stroke:#B9C6D4}
+:root[data-theme="light"] #map .pt{stroke:#FFFFFF}
+:root[data-theme="light"] .card{box-shadow:inset 0 -3px 0 var(--tile-edge),0 0 0 1px var(--hair-2),0 4px 12px rgba(20,26,34,.08)}
+:root[data-theme="light"] .card.life{box-shadow:inset 0 -3px 0 var(--tile-edge),0 0 0 2px var(--accent),0 4px 12px rgba(20,26,34,.08)}
+:root[data-theme="light"] .card .b small{color:var(--ink-2)}
+/* off-white version: ?theme=offwhite (warm paper tones on top of the white version) */
+:root[data-theme="light"][data-tone="offwhite"]{
+  --plane:#F1EDE4; --panel:#FBF9F4; --card:#F5F1E8; --card-2:#EDE7DA; --hair:#E4DDCF; --hair-2:#D6CDBB;
+  --ink:#1A1916; --ink-2:#55514A; --ink-3:#8B857A; --tile:#FFFDF8; --tile-edge:#D6CDBB;
+}
+:root[data-tone="offwhite"] #map path{fill:#EDE7DA;stroke:#C9BFAC}
+:root[data-tone="offwhite"] #map .pt{stroke:#FBF9F4}
 </style>
 </head>
 <body>
@@ -161,7 +189,8 @@ async function map(d) {
     { name: 'UAE & Kazakhstan', x0: 510, w: 490, L0: 48, L1: 82, P0: 55, P1: 20, ids: ['dubai', 'abu_dhabi', 'almaty', 'astana'] }];
   let geo = null; try { geo = await getJSON('vendor/ne_110m_countries.json'); } catch (e) { geo = null; }
   const rows = d.markets || [], mx = Math.max(1, ...rows.map(r => Math.abs(r.model_12m || 0)));
-  const col = v => (v === 'buy' || v === 'accumulate' ? '#4CC38A' : v === 'avoid' ? '#EF6461' : v === 'hold' ? '#E9C46A' : '#A3AEBB');
+  const LIGHT = document.documentElement.dataset.theme === 'light';
+  const col = v => (v === 'buy' || v === 'accumulate' ? (LIGHT ? '#1E9E64' : '#4CC38A') : v === 'avoid' ? (LIGHT ? '#D64545' : '#EF6461') : v === 'hold' ? (LIGHT ? '#B8890F' : '#E9C46A') : '#A3AEBB');
   let html = '';
   INS.forEach((b, bi) => {
     const X = lon => b.x0 + (lon - b.L0) / (b.L1 - b.L0) * b.w, Y = lat => (b.P0 - lat) / (b.P0 - b.P1) * H;
@@ -174,7 +203,7 @@ async function map(d) {
     const pts = rows.filter(r => b.ids.includes(r.key)).map(r => { const x = X(r.lon), y = Y(r.lat), rad = 8 + 12 * Math.abs(r.model_12m || 0) / mx, o = r.label_offset || [10, 4];
       return `<circle class="pt" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad.toFixed(1)}" fill="${col((r.argon || {}).verdict)}" fill-opacity=".9"><title>${esc(r.market)}: model ${pct(r.model_12m, 1, true)}, Argon ${esc((r.argon || {}).verdict || '')}</title></circle>
         <text x="${(x + o[0]).toFixed(1)}" y="${(y + o[1]).toFixed(1)}" text-anchor="${o[0] < 0 ? 'end' : 'start'}">${esc(r.short || r.market)} <tspan class="r">${esc((r.argon || {}).verdict || '')}</tspan></text>`; }).join('');
-    html += `<clipPath id="c${bi}"><rect x="${b.x0}" y="0" width="${b.w}" height="${H}" rx="10"/></clipPath><g clip-path="url(#c${bi})"><rect x="${b.x0}" y="0" width="${b.w}" height="${H}" fill="#131B26"/>${paths}${pts}</g><text class="it" x="${b.x0 + 14}" y="28">${esc(b.name.toUpperCase())}</text>`;
+    html += `<clipPath id="c${bi}"><rect x="${b.x0}" y="0" width="${b.w}" height="${H}" rx="10"/></clipPath><g clip-path="url(#c${bi})"><rect x="${b.x0}" y="0" width="${b.w}" height="${H}" fill="${document.documentElement.dataset.tone === 'offwhite' ? '#F5F1E8' : LIGHT ? '#F7F9FB' : '#131B26'}"/>${paths}${pts}</g><text class="it" x="${b.x0 + 14}" y="28">${esc(b.name.toUpperCase())}</text>`;
   });
   svg.style.background = 'transparent';
   svg.innerHTML = html;
@@ -197,7 +226,8 @@ async function nav() {
     const list = await getJSON('profiles/index.json');
     const sel = $('#nav');
     sel.innerHTML = list.map(p => `<option value="${esc(p.id)}"${p.id === 'real-estate' ? ' selected' : ''}>${esc(p.title)}</option>`).join('');
-    sel.addEventListener('change', () => { const id = sel.value; location.href = id === 'domino' ? '/' : '/?profile=' + encodeURIComponent(id) + '&classic=' + (id === 'real-estate' ? '1' : '0'); });
+    sel.addEventListener('change', () => { const id = sel.value; const tq = document.documentElement.dataset.tone === 'offwhite' ? 'theme=offwhite' : document.documentElement.dataset.theme === 'light' ? 'theme=white' : '';
+      location.href = id === 'domino' ? '/' + (tq ? '?' + tq : '') : '/?profile=' + encodeURIComponent(id) + '&classic=' + (id === 'real-estate' ? '1' : '0') + (tq ? '&' + tq : ''); });
   } catch (e) { /* the dashboard still renders without the switcher */ }
 }
 (async () => {

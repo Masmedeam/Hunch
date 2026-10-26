@@ -110,6 +110,46 @@
         </div>
       </div>
 
+      <!-- WORLD MAP: every analysed place; the 3 hotspots open their walkable office render -->
+      <div class="hs-map" id="hs-map">
+        <div class="hs-map-head">
+          <div>
+            <span class="ac-num">GLOBAL SIGNAL MAP</span>
+            <strong>Where the analysis points</strong>
+            <span class="hs-map-sub">Hunch hotspots and Domino's 12-month real estate screen. Drag to spin the globe; click a red pin to walk into its office.</span>
+          </div>
+          <div class="hs-map-regions" id="hs-map-regions" role="group" aria-label="Map region">
+            <button type="button" class="active" data-region="world">World</button>
+            <button type="button" data-region="americas">US</button>
+            <button type="button" data-region="gulf">Gulf</button>
+            <button type="button" data-region="kazakhstan">Kazakhstan</button>
+          </div>
+        </div>
+        <div class="hs-map-stage" id="hs-map-stage">
+          <div id="hs-globe" role="img" aria-label="Globe of analysed cities"></div>
+          <div class="hs-map-pop" id="hs-map-pop" hidden></div>
+          <div class="hs-map-legend">
+            <span><i class="lg-render"></i>Hotspot · walkable office</span>
+            <span><i class="lg-buy"></i>Buy / accumulate</span>
+            <span><i class="lg-hold"></i>Hold</span>
+            <span><i class="lg-avoid"></i>Avoid</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- walkable office render, opened from a map pin -->
+      <div class="hs-render-modal" id="hs-render-modal" hidden>
+        <div class="hs-render-box">
+          <div class="hs-render-bar">
+            <strong id="hs-render-title">Office render</strong>
+            <span class="hs-render-hint">WASD to walk · drag or click to look · F at the laptop</span>
+            <a id="hs-render-newtab" href="#" target="_blank" rel="noopener">Open in new tab ↗</a>
+            <button type="button" id="hs-render-close" aria-label="Close render">Close ✕</button>
+          </div>
+          <iframe id="hs-render-frame" title="Walkable office render"></iframe>
+        </div>
+      </div>
+
       <!-- 3 HOTSPOTS + INTERACTIVE 3D STAGE -->
       <div class="app-hotspot-layout">
         <div class="app-hotspot-sidebar" id="app-hotspot-list">
@@ -224,29 +264,31 @@
             First-domino causal chains, outcome-rescored Gemini 4 Argon benchmarks (Brier <strong>0.192</strong>), and 12-month real estate investment screens across US, Gulf &amp; Kazakhstan.
           </p>
         </div>
-        <a href="/domino/?profile=hunch" id="domino-fullscreen-link" target="_blank" rel="noopener" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
+        <a href="/realestate/mock?v=1&theme=offwhite" id="domino-fullscreen-link" target="_blank" rel="noopener" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
           Full Screen ↗
         </a>
       </div>
 
       <div class="sub-toolbar" style="margin-bottom:14px;">
         <div class="source-filter-bar" id="domino-profile-tabs">
-          <button class="filter-chip active" data-domino-url="/domino/?profile=hunch" type="button">Hunch × Domino</button>
-          <button class="filter-chip" data-domino-url="/realestate" type="button">Real Estate 12m Screen</button>
-          <button class="filter-chip" data-domino-url="/realestate/mock?v=2" type="button">Globe + Causal Graph</button>
-          <button class="filter-chip" data-domino-url="/realestate/mock?v=3" type="button">Causal Flow</button>
-          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-world" type="button">World Claims (Q4)</button>
-          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-markets" type="button">Markets &amp; 8-K (Q1/Q2)</button>
-          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-social" type="button">Social &amp; YouTube (Q3/Q5)</button>
-          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-life" type="button">Hunch Verticals</button>
-          <button class="filter-chip" data-domino-url="/domino/?mock=1" type="button">Hormuz → Oil → Pump</button>
+          <!-- the clean off-white mocks lead; the full dashboards follow -->
+          <button class="filter-chip active" data-domino-url="/realestate/mock?v=1&theme=offwhite" type="button">Map-first</button>
+          <button class="filter-chip" data-domino-url="/realestate/mock?v=2&theme=offwhite" type="button">Linked Views</button>
+          <button class="filter-chip" data-domino-url="/realestate/mock?v=3&theme=offwhite" type="button">Causal Flow</button>
+          <button class="filter-chip" data-domino-url="/domino/?profile=hunch&theme=offwhite" type="button">Hunch × Domino</button>
+          <button class="filter-chip" data-domino-url="/realestate?theme=offwhite" type="button">Real Estate 12m Screen</button>
+          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-world&theme=offwhite" type="button">World Claims (Q4)</button>
+          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-markets&theme=offwhite" type="button">Markets &amp; 8-K (Q1/Q2)</button>
+          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-social&theme=offwhite" type="button">Social &amp; YouTube (Q3/Q5)</button>
+          <button class="filter-chip" data-domino-url="/domino/?profile=hunch-life&theme=offwhite" type="button">Hunch Verticals</button>
+          <button class="filter-chip" data-domino-url="/domino/?mock=1&theme=offwhite" type="button">Hormuz → Oil → Pump</button>
         </div>
       </div>
 
-      <div style="background:#0A0F16;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.08);">
+      <div style="background:#F1EDE4;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.08);">
         <iframe
           id="domino-iframe"
-          src="/domino/?profile=hunch"
+          src="/realestate/mock?v=1&theme=offwhite"
           title="Domino 3D World Model Dashboard"
           style="width:100%;height:74vh;min-height:620px;border:none;display:block;"
         ></iframe>
