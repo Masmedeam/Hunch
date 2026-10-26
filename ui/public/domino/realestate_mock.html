@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Domino · Real estate mocks</title>
+<script>(() => { // ?theme=white | offwhite (dark is the default)
+  const t = (new URLSearchParams(location.search).get('theme') || '').toLowerCase().replace(/[^a-z]/g, '');
+  if (t === 'white' || t === 'light' || t === 'offwhite') document.documentElement.dataset.theme = 'light';
+  if (t === 'offwhite') document.documentElement.dataset.tone = 'offwhite'; })();</script>
 <style>
 :root{
   --plane:#0A0F16; --panel:#0E141D; --card:#131B26; --card-2:#182230; --hair:#1F2A38; --hair-2:#2B3849;
@@ -117,6 +121,42 @@ tr.sel td{background:var(--card-2)} tr[data-id]{cursor:pointer}
 body.tight .rk td{padding:3px 6px} body.tight .rk th{padding:2px 6px}
 .pick{color:var(--ink-2);font-size:12px;line-height:1.35}
 .pick b{color:var(--ink)}
+/* white version: ?theme=white */
+:root[data-theme="light"]{
+  --plane:#F3F5F8; --panel:#FFFFFF; --card:#F7F9FB; --card-2:#EDF1F6; --hair:#E4E8EE; --hair-2:#D3D9E2;
+  --ink:#141A22; --ink-2:#4A5563; --ink-3:#7A8595;
+  --accent:#E08A14; --up:#1E9E64; --down:#D64545; --hold:#B8890F; --driver:#2F78A8;
+  --tile:#FFFFFF; --tile-ink:#141A22; --tile-edge:#D3D9E2;
+}
+:root[data-theme="light"] .panel{box-shadow:0 1px 2px rgba(20,26,34,.05)}
+:root[data-theme="light"] .mark{box-shadow:0 0 0 1px var(--hair-2)}
+:root[data-theme="light"] .card{box-shadow:inset 0 -3px 0 var(--tile-edge),0 0 0 1px var(--hair-2),0 4px 12px rgba(20,26,34,.08)}
+:root[data-theme="light"] .card.life{box-shadow:inset 0 -3px 0 var(--tile-edge),0 0 0 2px var(--accent),0 4px 12px rgba(20,26,34,.08)}
+:root[data-theme="light"] .card .b small{color:var(--ink-2)}
+:root[data-theme="light"] .legend{background:rgba(255,255,255,.94);border-color:var(--hair-2)}
+:root[data-theme="light"] .legend i{border-top-color:#243245} :root[data-theme="light"] .legend i.p{border-top-color:#6E7C8E}
+:root[data-theme="light"] .legend i.n{border-top-color:#D64545} :root[data-theme="light"] .legend i.a{border-top-color:#8A94A3}
+:root[data-theme="light"] .glab{background:rgba(255,255,255,.95);border-color:var(--hair-2);color:var(--ink);box-shadow:0 1px 3px rgba(20,26,34,.14)}
+:root[data-theme="light"] .glab small{color:var(--ink-2)}
+:root[data-theme="light"] .glab.drv{color:#2B5E83;border-color:rgba(47,120,168,.35)}
+:root[data-theme="light"] .gtitle .s{background:rgba(255,255,255,.88)}
+:root[data-theme="light"] .sep{background:var(--hair-2)}
+:root[data-theme="light"] #flow .box.driver{stroke:rgba(47,120,168,.55)}
+:root[data-theme="light"] #flow path.measured,:root[data-theme="light"] #cg .measured{stroke:#243245}
+:root[data-theme="light"] #flow path.prior,:root[data-theme="light"] #cg .prior{stroke:#6E7C8E;opacity:.8}
+:root[data-theme="light"] #flow path.noskill,:root[data-theme="light"] #cg .noskill{stroke:#D64545}
+:root[data-theme="light"] #flow path.anecdotal,:root[data-theme="light"] #cg .anecdotal{stroke:#8A94A3}
+:root[data-theme="light"] #flow path.pulse,:root[data-theme="light"] #cg .pulse{stroke:#E08A14}
+:root[data-theme="light"] #cg text{stroke:#FFFFFF}
+/* off-white version: ?theme=offwhite (warm paper tones on top of the white version) */
+:root[data-theme="light"][data-tone="offwhite"]{
+  --plane:#F1EDE4; --panel:#FBF9F4; --card:#F5F1E8; --card-2:#EDE7DA; --hair:#E4DDCF; --hair-2:#D6CDBB;
+  --ink:#1A1916; --ink-2:#55514A; --ink-3:#8B857A; --tile:#FFFDF8; --tile-edge:#D6CDBB;
+}
+:root[data-tone="offwhite"] .legend,:root[data-tone="offwhite"] .glab{background:rgba(251,249,244,.96)}
+:root[data-tone="offwhite"] .gtitle .s{background:rgba(251,249,244,.9)}
+:root[data-tone="offwhite"] #cg text{stroke:#FBF9F4}
+.thm a{color:var(--ink-3);text-decoration:none} .thm a.on{color:var(--ink);font-weight:700} .thm a:hover{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -126,7 +166,7 @@ body.tight .rk td{padding:3px 6px} body.tight .rk th{padding:2px 6px}
     <div><div class="wordmark">DOMINO · REAL ESTATE</div><div class="tagline" id="vdesc">mock layouts</div></div>
     <nav class="tabs" id="tabs"></nav>
     <div class="spacer"></div>
-    <span class="chip" id="asof"></span><span class="chip" id="hash"></span>
+    <span class="chip" id="asof"></span><span class="chip" id="hash"></span><span class="chip thm" id="themeT"></span>
     <a class="chip" href="/realestate">current page</a><a class="chip" href="/?profile=real-estate&classic=1">classic</a>
   </header>
   <main id="main"></main>
@@ -149,10 +189,16 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': 
 const isNum = v => typeof v === 'number' && isFinite(v);
 const pct = (v, d = 1, sign = true) => (isNum(v) ? (sign && v > 0 ? '+' : '') + v.toFixed(d) + '%' : '—');
 const V = Math.max(1, Math.min(3, parseInt(new URLSearchParams(location.search).get('v'), 10) || 1));
-const VERDICT = { buy: '#4CC38A', accumulate: '#4CC38A', hold: '#E9C46A', avoid: '#EF6461' };
-const GROUPCOL = { driver: '#5FA8D3', channel: '#F0A43A', outcome: '#ECE4D1' };
+const LIGHT = document.documentElement.dataset.theme === 'light', OFF = document.documentElement.dataset.tone === 'offwhite';
+const THEME = OFF ? 'offwhite' : LIGHT ? 'white' : '', TQ = THEME ? '&theme=' + THEME : ''; // kept when switching mocks
+const VERDICT = LIGHT ? { buy: '#1E9E64', accumulate: '#1E9E64', hold: '#B8890F', avoid: '#D64545' } : { buy: '#4CC38A', accumulate: '#4CC38A', hold: '#E9C46A', avoid: '#EF6461' };
+const GROUPCOL = LIGHT ? { driver: '#2F78A8', channel: '#E08A14', outcome: '#8C6D2C' } : { driver: '#5FA8D3', channel: '#F0A43A', outcome: '#ECE4D1' };
 const ncol = n => (n.group === 'market' ? VERDICT[n.verdict] || '#A3AEBB' : GROUPCOL[n.group] || '#A3AEBB');
-const LINK = { measured: '#E4ECF6', prior: 'rgba(154,167,184,0.6)', noskill: 'rgba(239,100,97,0.7)', anecdotal: 'rgba(125,137,153,0.55)' };
+const LINK = LIGHT ? { measured: '#243245', prior: 'rgba(110,124,142,0.75)', noskill: 'rgba(214,69,69,0.85)', anecdotal: 'rgba(120,132,148,0.7)' }
+  : { measured: '#E4ECF6', prior: 'rgba(154,167,184,0.6)', noskill: 'rgba(239,100,97,0.7)', anecdotal: 'rgba(125,137,153,0.55)' };
+const PAL = OFF ? { globe: '#DCE4EB', emissive: '#86939F', atmosphere: '#B1C1CF', land: 'rgba(62,64,70,0.6)', dimArc: 'rgba(120,120,115,0.15)', nodeStroke: '#FBF9F4', driverText: '#2F6F98' }
+  : LIGHT ? { globe: '#D9E6F3', emissive: '#7C93AE', atmosphere: '#8FB4DE', land: 'rgba(55,80,110,0.62)', dimArc: 'rgba(120,135,155,0.15)', nodeStroke: '#FFFFFF', driverText: '#2F78A8' }
+  : { globe: '#0F2034', emissive: '#060E19', atmosphere: '#4F7CAD', land: 'rgba(150,172,200,0.5)', dimArc: 'rgba(120,135,155,0.08)', nodeStroke: '#0A0F16', driverText: '#9CC7E3' };
 const REGION = { us: { lat: 33, lng: -93, altitude: 1.35 }, gulf: { lat: 34, lng: 64, altitude: 1.45 }, all: { lat: 34, lng: -15, altitude: 2.4 } };
 const regionOf = n => (n.lon < -40 ? 'us' : 'gulf');
 const MOCKS = [
@@ -185,7 +231,7 @@ function chains(el) {
   el.innerHTML = `<div class="cgroups">${(D.chains || []).map((c, gi) => `${gi ? '<div class="sep"></div>' : ''}<div class="cgroup"><div class="gt">${esc(c.title)}</div><div class="crow">${(c.cards || []).map((k, i) => `${i ? '<span class="arrow" aria-hidden="true">→</span>' : ''}<div class="card${k.life ? ' life' : ''}"><div class="t">${esc(k.label)}</div><div class="mid"></div><div class="b"><strong>${esc(k.value)}</strong><small>${esc(k.sub || '')}</small></div></div>`).join('')}</div><div class="ev">${c.evidence_html || ''}</div></div>`).join('')}</div>`;
 }
 const legendHTML = () => `<span><i></i>measured</span><span><i class="p"></i>mechanism (untested)</span><span><i class="n"></i>tested: no skill</span><span><i class="a"></i>anecdotal</span>
-  <span><span class="dot" style="background:#4CC38A"></span>buy</span><span><span class="dot" style="background:#E9C46A"></span>hold</span><span><span class="dot" style="background:#EF6461"></span>avoid</span>`;
+  <span><span class="dot" style="background:${VERDICT.buy}"></span>buy</span><span><span class="dot" style="background:${VERDICT.hold}"></span>hold</span><span><span class="dot" style="background:${VERDICT.avoid}"></span>avoid</span>`;
 
 /* ---------------- globe (Globe.gl, the Domino styling): one per page, switched between regions ---------------- */
 const ORDER = ['us10y', 'zori', 'jobs_tx', 'tx_tax', 'uae_credit', 'dxb_supply', 'ad_zones', 'froth', 'kzt', 'kz_credit',
@@ -199,21 +245,21 @@ function globe(host, opts) {
   const nodes = D.graph.nodes.filter(n => isNum(n.lat) && isNum(n.lon));
   const ids = new Set(nodes.map(n => n.id));
   const mx = Math.max(1, ...nodes.filter(n => n.group === 'market').map(n => Math.abs(n.model || 0)));
-  G.backgroundColor('rgba(0,0,0,0)').showAtmosphere(true).atmosphereColor('#4F7CAD').atmosphereAltitude(0.13).showGraticules(true)
-    .pathPoints('pts').pathPointLat(p => p[1]).pathPointLng(p => p[0]).pathPointAlt(0.002).pathColor(() => 'rgba(150,172,200,0.5)').pathStroke(null).pathTransitionDuration(0)
+  G.backgroundColor('rgba(0,0,0,0)').showAtmosphere(true).atmosphereColor(PAL.atmosphere).atmosphereAltitude(0.13).showGraticules(true)
+    .pathPoints('pts').pathPointLat(p => p[1]).pathPointLng(p => p[0]).pathPointAlt(0.002).pathColor(() => PAL.land).pathStroke(null).pathTransitionDuration(0)
     .pointLat('lat').pointLng('lon').pointAltitude(d => (d.group === 'market' ? 0.03 : 0.015)).pointResolution(16).pointsMerge(false)
     .pointRadius(d => (d.group === 'market' ? 0.45 + 0.75 * Math.abs(d.model || 0) / mx : 0.28)).pointColor(d => ncol(d)).pointLabel(d => `${d.label}: ${d.value || ''}`)
     .arcStartLat('sLat').arcStartLng('sLng').arcEndLat('eLat').arcEndLng('eLng').arcColor('color').arcStroke('stroke').arcDashLength('dash').arcDashGap('gap')
     .arcDashAnimateTime('time').arcAltitudeAutoScale(opts.arcScale || 0.3).arcLabel('tip').arcCurveResolution(48).arcsTransitionDuration(0)
     .htmlLat('lat').htmlLng('lon').htmlAltitude(0.035).htmlElement('el').htmlTransitionDuration(0);
-  const m = G.globeMaterial(); m.color.set('#0F2034'); if (m.emissive) m.emissive.set('#060E19'); m.shininess = 3;
+  const m = G.globeMaterial(); m.color.set(PAL.globe); if (m.emissive) m.emissive.set(PAL.emissive); m.shininess = LIGHT ? 0 : 3;
   try { G.renderer().setPixelRatio(Math.min(1.75, window.devicePixelRatio || 1)); } catch (e) { /* default */ }
   G.controls().autoRotate = false;
   const STY = { measured: { stroke: 0.9, dash: 0.35, gap: 0.12, time: 2200 }, prior: { stroke: 0.35, dash: 0.05, gap: 0.04, time: 0 },
     noskill: { stroke: 0.35, dash: 0.04, gap: 0.05, time: 0 }, anecdotal: { stroke: 0.3, dash: 0.015, gap: 0.03, time: 0 } };
   const arcsFor = sel => D.graph.edges.filter(e => ids.has(e.source) && ids.has(e.target)).map(e => {
     const s = byId.get(e.source), t = byId.get(e.target), st = STY[e.cls] || STY.prior, on = !sel || (sel.has(e.source) && sel.has(e.target));
-    const c = on ? LINK[e.cls] : 'rgba(120,135,155,0.08)';
+    const c = on ? LINK[e.cls] : PAL.dimArc;
     return { sLat: s.lat, sLng: s.lon, eLat: t.lat, eLng: t.lon, color: [c, c], stroke: st.stroke, dash: st.dash, gap: st.gap, time: st.time, tip: `${s.label} → ${t.label}: ${e.evidence}` };
   });
   const labels = (opts.compact ? [] : nodes).filter(n => n.group === 'market' || n.group === 'outcome' || (opts.channels && n.group === 'channel')).map(n => {
@@ -266,7 +312,7 @@ function graphSVG(svg) {
     return `<g data-s="${esc(e.source)}" data-t="${esc(e.target)}"><line class="${esc(e.cls)}" ${seg}><title>${esc(e.evidence)}</title></line>${e.cls === 'measured' ? `<line class="pulse" ${seg}/>` : ''}</g>`; }).join('');
   html += D.graph.nodes.map(n => { const p = pos.get(n.id); if (!p) return '';
     return `<g class="nd" data-id="${esc(n.id)}" style="cursor:pointer"><title>${esc(n.label)}: ${esc(n.value || '')}</title>
-      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${p.r.toFixed(1)}" fill="${ncol(n)}" stroke="#0A0F16" stroke-width="1.5"/>
+      <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${p.r.toFixed(1)}" fill="${ncol(n)}" stroke="${PAL.nodeStroke}" stroke-width="1.5"/>
       <text x="${p.x.toFixed(1)}" y="${(p.y + p.r + 13).toFixed(1)}">${esc(n.label)}</text><text class="v" x="${p.x.toFixed(1)}" y="${(p.y + p.r + 26).toFixed(1)}">${esc(n.value || '')}</text></g>`; }).join('');
   svg.innerHTML = html;
   svg.querySelectorAll('g.nd').forEach(g => g.addEventListener('click', () => select(g.dataset.id)));
@@ -303,7 +349,7 @@ function flow(svg) {
 }
 
 /* ---------------- the three mocks ---------------- */
-const drvHTML = r => D.graph.nodes.filter(n => n.group === 'driver' && isNum(n.lat) && regionOf(n) === r).map(n => `<span style="color:#9CC7E3">●</span> ${esc(n.label)} <b style="color:var(--ink-2)">${esc(n.value || '')}</b>`).join('<br>');
+const drvHTML = r => D.graph.nodes.filter(n => n.group === 'driver' && isNum(n.lat) && regionOf(n) === r).map(n => `<span style="color:${PAL.driverText}">●</span> ${esc(n.label)} <b style="color:var(--ink-2)">${esc(n.value || '')}</b>`).join('<br>');
 const mktHTML = r => D.graph.nodes.filter(n => n.group === 'market' && regionOf(n) === r).map(n => `<span style="color:${ncol(n)}">●</span> ${esc(n.label)} <span style="color:${ncol(n)}">${esc(n.verdict || '')}</span>`).join('<br>');
 const REGNAME = { us: 'United States', gulf: 'Gulf & Kazakhstan' };
 function v1() {
@@ -351,9 +397,10 @@ function v3() {
 }
 
 (async () => {
-  $('#tabs').innerHTML = MOCKS.map(x => `<a class="tab${x.v === V ? ' on' : ''}" href="?v=${x.v}"><b>V${x.v}</b>${esc(x.name)}</a>`).join('');
+  $('#tabs').innerHTML = MOCKS.map(x => `<a class="tab${x.v === V ? ' on' : ''}" href="?v=${x.v}${TQ}"><b>V${x.v}</b>${esc(x.name)}</a>`).join('');
   $('#vdesc').textContent = MOCKS[V - 1].desc;
-  document.addEventListener('keydown', e => { if (/^[1-3]$/.test(e.key)) location.search = '?v=' + e.key; if (e.key === 'Escape') select(null); });
+  $('#themeT').innerHTML = [['', 'dark'], ['white', 'white'], ['offwhite', 'off-white']].map(([t, l]) => `<a href="?v=${V}${t ? '&theme=' + t : ''}" class="${t === THEME ? 'on' : ''}">${l}</a>`).join(' · ');
+  document.addEventListener('keydown', e => { if (/^[1-3]$/.test(e.key)) location.search = '?v=' + e.key + TQ; if (e.key === 'Escape') select(null); });
   try {
     const [d, land] = await Promise.all([getJSON('/profiles/real-estate/dashboard.json'), getJSON('/vendor/ne_110m_countries.json').catch(() => ({ features: [] }))]);
     D = d;
