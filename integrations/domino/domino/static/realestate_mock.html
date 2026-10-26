@@ -85,6 +85,10 @@ tr.sel td{background:var(--card-2)} tr[data-id]{cursor:pointer}
 .glab small{display:block;color:var(--ink-2);font-weight:500;font-size:10.5px}
 .glab.drv{border-color:rgba(95,168,211,.45);color:#CFE3F1;font-size:10.5px}
 .glab.dim{opacity:.25}
+.glab.walk{pointer-events:auto;cursor:pointer;border:1.5px solid var(--accent);box-shadow:0 0 0 3px rgba(224,138,20,.18)}
+.glab.walk:hover{background:var(--accent);color:#1A1206} .glab.walk:hover small,.glab.walk:hover .wk{color:#1A1206}
+.wk{font:700 9.5px/1 var(--sans);font-style:normal;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-left:6px;white-space:nowrap}
+.glab .wk{display:block;margin:3px 0 1px}
 .regions{position:absolute;right:10px;top:8px;z-index:3;display:flex;gap:6px}
 .regions button{background:var(--card);color:var(--ink-2);border:1px solid var(--hair-2);border-radius:7px;padding:5px 9px;font:600 11.5px var(--sans);cursor:pointer}
 .regions button.on{color:#1A1206;background:var(--accent);border-color:var(--accent)}
@@ -207,7 +211,11 @@ const MOCKS = [
   { v: 3, name: 'Causal flow', desc: 'Drivers → channels → markets as one flow, every link styled by its evidence; ranking and the globe below' }];
 let D = null, SEL = null; const LAND = []; // country rings for the globe paths layer
 const listeners = [];
-const select = id => { SEL = SEL === id ? null : id; listeners.forEach(f => f(SEL)); };
+// ?walk=id,id: markets the host page (Hunch) can open as a walkable office; a click on one tells the host
+const WALK = new Set((new URLSearchParams(location.search).get('walk') || '').split(',').filter(Boolean));
+const WQ = WALK.size ? '&walk=' + [...WALK].join(',') : '';
+const walkTo = id => { if (WALK.has(id) && window.parent !== window) window.parent.postMessage({ source: 'domino', type: 'walk', id }, location.origin); };
+const select = id => { SEL = SEL === id ? null : id; listeners.forEach(f => f(SEL)); walkTo(id); };
 const linked = id => { if (!id || !D) return null; const s = new Set([id]); D.graph.edges.forEach(e => { if (e.source === id || e.target === id) { s.add(e.source); s.add(e.target); } }); return s; };
 
 async function getJSON(u) { const r = await fetch(u, { cache: 'no-store' }); if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }
@@ -221,7 +229,7 @@ function ranking(el, opts = {}) {
   const rows = D.markets || [], mx = Math.max(1, ...rows.map(r => Math.abs(r.model_12m || 0)));
   el.innerHTML = `<table class="rk"><thead><tr><th>#</th><th>Market</th>${opts.yield ? '<th>Gross</th>' : ''}<th>Model 12 m</th><th>Argon</th><th>Verdict</th></tr></thead><tbody>${rows.map((r, i) => {
     const a = r.argon || {}, w = Math.min(100, 100 * Math.abs(r.model_12m || 0) / mx);
-    return `<tr data-id="${esc(r.key)}" title="${esc(a.why || '')}"><td class="n">${i + 1}</td><td class="m">${esc(r.market)}${opts.note ? `<small>${esc(r.note || '')}</small>` : ''}</td>${opts.yield ? `<td>${pct(r.gross, 1, false)}</td>` : ''}
+    return `<tr data-id="${esc(r.key)}" title="${esc(a.why || '')}"><td class="n">${i + 1}</td><td class="m">${esc(r.market)}${WALK.has(r.key) ? ' <em class="wk">3D office ↗</em>' : ''}${opts.note ? `<small>${esc(r.note || '')}</small>` : ''}</td>${opts.yield ? `<td>${pct(r.gross, 1, false)}</td>` : ''}
       <td><span class="bar"><i><u class="${(r.model_12m || 0) < 0 ? 'neg' : ''}" style="width:${w.toFixed(1)}%"></u></i><b>${pct(r.model_12m)}</b></span></td><td>${pct(a.exp)}</td>
       <td><span class="pill ${esc(a.verdict || '')}">${esc(a.verdict || '—')}</span></td></tr>`; }).join('')}</tbody></table>`;
   el.querySelectorAll('tr[data-id]').forEach(tr => tr.addEventListener('click', () => select(tr.dataset.id)));
@@ -264,8 +272,9 @@ function globe(host, opts) {
   });
   const labels = (opts.compact ? [] : nodes).filter(n => n.group === 'market' || n.group === 'outcome' || (opts.channels && n.group === 'channel')).map(n => {
     const el = document.createElement('div');
-    el.className = 'glab' + (n.group === 'channel' ? ' drv' : '');
-    el.innerHTML = n.group === 'market' ? `<span style="color:${ncol(n)}">●</span> ${esc(n.label)}<small>${esc(n.value)}</small>` : `${esc(n.label)}<small>${esc(n.value || '')}</small>`;
+    el.className = 'glab' + (n.group === 'channel' ? ' drv' : '') + (WALK.has(n.id) ? ' walk' : '');
+    if (WALK.has(n.id)) el.addEventListener('click', () => select(n.id));
+    el.innerHTML = n.group === 'market' ? `<span style="color:${ncol(n)}">●</span> ${esc(n.label)}${WALK.has(n.id) ? '<em class="wk">▶ walk into 3D office</em>' : ''}<small>${esc(n.value)}</small>` : `${esc(n.label)}<small>${esc(n.value || '')}</small>`;
     return { id: n.id, reg: regionOf(n), lat: n.lat, lon: n.lon, el };
   });
   G.pathsData(LAND).pointsData(nodes).arcsData(arcsFor(null)).htmlElementsData(labels); // all layers set before the first frame
@@ -397,10 +406,10 @@ function v3() {
 }
 
 (async () => {
-  $('#tabs').innerHTML = MOCKS.map(x => `<a class="tab${x.v === V ? ' on' : ''}" href="?v=${x.v}${TQ}"><b>V${x.v}</b>${esc(x.name)}</a>`).join('');
+  $('#tabs').innerHTML = MOCKS.map(x => `<a class="tab${x.v === V ? ' on' : ''}" href="?v=${x.v}${TQ}${WQ}"><b>V${x.v}</b>${esc(x.name)}</a>`).join('');
   $('#vdesc').textContent = MOCKS[V - 1].desc;
-  $('#themeT').innerHTML = [['', 'dark'], ['white', 'white'], ['offwhite', 'off-white']].map(([t, l]) => `<a href="?v=${V}${t ? '&theme=' + t : ''}" class="${t === THEME ? 'on' : ''}">${l}</a>`).join(' · ');
-  document.addEventListener('keydown', e => { if (/^[1-3]$/.test(e.key)) location.search = '?v=' + e.key + TQ; if (e.key === 'Escape') select(null); });
+  $('#themeT').innerHTML = [['', 'dark'], ['white', 'white'], ['offwhite', 'off-white']].map(([t, l]) => `<a href="?v=${V}${t ? '&theme=' + t : ''}${WQ}" class="${t === THEME ? 'on' : ''}">${l}</a>`).join(' · ');
+  document.addEventListener('keydown', e => { if (/^[1-3]$/.test(e.key)) location.search = '?v=' + e.key + TQ + WQ; if (e.key === 'Escape') select(null); });
   try {
     const [d, land] = await Promise.all([getJSON('/profiles/real-estate/dashboard.json'), getJSON('/vendor/ne_110m_countries.json').catch(() => ({ features: [] }))]);
     D = d;

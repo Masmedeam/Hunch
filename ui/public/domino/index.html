@@ -488,7 +488,7 @@ const PAL = OFF
   ? { atmosphere: '#8FB4DE', landStroke: 'rgba(55,80,110,.55)', sea: '#D9E6F3', seaGlow: '#7C93AE', shine: 0, land: '#EEF3F8', noData: '#A7B1BE', none: '#C4CCD6', neutral: '#7A8595',
       dimLink: 'rgba(120,135,155,0.18)', measured: '#243245', measuredNeg: '#D64545', neg: '#C9706B', anecdotal: '#8A94A3', prior: '#6E7C8E', inBand: 'rgba(20,26,34,.35)', band: 'rgba(224,138,20,.18)' }
   : { atmosphere: '#4F7CAD', landStroke: 'rgba(150,172,200,.26)', sea: '#0F2034', seaGlow: '#060E19', shine: 3, land: '#25364A', noData: '#59677A', none: '#3A4657', neutral: '#8A94A3',
-      dimLink: 'rgba(120,135,155,0.12)', measured: '#E4ECF6', measuredNeg: '#F08A85', neg: '#C9706B', anecdotal: '#7D8999', prior: '#9AA7B8', inBand: PAL.inBand, band: 'rgba(240,164,58,.2)' };
+      dimLink: 'rgba(120,135,155,0.12)', measured: '#E4ECF6', measuredNeg: '#F08A85', neg: '#C9706B', anecdotal: '#7D8999', prior: '#9AA7B8', inBand: 'rgba(239,232,216,.55)', band: 'rgba(240,164,58,.2)' };
 const ACC = cssv('--accent'), UP = cssv('--up'), DOWN = cssv('--down'), CRIT = cssv('--crit'), INK = cssv('--ink'), INK3 = cssv('--ink-3'), LIFE = KC.daily_life;
 const isNum = v => typeof v === 'number' && isFinite(v);
 const num = (v, d = null) => (isNum(v) ? v : d);
@@ -1064,7 +1064,7 @@ function drawSeries() {
   const X = i => (few ? (i + 0.5) / s.length * (W - 2) : (i / Math.max(1, s.length - 1)) * (W - 2)) + 1, Y = v => (fitS ? H - 2 - clamp((v - vmin + pad) / (vmax - vmin + 2 * pad)) * (H - 5) : nonneg ? H - 2 - clamp(v / top) * (H - 5) : H / 2 - clamp(v / lim, -1, 1) * (H / 2 - 2)), y0 = nonneg ? H - 2 : H / 2;
   const band = s.map((x, i) => `${X(i).toFixed(1)},${Y(num(x.p90, 0)).toFixed(1)}`).join(' ') + ' ' + s.map((x, i) => `${X(i).toFixed(1)},${Y(num(x.p10, 0)).toFixed(1)}`).reverse().join(' ');
   const med = s.map((x, i) => `${X(i).toFixed(1)},${Y(num(x.median, 0)).toFixed(1)}`).join(' ');
-  const dots = s.map((x, i) => { const out = isNum(x.p10) && isNum(x.p90) && (x.actual < x.p10 || x.actual > x.p90); return `<circle cx="${X(i).toFixed(1)}" cy="${Y(x.actual).toFixed(1)}" r="${few ? (out ? 3.4 : 2.6) : out ? 2.4 : 1.3}" fill="${out ? (num(x.surprise, 0) > 2 ? CRIT : INK) : 'rgba(239,232,216,.55)'}"/>`; }).join('');
+  const dots = s.map((x, i) => { const out = isNum(x.p10) && isNum(x.p90) && (x.actual < x.p10 || x.actual > x.p90); return `<circle cx="${X(i).toFixed(1)}" cy="${Y(x.actual).toFixed(1)}" r="${few ? (out ? 3.4 : 2.6) : out ? 2.4 : 1.3}" fill="${out ? (num(x.surprise, 0) > 2 ? CRIT : INK) : PAL.inBand}"/>`; }).join('');
   const idle = LBL('series_label') || `last ${s.length} days`;
   host.innerHTML = `<div class="hd"><span class="dm" title="Last ${s.length} days: Domino 80% band, median and actual; bright dots fall outside the band">${S.dmHTML || ''}</span><span id="serRead">${esc(idle)}</span></div><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:${H}px"><line x1="0" x2="${W}" y1="${y0}" y2="${y0}" stroke="${cssv('--hair-2')}"/><polygon points="${band}" fill="${PAL.band}"/><polyline points="${med}" fill="none" stroke="${ACC}" stroke-width="1.5"/>${dots}<line id="serX" y1="0" y2="${H}" stroke="${INK}" stroke-width="1" opacity="0"/></svg>`;
   const svg = host.querySelector('svg'), lx = host.querySelector('#serX'), rd = host.querySelector('#serRead'); let raf = 0;

@@ -213,6 +213,7 @@ let D = null, SEL = null; const LAND = []; // country rings for the globe paths 
 const listeners = [];
 // ?walk=id,id: markets the host page (Hunch) can open as a walkable office; a click on one tells the host
 const WALK = new Set((new URLSearchParams(location.search).get('walk') || '').split(',').filter(Boolean));
+const WQ = WALK.size ? '&walk=' + [...WALK].join(',') : '';
 const walkTo = id => { if (WALK.has(id) && window.parent !== window) window.parent.postMessage({ source: 'domino', type: 'walk', id }, location.origin); };
 const select = id => { SEL = SEL === id ? null : id; listeners.forEach(f => f(SEL)); walkTo(id); };
 const linked = id => { if (!id || !D) return null; const s = new Set([id]); D.graph.edges.forEach(e => { if (e.source === id || e.target === id) { s.add(e.source); s.add(e.target); } }); return s; };
@@ -405,10 +406,10 @@ function v3() {
 }
 
 (async () => {
-  $('#tabs').innerHTML = MOCKS.map(x => `<a class="tab${x.v === V ? ' on' : ''}" href="?v=${x.v}${TQ}"><b>V${x.v}</b>${esc(x.name)}</a>`).join('');
+  $('#tabs').innerHTML = MOCKS.map(x => `<a class="tab${x.v === V ? ' on' : ''}" href="?v=${x.v}${TQ}${WQ}"><b>V${x.v}</b>${esc(x.name)}</a>`).join('');
   $('#vdesc').textContent = MOCKS[V - 1].desc;
-  $('#themeT').innerHTML = [['', 'dark'], ['white', 'white'], ['offwhite', 'off-white']].map(([t, l]) => `<a href="?v=${V}${t ? '&theme=' + t : ''}" class="${t === THEME ? 'on' : ''}">${l}</a>`).join(' · ');
-  document.addEventListener('keydown', e => { if (/^[1-3]$/.test(e.key)) location.search = '?v=' + e.key + TQ; if (e.key === 'Escape') select(null); });
+  $('#themeT').innerHTML = [['', 'dark'], ['white', 'white'], ['offwhite', 'off-white']].map(([t, l]) => `<a href="?v=${V}${t ? '&theme=' + t : ''}${WQ}" class="${t === THEME ? 'on' : ''}">${l}</a>`).join(' · ');
+  document.addEventListener('keydown', e => { if (/^[1-3]$/.test(e.key)) location.search = '?v=' + e.key + TQ + WQ; if (e.key === 'Escape') select(null); });
   try {
     const [d, land] = await Promise.all([getJSON('/profiles/real-estate/dashboard.json'), getJSON('/vendor/ne_110m_countries.json').catch(() => ({ features: [] }))]);
     D = d;
