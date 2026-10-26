@@ -203,7 +203,7 @@ const LINK = LIGHT ? { measured: '#243245', prior: 'rgba(110,124,142,0.75)', nos
 const PAL = OFF ? { globe: '#DCE4EB', emissive: '#86939F', atmosphere: '#B1C1CF', land: 'rgba(62,64,70,0.6)', dimArc: 'rgba(120,120,115,0.15)', nodeStroke: '#FBF9F4', driverText: '#2F6F98' }
   : LIGHT ? { globe: '#D9E6F3', emissive: '#7C93AE', atmosphere: '#8FB4DE', land: 'rgba(55,80,110,0.62)', dimArc: 'rgba(120,135,155,0.15)', nodeStroke: '#FFFFFF', driverText: '#2F78A8' }
   : { globe: '#0F2034', emissive: '#060E19', atmosphere: '#4F7CAD', land: 'rgba(150,172,200,0.5)', dimArc: 'rgba(120,135,155,0.08)', nodeStroke: '#0A0F16', driverText: '#9CC7E3' };
-const REGION = { us: { lat: 33, lng: -93, altitude: 1.35 }, gulf: { lat: 34, lng: 64, altitude: 1.45 }, all: { lat: 34, lng: -15, altitude: 2.4 } };
+const REGION = { us: { lat: 33, lng: -93, altitude: 1.35 }, gulf: { lat: 34, lng: 64, altitude: 1.45 }, all: { lat: 34, lng: -12, altitude: 2.0 } };
 const regionOf = n => (n.lon < -40 ? 'us' : 'gulf');
 const MOCKS = [
   { v: 1, name: 'Map-first', desc: 'The globe carries the causal links (US ⇄ Gulf & Kazakhstan); numbers and ranking in the right rail; measured chains below' },
@@ -213,6 +213,8 @@ let D = null, SEL = null; const LAND = []; // country rings for the globe paths 
 const listeners = [];
 // ?walk=id,id: markets the host page (Hunch) can open as a walkable office; a click on one tells the host
 const WALK = new Set((new URLSearchParams(location.search).get('walk') || '').split(',').filter(Boolean));
+// ?regions=0: no United States / Gulf & Kazakhstan switch; one spinnable world view with every label
+const NOREG = new URLSearchParams(location.search).get('regions') === '0';
 const walkTo = id => { if (WALK.has(id) && window.parent !== window) window.parent.postMessage({ source: 'domino', type: 'walk', id }, location.origin); };
 const select = id => { SEL = SEL === id ? null : id; listeners.forEach(f => f(SEL)); walkTo(id); };
 const linked = id => { if (!id || !D) return null; const s = new Set([id]); D.graph.edges.forEach(e => { if (e.source === id || e.target === id) { s.add(e.source); s.add(e.target); } }); return s; };
@@ -276,31 +278,32 @@ function globe(host, opts) {
     el.innerHTML = n.group === 'market' ? `<span style="color:${ncol(n)}">●</span> ${esc(n.label)}${WALK.has(n.id) ? '<em class="wk">▶ walk into 3D office</em>' : ''}<small>${esc(n.value)}</small>` : `${esc(n.label)}<small>${esc(n.value || '')}</small>`;
     return { id: n.id, reg: regionOf(n), lat: n.lat, lon: n.lon, el };
   });
+  if (NOREG) G.htmlElementVisibilityModifier((el, v) => { el.style.visibility = v ? '' : 'hidden'; }); // every label is up, so hide the ones behind the globe
   G.pathsData(LAND).pointsData(nodes).arcsData(arcsFor(null)).htmlElementsData(labels); // all layers set before the first frame
   new ResizeObserver(() => { G.width(host.clientWidth); G.height(host.clientHeight); }).observe(host);
   G.width(host.clientWidth); G.height(host.clientHeight);
   G.onPointClick(d => d && select(d.id));
   let sel = null;
   const api = {
-    region: (r, ms = 1400) => { G.pointOfView(views[r], ms); labels.forEach(l => { l.el.style.display = l.reg === r ? '' : 'none'; }); },
+    region: (r, ms = 1400) => { G.pointOfView(views[r], ms); labels.forEach(l => { l.el.style.display = NOREG || l.reg === r ? '' : 'none'; }); },
     highlight: id => { sel = linked(id); G.arcsData(arcsFor(sel)); labels.forEach(l => l.el.classList.toggle('dim', !!sel && !sel.has(l.id))); }
   };
-  api.region(opts.start || 'us', 0);
+  api.region(NOREG ? 'all' : opts.start || 'us', 0);
   listeners.push(id => api.highlight(id));
   return api;
 }
 // region buttons (#reg) drive the one globe; selecting a node or market flies there; optional idle tour
 function regions(G, onChange, tour) {
   const bs = [...document.querySelectorAll('#reg button')];
-  let cur = 'us', touched = false;
-  const set = r => { cur = r; bs.forEach(b => b.classList.toggle('on', b.dataset.r === r)); G.region(r); onChange && onChange(r); };
+  let cur = NOREG ? 'all' : 'us', touched = NOREG;
+  const set = r => { cur = r; bs.forEach(b => b.classList.toggle('on', b.dataset.r === r)); G.region(r); onChange && onChange(NOREG ? 'all' : r); };
   bs.forEach(b => b.addEventListener('click', () => { touched = true; set(b.dataset.r); }));
   listeners.push(id => { touched = true; const n = id && D.graph.nodes.find(x => x.id === id); if (n && isNum(n.lat)) set(regionOf(n)); });
   if (tour) { const step = () => { if (touched) return; set(cur === 'us' ? 'gulf' : 'us'); setTimeout(step, 9000); }; setTimeout(step, 20000); }
-  onChange && onChange('us');
+  onChange && onChange(cur);
   return set;
 }
-const regionButtons = () => '<div class="regions" id="reg"><button data-r="us" class="on">United States</button><button data-r="gulf">Gulf &amp; Kazakhstan</button></div>';
+const regionButtons = () => NOREG ? '' : '<div class="regions" id="reg"><button data-r="us" class="on">United States</button><button data-r="gulf">Gulf &amp; Kazakhstan</button></div>';
 
 /* ---------------- causal graph (SVG, the layered Domino layout) ---------------- */
 function graphSVG(svg) {
@@ -357,9 +360,9 @@ function flow(svg) {
 }
 
 /* ---------------- the three mocks ---------------- */
-const drvHTML = r => D.graph.nodes.filter(n => n.group === 'driver' && isNum(n.lat) && regionOf(n) === r).map(n => `<span style="color:${PAL.driverText}">●</span> ${esc(n.label)} <b style="color:var(--ink-2)">${esc(n.value || '')}</b>`).join('<br>');
-const mktHTML = r => D.graph.nodes.filter(n => n.group === 'market' && regionOf(n) === r).map(n => `<span style="color:${ncol(n)}">●</span> ${esc(n.label)} <span style="color:${ncol(n)}">${esc(n.verdict || '')}</span>`).join('<br>');
-const REGNAME = { us: 'United States', gulf: 'Gulf & Kazakhstan' };
+const drvHTML = r => D.graph.nodes.filter(n => n.group === 'driver' && isNum(n.lat) && (r === 'all' || regionOf(n) === r)).map(n => `<span style="color:${PAL.driverText}">●</span> ${esc(n.label)} <b style="color:var(--ink-2)">${esc(n.value || '')}</b>`).join('<br>');
+const mktHTML = r => D.graph.nodes.filter(n => n.group === 'market' && (r === 'all' || regionOf(n) === r)).map(n => `<span style="color:${ncol(n)}">●</span> ${esc(n.label)} <span style="color:${ncol(n)}">${esc(n.verdict || '')}</span>`).join('<br>');
+const REGNAME = { us: 'United States', gulf: 'Gulf & Kazakhstan', all: 'World' };
 function v1() {
   const m = $('#main');
   m.style.gridTemplateColumns = 'minmax(0,1.62fr) minmax(0,1fr)'; m.style.gridTemplateRows = 'minmax(0,1fr) 196px';
@@ -373,7 +376,8 @@ function v1() {
   kpis($('#k'), 2); ranking($('#rk'), { yield: true, note: true }); chains($('#ch'));
   $('#pick').innerHTML = `<b>Argon's pick</b> · ${esc((D.pick || '').slice(0, 260))}`;
   const G = globe($('#g1'), { channels: true, views: { us: { lat: 33, lng: -93, altitude: 1.15 }, gulf: { lat: 35, lng: 62, altitude: 1.25 } } });
-  regions(G, r => { $('#regTitle').textContent = REGNAME[r]; $('#drv').innerHTML = 'drivers<br>' + drvHTML(r); }, true);
+  // in the single world view the drivers list would cover the globe; they're still in the chains below
+  regions(G, r => { $('#regTitle').textContent = REGNAME[r]; $('#drv').innerHTML = NOREG ? '' : 'drivers<br>' + drvHTML(r); }, true);
 }
 function v2() {
   const m = $('#main');

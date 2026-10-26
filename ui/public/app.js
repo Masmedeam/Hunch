@@ -2557,7 +2557,7 @@ async function init() {
       const frame = document.getElementById("domino-iframe");
       const fullLink = document.getElementById("domino-fullscreen-link");
       if (frame) frame.src = targetUrl;
-      if (fullLink) fullLink.href = targetUrl.replace(/&walk=[^&]*/, ""); // walking in only works inside Hunch
+      if (fullLink) fullLink.href = targetUrl.replace(/&(walk|regions)=[^&]*/g, ""); // walk-in and the single world view are Hunch-only
     });
   });
 
